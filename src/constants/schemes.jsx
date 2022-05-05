@@ -4,9 +4,9 @@
 
 export const lightScheme = {
   primary: {
-    light: '#FFAC5B',
-    main: '#FA7B00',
-    dark: '#CC6C0F',
+    light: '#67D9FC',
+    main: '#00B9F1',
+    dark: '#008CB7',
   },
   secondary: {
     light: '#748898',
@@ -27,9 +27,9 @@ export const lightScheme = {
     dark: '#DFE1E6',
   },
   blue: {
-    light: '#67D9FC',
-    main: '#00B9F1',
-    dark: '#008CB7',
+    light: '#FFAC5B',
+    main: '#FA7B00',
+    dark: '#CC6C0F',
   },
   green: {
     light: '#EEFAA3',
@@ -72,9 +72,9 @@ export const lightScheme = {
 
 export const darkScheme = {
   primary: {
-    light: '#FFAC5B',
-    main: '#FA7B00',
-    dark: '#CC6C0F',
+    light: '#67D9FC',
+    main: '#00B9F1',
+    dark: '#008CB7',
   },
   secondary: {
     light: '#1B2935',
@@ -95,9 +95,9 @@ export const darkScheme = {
     dark: '#1D2631',
   },
   blue: {
-    light: '#67D9FC',
-    main: '#00B9F1',
-    dark: '#008CB7',
+    light: '#FFAC5B',
+    main: '#FA7B00',
+    dark: '#CC6C0F',
   },
   green: {
     light: '#EEFAA3',
