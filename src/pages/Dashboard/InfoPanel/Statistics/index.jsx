@@ -1,14 +1,11 @@
 import faker from 'faker';
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
-import BarChart from '../../../../components/Charts/Bar';
-import DoughnutChart from '../../../../components/Charts/Doughnut';
-import ItemsChart from '../../../../components/Charts/Items';
-import LegendDoughnutChart from '../../../../components/Charts/LegendDoughnut';
+import DataDoughComponent from '../../../../components/Charts/DataDough/DataDoughComponent';
 import LineChart from '../../../../components/Charts/Line';
 import RankingChart from '../../../../components/Charts/Ranking';
-import { getYLineAnnotation } from '../../../../utils/helpers';
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
@@ -29,177 +26,70 @@ export default function Statistics() {
     datasets: [
       {
         label: 'Dataset 1',
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
         backgroundColor: [theme.primary.main],
         borderColor: [theme.primary.main],
+      },
+    ],
+  });
+
+  const [rankingWaterSurfaceData /* setRankingWaterSurfaceData */] = useState({
+    labels,
+    datasets: [
+      {
+        label: 'Dataset 1',
+        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+        backgroundColor: [theme.green.main],
         borderRadius: 5,
         barThickness: 15,
       },
     ],
   });
 
-  const [doughnutData /* setData */] = useState({
-    labels: ['Fulll', 'Empty'],
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: [80, 20],
-        backgroundColor: [theme.primary.main, theme.neutral.gray.light],
-        borderColor: [theme.primary.main, theme.neutral.gray.light],
-      },
-    ],
-  });
+  const [rankingWaterLossAndGainData /* setRankingWaterLossAndGainData */] =
+    useState({
+      labels,
+      datasets: [
+        {
+          label: 'Dataset 1',
+          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
+          backgroundColor: [theme.blue.main],
+          borderRadius: 5,
+          barThickness: 15,
+        },
+      ],
+    });
 
-  const [legendDoughnutData /* setData */] = useState({
-    labels: [
-      'Legend data 1',
-      'Legend data 2',
-      'Legend data 3',
-      'Legend data 4',
-    ],
-    datasets: [
-      {
-        label: 'Datatype',
-        data: [123, 102, 93, 84],
-        backgroundColor: [
-          theme.blue.main,
-          theme.primary.main,
-          theme.green.main,
-          theme.secondary.light,
-        ],
-        borderColor: 'transparent',
-      },
-    ],
-  });
-
-  const [itemsData /* setData */] = useState({
-    labels: [
-      'Legend data 1',
-      'Legeng data 2',
-      'Legend data 3',
-      'Legend data 4',
-    ],
-    datasets: [
-      {
-        label: 'datatype',
-        data: [123, 102, 93, 84],
-        icons: [
-          <div
-            style={{
-              height: 20,
-              width: 30,
-              background: 'brown',
-              borderRadius: 5,
-              marginRight: 10,
-            }}
-          />,
-          <div
-            style={{
-              height: 20,
-              width: 30,
-              background: 'blue',
-              borderRadius: 5,
-              marginRight: 10,
-            }}
-          />,
-          <div
-            style={{
-              height: 20,
-              width: 30,
-              background: 'red',
-              borderRadius: 5,
-              marginRight: 10,
-            }}
-          />,
-          <div
-            style={{
-              height: 20,
-              width: 30,
-              background: 'green',
-              borderRadius: 5,
-              marginRight: 10,
-            }}
-          />,
-        ],
-      },
-    ],
-  });
+  const { t } = useTranslation();
 
   return (
     <ul>
-      <LegendDoughnutChart
-        title="Legend doughnut chart"
-        info="This is a legend custom doughnut chart"
-        data={legendDoughnutData}
-      />
-
-      <ItemsChart
-        title="Items chart"
-        info="This is a items chart"
-        data={itemsData}
-      />
-
-      <RankingChart
-        title="Ranking chart"
-        info="This is a ranking chart"
-        data={data}
-        params={rankingParams}
-        setParams={setRankingParams}
-      />
-
+      <DataDoughComponent />
       <LineChart
-        title="Line chart"
-        info="This is a line chart"
+        title={t('specific.lineChart.title')}
+        info={t('specific.lineChart.info')}
         data={data}
         options={{
           plugins: {
             autocolors: false,
-            annotation: {
-              annotations: {
-                line1: getYLineAnnotation({
-                  y: 1000,
-                  color: 'green',
-                  bgColor: theme.background.main,
-                  label: 'max',
-                  display: true,
-                }),
-                line2: getYLineAnnotation({
-                  y: 200,
-                  color: 'red',
-                  bgColor: theme.background.main,
-                  label: 'min',
-                  display: true,
-                }),
-              },
-            },
           },
         }}
       />
 
-      <BarChart
-        title="Horizontal bar chart"
-        info="This is a horizontal bar chart"
-        data={data}
+      <RankingChart
+        title={t('specific.rankingChart.title')}
+        info={t('specific.rankingChart.info')}
+        data={rankingWaterSurfaceData}
+        params={rankingParams}
+        setParams={setRankingParams}
       />
 
-      <BarChart
-        title="Vertical bar chart"
-        info="This is a vertical bar chart"
-        data={data}
-        options={{ indexAxis: 'x' }}
-      />
-
-      <DoughnutChart
-        title="Doughnut chart"
-        info="This is a doughnut chart"
-        data={doughnutData}
-        options={{
-          plugins: {
-            legend: {
-              display: false,
-            },
-          },
-        }}
+      <RankingChart
+        title={t('specific.rankingWaterLossAndGainData.title')}
+        info={t('specific.lineChart.info')}
+        data={rankingWaterLossAndGainData}
+        params={rankingParams}
+        setParams={setRankingParams}
       />
     </ul>
   );

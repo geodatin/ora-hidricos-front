@@ -47,5 +47,26 @@
     "advancedFilter": {
       "placeholder": "Adicionar filtro"
     }
+  },
+  "specific": {
+    "dataDough": {
+      "title": "Dados Gerais"
+    },
+    "lineChart": {
+      "title": "Histórico da superfície d’água",
+      "info": "Este gráfico apresenta ..."
+    },
+    "rankingChart": {
+      "title": "Ranking de superfície d’água",
+      "info": "Este gráfico apresenta um ranking de ..."
+    },
+    "rankingWaterLossAndGainData": {
+      "title": "Ranking de ganho e perda",
+      "info": "Este gráfico apresenta um ranking de ..."
+    }, 
+    "infoPanel": {
+      "title": "Estatísticas da superfície d’água",
+      "fonte": " Fonte de dados: GlobalSurfaceWater"
+    }
   }
 }

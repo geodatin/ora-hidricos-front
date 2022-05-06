@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
-import CustomToggleButton from '../../../components/CustomToggleButton';
 import VLayout from '../../../components/Layout/Vertical';
 import TabPanel from '../../../components/TabPanel';
 import Typography from '../../../components/Typography';
-import CardList from './CardList';
 import Statistics from './Statistics';
 import useStyles from './styles';
 
@@ -14,9 +13,8 @@ import useStyles from './styles';
  * This function provides a info panel
  * @returns info panel
  */
-export default function InfoPanel({ title, subtitle }) {
+export default function InfoPanel({ subtitle }) {
   InfoPanel.propTypes = {
-    title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
   };
 
@@ -24,23 +22,10 @@ export default function InfoPanel({ title, subtitle }) {
     subtitle: undefined,
   };
 
+  const { t } = useTranslation();
+
   const classes = useStyles();
   const theme = useTheme();
-
-  const [panel, setPanel] = useState(0);
-  const [timeGrouping, setTimeGrouping] = useState(0);
-
-  const handleChangePanel = (event, newPanel) => {
-    if (newPanel !== null) {
-      setPanel(newPanel);
-    }
-  };
-
-  const handleChangeTimeGrouping = (event, newTimeGrouping) => {
-    if (newTimeGrouping !== null) {
-      setTimeGrouping(newTimeGrouping);
-    }
-  };
 
   return (
     <VLayout
@@ -49,38 +34,30 @@ export default function InfoPanel({ title, subtitle }) {
         children: (
           <>
             <Typography style={{ marginTop: 10, lineHeight: 0.5 }} variant="h3">
-              {title}
+              {t('specific.infoPanel.title')}
             </Typography>
             {subtitle && (
               <Typography
-                style={{ color: theme.neutral.gray.main, lineHeight: 0.5 }}
-                variant="caption"
+                style={{
+                  color: theme.neutral.gray.main,
+                  lineHeight: 1.5,
+                  fontSize: 12,
+                  marginTop: 8,
+                }}
+                variant="p"
               >
                 {subtitle}
+                <Typography
+                  style={{
+                    color: theme.neutral.gray.main,
+                    lineHeight: 1.5,
+                    fontSize: 12,
+                  }}
+                  variant="p"
+                >
+                  {t('specific.infoPanel.fonte')}
+                </Typography>
               </Typography>
-            )}
-            <CustomToggleButton
-              options={['Statistics', 'List']}
-              value={panel}
-              handleChange={handleChangePanel}
-              style={{ marginTop: 10 }}
-            />
-            {panel === 1 && (
-              <CustomToggleButton
-                options={[
-                  'Year',
-                  'Semester',
-                  'Quarter',
-                  'Month',
-                  'Day',
-                  'Week',
-                  'Hour',
-                ]}
-                value={timeGrouping}
-                handleChange={handleChangeTimeGrouping}
-                style={{ marginTop: 20 }}
-                typographyVariant="caption"
-              />
             )}
           </>
         ),
@@ -88,14 +65,9 @@ export default function InfoPanel({ title, subtitle }) {
       mainContainer={{
         className: classes.panelWrapper,
         children: (
-          <>
-            <TabPanel value={panel} index={0}>
-              <Statistics />
-            </TabPanel>
-            <TabPanel value={panel} index={1}>
-              <CardList />
-            </TabPanel>
-          </>
+          <TabPanel>
+            <Statistics />
+          </TabPanel>
         ),
       }}
     />
