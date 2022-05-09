@@ -1,7 +1,7 @@
 {
   "helloWorld": "Olá mundo!",
   "general": {
-    "projectName": "Project",
+    "projectName": "Hídricos",
     "language": "Português",
     "number": "{{value, number}}",
     "roundNumber": "{{value, roundNumber}}",
@@ -49,6 +49,10 @@
     }
   },
   "specific": {
+    "filters": {
+      "title": "Filtros",
+      "clearButton": "Limpar"
+    },
     "dataDough": {
       "title": "Dados Gerais"
     },
@@ -67,6 +71,12 @@
     "infoPanel": {
       "title": "Estatísticas da superfície d’água",
       "fonte": " Fonte de dados: GlobalSurfaceWater"
+    },
+    "indicators": {
+      "type": {
+        "waterSurface": "Superfície d'água",
+        "IDQ": "Índice da qualidade da água"
+      } 
     }
   }
 }

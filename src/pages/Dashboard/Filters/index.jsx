@@ -1,9 +1,13 @@
 import { Button, MenuItem } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { useContextSelector } from 'use-context-selector';
 
-import AdvancedFilter from '../../../components/AdvancedFilter';
 import CustomSelect from '../../../components/CustomSelect';
 import ShareDialog from '../../../components/ShareDialog';
+import TitleButton from '../../../components/TitleButton';
+import { indicators } from '../../../constants/options';
+import FilteringContext from '../../../contexts/filtering';
 
 /**
  * This function provides filters components
@@ -11,39 +15,48 @@ import ShareDialog from '../../../components/ShareDialog';
  */
 export default function Filters() {
   const [open, setOpen] = React.useState(false);
+  const { t } = useTranslation();
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
+
+  // eslint-disable-next-line no-unused-vars
+  const setIndicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.setters.setIndicatorSelection
+  );
+
+  const [auxIndicatorSelection, setAuxIndicatorSelection] =
+    useState(indicatorSelection);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
-      <div style={{ marginBottom: 5 }}>
-        <AdvancedFilter
-          onSelect={(e) => console.log(e)}
-          options={[
-            { label: '1', type: 1994 },
-            { label: '2', type: 1994 },
-            { label: '3', type: 1994 },
-            { label: '4', type: 1994 },
-            { label: '555', type: 1994 },
-            { label: '66666', type: 1995 },
-            { label: '77777', type: 1996 },
-            { label: '88888', type: 1996 },
-            { label: '99999', type: 1996 },
-            { label: '999999', type: 1996 },
-            { label: '9999999', type: 1997 },
-            { label: '99999999', type: 1997 },
-            { label: '99999999912', type: 2010 },
-            { label: '999999999999', type: 2010 },
-            { label: '9999999999991', type: 2010 },
-          ]}
-        />
-      </div>
-      <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <div style={{ marginBottom: 5 }}>
-          <CustomSelect value={2}>
-            <MenuItem value={1}>Elemento 1</MenuItem>
-            <MenuItem value={2}>Elemento 2</MenuItem>
-            <MenuItem value={3}>Elemento 3</MenuItem>
-          </CustomSelect>
-        </div>
+      <TitleButton
+        title={t('specific.filters.title')}
+        buttonTitle={t('specific.filters.clearButton')}
+        buttonDisabled={false}
+        onClick={() => {}}
+      />
+      <div>
+        <CustomSelect value={auxIndicatorSelection}>
+          <MenuItem
+            value={indicators.waterSurface.value}
+            onClick={() =>
+              setAuxIndicatorSelection(indicators.waterSurface.value)
+            }
+          >
+            {t(indicators.waterSurface.translation)}
+          </MenuItem>
+          <MenuItem
+            value={indicators.IDQ.value}
+            onClick={() => {
+              setAuxIndicatorSelection(indicators.IDQ.value);
+            }}
+          >
+            {t(indicators.IDQ.translation)}
+          </MenuItem>
+        </CustomSelect>
       </div>
       <Button onClick={() => setOpen(true)}>Share</Button>
       <ShareDialog

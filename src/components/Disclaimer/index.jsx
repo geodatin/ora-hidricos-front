@@ -1,23 +1,20 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 
+import { useDisclaimer } from '../../hooks/useDisclaimer';
 import CustomDialog from '../CustomDialog';
 import Typography from '../Typography';
 
 /**
  * This component renders a disclaimer.
  */
-export default function Disclaimer({ open, handleDisclaimerClose }) {
-  Disclaimer.propTypes = {
-    open: PropTypes.bool.isRequired,
-    handleDisclaimerClose: PropTypes.func.isRequired,
-  };
+export default function Disclaimer() {
+  const { isDisclaimerOpened, closeDisclaimer } = useDisclaimer();
 
   return (
     <CustomDialog
-      open={open}
+      open={isDisclaimerOpened}
       title="About ORA Project"
-      onClose={handleDisclaimerClose}
+      onClose={closeDisclaimer}
       button={{ isEnabled: true, text: 'Close' }}
     >
       <Typography variant="body">
