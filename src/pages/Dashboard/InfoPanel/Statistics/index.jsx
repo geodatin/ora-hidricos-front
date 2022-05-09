@@ -53,7 +53,7 @@ export default function Statistics() {
         {
           label: 'Dataset 1',
           data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-          backgroundColor: [theme.blue.main],
+          backgroundColor: [theme.orange.main],
           borderRadius: 5,
           barThickness: 15,
         },

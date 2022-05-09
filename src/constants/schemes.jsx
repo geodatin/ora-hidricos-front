@@ -26,7 +26,7 @@ export const lightScheme = {
     light: '#F0F1F3',
     dark: '#DFE1E6',
   },
-  blue: {
+  orange: {
     light: '#FFAC5B',
     main: '#FA7B00',
     dark: '#CC6C0F',
@@ -94,7 +94,7 @@ export const darkScheme = {
     light: '#19212B',
     dark: '#1D2631',
   },
-  blue: {
+  orange: {
     light: '#FFAC5B',
     main: '#FA7B00',
     dark: '#CC6C0F',

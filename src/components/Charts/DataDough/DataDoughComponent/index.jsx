@@ -93,7 +93,7 @@ export default function DataDoughComponent({
           value={130}
           sufix="ha"
           label="Superfície d’água em 2021"
-          color={theme.blue.main}
+          color={theme.orange.main}
           scale={0.7}
         />
         <DataDough
