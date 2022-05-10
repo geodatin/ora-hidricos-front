@@ -1,13 +1,15 @@
-import { Button, MenuItem } from '@mui/material';
-import React, { useState } from 'react';
+import { MenuItem } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useContextSelector } from 'use-context-selector';
 
+import CustomButton from '../../../components/CustomButton';
 import CustomSelect from '../../../components/CustomSelect';
 import ShareDialog from '../../../components/ShareDialog';
 import TitleButton from '../../../components/TitleButton';
-import { indicators } from '../../../constants/options';
+import { filterDefaults, indicators } from '../../../constants/options';
 import FilteringContext from '../../../contexts/filtering';
+import useStyles from './styles';
 
 /**
  * This function provides filters components
@@ -16,12 +18,14 @@ import FilteringContext from '../../../contexts/filtering';
 export default function Filters() {
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
+  const [firstLoad, setFirstLoad] = useState(true);
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
+  const classes = useStyles();
+  const [applyDisabled, setApplyDisabled] = useState(true);
 
-  // eslint-disable-next-line no-unused-vars
   const setIndicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.setters.setIndicatorSelection
@@ -30,13 +34,41 @@ export default function Filters() {
   const [auxIndicatorSelection, setAuxIndicatorSelection] =
     useState(indicatorSelection);
 
+  /**
+   * Set the selection to context.
+   */
+  function applySelection() {
+    setIndicatorSelection(auxIndicatorSelection);
+    setApplyDisabled(true);
+  }
+
+  /**
+   * Sets the Apply button disabletion.
+   */
+  useEffect(() => {
+    if (!firstLoad) {
+      setApplyDisabled(false);
+    } else {
+      setFirstLoad(false);
+    }
+  }, [auxIndicatorSelection]);
+
+  /**
+   * Clear the aux selection.
+   */
+  function clearSelection() {
+    setAuxIndicatorSelection(filterDefaults.indicatorSelection);
+  }
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column' }}>
       <TitleButton
         title={t('specific.filters.title')}
         buttonTitle={t('specific.filters.clearButton')}
-        buttonDisabled={false}
-        onClick={() => {}}
+        buttonDisabled={
+          auxIndicatorSelection === filterDefaults.indicatorSelection
+        }
+        onClick={() => clearSelection()}
       />
       <div>
         <CustomSelect value={auxIndicatorSelection}>
@@ -58,7 +90,7 @@ export default function Filters() {
           </MenuItem>
         </CustomSelect>
       </div>
-      <Button onClick={() => setOpen(true)}>Share</Button>
+      <span className={classes.separator} />
       <ShareDialog
         open={open}
         onClose={() => setOpen(false)}
@@ -71,6 +103,13 @@ export default function Filters() {
           { label: 'label3', key: 'key3', defaultOption: true },
         ]}
       />
+      <CustomButton
+        style={{ marginTop: 0 }}
+        disabled={applyDisabled}
+        onClick={() => applySelection()}
+      >
+        {t('specific.filters.apply')}
+      </CustomButton>
     </div>
   );
 }
