@@ -4,10 +4,10 @@ export const indicators = {
     value: 1,
     translation: 'specific.indicators.type.waterSurface',
   },
-  IDQ: {
+  WQI: {
     name: 'waterQualityIndex',
     value: 2,
-    translation: 'specific.indicators.type.IDQ',
+    translation: 'specific.indicators.type.WQI',
   },
 };
 

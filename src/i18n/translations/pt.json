@@ -68,7 +68,7 @@
     "rankingWaterLossAndGainData": {
       "title": "Ranking de ganho e perda",
       "info": "Este gráfico apresenta um ranking de ..."
-    }, 
+    },
     "infoPanel": {
       "title": "Estatísticas da superfície d’água",
       "fonte": " Fonte de dados: GlobalSurfaceWater"
@@ -76,8 +76,8 @@
     "indicators": {
       "type": {
         "waterSurface": "Superfície d'água",
-        "IDQ": "Índice da qualidade da água"
-      } 
+        "WQI": "Índice da qualidade da água"
+      }
     }
   }
 }

@@ -81,12 +81,12 @@ export default function Filters() {
             {t(indicators.waterSurface.translation)}
           </MenuItem>
           <MenuItem
-            value={indicators.IDQ.value}
+            value={indicators.WQI.value}
             onClick={() => {
-              setAuxIndicatorSelection(indicators.IDQ.value);
+              setAuxIndicatorSelection(indicators.WQI.value);
             }}
           >
-            {t(indicators.IDQ.translation)}
+            {t(indicators.WQI.translation)}
           </MenuItem>
         </CustomSelect>
       </div>
