@@ -4,6 +4,8 @@ import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import { useMediaQuery } from '@mui/material';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useContextSelector } from 'use-context-selector';
 
 import Breadcrumb from '../../components/Breadcrumb';
 import HLayout from '../../components/Layout/Horizontal';
@@ -11,6 +13,7 @@ import MobileNavbarLayout from '../../components/Layout/Mobile/Navbar';
 import VLayout from '../../components/Layout/Vertical';
 import MapWrapper from '../../components/MapWrapper';
 import { breakpoints } from '../../constants/constraints';
+import FilteringContext from '../../contexts/filtering';
 import Filters from './Filters';
 import InfoPanel from './InfoPanel';
 import Statistics from './InfoPanel/Statistics';
@@ -21,8 +24,14 @@ import useStyles from './styles';
  * @returns dashboard page
  */
 function Dashboard() {
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
   const classes = useStyles();
   const isMobile = useMediaQuery(breakpoints.max.md);
+
+  const { t } = useTranslation();
 
   return isMobile ? (
     <MobileNavbarLayout
@@ -94,12 +103,19 @@ function Dashboard() {
       }}
       rightColumn={{
         className: classes.infoPanelWrapper,
-        children: (
-          <InfoPanel
-            title="Info panel title"
-            subtitle="Last update in 11/08/2022"
-          />
-        ),
+        children:
+          (indicatorSelection === 1 && (
+            <InfoPanel
+              title={t('specific.infoPanel.WaterSurface.title')}
+              subtitle="Last update in 11/08/2022"
+            />
+          )) ||
+          (indicatorSelection === 2 && (
+            <InfoPanel
+              title={t('specific.infoPanel.WQI.title')}
+              subtitle="Last update in 11/08/2022"
+            />
+          )),
       }}
     />
   );

@@ -54,24 +54,49 @@
       "clearButton": "Limpar",
       "apply": "Aplicar"
     },
-    "dataDough": {
-      "title": "Dados Gerais"
+    "WaterSurface": {
+      "dataDough": {
+        "title": "Dados Gerais"
+      },
+      "lineWaterSurface": {
+        "title": "Histórico da superfície d’água",
+        "info": "Este gráfico apresenta ..."
+      },
+      "rankingWaterSurfaceData": {
+        "title": "Ranking de superfície d’água",
+        "info": "Este gráfico apresenta um ranking de ..."
+      },
+      "rankingWaterLossAndGainData": {
+        "title": "Ranking de ganho e perda",
+        "info": "Este gráfico apresenta um ranking de ..."
+      }
     },
-    "lineChart": {
-      "title": "Histórico da superfície d’água",
-      "info": "Este gráfico apresenta ..."
-    },
-    "rankingChart": {
-      "title": "Ranking de superfície d’água",
-      "info": "Este gráfico apresenta um ranking de ..."
-    },
-    "rankingWaterLossAndGainData": {
-      "title": "Ranking de ganho e perda",
-      "info": "Este gráfico apresenta um ranking de ..."
+    "WQI": {
+      "LegendDoughnutChart": {
+        "title": "Estações por estado de qualidade",
+        "info": "Este gráfico apresenta ..."
+      },
+      "lineChart": {
+        "title": "Evolução do IQA ao longo dos anos",
+        "info": "Este gráfico apresenta ..."
+      },
+      "rankingWQIState": {
+        "title": "Ranking de IQA médio por estado",
+        "info": "Este gráfico apresenta um ranking de ..."
+      },
+      "rankingWQIStations": {
+        "title": "Ranking de IQA por estações",
+        "info": "Este gráfico apresenta um ranking de ..."
+      }
     },
     "infoPanel": {
-      "title": "Estatísticas da superfície d’água",
-      "fonte": " Fonte de dados: GlobalSurfaceWater"
+      "font": " Fonte de dados: GlobalSurfaceWater",
+      "WaterSurface": {
+        "title": "Superfície d’água"
+      },
+      "WQI": {
+        "title": "Índice de qualidade da água (IQA)"
+      }
     },
     "indicators": {
       "type": {
