@@ -13,8 +13,9 @@ import useStyles from './styles';
  * This function provides a info panel
  * @returns info panel
  */
-export default function InfoPanel({ subtitle }) {
+export default function InfoPanel({ title, subtitle }) {
   InfoPanel.propTypes = {
+    title: PropTypes.string.isRequired,
     subtitle: PropTypes.string,
   };
 
@@ -34,7 +35,7 @@ export default function InfoPanel({ subtitle }) {
         children: (
           <>
             <Typography style={{ marginTop: 10, lineHeight: 0.5 }} variant="h3">
-              {t('specific.infoPanel.title')}
+              {title}
             </Typography>
             {subtitle && (
               <Typography
@@ -55,7 +56,7 @@ export default function InfoPanel({ subtitle }) {
                   }}
                   variant="p"
                 >
-                  {t('specific.infoPanel.fonte')}
+                  {t('specific.infoPanel.font')}
                 </Typography>
               </Typography>
             )}

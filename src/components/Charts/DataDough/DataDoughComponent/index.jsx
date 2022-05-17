@@ -51,10 +51,10 @@ export default function DataDoughComponent({
       <div className={classes.header}>
         <div className={classes.headerTitle}>
           <Typography variant="body" format="bold">
-            {t('specific.dataDough.title')}
+            {t('specific.WaterSurface.dataDough.title')}
           </Typography>
           <CustomTooltip
-            title={t('specific.dataDough.title')}
+            title={t('specific.WaterSurface.dataDough.title')}
             placement="bottom"
           >
             <div className={classes.tooltipInner}>

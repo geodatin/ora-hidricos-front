@@ -26,6 +26,9 @@ export const lightScheme = {
     light: '#F0F1F3',
     dark: '#DFE1E6',
   },
+  purple: {
+    main: '#7879F1',
+  },
   orange: {
     light: '#FFAC5B',
     main: '#FA7B00',
@@ -80,6 +83,9 @@ export const darkScheme = {
     light: '#1B2935',
     main: '#B6C5D1',
     dark: '#E7EDF2',
+  },
+  purple: {
+    main: '#7879F1',
   },
   neutral: {
     white: '#FFFFFF',
