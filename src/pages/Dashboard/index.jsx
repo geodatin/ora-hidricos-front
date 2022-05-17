@@ -1,7 +1,6 @@
 import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import MapRoundedIcon from '@mui/icons-material/MapRounded';
-import NotificationsActiveRoundedIcon from '@mui/icons-material/NotificationsActiveRounded';
 import { useMediaQuery } from '@mui/material';
 import React from 'react';
 
@@ -48,14 +47,14 @@ function Dashboard() {
             children: <Statistics />,
           },
         },
-        {
+        /* {
           label: 'Notifications',
           icon: <NotificationsActiveRoundedIcon />,
           navContainer: {
             className: classes.notificationsMobileWrapper,
             children: <div>Notifications</div>,
           },
-        },
+        }, */
       ]}
     />
   ) : (
@@ -87,7 +86,7 @@ function Dashboard() {
             }}
             mainContainer={{
               className: classes.notificationsWrapper,
-              children: <div>Notifications</div>,
+              children: <div />,
             }}
           />
         ),

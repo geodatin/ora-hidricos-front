@@ -91,6 +91,24 @@ export default function Filters() {
         </CustomSelect>
       </div>
       <span className={classes.separator} />
+      <CustomSelect value={auxIndicatorSelection}>
+        <MenuItem
+          value={indicators.waterSurface.value}
+          onClick={() =>
+            setAuxIndicatorSelection(indicators.waterSurface.value)
+          }
+        >
+          {t(indicators.waterSurface.translation)}
+        </MenuItem>
+        <MenuItem
+          value={indicators.WQI.value}
+          onClick={() => {
+            setAuxIndicatorSelection(indicators.WQI.value);
+          }}
+        >
+          {t(indicators.WQI.translation)}
+        </MenuItem>
+      </CustomSelect>
       <ShareDialog
         open={open}
         onClose={() => setOpen(false)}
