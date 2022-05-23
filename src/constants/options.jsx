@@ -13,4 +13,5 @@ export const indicators = {
 
 export const filterDefaults = {
   indicatorSelection: indicators.waterSurface.value,
+  territorySelection: null,
 };

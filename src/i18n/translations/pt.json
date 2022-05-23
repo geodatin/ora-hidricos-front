@@ -103,6 +103,12 @@
         "waterSurface": "Superfície d'água",
         "WQI": "Índice da qualidade da água"
       }
+    },
+    "autocompletesearch": {
+      "placeholder": "Selecionar território",
+      "noOptionsText": "Nenhuma opção encontrada",
+      "emptyText": "Digite para buscar",
+      "loadingText": "Buscando..."
     }
   }
 }
