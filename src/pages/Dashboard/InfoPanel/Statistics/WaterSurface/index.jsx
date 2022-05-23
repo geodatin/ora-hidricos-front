@@ -1,13 +1,11 @@
-import faker from 'faker';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
 import DataDoughComponent from '../../../../../components/Charts/DataDough/DataDoughComponent';
 import LineChart from '../../../../../components/Charts/Line';
 import RankingChart from '../../../../../components/Charts/Ranking';
-
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+import api from '../../../../../services/api';
 
 /**
  * This function provides a statistics list of waterSurface
@@ -15,60 +13,111 @@ const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
  */
 export default function waterSurface() {
   const theme = useTheme();
+  const { t } = useTranslation();
 
-  const [rankingParams, setRankingParams] = useState({
+  const [rankingParamsWaterSurface, setRankingParamsWaterSurface] = useState({
     order: true,
     page: 1,
     totalPages: 1,
   });
-  const [data /* setData */] = useState({
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 100 })),
-        backgroundColor: [theme.primary.main],
-        borderColor: [theme.primary.main],
-      },
-    ],
+
+  const [rankingParamsWinLos, setRankingParamsWinLos] = useState({
+    order: true,
+    page: 1,
+    totalPages: 1,
   });
 
-  const [rankingWaterSurfaceData /* setRankingWaterSurfaceData */] = useState({
-    labels,
-    datasets: [
-      {
-        label: 'Dataset 1',
-        data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-        backgroundColor: [theme.green.main],
-        borderRadius: 5,
-        barThickness: 15,
-      },
-    ],
-  });
+  const [timeSeries, setTimeSeries] = useState('');
+  const [rankingWinLos, setRankingWinLos] = useState('');
+  const [rankingWaterSurface, setRankingWaterSurface] = useState('');
 
-  const [rankingWaterLossAndGainData /* setRankingWaterLossAndGainData */] =
-    useState({
-      labels,
-      datasets: [
-        {
-          label: 'Dataset 1',
-          data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
-          backgroundColor: [theme.orange.main],
-          borderRadius: 5,
-          barThickness: 15,
-        },
-      ],
-    });
+  useEffect(() => {
+    const getTimeSeries = async () => {
+      await api
+        .get('/waterSurface/timeSeries/city?code=55')
+        .then(({ data }) => {
+          const labels = data.x;
 
-  const { t } = useTranslation();
+          setTimeSeries({
+            labels: labels.map((label) => label),
+            datasets: [
+              {
+                label: 'Estatísticas',
+                data: data.y,
+                backgroundColor: [theme.primary.main],
+                borderColor: [theme.primary.main],
+                borderWidth: 1,
+              },
+            ],
+          });
+        });
+    };
+    getTimeSeries();
+  }, []);
 
+  useEffect(() => {
+    const getRankingWaterSurface = async () => {
+      await api
+        .get(`/waterSurface/ranking/city/area?code=55&page=${2}`)
+        .then(({ data }) => {
+          const labels = data.x;
+          setRankingWaterSurface({
+            labels,
+            datasets: [
+              {
+                labels,
+                data: data.series[0].data.map((number) => number),
+                backgroundColor: [theme.primary.main],
+                borderRadius: 5,
+                barThickness: 15,
+              },
+            ],
+          });
+          setRankingParamsWaterSurface({
+            page: data.focusPage,
+            totalPages: data.pages,
+          });
+        });
+    };
+    getRankingWaterSurface();
+  }, []);
+
+  useEffect(() => {
+    const getRankingWinLosWater = async () => {
+      await api
+        .get('/waterSurface/ranking/city/winLoss?code=57')
+        .then(({ data }) => {
+          const labels = data.x;
+          console.log(data);
+
+          setRankingWinLos({
+            labels,
+            datasets: [
+              {
+                data: data.series[0].data.map((number) => number),
+                backgroundColor: [theme.orange.main],
+                borderRadius: 5,
+                barThickness: 15,
+              },
+            ],
+          });
+
+          setRankingParamsWinLos({
+            page: data.focusPage,
+            totalPages: data.pages,
+          });
+        });
+    };
+
+    getRankingWinLosWater();
+  }, []);
   return (
     <ul>
       <DataDoughComponent />
       <LineChart
         title={t('specific.WaterSurface.lineWaterSurface.title')}
         info={t('specific.WaterSurface.lineWaterSurface.info')}
-        data={data}
+        data={timeSeries}
         options={{
           plugins: {
             autocolors: false,
@@ -79,17 +128,26 @@ export default function waterSurface() {
       <RankingChart
         title={t('specific.WaterSurface.rankingWaterSurfaceData.title')}
         info={t('specific.WaterSurface.rankingWaterSurfaceData.info')}
-        data={rankingWaterSurfaceData}
-        params={rankingParams}
-        setParams={setRankingParams}
+        data={rankingWaterSurface}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
+        params={rankingParamsWaterSurface}
+        setParams={setRankingParamsWaterSurface}
       />
-
       <RankingChart
         title={t('specific.WaterSurface.rankingWaterLossAndGainData.title')}
         info={t('specific.WaterSurface.rankingWaterLossAndGainData.info')}
-        data={rankingWaterLossAndGainData}
-        params={rankingParams}
-        setParams={setRankingParams}
+        data={rankingWinLos}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
+        params={rankingParamsWinLos}
+        setParams={setRankingParamsWinLos}
       />
     </ul>
   );

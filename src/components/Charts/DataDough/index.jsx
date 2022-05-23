@@ -61,7 +61,7 @@ export default function DataDough({ value, sufix, label, color, scale }) {
                   label,
                   value,
                   sufix,
-                  data: [value, 50],
+                  data: [value],
                   backgroundColor: [
                     color ?? theme.secondary.light,
                     theme.toggleButton.unabled,

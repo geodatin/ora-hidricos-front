@@ -2,11 +2,12 @@ import { InfoOutlined } from '@mui/icons-material';
 import FullscreenRoundedIcon from '@mui/icons-material/FullscreenRounded';
 import { IconButton } from '@mui/material';
 import PropTypes from 'prop-types';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useFullScreenHandle } from 'react-full-screen';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
+import api from '../../../../services/api';
 import ChartExportMenu from '../../../ChartContainer/ChartExportMenu';
 import CustomTooltip from '../../../CustomTooltip';
 import Typography from '../../../Typography';
@@ -35,6 +36,13 @@ export default function DataDoughComponent({
     csvCallback: undefined,
     fullScreenEnabled: false,
   };
+  const [statistics, setStatistics] = useState('');
+
+  useEffect(() => {
+    api.get('/waterSurface/statistics/city?code=55').then(({ data }) => {
+      setStatistics(data);
+    });
+  }, []);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -90,7 +98,7 @@ export default function DataDoughComponent({
       </div>
       <div ref={childrenref} style={{ display: 'flex' }}>
         <DataDough
-          value={130}
+          value={Math.trunc(statistics.currentArea)}
           sufix="ha"
           label="Superfície d’água em 2021"
           color={theme.orange.main}
@@ -98,14 +106,14 @@ export default function DataDoughComponent({
         />
         <DataDough
           style={{ padding: 20 }}
-          value={500}
+          value={Math.trunc(statistics.winLossArea)}
           sufix="ha"
           label="Perda/ganho de superfície d’água"
           color={theme.primary.main}
           scale={0.7}
         />
         <DataDough
-          value={122}
+          value={Math.trunc(statistics.winLossPercent)}
           sufix="%"
           label="Percentual de perda/ganho"
           color={theme.green.main}

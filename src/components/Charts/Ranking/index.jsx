@@ -20,6 +20,8 @@ export default function RankingChart({
   fullScreenEnabled,
   params,
   setParams,
+  customOptions,
+  customFormatter,
 }) {
   RankingChart.propTypes = {
     title: PropTypes.string.isRequired,
@@ -27,12 +29,16 @@ export default function RankingChart({
     data: PropTypes.shape(),
     csvCallback: PropTypes.func,
     params: PropTypes.shape(),
+    customOptions: PropTypes.shape(),
+    customFormatter: PropTypes.shape(),
     fullScreenEnabled: PropTypes.bool,
     setParams: PropTypes.func.isRequired,
   };
 
   RankingChart.defaultProps = {
     data: undefined,
+    customOptions: {},
+    customFormatter: {},
     csvCallback: undefined,
     fullScreenEnabled: false,
     params: {
@@ -58,7 +64,6 @@ export default function RankingChart({
         formatter(value, context) {
           const { datasets } = context.chart.data;
           const lastDatasetIndex = datasets.length - 1;
-
           const arrSum = new Array(datasets[0].data.length).fill(0);
           datasets.forEach(({ data: dt }) =>
             dt.forEach((num, indx) => {
@@ -70,6 +75,7 @@ export default function RankingChart({
             ? ''
             : arrSum[context.dataIndex];
         },
+        ...customFormatter,
       },
       legend: {
         display: false,
@@ -98,6 +104,7 @@ export default function RankingChart({
         },
       },
     },
+    ...customOptions,
   };
 
   const handleChangeOrder = () => {
