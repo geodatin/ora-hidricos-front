@@ -6,7 +6,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useFullScreenHandle } from 'react-full-screen';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
+import { useContextSelector } from 'use-context-selector';
 
+import FilteringContext from '../../../../contexts/filtering';
 import api from '../../../../services/api';
 import ChartExportMenu from '../../../ChartContainer/ChartExportMenu';
 import CustomTooltip from '../../../CustomTooltip';
@@ -36,13 +38,35 @@ export default function DataDoughComponent({
     csvCallback: undefined,
     fullScreenEnabled: false,
   };
+
+  const territorySelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.territorySelection
+  );
+
   const [statistics, setStatistics] = useState('');
 
+  const city = territorySelection?.type;
+  const code = territorySelection?.code;
+
   useEffect(() => {
-    api.get('/waterSurface/statistics/city?code=55').then(({ data }) => {
-      setStatistics(data);
-    });
-  }, []);
+    const getStatistics = async () => {
+      if (territorySelection === null) {
+        await api
+          .get(`/waterSurface/statistics/country?code=9`)
+          .then(({ data }) => {
+            setStatistics(data);
+          });
+      } else {
+        await api
+          .get(`/waterSurface/statistics/${city}?code=${code}`)
+          .then(({ data }) => {
+            setStatistics(data);
+          });
+      }
+    };
+    getStatistics();
+  }, [city, code]);
 
   const classes = useStyles();
   const theme = useTheme();
@@ -98,7 +122,7 @@ export default function DataDoughComponent({
       </div>
       <div ref={childrenref} style={{ display: 'flex' }}>
         <DataDough
-          value={Math.trunc(statistics.currentArea)}
+          value={statistics.currentArea}
           sufix="ha"
           label="Superfície d’água em 2021"
           color={theme.orange.main}
@@ -106,14 +130,14 @@ export default function DataDoughComponent({
         />
         <DataDough
           style={{ padding: 20 }}
-          value={Math.trunc(statistics.winLossArea)}
+          value={statistics.winLossArea}
           sufix="ha"
           label="Perda/ganho de superfície d’água"
           color={theme.primary.main}
           scale={0.7}
         />
         <DataDough
-          value={Math.trunc(statistics.winLossPercent)}
+          value={statistics.winLossPercent}
           sufix="%"
           label="Percentual de perda/ganho"
           color={theme.green.main}

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
 import Typography from '../../Typography';
@@ -23,14 +24,16 @@ export default function DataDough({ value, sufix, label, color, scale }) {
     scale: 1,
   };
 
+  const { t } = useTranslation();
+
   const theme = useTheme();
 
   return (
     <div style={{ marginRight: 20, scrollSnapAlign: 'end' }}>
       <MiddleDoughnut
         style={{
-          width: `calc(125px * ${scale})`,
-          height: `calc(125px * ${scale})`,
+          width: `calc(150px * ${scale})`,
+          height: `calc(150px * ${scale})`,
         }}
         descriptionVariant={scale < 1 ? 'caption' : 'body'}
         doughnut={
@@ -51,7 +54,7 @@ export default function DataDough({ value, sufix, label, color, scale }) {
               },
               aspectRatio: 1,
               radius: '100%',
-              cutout: 55 * scale,
+              cutout: 70 * scale,
               rotation: 180,
             }}
             data={{
@@ -74,7 +77,7 @@ export default function DataDough({ value, sufix, label, color, scale }) {
         }
       >
         <Typography format="bold" variant={scale < 1 ? 'caption' : 'p'}>
-          {value}
+          {t('general.number', { value })}
         </Typography>
         <Typography
           variant={scale < 1 ? 'caption' : 'body'}
