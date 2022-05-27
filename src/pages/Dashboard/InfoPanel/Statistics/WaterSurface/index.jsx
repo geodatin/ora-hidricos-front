@@ -45,24 +45,22 @@ export default function waterSurface() {
   useEffect(() => {
     const getTimeSeries = async () => {
       if (territorySelection === null) {
-        await api
-          .get(`/waterSurface/timeSeries/country?code=9`)
-          .then(({ data }) => {
-            const labels = data.x;
+        await api.get(`/waterSurface/timeSeries/country`).then(({ data }) => {
+          const labels = data.x;
 
-            setTimeSeries({
-              labels: labels.map((label) => label),
-              datasets: [
-                {
-                  label: 'Brasil',
-                  data: data.y,
-                  backgroundColor: [theme.primary.main],
-                  borderColor: [theme.primary.main],
-                  borderWidth: 1,
-                },
-              ],
-            });
+          setTimeSeries({
+            labels: labels.map((label) => label),
+            datasets: [
+              {
+                label: 'Dados gerais',
+                data: data.y,
+                backgroundColor: [theme.primary.main],
+                borderColor: [theme.primary.main],
+                borderWidth: 1,
+              },
+            ],
           });
+        });
       } else {
         await api
           .get(`/waterSurface/timeSeries/${city}?code=${code}`)
@@ -70,7 +68,7 @@ export default function waterSurface() {
             const labels = data.x;
 
             setTimeSeries({
-              labels: labels.map((label) => label),
+              labels,
               datasets: [
                 {
                   label: name,
@@ -91,16 +89,18 @@ export default function waterSurface() {
 
   useEffect(() => {
     const getRankingWaterSurface = async () => {
-      if (territorySelection === null) {
+      if (territorySelection === null || city === 'country') {
         await api
-          .get(`/waterSurface/ranking/city/area?code=1&page=${pageArea}`)
+          .get(
+            `/waterSurface/ranking/country/area?&page=${pageArea}&pageSize=6`
+          )
           .then(({ data }) => {
             const labels = data.x;
             setRankingWaterSurface({
               labels,
               datasets: [
                 {
-                  labels,
+                  label: labels.map((label) => label),
                   data: data.series[0].data.map((number) => number),
                   backgroundColor: [theme.primary.main],
                   borderRadius: 5,
@@ -109,14 +109,14 @@ export default function waterSurface() {
               ],
             });
             setRankingParamsWaterSurface({
-              page: pageArea,
+              page: 1,
               totalPages: data.pages,
             });
           });
       } else {
         await api
           .get(
-            `/waterSurface/ranking/${city}/area?code=${code}&page=${pageArea}`
+            `/waterSurface/ranking/${city}/area?code=${code}&page=${pageArea}&pageSize=6`
           )
           .then(({ data }) => {
             const labels = data.x;
@@ -124,7 +124,6 @@ export default function waterSurface() {
               labels,
               datasets: [
                 {
-                  labels,
                   data: data.series[0].data.map((number) => number),
                   backgroundColor: [theme.primary.main],
                   borderRadius: 5,
@@ -134,6 +133,7 @@ export default function waterSurface() {
             });
             setRankingParamsWaterSurface({
               page: data.focusPage,
+              totalPages: 1,
             });
           });
       }
@@ -145,15 +145,18 @@ export default function waterSurface() {
 
   useEffect(() => {
     const getRankingWinLossWater = async () => {
-      if (territorySelection === null) {
+      if (territorySelection === null || city === 'country') {
         await api
-          .get(`/waterSurface/ranking/city/winLoss?code=1&page=${pageWinLoss}`)
+          .get(
+            `/waterSurface/ranking/country/winLoss?&page=${pageWinLoss}&pageSize=6`
+          )
           .then(({ data }) => {
             const labels = data.x;
             setRankingWinLoss({
               labels,
               datasets: [
                 {
+                  label: name,
                   data: data.series[0].data.map((number) => number),
                   backgroundColor: [theme.orange.main],
                   borderRadius: 5,
@@ -163,14 +166,14 @@ export default function waterSurface() {
             });
 
             setRankingParamsWinLoss({
-              page: pageWinLoss,
+              page: 1,
               totalPages: data.pages,
             });
           });
       } else {
         await api
           .get(
-            `/waterSurface/ranking/${city}/winLoss?code=${code}&page=${pageWinLoss}`
+            `/waterSurface/ranking/${city}/winLoss?code=${code}&page=${pageWinLoss}&pageSize=6`
           )
           .then(({ data }) => {
             const labels = data.x;
@@ -188,11 +191,11 @@ export default function waterSurface() {
 
             setRankingParamsWinLoss({
               page: data.focusPage,
+              totalPages: 1,
             });
           });
       }
     };
-
     getRankingWinLossWater();
   }, [city, code, pageWinLoss]);
   return (
@@ -208,7 +211,6 @@ export default function waterSurface() {
           },
         }}
       />
-
       <RankingChart
         title={t('specific.WaterSurface.rankingWaterSurfaceData.title')}
         info={t('specific.WaterSurface.rankingWaterSurfaceData.info')}
@@ -221,6 +223,7 @@ export default function waterSurface() {
         params={rankingParamsWaterSurface}
         setParams={setRankingParamsWaterSurface}
       />
+
       <RankingChart
         title={t('specific.WaterSurface.rankingWaterLossAndGainData.title')}
         info={t('specific.WaterSurface.rankingWaterLossAndGainData.info')}

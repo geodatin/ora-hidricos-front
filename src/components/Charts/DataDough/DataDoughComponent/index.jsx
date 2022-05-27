@@ -52,11 +52,9 @@ export default function DataDoughComponent({
   useEffect(() => {
     const getStatistics = async () => {
       if (territorySelection === null) {
-        await api
-          .get(`/waterSurface/statistics/country?code=9`)
-          .then(({ data }) => {
-            setStatistics(data);
-          });
+        await api.get(`/waterSurface/statistics/country`).then(({ data }) => {
+          setStatistics(data);
+        });
       } else {
         await api
           .get(`/waterSurface/statistics/${city}?code=${code}`)

@@ -83,9 +83,7 @@ export default function RankingChart({
       tooltip: {
         callbacks: {
           label(ctx) {
-            return `${ctx.dataset.label}: ${ctx.formattedValue} ${
-              ctx.dataset?.sufix ?? ''
-            }`;
+            return ` ${ctx.formattedValue} ${ctx.dataset?.sufix ?? ''}`;
           },
         },
       },
@@ -133,14 +131,32 @@ export default function RankingChart({
         <div
           style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
         >
-          <CustomPagination
-            size="small"
-            count={params.totalPages}
-            page={params.page}
-            onChange={(event, value) =>
-              setParams((prevParams) => ({ ...prevParams, page: value }))
-            }
-          />
+          {params.totalPages === 1 ? (
+            <CustomPagination
+              disabled
+              size="small"
+              count={params.totalPages}
+              page={params.page}
+              onChange={(event, value) =>
+                setParams((prevParams) => ({
+                  ...prevParams,
+                  page: value,
+                }))
+              }
+            />
+          ) : (
+            <CustomPagination
+              size="small"
+              count={params.totalPages}
+              page={params.page}
+              onChange={(event, value) =>
+                setParams((prevParams) => ({
+                  ...prevParams,
+                  page: value,
+                }))
+              }
+            />
+          )}
         </div>
       }
     >
