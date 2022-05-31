@@ -1,9 +1,9 @@
-// import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
-// import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import React from 'react';
-// import { useTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON } from 'react-leaflet';
 
@@ -11,31 +11,32 @@ import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
-// import Typography from '../../../components/Typography';
+import Typography from '../../../components/Typography';
 import { darkScheme, lightScheme } from '../../../constants/schemes';
-// import { useAllStations } from '../../../hooks/useAllStations';
+import { useAllStations } from '../../../hooks/useAllStations';
 import { useDisclaimer } from '../../../hooks/useDisclaimer';
 import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
-// import { useProjectedStations } from '../../../hooks/useProjectedStations';
-// import useStyles from '../styles';
+import { useProjectedStations } from '../../../hooks/useProjectedStations';
+import useStyles from '../styles';
 
 /**
  * This function provides the monitoring map
  * @returns Monitoring Map
  */
 export default function MonitoringMap() {
-  //  const { viewProjectedStations, handleOnViewProjectedStations } = useProjectedStations();
-  //  const { viewAllStations, handleOnViewAllStations } = useAllStations();
+  const { viewProjectedStations, handleOnViewProjectedStations } =
+    useProjectedStations();
+  const { viewAllStations, handleOnViewAllStations } = useAllStations();
   const { setMapRef } = useMap();
 
   const { nextLayoutConfig } = useLayoutConfig();
   const { openDisclaimer } = useDisclaimer();
   const { isMobile } = useMobile();
 
-  // const { t } = useTranslation();
-  // const classes = useStyles();
+  const { t } = useTranslation();
+  const classes = useStyles();
   const theme = useTheme();
 
   return (
@@ -59,9 +60,6 @@ export default function MonitoringMap() {
           <InfoOutlinedIcon style={{ fontSize: 20 }} />
         </MapItem>
       }
-      /* 
-      layers button
-
       itemLayers={
         <MapItem
           popupContent={
@@ -81,8 +79,13 @@ export default function MonitoringMap() {
                       />
                     }
                     label={
-                      <Typography variant="caption">
-                        {t('specific.layers.projectedStations')}
+                      <Typography
+                        variant="caption"
+                        style={{
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {t('specific.infoPanel.WaterSurface.title')}
                       </Typography>
                     }
                   />
@@ -99,8 +102,13 @@ export default function MonitoringMap() {
                       />
                     }
                     label={
-                      <Typography variant="caption">
-                        {t('specific.layers.allStations')}
+                      <Typography
+                        variant="caption"
+                        style={{
+                          whiteSpace: 'nowrap',
+                        }}
+                      >
+                        {t('specific.infoPanel.WQI.title')}
                       </Typography>
                     }
                   />
@@ -112,7 +120,7 @@ export default function MonitoringMap() {
         >
           <LayersRoundedIcon style={{ fontSize: 20 }} />
         </MapItem>
-      } */
+      }
     >
       <GeoJSON
         data={InverseShape}
