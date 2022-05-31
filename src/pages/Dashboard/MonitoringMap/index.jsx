@@ -1,6 +1,7 @@
-import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 // import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 // import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import React from 'react';
 // import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
@@ -13,6 +14,7 @@ import MapItem from '../../../components/MapWrapper/Mapitem';
 // import Typography from '../../../components/Typography';
 import { darkScheme, lightScheme } from '../../../constants/schemes';
 // import { useAllStations } from '../../../hooks/useAllStations';
+import { useDisclaimer } from '../../../hooks/useDisclaimer';
 import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
@@ -29,6 +31,7 @@ export default function MonitoringMap() {
   const { setMapRef } = useMap();
 
   const { nextLayoutConfig } = useLayoutConfig();
+  const { openDisclaimer } = useDisclaimer();
   const { isMobile } = useMobile();
 
   // const { t } = useTranslation();
@@ -50,6 +53,11 @@ export default function MonitoringMap() {
             <AspectRatioRoundedIcon style={{ fontSize: 20 }} />
           </MapItem>
         ) : undefined
+      }
+      itemAbout={
+        <MapItem onClick={() => openDisclaimer()}>
+          <InfoOutlinedIcon style={{ fontSize: 20 }} />
+        </MapItem>
       }
       /* 
       layers button
