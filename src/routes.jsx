@@ -11,6 +11,7 @@ import {
 import Disclaimer from './components/Disclaimer';
 import Header from './components/Header';
 import { FilteringProvider } from './contexts/filtering';
+import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
 import ApiMethods from './pages/ApiMethods';
 import Dashboard from './pages/Dashboard';
@@ -20,8 +21,10 @@ function DefaultPage({ embed }) {
   return (
     <NavigationProvider>
       <FilteringProvider embed={embed}>
-        <Disclaimer />
-        <Dashboard />
+        <MappingProvider>
+          <Disclaimer />
+          <Dashboard />
+        </MappingProvider>
       </FilteringProvider>
     </NavigationProvider>
   );
@@ -42,6 +45,8 @@ function Routes() {
       />
       <BaseRoutes>
         <Route exact path="/" element={<DefaultPage />} />
+        <Route exact path="/embed" element={<DefaultPage embed />} />
+
         <Route exact path="/api" element={<ApiMethods />} />
         <Route exact path="/library" element={<DataLibrary />} />
         <Route path="*" element={<Navigate to="/" />} />
