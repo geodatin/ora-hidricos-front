@@ -54,6 +54,10 @@
       "clearButton": "Limpar",
       "apply": "Aplicar"
     },
+    "legend": {
+      "territoryLine": "Limites da Bacia Amazônica",
+      "riverLine": "Linhas de drenagem"
+    },
     "WaterSurface": {
       "dataDough": {
         "title": "Dados Gerais"

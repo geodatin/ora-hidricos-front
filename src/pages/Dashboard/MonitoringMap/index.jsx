@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON } from 'react-leaflet';
 
+
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
@@ -19,7 +20,7 @@ import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
-import useStyles from '../styles';
+import useStyles from './styles';
 
 /**
  * This function provides the monitoring map
@@ -119,6 +120,62 @@ export default function MonitoringMap() {
           onClick={() => {}}
         >
           <LayersRoundedIcon style={{ fontSize: 20 }} />
+        </MapItem>
+      }
+      itemBottomChildren={
+        <MapItem
+          popupContent={
+            <div className={classes.legendContent}>
+              <div className={classes.legendItem}>
+                <div
+                  style={{
+                    borderColor: theme === darkScheme ? '#accc0c' : '#728740',
+                  }}
+                  className={classes.dashedLine}
+                />
+                {t('specific.legend.territoryLine')}
+              </div>
+              <div className={classes.legendItem}>
+                <div
+                  style={{
+                    borderColor: '#0023FF',
+                    borderStyle: 'solid',
+                    opacity: theme === darkScheme ? 0.3 : 0.2,
+                  }}
+                  className={classes.dashedLine}
+                />
+                {t('specific.legend.riverLine')}
+              </div>
+            
+            </div>
+          }
+        >
+          <span
+            className={classes.legendBall}
+            style={{
+              backgroundColor: theme.orange.main,
+              height: 17,
+              width: 17,
+            }}
+          >
+            <span
+              className={classes.legendBall}
+              style={{
+                backgroundColor: theme.primary.main,
+                height: 14,
+                width: 14,
+              }}
+            >
+              <span
+                className={classes.legendBall}
+                style={{
+                  backgroundColor: theme.green.main,
+                  height: 10,
+                  width: 10,
+                }}
+              />
+            </span>
+          </span>
         </MapItem>
       }
     >
