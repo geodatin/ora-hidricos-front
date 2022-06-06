@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON } from 'react-leaflet';
 
-
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
@@ -146,7 +145,6 @@ export default function MonitoringMap() {
                 />
                 {t('specific.legend.riverLine')}
               </div>
-            
             </div>
           }
         >
@@ -191,7 +189,7 @@ export default function MonitoringMap() {
         data={BorderGeojson}
         style={() => ({
           fillColor: 'transparent',
-          weight: 2,
+          weight: 0.5,
           dashArray: 8,
           lineCap: 'round',
           lineJoin: 'round ',

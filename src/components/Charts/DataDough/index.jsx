@@ -54,7 +54,7 @@ export default function DataDough({ value, sufix, label, color, scale }) {
               },
               aspectRatio: 1,
               radius: '100%',
-              cutout: 70 * scale,
+              cutout: 65 * scale,
               rotation: 180,
             }}
             data={{
