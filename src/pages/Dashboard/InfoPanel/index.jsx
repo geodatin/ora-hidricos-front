@@ -1,3 +1,4 @@
+/* eslint-disable no-lone-blocks */
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
@@ -65,6 +66,7 @@ export default function InfoPanel({ title, subtitle }) {
       }}
       mainContainer={{
         className: classes.panelWrapper,
+
         children: (
           <TabPanel>
             <Statistics />

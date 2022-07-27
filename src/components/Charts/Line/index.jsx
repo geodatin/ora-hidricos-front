@@ -38,6 +38,7 @@ export default function LineChart({
       mode: 'index',
       intersect: false,
     },
+
     indexAxis: 'x',
     plugins: {},
     scales: {

@@ -6,13 +6,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON } from 'react-leaflet';
+import { useContextSelector } from 'use-context-selector';
 
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
 import Typography from '../../../components/Typography';
+import { indicators } from '../../../constants/options';
 import { darkScheme, lightScheme } from '../../../constants/schemes';
+import FilteringContext from '../../../contexts/filtering';
 import { useAllStations } from '../../../hooks/useAllStations';
 import { useDisclaimer } from '../../../hooks/useDisclaimer';
 import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
@@ -31,13 +34,20 @@ export default function MonitoringMap() {
   const { viewAllStations, handleOnViewAllStations } = useAllStations();
   const { setMapRef } = useMap();
 
-  const { nextLayoutConfig } = useLayoutConfig();
+  const { nextLayoutConfig, setLayoutConfig } = useLayoutConfig();
   const { openDisclaimer } = useDisclaimer();
   const { isMobile } = useMobile();
 
   const { t } = useTranslation();
   const classes = useStyles();
   const theme = useTheme();
+
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
+
+  // eslint-disable-next-line no-unused-expressions
 
   return (
     <MapWrapper
@@ -177,6 +187,9 @@ export default function MonitoringMap() {
         </MapItem>
       }
     >
+      {(indicatorSelection === indicators.waterSurface.value &&
+        setLayoutConfig(0)) ||
+        (indicatorSelection === indicators.WQI.value && setLayoutConfig(3))}
       <GeoJSON
         data={InverseShape}
         style={() => ({

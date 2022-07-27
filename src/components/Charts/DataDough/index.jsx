@@ -54,7 +54,7 @@ export default function DataDough({ value, sufix, label, color, scale }) {
               },
               aspectRatio: 1,
               radius: '100%',
-              cutout: 65 * scale,
+              cutout: '95%',
               rotation: 180,
             }}
             data={{
@@ -76,7 +76,11 @@ export default function DataDough({ value, sufix, label, color, scale }) {
           />
         }
       >
-        <Typography format="bold" variant={scale < 1 ? 'caption' : 'p'}>
+        <Typography
+          style={{ marginTop: 8 }}
+          format="bold"
+          variant={scale < 1 ? 'caption' : 'p'}
+        >
           {t('general.number', { value })}
         </Typography>
         <Typography

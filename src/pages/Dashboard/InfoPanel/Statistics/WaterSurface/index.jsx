@@ -28,7 +28,6 @@ export default function waterSurface() {
     page: 1,
     totalPages: 1,
   });
-
   const [rankingParamsWinLoss, setRankingParamsWinLoss] = useState({
     order: true,
     page: 1,
@@ -42,6 +41,7 @@ export default function waterSurface() {
   const city = territorySelection?.type;
   const code = territorySelection?.code;
   const name = territorySelection?.name;
+
   useEffect(() => {
     const getTimeSeries = async () => {
       if (territorySelection === null) {
@@ -84,17 +84,16 @@ export default function waterSurface() {
     };
     getTimeSeries();
   }, [city, code]);
-
   const pageArea = rankingParamsWaterSurface.page;
 
   useEffect(() => {
-    const getRankingWaterSurface = async () => {
-      if (territorySelection === null || city === 'country') {
-        await api
-          .get(
-            `/waterSurface/ranking/country/area?&page=${pageArea}&pageSize=6`
-          )
-          .then(({ data }) => {
+    const isSubscribed = true;
+
+    if (territorySelection === null || city === 'country') {
+      api
+        .get(`/waterSurface/ranking/country/area?&page=${pageArea}&pageSize=6`)
+        .then(({ data }) => {
+          if (isSubscribed) {
             const labels = data.x;
             setRankingWaterSurface({
               labels,
@@ -112,13 +111,15 @@ export default function waterSurface() {
               page: 1,
               totalPages: data.pages,
             });
-          });
-      } else {
-        await api
-          .get(
-            `/waterSurface/ranking/${city}/area?code=${code}&page=${pageArea}&pageSize=6`
-          )
-          .then(({ data }) => {
+          }
+        });
+    } else {
+      api
+        .get(
+          `/waterSurface/ranking/${city}/area?code=${code}&page=${pageArea}&pageSize=6`
+        )
+        .then(({ data }) => {
+          if (isSubscribed) {
             const labels = data.x;
             setRankingWaterSurface({
               labels,
@@ -135,22 +136,23 @@ export default function waterSurface() {
               page: data.focusPage,
               totalPages: 1,
             });
-          });
-      }
-    };
-    getRankingWaterSurface();
+          }
+        });
+    }
   }, [city, code, pageArea]);
 
   const pageWinLoss = rankingParamsWinLoss.page;
 
+  console.log(pageWinLoss, pageArea);
   useEffect(() => {
-    const getRankingWinLossWater = async () => {
-      if (territorySelection === null || city === 'country') {
-        await api
-          .get(
-            `/waterSurface/ranking/country/winLoss?&page=${pageWinLoss}&pageSize=6`
-          )
-          .then(({ data }) => {
+    let isSubscribed = true;
+    if (territorySelection === null || city === 'country') {
+      api
+        .get(
+          `/waterSurface/ranking/country/winLoss?&page=${pageWinLoss}&pageSize=6`
+        )
+        .then(({ data }) => {
+          if (isSubscribed) {
             const labels = data.x;
             setRankingWinLoss({
               labels,
@@ -169,13 +171,15 @@ export default function waterSurface() {
               page: 1,
               totalPages: data.pages,
             });
-          });
-      } else {
-        await api
-          .get(
-            `/waterSurface/ranking/${city}/winLoss?code=${code}&page=${pageWinLoss}&pageSize=6`
-          )
-          .then(({ data }) => {
+          }
+        });
+    } else {
+      api
+        .get(
+          `/waterSurface/ranking/${city}/winLoss?code=${code}&page=${pageWinLoss}&pageSize=6`
+        )
+        .then(({ data }) => {
+          if (isSubscribed) {
             const labels = data.x;
             setRankingWinLoss({
               labels,
@@ -193,10 +197,12 @@ export default function waterSurface() {
               page: data.focusPage,
               totalPages: 1,
             });
-          });
-      }
+          }
+        });
+    }
+    return () => {
+      isSubscribed = false;
     };
-    getRankingWinLossWater();
   }, [city, code, pageWinLoss]);
   return (
     <ul>
