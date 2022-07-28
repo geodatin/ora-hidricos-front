@@ -4,10 +4,15 @@ export const indicators = {
     value: 1,
     translation: 'specific.indicators.type.waterSurface',
   },
-  WQI: {
-    name: 'waterQualityIndex',
+  mercuryHuman: {
+    name: 'mercuryHuman',
     value: 2,
-    translation: 'specific.indicators.type.WQI',
+    translation: 'specific.indicators.type.mercuryHuman',
+  },
+  mercuryFish: {
+    name: 'mercuryFish',
+    value: 3,
+    translation: 'specific.indicators.type.mercuryFish',
   },
 };
 

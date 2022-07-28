@@ -127,12 +127,20 @@ export default function Filters() {
             {t(indicators.waterSurface.translation)}
           </MenuItem>
           <MenuItem
-            value={indicators.WQI.value}
+            value={indicators.mercuryHuman.value}
             onClick={() => {
-              setAuxIndicatorSelection(indicators.WQI.value);
+              setAuxIndicatorSelection(indicators.mercuryHuman.value);
             }}
           >
-            {t(indicators.WQI.translation)}
+            {t(indicators.mercuryHuman.translation)}
+          </MenuItem>
+          <MenuItem
+            value={indicators.mercuryFish.value}
+            onClick={() => {
+              setAuxIndicatorSelection(indicators.mercuryFish.value);
+            }}
+          >
+            {t(indicators.mercuryFish.translation)}
           </MenuItem>
         </CustomSelect>
       </div>

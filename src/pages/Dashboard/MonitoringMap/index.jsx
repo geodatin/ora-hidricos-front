@@ -2,12 +2,14 @@ import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
-import React from 'react';
+import L from 'leaflet';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
-import { TileLayer, GeoJSON } from 'react-leaflet';
+import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
+import imgMarker from '../../../assets/images/marker-24.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
@@ -22,7 +24,9 @@ import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
+import api from '../../../services/api';
 import useStyles from './styles';
+import 'leaflet/dist/leaflet.css';
 
 /**
  * This function provides the monitoring map
@@ -34,20 +38,41 @@ export default function MonitoringMap() {
   const { viewAllStations, handleOnViewAllStations } = useAllStations();
   const { setMapRef } = useMap();
 
-  const { nextLayoutConfig, setLayoutConfig } = useLayoutConfig();
+  const { nextLayoutConfig } = useLayoutConfig();
   const { openDisclaimer } = useDisclaimer();
   const { isMobile } = useMobile();
 
   const { t } = useTranslation();
   const classes = useStyles();
   const theme = useTheme();
-
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
 
-  // eslint-disable-next-line no-unused-expressions
+  const [coordsHuman, setCoordsHuman] = useState();
+  const [coordsFish, setCoordsFish] = useState();
+
+  const blueIcon = new L.Icon({
+    iconUrl: imgMarker,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  L.Marker.prototype.options.icon = blueIcon;
+
+  useEffect(() => {
+    api.get('mercury/human/points').then(({ data }) => {
+      setCoordsHuman(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('mercury/fish/points').then(({ data }) => {
+      setCoordsFish(data);
+    });
+  }, []);
 
   return (
     <MapWrapper
@@ -187,9 +212,6 @@ export default function MonitoringMap() {
         </MapItem>
       }
     >
-      {(indicatorSelection === indicators.waterSurface.value &&
-        setLayoutConfig(0)) ||
-        (indicatorSelection === indicators.WQI.value && setLayoutConfig(3))}
       <GeoJSON
         data={InverseShape}
         style={() => ({
@@ -198,6 +220,7 @@ export default function MonitoringMap() {
           fillOpacity: theme === darkScheme ? 0.5 : 0.7,
         })}
       />
+
       <GeoJSON
         data={BorderGeojson}
         style={() => ({
@@ -214,6 +237,91 @@ export default function MonitoringMap() {
         opacity={theme === darkScheme ? 0.3 : 0.2}
         zIndex={2}
       />
+      {(indicatorSelection === indicators.waterSurface.value && '') ||
+        (indicatorSelection === indicators.mercuryHuman.value &&
+          coordsHuman?.features?.map((cord) => (
+            <Marker
+              key={cord.properties.code}
+              position={[
+                cord.geometry.coordinates[0],
+                cord.geometry.coordinates[1],
+              ]}
+            >
+              <Popup
+                className={classes.popup}
+                key={theme === darkScheme ? `dark` : `light`}
+              >
+                <Typography variant="caption" format="bold">
+                  {cord.properties.state}
+                </Typography>
+                <div className={classes.separator} />
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Títilo
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.title}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Responsável
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.author}
+                  </Typography>
+                </div>
+              </Popup>
+            </Marker>
+          ))) ||
+        (indicatorSelection === indicators.mercuryFish.value &&
+          coordsFish?.features?.map((cord) => (
+            <Marker
+              key={cord.properties.code}
+              position={[
+                cord.geometry.coordinates[0],
+                cord.geometry.coordinates[1],
+              ]}
+            >
+              <Popup
+                className={classes.popup}
+                key={theme === darkScheme ? `dark` : `light`}
+              >
+                <Typography variant="caption" format="bold">
+                  {cord.properties.state}
+                </Typography>
+                <div className={classes.separator} />
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Títilo
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.title}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Responsável
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.author}
+                  </Typography>
+                </div>
+              </Popup>
+            </Marker>
+          )))}
     </MapWrapper>
   );
 }

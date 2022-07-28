@@ -97,15 +97,13 @@
       "font": " Fonte de dados: GlobalSurfaceWater",
       "WaterSurface": {
         "title": "Superfície d’água"
-      },
-      "WQI": {
-        "title": "Índice de qualidade da água (IQA)"
       }
     },
     "indicators": {
       "type": {
         "waterSurface": "Superfície d'água",
-        "WQI": "Índice da qualidade da água"
+        "mercuryHuman": "Mercúrio por humanos",
+        "mercuryFish": "Mercúrio por peixes"
       }
     },
     "autocompletesearch": {

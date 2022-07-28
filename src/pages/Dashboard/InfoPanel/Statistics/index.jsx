@@ -3,6 +3,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import { indicators } from '../../../../constants/options';
 import FilteringContext from '../../../../contexts/filtering';
+import { useLayoutConfig } from '../../../../hooks/useLayoutConfig';
 import WaterSurface from './WaterSurface';
 
 /**
@@ -11,6 +12,8 @@ import WaterSurface from './WaterSurface';
  */
 
 export default function Statistics() {
+  const { setLayoutConfig } = useLayoutConfig();
+
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
@@ -18,11 +21,13 @@ export default function Statistics() {
 
   return (
     <div>
-      {(indicatorSelection === indicators.waterSurface.value && (
-        <WaterSurface />
-      )) ||
-        (indicatorSelection === indicators.WQI.value && '') ||
-        (indicatorSelection === 3 && <h1>Novo Componente</h1>)}
+      {console.log(indicatorSelection)}
+      {(indicatorSelection === indicators.waterSurface.value &&
+        (setLayoutConfig(0), (<WaterSurface />))) ||
+        (indicatorSelection === indicators.mercuryHuman.value &&
+          setLayoutConfig(3)) ||
+        (indicatorSelection === indicators.mercuryFish.value &&
+          setLayoutConfig(3))}
     </div>
   );
 }
