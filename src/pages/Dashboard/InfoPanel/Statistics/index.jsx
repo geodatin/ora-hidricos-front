@@ -12,7 +12,7 @@ import WaterSurface from './WaterSurface';
  */
 
 export default function Statistics() {
-  const { setLayoutConfig } = useLayoutConfig();
+  const { setLayoutConfig, nextLayoutConfig } = useLayoutConfig();
 
   const indicatorSelection = useContextSelector(
     FilteringContext,
@@ -23,11 +23,11 @@ export default function Statistics() {
     <div>
       {console.log(indicatorSelection)}
       {(indicatorSelection === indicators.waterSurface.value &&
-        (setLayoutConfig(0), (<WaterSurface />))) ||
+        (nextLayoutConfig() === setLayoutConfig(0), (<WaterSurface />))) ||
         (indicatorSelection === indicators.mercuryHuman.value &&
-          setLayoutConfig(3)) ||
+          nextLayoutConfig() === setLayoutConfig(3)) ||
         (indicatorSelection === indicators.mercuryFish.value &&
-          setLayoutConfig(3))}
+          nextLayoutConfig() === setLayoutConfig(3))}
     </div>
   );
 }

@@ -58,6 +58,10 @@ export default function RankingChart({
     indexAxis: 'y',
     plugins: {
       datalabels: {
+        font: {
+          size: 12,
+        },
+        color: '#A4A4A4',
         display: true,
         anchor: 'end',
         align: 'end',
@@ -93,6 +97,11 @@ export default function RankingChart({
         stacked: true,
         ticks: {
           crossAlign: 'far',
+          color: '#A4A4A4',
+          beginAtZero: true,
+          font: {
+            size: 16,
+          },
         },
       },
       x: {

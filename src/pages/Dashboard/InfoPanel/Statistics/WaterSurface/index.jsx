@@ -34,9 +34,9 @@ export default function waterSurface() {
     totalPages: 1,
   });
 
-  const [timeSeries, setTimeSeries] = useState('');
-  const [rankingWinLoss, setRankingWinLoss] = useState('');
-  const [rankingWaterSurface, setRankingWaterSurface] = useState('');
+  const [timeSeries, setTimeSeries] = useState();
+  const [rankingWinLoss, setRankingWinLoss] = useState();
+  const [rankingWaterSurface, setRankingWaterSurface] = useState();
 
   const city = territorySelection?.type;
   const code = territorySelection?.code;
@@ -53,6 +53,8 @@ export default function waterSurface() {
             datasets: [
               {
                 label: 'Dados gerais',
+                pointRadius: 3,
+                pointStyle: 'rectRot',
                 data: data.y,
                 backgroundColor: [theme.primary.main],
                 borderColor: [theme.primary.main],
@@ -73,6 +75,8 @@ export default function waterSurface() {
                 {
                   label: name,
                   data: data.y,
+                  pointRadius: 3,
+                  pointStyle: 'rectRot',
                   backgroundColor: [theme.primary.main],
                   borderColor: [theme.primary.main],
                   borderWidth: 1,

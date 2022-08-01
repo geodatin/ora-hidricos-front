@@ -2,6 +2,7 @@ import merge from 'lodash.merge';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Line } from 'react-chartjs-2';
+// import { useTheme } from 'react-jss';
 
 import ChartContainer from '../../ChartContainer';
 
@@ -9,6 +10,7 @@ import ChartContainer from '../../ChartContainer';
  * This component renders a Line Chart
  * @returns Line Chart
  */
+
 export default function LineChart({
   title,
   info,
@@ -33,21 +35,41 @@ export default function LineChart({
     fullScreenEnabled: false,
   };
 
+  // const theme = useTheme();
+
   const options = {
+    responsive: true,
     interaction: {
       mode: 'index',
       intersect: false,
     },
 
     indexAxis: 'x',
-    plugins: {},
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
     scales: {
       y: {
+        ticks: {
+          crossAlign: 'far',
+          color: '#A4A4A4',
+          beginAtZero: true,
+          font: {
+            size: 12,
+          },
+        },
         title: {
           display: false,
           padding: 0,
+        },
+      },
+      x: {
+        ticks: {
+          color: '#A4A4A4',
           font: {
-            size: 13,
+            size: 12,
           },
         },
       },
