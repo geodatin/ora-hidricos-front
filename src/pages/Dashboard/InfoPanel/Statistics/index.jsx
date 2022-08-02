@@ -21,7 +21,6 @@ export default function Statistics() {
 
   return (
     <div>
-      {console.log(indicatorSelection)}
       {(indicatorSelection === indicators.waterSurface.value &&
         (nextLayoutConfig() === setLayoutConfig(0), (<WaterSurface />))) ||
         (indicatorSelection === indicators.mercuryHuman.value &&

@@ -11,6 +11,16 @@ import OrangeStationLight from '../../../assets/icons/map/orange-station-light.p
 import { darkScheme } from '../../../constants/schemes';
 
 const useStyles = createUseStyles((theme) => ({
+  markerClusterCustom: {
+    background: '#00B9F1',
+    border: '2px solid #067293',
+    borderRadius: '50%',
+    color: '#FFFFFF',
+    height: '30px',
+    lineHeight: '25px',
+    textAlign: 'center',
+    width: '30px',
+  },
   popup: {
     '& .leaflet-popup-content-wrapper': {
       backgroundColor: theme.background.main,

@@ -6,7 +6,8 @@ import L from 'leaflet';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
-import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
+import { TileLayer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet';
+import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useContextSelector } from 'use-context-selector';
 
 // import imgMarker from '../../../assets/images/marker-24.png';
@@ -21,22 +22,104 @@ import FilteringContext from '../../../contexts/filtering';
 import { useAllStations } from '../../../hooks/useAllStations';
 import { useDisclaimer } from '../../../hooks/useDisclaimer';
 import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
-import { useMap } from '../../../hooks/useMap';
+import { useMap as MapHook } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
-import useStyles from './styles';
 import 'leaflet/dist/leaflet.css';
+import useStyles from './styles';
 
 /**
  * This function provides the monitoring map
  * @returns Monitoring Map
  */
+
+function Markers({ data }) {
+  const map = useMap();
+  const classes = useStyles();
+  const theme = useTheme();
+
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
+
+  return (
+    indicatorSelection === indicators.oil.value &&
+    data?.features?.map((cord) => (
+      <Marker
+        key={cord.properties.code}
+        eventHandlers={{
+          click: () => {
+            map.setView(
+              [cord.geometry.coordinates[1], cord.geometry.coordinates[0]],
+              13
+            );
+          },
+        }}
+        position={{
+          lat: cord.geometry.coordinates[1],
+          lng: cord.geometry.coordinates[0],
+        }}
+      >
+        <Popup
+          className={classes.popup}
+          key={theme === darkScheme ? `dark` : `light`}
+        >
+          <Typography variant="caption" format="bold">
+            {cord.properties.country}
+          </Typography>
+          <div className={classes.separator} />
+          <div className={classes.popupItem}>
+            <Typography variant="caption" className={classes.popupItemTitle}>
+              Name
+            </Typography>
+            <Typography variant="caption">{cord.properties.name}</Typography>
+          </div>
+          <div className={classes.popupItem}>
+            <Typography variant="caption" className={classes.popupItemTitle}>
+              Company
+            </Typography>
+            <Typography variant="caption">{cord.properties.company}</Typography>
+          </div>
+          <div className={classes.popupItem}>
+            <Typography variant="caption" className={classes.popupItemTitle}>
+              Situation
+            </Typography>
+            <Typography variant="caption">
+              {cord.properties.situation}
+            </Typography>
+          </div>
+          <div className={classes.popupItem}>
+            <Typography variant="caption" className={classes.popupItemTitle}>
+              Source
+            </Typography>
+            <Typography variant="caption">{cord.properties.source}</Typography>
+          </div>
+          <div className={classes.popupItem}>
+            <Typography variant="caption" className={classes.popupItemTitle}>
+              Institution
+            </Typography>
+            <Typography variant="caption">
+              {cord.properties.institution}
+            </Typography>
+          </div>
+          <h1>{cord.properties.code}</h1>
+        </Popup>
+      </Marker>
+    ))
+  );
+}
+
 export default function MonitoringMap() {
+  const [coordsHuman, setCoordsHuman] = useState();
+  const [coordsFish, setCoordsFish] = useState();
+  const [coordsOil, setCoordsOil] = useState();
+
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
   const { viewAllStations, handleOnViewAllStations } = useAllStations();
-  const { setMapRef } = useMap();
+  const { setMapRef } = MapHook();
 
   const { nextLayoutConfig } = useLayoutConfig();
   const { openDisclaimer } = useDisclaimer();
@@ -45,14 +128,11 @@ export default function MonitoringMap() {
   const { t } = useTranslation();
   const classes = useStyles();
   const theme = useTheme();
+
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
-
-  const [coordsHuman, setCoordsHuman] = useState();
-  const [coordsFish, setCoordsFish] = useState();
-  const [coordsOil, setCoordsOil] = useState();
 
   const blueIcon = new L.Icon({
     iconUrl:
@@ -81,6 +161,14 @@ export default function MonitoringMap() {
       setCoordsOil(data);
     });
   }, []);
+
+  const createClusterCustomIcon = function (cluster) {
+    return L.divIcon({
+      html: `<span>${cluster.getChildCount()}</span>`,
+      className: classes.markerClusterCustom,
+      iconSize: L.point(33, 33, true),
+    });
+  };
 
   return (
     <MapWrapper
@@ -228,7 +316,6 @@ export default function MonitoringMap() {
           fillOpacity: theme === darkScheme ? 0.5 : 0.7,
         })}
       />
-
       <GeoJSON
         data={BorderGeojson}
         style={() => ({
@@ -453,82 +540,18 @@ export default function MonitoringMap() {
                 </div>
               </Popup>
             </Marker>
-          ))) ||
-        (indicatorSelection === indicators.oil.value &&
-          coordsOil?.features?.map((cord) => (
-            <Marker
-              key={cord.properties.code}
-              position={[
-                cord.geometry.coordinates[1],
-                cord.geometry.coordinates[0],
-              ]}
-            >
-              <Popup
-                className={classes.popup}
-                key={theme === darkScheme ? `dark` : `light`}
-              >
-                <Typography variant="caption" format="bold">
-                  {cord.properties.country}
-                </Typography>
-                <div className={classes.separator} />
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Name
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.name}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Company
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.company}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Situation
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.situation}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Source
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.source}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Institution
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.institution}
-                  </Typography>
-                </div>
-              </Popup>
-            </Marker>
           )))}
+      <MarkerClusterGroup
+        // eslint-disable-next-line react/jsx-no-bind
+        iconCreateFunction={createClusterCustomIcon}
+        polygonOptions={{
+          color: theme === darkScheme ? '#accc0c' : '#728740',
+          weight: 1,
+          opacity: 0.9,
+        }}
+      >
+        <Markers data={coordsOil} />
+      </MarkerClusterGroup>
     </MapWrapper>
   );
 }
