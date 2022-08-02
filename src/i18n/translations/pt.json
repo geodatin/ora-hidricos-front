@@ -102,8 +102,9 @@
     "indicators": {
       "type": {
         "waterSurface": "Superfície d'água",
-        "mercuryHuman": "Mercúrio por humanos",
-        "mercuryFish": "Mercúrio por peixes"
+        "mercuryHuman": "Mercúrio em humanos",
+        "mercuryFish": "Mercúrio em peixes",
+        "oil": "Lotes petrolíferos"
       }
     },
     "autocompletesearch": {

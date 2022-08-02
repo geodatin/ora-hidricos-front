@@ -27,6 +27,8 @@ export default function Statistics() {
         (indicatorSelection === indicators.mercuryHuman.value &&
           nextLayoutConfig() === setLayoutConfig(3)) ||
         (indicatorSelection === indicators.mercuryFish.value &&
+          nextLayoutConfig() === setLayoutConfig(3)) ||
+        (indicatorSelection === indicators.oil.value &&
           nextLayoutConfig() === setLayoutConfig(3))}
     </div>
   );

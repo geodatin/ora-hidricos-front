@@ -9,7 +9,7 @@ import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
-import imgMarker from '../../../assets/images/marker-24.png';
+// import imgMarker from '../../../assets/images/marker-24.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
@@ -52,9 +52,11 @@ export default function MonitoringMap() {
 
   const [coordsHuman, setCoordsHuman] = useState();
   const [coordsFish, setCoordsFish] = useState();
+  const [coordsOil, setCoordsOil] = useState();
 
   const blueIcon = new L.Icon({
-    iconUrl: imgMarker,
+    iconUrl:
+      'https://visualpharm.com/assets/825/Marker-595b40b75ba036ed117d9f54.svg',
     iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
@@ -71,6 +73,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('mercury/fish/points').then(({ data }) => {
       setCoordsFish(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('oil/field/points').then(({ data }) => {
+      setCoordsOil(data);
     });
   }, []);
 
@@ -260,7 +268,40 @@ export default function MonitoringMap() {
                     variant="caption"
                     className={classes.popupItemTitle}
                   >
-                    Títilo
+                    Publication year
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.publicationYear}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Study
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.study}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Author
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.author}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Title
                   </Typography>
                   <Typography variant="caption">
                     {cord.properties.title}
@@ -271,10 +312,44 @@ export default function MonitoringMap() {
                     variant="caption"
                     className={classes.popupItemTitle}
                   >
-                    Responsável
+                    Age group
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.author}
+                    {cord.properties.ageGroup}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Collection year
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.collectionYear}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Community
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.community}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Measurement unit
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.measurementUnit}
                   </Typography>
                 </div>
               </Popup>
@@ -302,7 +377,42 @@ export default function MonitoringMap() {
                     variant="caption"
                     className={classes.popupItemTitle}
                   >
-                    Títilo
+                    Publication year
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.publicationYear}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Study
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.study}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Author
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.author}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Title
                   </Typography>
                   <Typography variant="caption">
                     {cord.properties.title}
@@ -313,10 +423,107 @@ export default function MonitoringMap() {
                     variant="caption"
                     className={classes.popupItemTitle}
                   >
-                    Responsável
+                    Collection year
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.author}
+                    {cord.properties.collectionYear}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Community
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.community}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Measurement unit
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.measurementUnit}
+                  </Typography>
+                </div>
+              </Popup>
+            </Marker>
+          ))) ||
+        (indicatorSelection === indicators.oil.value &&
+          coordsOil?.features?.map((cord) => (
+            <Marker
+              key={cord.properties.code}
+              position={[
+                cord.geometry.coordinates[1],
+                cord.geometry.coordinates[0],
+              ]}
+            >
+              <Popup
+                className={classes.popup}
+                key={theme === darkScheme ? `dark` : `light`}
+              >
+                <Typography variant="caption" format="bold">
+                  {cord.properties.country}
+                </Typography>
+                <div className={classes.separator} />
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Name
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.name}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Company
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.company}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Situation
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.situation}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Source
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.source}
+                  </Typography>
+                </div>
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    Institution
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.institution}
                   </Typography>
                 </div>
               </Popup>

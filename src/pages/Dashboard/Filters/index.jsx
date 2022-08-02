@@ -142,6 +142,14 @@ export default function Filters() {
           >
             {t(indicators.mercuryFish.translation)}
           </MenuItem>
+          <MenuItem
+            value={indicators.oil.value}
+            onClick={() => {
+              setAuxIndicatorSelection(indicators.oil.value);
+            }}
+          >
+            {t(indicators.oil.translation)}
+          </MenuItem>
         </CustomSelect>
       </div>
       <span className={classes.separator} />

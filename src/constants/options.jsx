@@ -14,6 +14,11 @@ export const indicators = {
     value: 3,
     translation: 'specific.indicators.type.mercuryFish',
   },
+  oil: {
+    name: 'oil',
+    value: 4,
+    translation: 'specific.indicators.type.oil',
+  },
 };
 
 export const filterDefaults = {

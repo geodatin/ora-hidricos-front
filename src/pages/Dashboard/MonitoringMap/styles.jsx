@@ -9,7 +9,7 @@ import GreenStationLight from '../../../assets/icons/map/green-station-light.png
 import OrangeStationDark from '../../../assets/icons/map/orange-station-dark.png';
 import OrangeStationLight from '../../../assets/icons/map/orange-station-light.png';
 import { darkScheme } from '../../../constants/schemes';
- 
+
 const useStyles = createUseStyles((theme) => ({
   popup: {
     '& .leaflet-popup-content-wrapper': {
