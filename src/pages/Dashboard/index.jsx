@@ -68,6 +68,12 @@ function Dashboard() {
         title={t('specific.infoPanel.WQI.title')}
         subtitle="Last update in 11/08/2022"
       />
+    )) ||
+    (indicatorSelection === 5 && (
+      <InfoPanel
+        title={t('specific.infoPanel.WQI.title')}
+        subtitle="Last update in 11/08/2022"
+      />
     ));
 
   useEffect(() => {

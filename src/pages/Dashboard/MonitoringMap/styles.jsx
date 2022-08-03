@@ -17,8 +17,9 @@ const useStyles = createUseStyles((theme) => ({
     borderRadius: '50%',
     color: '#FFFFFF',
     height: '30px',
-    lineHeight: '25px',
-    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '30px',
   },
   popup: {

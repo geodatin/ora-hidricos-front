@@ -150,6 +150,14 @@ export default function Filters() {
           >
             {t(indicators.oil.translation)}
           </MenuItem>
+          <MenuItem
+            value={indicators.illegalMining.value}
+            onClick={() => {
+              setAuxIndicatorSelection(indicators.illegalMining.value);
+            }}
+          >
+            {t(indicators.illegalMining.translation)}
+          </MenuItem>
         </CustomSelect>
       </div>
       <span className={classes.separator} />

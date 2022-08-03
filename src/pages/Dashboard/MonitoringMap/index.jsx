@@ -45,69 +45,157 @@ function Markers({ data }) {
   );
 
   return (
-    indicatorSelection === indicators.oil.value &&
-    data?.features?.map((cord) => (
-      <Marker
-        key={cord.properties.code}
-        eventHandlers={{
-          click: () => {
-            map.setView(
-              [cord.geometry.coordinates[1], cord.geometry.coordinates[0]],
-              13
-            );
-          },
-        }}
-        position={{
-          lat: cord.geometry.coordinates[1],
-          lng: cord.geometry.coordinates[0],
-        }}
-      >
-        <Popup
-          className={classes.popup}
-          key={theme === darkScheme ? `dark` : `light`}
+    (indicatorSelection === indicators.oil.value &&
+      data?.features?.map((cord) => (
+        <Marker
+          key={cord.properties.code}
+          eventHandlers={{
+            click: () => {
+              map.setView([
+                cord.geometry.coordinates[1],
+                cord.geometry.coordinates[0],
+              ]);
+            },
+          }}
+          position={{
+            lat: cord.geometry.coordinates[1],
+            lng: cord.geometry.coordinates[0],
+          }}
         >
-          <Typography variant="caption" format="bold">
-            {cord.properties.country}
-          </Typography>
-          <div className={classes.separator} />
-          <div className={classes.popupItem}>
-            <Typography variant="caption" className={classes.popupItemTitle}>
-              Name
+          <Popup
+            className={classes.popup}
+            key={theme === darkScheme ? `dark` : `light`}
+          >
+            <Typography variant="caption" format="bold">
+              {cord.properties.country}
             </Typography>
-            <Typography variant="caption">{cord.properties.name}</Typography>
-          </div>
-          <div className={classes.popupItem}>
-            <Typography variant="caption" className={classes.popupItemTitle}>
-              Company
+            <div className={classes.separator} />
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Name
+              </Typography>
+              <Typography variant="caption">{cord.properties.name}</Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Company
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.company}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Situation
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.situation}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Source
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.source}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Institution
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.institution}
+              </Typography>
+            </div>
+          </Popup>
+        </Marker>
+      ))) ||
+    (indicatorSelection === indicators.illegalMining.value &&
+      data?.features?.map((cord) => (
+        <Marker
+          key={cord.properties.code}
+          eventHandlers={{
+            click: () => {
+              map.setView([
+                cord.geometry.coordinates[1],
+                cord.geometry.coordinates[0],
+              ]);
+            },
+          }}
+          position={{
+            lat: cord.geometry.coordinates[1],
+            lng: cord.geometry.coordinates[0],
+          }}
+        >
+          <Popup
+            className={classes.popup}
+            key={theme === darkScheme ? `dark` : `light`}
+          >
+            <Typography variant="caption" format="bold">
+              {cord.properties.name}
             </Typography>
-            <Typography variant="caption">{cord.properties.company}</Typography>
-          </div>
-          <div className={classes.popupItem}>
-            <Typography variant="caption" className={classes.popupItemTitle}>
-              Situation
-            </Typography>
-            <Typography variant="caption">
-              {cord.properties.situation}
-            </Typography>
-          </div>
-          <div className={classes.popupItem}>
-            <Typography variant="caption" className={classes.popupItemTitle}>
-              Source
-            </Typography>
-            <Typography variant="caption">{cord.properties.source}</Typography>
-          </div>
-          <div className={classes.popupItem}>
-            <Typography variant="caption" className={classes.popupItemTitle}>
-              Institution
-            </Typography>
-            <Typography variant="caption">
-              {cord.properties.institution}
-            </Typography>
-          </div>
-          <h1>{cord.properties.code}</h1>
-        </Popup>
-      </Marker>
-    ))
+            <div className={classes.separator} />
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Description
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.description}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Exploration method
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.explorationMethod}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Substance
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.substance}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Contamination
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.contamination}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Situation end
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.situationEnd}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Information source
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.informationSource}
+              </Typography>
+            </div>
+
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Institution
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.institution}
+              </Typography>
+            </div>
+          </Popup>
+        </Marker>
+      )))
   );
 }
 
@@ -115,6 +203,7 @@ export default function MonitoringMap() {
   const [coordsHuman, setCoordsHuman] = useState();
   const [coordsFish, setCoordsFish] = useState();
   const [coordsOil, setCoordsOil] = useState();
+  const [coordsMining, setCoordsMining] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -159,6 +248,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('oil/field/points').then(({ data }) => {
       setCoordsOil(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    api.get('mining/illegal/points').then(({ data }) => {
+      setCoordsMining(data);
     });
   }, []);
 
@@ -545,12 +640,17 @@ export default function MonitoringMap() {
         // eslint-disable-next-line react/jsx-no-bind
         iconCreateFunction={createClusterCustomIcon}
         polygonOptions={{
-          color: theme === darkScheme ? '#accc0c' : '#728740',
+          color: theme === darkScheme ? '#00B9F1' : '#067293',
           weight: 1,
           opacity: 0.9,
         }}
       >
-        <Markers data={coordsOil} />
+        {(indicatorSelection === indicators.oil.value && (
+          <Markers data={coordsOil} />
+        )) ||
+          (indicatorSelection === indicators.illegalMining.value && (
+            <Markers data={coordsMining} />
+          ))}
       </MarkerClusterGroup>
     </MapWrapper>
   );

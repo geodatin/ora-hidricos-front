@@ -104,7 +104,8 @@
         "waterSurface": "Superfície d'água",
         "mercuryHuman": "Mercúrio em humanos",
         "mercuryFish": "Mercúrio em peixes",
-        "oil": "Lotes petrolíferos"
+        "oil": "Lotes petrolíferos",
+        "illegalMining": "Mineração ilegal"
       }
     },
     "autocompletesearch": {

@@ -19,6 +19,11 @@ export const indicators = {
     value: 4,
     translation: 'specific.indicators.type.oil',
   },
+  illegalMining: {
+    name: 'illegalMining',
+    value: 5,
+    translation: 'specific.indicators.type.illegalMining',
+  },
 };
 
 export const filterDefaults = {

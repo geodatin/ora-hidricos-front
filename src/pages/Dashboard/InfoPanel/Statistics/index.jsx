@@ -28,6 +28,8 @@ export default function Statistics() {
         (indicatorSelection === indicators.mercuryFish.value &&
           nextLayoutConfig() === setLayoutConfig(3)) ||
         (indicatorSelection === indicators.oil.value &&
+          nextLayoutConfig() === setLayoutConfig(3)) ||
+        (indicatorSelection === indicators.illegalMining.value &&
           nextLayoutConfig() === setLayoutConfig(3))}
     </div>
   );
