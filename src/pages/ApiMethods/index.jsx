@@ -1,50 +1,57 @@
-import { useMediaQuery } from '@mui/material';
+// import { useMediaQuery } from '@mui/material';
+
+// import Breadcrumb from '../../components/Breadcrumb';
+// import HLayout from '../../components/Layout/Horizontal';
+// import MobileExpandLayout from '../../components/Layout/Mobile/Expand';
+// import VLayout from '../../components/Layout/Vertical';
+// import NavList from '../../components/NavList';
+// import { breakpoints } from '../../constants/constraints';
+// import Methods from './Methods';
+// import useStyles from './styles';
 import React from 'react';
+import SwaggerUI from 'swagger-ui-react';
 
-import Breadcrumb from '../../components/Breadcrumb';
-import HLayout from '../../components/Layout/Horizontal';
-import MobileExpandLayout from '../../components/Layout/Mobile/Expand';
-import VLayout from '../../components/Layout/Vertical';
-import NavList from '../../components/NavList';
-import { breakpoints } from '../../constants/constraints';
-import Methods from './Methods';
-import useStyles from './styles';
-
+import 'swagger-ui-react/swagger-ui.css';
 /**
  * This component renders a API methods page
  * @returns API methods page
  */
 export default function ApiMethods() {
-  const classes = useStyles();
-  const isMobile = useMediaQuery(breakpoints.max.md);
+  return (
+    <div>
+      <SwaggerUI url="https://dev-rh-ora.geodatin.com/api/docs/" />
+    </div>
+  );
+}
+// const classes = useStyles();
+// const isMobile = useMediaQuery(breakpoints.max.md);
 
-  const methods = [
+/* const methods = [
     {
-      title: 'Tabela de estações fluviométricas 1',
+      title: 'Territory',
       id: '1',
-      description: 'Método que retorna o total de estações.',
-      url: 'https://dev-redes-ora.geodatin.com/api/station/count',
+      description: 'Search for the territory with like strings.',
+      url: 'https://dev-rh-ora.geodatin.com/api/territory/name',
       type: { name: 'GET', color: '#A1BA09' },
-      requisitionExample:
-        'https://dev-redes-ora.geodatin.com/api/ostation/count',
+      requisitionExample: 'https://dev-rh-ora.geodatin.com/api/territory/name',
       response: [
         {
-          key: 'count',
-          type: 'number',
-          description: 'Contagem numérica de estações',
+          key: 'name',
+          type: 'string',
+          description: 'Search string for the territory',
         },
       ],
       bodyParams: [
         {
-          key: 'count',
-          type: 'number',
-          description: 'Contagem numérica de estações',
+          key: 'name',
+          type: 'string',
+          description: 'Search string for the territory',
         },
       ],
       urlParams: [
         {
-          key: 'count',
-          description: 'Contagem numérica de estações',
+          key: 'name',
+          description: 'Search string for the territory',
         },
       ],
     },
@@ -359,3 +366,4 @@ export default function ApiMethods() {
     />
   );
 }
+*/

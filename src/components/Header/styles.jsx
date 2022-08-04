@@ -10,6 +10,33 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.stroke.light,
     transition: transitions.bgColor,
   },
+  button: {
+    '&.MuiButtonBase-root': {
+      position: 'relative',
+      alignItems: 'center',
+      justifyContent: 'center',
+      display: 'flex',
+      textTransform: 'none',
+      color: theme.neutral.gray.main,
+      height: '100%',
+      borderRadius: 0,
+      padding: '0px 15px',
+
+      '&:hover': {
+        backgroundColor: theme.button.hover,
+
+        '&:active': {
+          backgroundColor: 'transparent',
+        },
+      },
+      '&:active': {
+        color: theme.secondary.dark,
+      },
+      '& .MuiTouchRipple-child, .MuiTouchRipple-childPulsate': {
+        backgroundColor: theme.button.clicked,
+      },
+    },
+  },
   logoContainer: {
     display: 'flex',
     alignItems: 'center',
