@@ -1,13 +1,13 @@
+/* eslint-disable no-shadow */
 import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import L from 'leaflet';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet';
-import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useContextSelector } from 'use-context-selector';
 
 // import imgMarker from '../../../assets/images/marker-24.png';
@@ -38,11 +38,30 @@ function Markers({ data }) {
   const map = useMap();
   const classes = useStyles();
   const theme = useTheme();
+  const [coordsOilCode, setCoordsOilCode] = useState();
 
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
+
+  /* {indicatorSelection === indicators.oil.value &&
+        coordsOilCode?.features?.map((cord) => (
+          <GeoJSON data={cord} color="blue" />
+        ))} */
+
+  const geoJsonRef = useRef(null);
+
+  // eslint-disable-next-line no-underscore-dangle
+  // set the data to new data whenever it changes
+  useEffect(() => {
+    if (geoJsonRef.current) {
+      geoJsonRef.current.clearLayers(); // remove old data
+      geoJsonRef.current.addData(coordsOilCode); // might need to be geojson.features
+    }
+  }, [geoJsonRef, coordsOilCode]);
+
+  console.log();
 
   return (
     (indicatorSelection === indicators.oil.value &&
@@ -51,10 +70,20 @@ function Markers({ data }) {
           key={cord.properties.code}
           eventHandlers={{
             click: () => {
-              map.setView([
-                cord.geometry.coordinates[1],
-                cord.geometry.coordinates[0],
-              ]);
+              map.setView(
+                [cord.geometry.coordinates[1], cord.geometry.coordinates[0]],
+                10
+              );
+              api
+                .get(`oil/field/points`, {
+                  params: {
+                    code: cord?.properties?.code,
+                  },
+                })
+                // eslint-disable-next-line no-shadow
+                .then(({ data }) => {
+                  setCoordsOilCode(data);
+                });
             },
           }}
           position={{
@@ -66,9 +95,17 @@ function Markers({ data }) {
             className={classes.popup}
             key={theme === darkScheme ? `dark` : `light`}
           >
+            <GeoJSON
+              ref={geoJsonRef}
+              data={coordsOilCode?.features}
+              onEachFeature={setCoordsOilCode}
+              color={theme === darkScheme ? '#accc0c' : '#728740'}
+            />
+
             <Typography variant="caption" format="bold">
               {cord.properties.country}
             </Typography>
+            <h1>{cord.properties.code}</h1>
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
@@ -257,14 +294,6 @@ export default function MonitoringMap() {
     });
   }, []);
 
-  const createClusterCustomIcon = function (cluster) {
-    return L.divIcon({
-      html: `<span>${cluster.getChildCount()}</span>`,
-      className: classes.markerClusterCustom,
-      iconSize: L.point(33, 33, true),
-    });
-  };
-
   return (
     <MapWrapper
       getMapRef={(ref) => setMapRef(ref)}
@@ -422,6 +451,7 @@ export default function MonitoringMap() {
           color: theme === darkScheme ? '#accc0c' : '#728740',
         })}
       />
+
       <TileLayer
         url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
         opacity={theme === darkScheme ? 0.3 : 0.2}
@@ -636,22 +666,13 @@ export default function MonitoringMap() {
               </Popup>
             </Marker>
           )))}
-      <MarkerClusterGroup
-        // eslint-disable-next-line react/jsx-no-bind
-        iconCreateFunction={createClusterCustomIcon}
-        polygonOptions={{
-          color: theme === darkScheme ? '#00B9F1' : '#067293',
-          weight: 1,
-          opacity: 0.9,
-        }}
-      >
-        {(indicatorSelection === indicators.oil.value && (
-          <Markers data={coordsOil} />
-        )) ||
-          (indicatorSelection === indicators.illegalMining.value && (
-            <Markers data={coordsMining} />
-          ))}
-      </MarkerClusterGroup>
+
+      {(indicatorSelection === indicators.oil.value && (
+        <Markers data={coordsOil} />
+      )) ||
+        (indicatorSelection === indicators.illegalMining.value && (
+          <Markers data={coordsMining} />
+        ))}
     </MapWrapper>
   );
 }
