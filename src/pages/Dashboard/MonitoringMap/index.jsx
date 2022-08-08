@@ -39,6 +39,7 @@ function Markers({ data }) {
   const classes = useStyles();
   const theme = useTheme();
   const [coordsOilCode, setCoordsOilCode] = useState();
+  const [coordsIllegalMiningCode, setCoordsIllegalMiningCode] = useState();
 
   const indicatorSelection = useContextSelector(
     FilteringContext,
@@ -50,18 +51,28 @@ function Markers({ data }) {
           <GeoJSON data={cord} color="blue" />
         ))} */
 
-  const geoJsonRef = useRef(null);
+  const geoJsonRef = useRef();
 
   // eslint-disable-next-line no-underscore-dangle
   // set the data to new data whenever it changes
-  useEffect(() => {
-    if (geoJsonRef.current) {
-      geoJsonRef.current.clearLayers(); // remove old data
-      geoJsonRef.current.addData(coordsOilCode); // might need to be geojson.features
-    }
-  }, [geoJsonRef, coordsOilCode]);
 
-  console.log();
+  // eslint-disable-next-line no-unused-expressions
+  (indicatorSelection === indicators.oil.value &&
+    useEffect(() => {
+      if (geoJsonRef.current) {
+        geoJsonRef.current.clearLayers(); // remove old data
+
+        geoJsonRef.current.addData(coordsOilCode); // might need to be geojson.features
+      }
+    }, [geoJsonRef, coordsOilCode])) ||
+    (indicatorSelection === indicators.illegalMining.value &&
+      useEffect(() => {
+        if (geoJsonRef.current) {
+          geoJsonRef.current.clearLayers(); // remove old data
+
+          geoJsonRef.current.addData(coordsIllegalMiningCode); // might need to be geojson.features
+        }
+      }, [geoJsonRef, coordsIllegalMiningCode]));
 
   return (
     (indicatorSelection === indicators.oil.value &&
@@ -105,7 +116,6 @@ function Markers({ data }) {
             <Typography variant="caption" format="bold">
               {cord.properties.country}
             </Typography>
-            <h1>{cord.properties.code}</h1>
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
@@ -154,10 +164,20 @@ function Markers({ data }) {
           key={cord.properties.code}
           eventHandlers={{
             click: () => {
-              map.setView([
-                cord.geometry.coordinates[1],
-                cord.geometry.coordinates[0],
-              ]);
+              map.setView(
+                [cord.geometry.coordinates[1], cord.geometry.coordinates[0]],
+                10
+              );
+              api
+                .get(`mining/illegal/points`, {
+                  params: {
+                    code: cord?.properties?.code,
+                  },
+                })
+                // eslint-disable-next-line no-shadow
+                .then(({ data }) => {
+                  setCoordsIllegalMiningCode(data);
+                });
             },
           }}
           position={{
@@ -169,6 +189,12 @@ function Markers({ data }) {
             className={classes.popup}
             key={theme === darkScheme ? `dark` : `light`}
           >
+            <GeoJSON
+              ref={geoJsonRef}
+              data={coordsIllegalMiningCode?.features}
+              onEachFeature={setCoordsIllegalMiningCode}
+              color={theme === darkScheme ? '#accc0c' : '#728740'}
+            />
             <Typography variant="caption" format="bold">
               {cord.properties.name}
             </Typography>

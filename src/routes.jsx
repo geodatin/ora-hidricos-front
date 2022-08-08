@@ -13,7 +13,6 @@ import Header from './components/Header';
 import { FilteringProvider } from './contexts/filtering';
 import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
-import ApiMethods from './pages/ApiMethods';
 import Dashboard from './pages/Dashboard';
 import DataLibrary from './pages/DataLibrary';
 
@@ -40,14 +39,12 @@ function Routes() {
         items={[
           { title: 'Dashboard', to: '/' },
           { title: 'Data library', to: '/library' },
-          { title: 'API', to: '/api' },
         ]}
       />
       <BaseRoutes>
         <Route exact path="/" element={<DefaultPage />} />
         <Route exact path="/embed" element={<DefaultPage embed />} />
 
-        <Route exact path="/api" element={<ApiMethods />} />
         <Route exact path="/library" element={<DataLibrary />} />
         <Route path="*" element={<Navigate to="/" />} />
       </BaseRoutes>

@@ -1,3 +1,4 @@
+import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -32,13 +33,13 @@ export default function Header({ items, projectName }) {
             {items.map((item) => (
               <HeaderButton key={item.to} title={item.title} to={item.to} />
             ))}
-            {/* <a
+            <a
               href="https://dev-rh-ora.geodatin.com/api/docs/"
               target="_blank"
               rel="noreferrer"
             >
               <Button className={classes.button}>API</Button>
-            </a> */}
+            </a>
           </div>
         </div>
         <div className={classes.endItems}>
