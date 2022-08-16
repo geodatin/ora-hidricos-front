@@ -1,18 +1,18 @@
 import AlignHorizontalLeftRoundedIcon from '@mui/icons-material/AlignHorizontalLeftRounded';
-import { IconButton } from '@mui/material';
+import { IconButton, Pagination } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 import { useTheme } from 'react-jss';
 
 import ChartContainer from '../../ChartContainer';
-import CustomPagination from '../../CustomPagination';
+import useStyles from './styles';
 
 /**
  * This component renders a Ranking Chart
  * @returns Ranking Chart
  */
-export default function RankingChart({
+export default function RankingWinLossChart({
   title,
   info,
   data,
@@ -23,7 +23,7 @@ export default function RankingChart({
   customOptions,
   customFormatter,
 }) {
-  RankingChart.propTypes = {
+  RankingWinLossChart.propTypes = {
     title: PropTypes.string.isRequired,
     info: PropTypes.string.isRequired,
     data: PropTypes.shape(),
@@ -35,7 +35,7 @@ export default function RankingChart({
     setParams: PropTypes.func.isRequired,
   };
 
-  RankingChart.defaultProps = {
+  RankingWinLossChart.defaultProps = {
     data: undefined,
     customOptions: {},
     customFormatter: {},
@@ -47,7 +47,7 @@ export default function RankingChart({
       totalPages: 1,
     },
   };
-
+  const classes = useStyles();
   const theme = useTheme();
 
   const options = {
@@ -140,7 +140,8 @@ export default function RankingChart({
         <div
           style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
         >
-          <CustomPagination
+          <Pagination
+            className={classes.pagination}
             size="small"
             count={params.totalPages}
             page={params.page}

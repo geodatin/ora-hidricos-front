@@ -53,6 +53,14 @@ function Markers({ data }) {
 
   const geoJsonRef = useRef();
 
+  const style = () => ({
+    weight: 1.0,
+    opacity: 0.8,
+    color: theme === darkScheme ? '#accc0c' : '#728740',
+    dashArray: '3',
+    fillOpacity: 0.5,
+  });
+
   // eslint-disable-next-line no-underscore-dangle
   // set the data to new data whenever it changes
 
@@ -61,7 +69,6 @@ function Markers({ data }) {
     useEffect(() => {
       if (geoJsonRef.current) {
         geoJsonRef.current.clearLayers(); // remove old data
-
         geoJsonRef.current.addData(coordsOilCode); // might need to be geojson.features
       }
     }, [geoJsonRef, coordsOilCode])) ||
@@ -69,7 +76,6 @@ function Markers({ data }) {
       useEffect(() => {
         if (geoJsonRef.current) {
           geoJsonRef.current.clearLayers(); // remove old data
-
           geoJsonRef.current.addData(coordsIllegalMiningCode); // might need to be geojson.features
         }
       }, [geoJsonRef, coordsIllegalMiningCode]));
@@ -110,7 +116,7 @@ function Markers({ data }) {
               ref={geoJsonRef}
               data={coordsOilCode?.features}
               onEachFeature={setCoordsOilCode}
-              color={theme === darkScheme ? '#accc0c' : '#728740'}
+              style={style}
             />
 
             <Typography variant="caption" format="bold">
@@ -193,7 +199,7 @@ function Markers({ data }) {
               ref={geoJsonRef}
               data={coordsIllegalMiningCode?.features}
               onEachFeature={setCoordsIllegalMiningCode}
-              color={theme === darkScheme ? '#accc0c' : '#728740'}
+              style={style}
             />
             <Typography variant="caption" format="bold">
               {cord.properties.name}
@@ -489,8 +495,8 @@ export default function MonitoringMap() {
             <Marker
               key={cord.properties.code}
               position={[
-                cord.geometry.coordinates[0],
                 cord.geometry.coordinates[1],
+                cord.geometry.coordinates[0],
               ]}
             >
               <Popup
@@ -598,8 +604,8 @@ export default function MonitoringMap() {
             <Marker
               key={cord.properties.code}
               position={[
-                cord.geometry.coordinates[0],
                 cord.geometry.coordinates[1],
+                cord.geometry.coordinates[0],
               ]}
             >
               <Popup
