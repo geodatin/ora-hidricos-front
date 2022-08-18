@@ -14,7 +14,6 @@ import { FilteringProvider } from './contexts/filtering';
 import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
 import Dashboard from './pages/Dashboard';
-import DataLibrary from './pages/DataLibrary';
 
 function DefaultPage({ embed }) {
   return (
@@ -36,16 +35,12 @@ function Routes() {
     <BrowserRouter>
       <Header
         projectName={t('general.projectName')}
-        items={[
-          { title: 'Dashboard', to: '/' },
-          { title: 'Data library', to: '/library' },
-        ]}
+        items={[{ title: 'Dashboard', to: '/' }]}
       />
       <BaseRoutes>
         <Route exact path="/" element={<DefaultPage />} />
         <Route exact path="/embed" element={<DefaultPage embed />} />
 
-        <Route exact path="/library" element={<DataLibrary />} />
         <Route path="*" element={<Navigate to="/" />} />
       </BaseRoutes>
     </BrowserRouter>

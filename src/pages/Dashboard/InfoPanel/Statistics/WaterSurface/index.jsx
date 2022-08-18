@@ -15,7 +15,7 @@ import api from '../../../../../services/api';
  * @returns statistics list
  */
 
-export default function waterSurface() {
+export default function WaterSurface() {
   const territorySelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.territorySelection

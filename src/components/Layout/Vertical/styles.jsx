@@ -16,7 +16,7 @@ const useStyles = createUseStyles({
     height: '100%',
   },
   downRow: {
-    height: layout.downRow.sizes.height,
+    height: 200,
   },
 });
 

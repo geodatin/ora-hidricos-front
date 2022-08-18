@@ -106,7 +106,12 @@ export default function Filters() {
   }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
       <TitleButton
         title={t('specific.filters.title')}
         buttonTitle={t('specific.filters.clearButton')}

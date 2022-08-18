@@ -158,7 +158,10 @@ function Dashboard() {
       }}
       leftColumn={{
         isHidden: layoutConfigs.isLeftHidden[layoutConfig],
-        className: classes.filtersNotificationsWrapper,
+        className:
+          layoutConfig === 1 || layoutConfig === 2
+            ? classes.filtersNotificationsWrapperZ
+            : classes.filtersNotificationsWrapper,
         children: (
           <VLayout
             upRow={{

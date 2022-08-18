@@ -9,6 +9,7 @@ import DarkNorthIcon from '../../assets/images/dark-north.svg';
 import GeodatinLogo from '../../assets/images/geodatin-map.svg';
 import LightNorthIcon from '../../assets/images/light-north.svg';
 import { darkScheme } from '../../constants/schemes';
+import { useLayoutConfig } from '../../hooks/useLayoutConfig';
 import useStyles from './styles';
 import ZoomButton from './ZoomButton';
 
@@ -37,10 +38,12 @@ export default function MapWrapper({
   useEffect(() => {
     if (getMapRef) getMapRef(map);
   }, [map]);
+  const { layoutConfig } = useLayoutConfig();
 
   /**
    * Disable click propagation
    */
+
   useEffect(() => {
     if (itemsRef?.current) {
       const disableClickPropagation = L?.DomEvent?.disableClickPropagation;
@@ -84,7 +87,15 @@ export default function MapWrapper({
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         className={classes.tileLayer}
       />
-      <div ref={itemsRef} className={classes.itemContainer}>
+
+      <div
+        ref={itemsRef}
+        className={
+          layoutConfig === 1 || layoutConfig === 2
+            ? classes.itemContainerZ
+            : classes.itemContainer
+        }
+      >
         {itemTopChildren}
         {itemAbout}
         {itemChildren}
@@ -95,7 +106,11 @@ export default function MapWrapper({
       <img
         alt="north"
         src={theme === darkScheme ? DarkNorthIcon : LightNorthIcon}
-        className={classes.northIcon}
+        className={
+          layoutConfig === 2 || layoutConfig === 3
+            ? classes.northIconZ
+            : classes.northIcon
+        }
       />
       <a
         href="https://geodatin.com"
