@@ -97,8 +97,15 @@
       "font": " Fonte de dados: GlobalSurfaceWater",
       "WaterSurface": {
         "title": "Superfície d’água"
-      }
-    },
+      },
+
+      "mercuryFish": {
+        "title": "Mercúrio em peixes"
+      },
+      "mercuryHuman": {
+        "title": "Mercúrio em humanos"
+      } 
+    }, 
     "indicators": {
       "type": {
         "waterSurface": "Superfície d'água",

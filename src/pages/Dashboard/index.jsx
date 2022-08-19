@@ -53,13 +53,13 @@ function Dashboard() {
     )) ||
     (indicatorSelection === 2 && (
       <InfoPanel
-        title={t('specific.infoPanel.WQI.title')}
+        title={t('specific.infoPanel.mercuryHuman.title')}
         subtitle="Last update in 11/08/2022"
       />
     )) ||
     (indicatorSelection === 3 && (
       <InfoPanel
-        title={t('specific.infoPanel.WQI.title')}
+        title={t('specific.infoPanel.mercuryFish.title')}
         subtitle="Last update in 11/08/2022"
       />
     )) ||
