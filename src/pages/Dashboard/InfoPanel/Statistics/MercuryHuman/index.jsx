@@ -122,7 +122,6 @@ export default function MercuryHuman({
             labels: data.map(({ country }) => country),
             datasets: [
               {
-                label: 'estações',
                 data: data.map(({ count }) => count),
                 icons: data.map(({ countryCode }) => (
                   <ReactCountryFlag
@@ -151,7 +150,7 @@ export default function MercuryHuman({
               Número total de publicações
             </Typography>
             <CustomTooltip
-              title="Número total de publicações"
+              title="Este gráfico apresenta o número total de publicações"
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -188,7 +187,7 @@ export default function MercuryHuman({
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix="Estações"
+            sufix={totalData?.count > 1 ? 'Publicações' : 'Publicação'}
             color={theme.primary.main}
             scale={1.2}
           />
@@ -196,14 +195,14 @@ export default function MercuryHuman({
       </div>
 
       <ItemsChart
-        title="Estações por países"
-        info="Este gráfico apresenta estações por países"
+        title="Publicações por países"
+        info="Este gráfico apresenta as publicações por países"
         data={itemsData}
       />
 
       <LineChart
         title="Publicações de contaminação por mercúrio"
-        info="Este gráfico apresenta publicações de contaminação por mercúrio"
+        info="Este gráfico apresenta as publicações de contaminação por mercúrio"
         data={timeSeries}
         options={{
           plugins: {

@@ -47,7 +47,15 @@ export default function ItemsChart({
         </Typography>
       </div>
       <div>
-        <Typography format="bold"> {value}</Typography>
+        <Typography format="bold">
+          {' '}
+          {value}{' '}
+          {value !== 1 ? (
+            <Typography>Publicações</Typography>
+          ) : (
+            <Typography>Publicação</Typography>
+          )}
+        </Typography>
         <Typography> {dataType}</Typography>
       </div>
     </div>
