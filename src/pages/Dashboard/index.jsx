@@ -52,28 +52,16 @@ function Dashboard() {
       />
     )) ||
     (indicatorSelection === 2 && (
-      <InfoPanel
-        title={t('specific.infoPanel.mercuryHuman.title')}
-        subtitle="Last update in 11/08/2022"
-      />
+      <InfoPanel title={t('specific.infoPanel.mercuryHuman.title')} />
     )) ||
     (indicatorSelection === 3 && (
-      <InfoPanel
-        title={t('specific.infoPanel.mercuryFish.title')}
-        subtitle="Last update in 11/08/2022"
-      />
+      <InfoPanel title={t('specific.infoPanel.mercuryFish.title')} />
     )) ||
     (indicatorSelection === 4 && (
-      <InfoPanel
-        title={t('specific.infoPanel.WQI.title')}
-        subtitle="Last update in 11/08/2022"
-      />
+      <InfoPanel title={t('specific.infoPanel.WQI.title')} />
     )) ||
     (indicatorSelection === 5 && (
-      <InfoPanel
-        title={t('specific.infoPanel.WQI.title')}
-        subtitle="Last update in 11/08/2022"
-      />
+      <InfoPanel title={t('specific.infoPanel.WQI.title')} />
     ));
 
   useEffect(() => {

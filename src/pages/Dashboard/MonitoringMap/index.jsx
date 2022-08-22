@@ -279,6 +279,12 @@ export default function MonitoringMap() {
   const { viewAllStations, handleOnViewAllStations } = useAllStations();
   const { setMapRef } = MapHook();
 
+  const territorySelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.territorySelection
+  );
+  const code = territorySelection?.code;
+
   const { nextLayoutConfig } = useLayoutConfig();
   const { openDisclaimer } = useDisclaimer();
   const { isMobile } = useMobile();
@@ -303,16 +309,28 @@ export default function MonitoringMap() {
   L.Marker.prototype.options.icon = blueIcon;
 
   useEffect(() => {
-    api.get('mercury/human/points').then(({ data }) => {
-      setCoordsHuman(data);
-    });
-  }, []);
+    api
+      .get('mercury/human/points', {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        setCoordsHuman(data);
+      });
+  }, [code]);
 
   useEffect(() => {
-    api.get('mercury/fish/points').then(({ data }) => {
-      setCoordsFish(data);
-    });
-  }, []);
+    api
+      .get('mercury/fish/points', {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        setCoordsFish(data);
+      });
+  }, [code]);
 
   useEffect(() => {
     api.get('oil/field/points').then(({ data }) => {
