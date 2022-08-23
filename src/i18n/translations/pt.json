@@ -104,7 +104,13 @@
       },
       "mercuryHuman": {
         "title": "Mercúrio em humanos"
-      } 
+      },
+      "oil": {
+        "title": "Lotes petrolíferos"
+      },
+      "illegalMining": {
+        "title": "Lotes petrolíferos"
+      }
     }, 
     "indicators": {
       "type": {

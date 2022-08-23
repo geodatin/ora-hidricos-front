@@ -97,7 +97,7 @@ export default function IllegalMining({
             labels,
             datasets: [
               {
-                label: 'Número de occorrencias',
+                label: 'Número de ocorrências',
                 data: data.y,
                 pointRadius: 3,
                 pointStyle: 'rectRot',
@@ -189,10 +189,10 @@ export default function IllegalMining({
         <div className={classes.header}>
           <div className={classes.headerTitle}>
             <Typography variant="body" format="bold">
-              Número total de occorrencias
+              Número total de ocorrências
             </Typography>
             <CustomTooltip
-              title="Este gráfico apresenta o número total de occorrencias"
+              title="Este gráfico apresenta o número total de ocorrências"
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -229,7 +229,7 @@ export default function IllegalMining({
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix={totalData?.count > 1 ? 'Occorrencias' : 'Occorrencia'}
+            sufix={totalData?.count > 1 ? 'Ocorrências' : 'Ocorrência'}
             color={theme.primary.main}
             scale={1.2}
           />
@@ -237,8 +237,8 @@ export default function IllegalMining({
       </div>
 
       <LineChart
-        title="Occorrencias de mineração ilegal"
-        info="Este gráfico apresenta as occorrencias de mineração ilegal"
+        title="Ocorrências de mineração ilegal"
+        info="Este gráfico apresenta as ocorrências de mineração ilegal"
         data={timeSeries}
         options={{
           plugins: {
@@ -248,7 +248,7 @@ export default function IllegalMining({
       />
 
       <RankingChart
-        title="Ranking das das substâncias"
+        title="Ranking das substâncias"
         info="Este gráfico apresenta o ranking das substâncias"
         data={rankingData}
         customFormatter={{
