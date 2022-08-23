@@ -61,7 +61,7 @@ function Dashboard() {
       <InfoPanel title={t('specific.infoPanel.WQI.title')} />
     )) ||
     (indicatorSelection === 5 && (
-      <InfoPanel title={t('specific.infoPanel.WQI.title')} />
+      <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
     ));
 
   useEffect(() => {

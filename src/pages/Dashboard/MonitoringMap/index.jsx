@@ -339,10 +339,16 @@ export default function MonitoringMap() {
   }, []);
 
   useEffect(() => {
-    api.get('mining/illegal/points').then(({ data }) => {
-      setCoordsMining(data);
-    });
-  }, []);
+    api
+      .get('mining/illegal/points', {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        setCoordsMining(data);
+      });
+  }, [code]);
 
   return (
     <MapWrapper
