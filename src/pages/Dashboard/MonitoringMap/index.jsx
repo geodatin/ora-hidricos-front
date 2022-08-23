@@ -333,9 +333,15 @@ export default function MonitoringMap() {
   }, [code]);
 
   useEffect(() => {
-    api.get('oil/field/points').then(({ data }) => {
-      setCoordsOil(data);
-    });
+    api
+      .get('oil/field/points', {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        setCoordsOil(data);
+      });
   }, [code]);
 
   useEffect(() => {
