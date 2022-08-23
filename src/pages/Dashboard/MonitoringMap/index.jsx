@@ -336,7 +336,7 @@ export default function MonitoringMap() {
     api.get('oil/field/points').then(({ data }) => {
       setCoordsOil(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api
@@ -508,11 +508,21 @@ export default function MonitoringMap() {
         })}
       />
 
-      <TileLayer
-        url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
-        opacity={theme === darkScheme ? 0.3 : 0.2}
-        zIndex={2}
-      />
+      {indicatorSelection === indicators.waterSurface.value && (
+        <TileLayer
+          url="https://storage.googleapis.com/ora-otca/water/2020/{z}/{x}/{y}.png"
+          zIndex={2}
+        />
+      )}
+
+      {indicatorSelection !== indicators.waterSurface.value && (
+        <TileLayer
+          url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
+          opacity={theme === darkScheme ? 0.3 : 0.2}
+          zIndex={2}
+        />
+      )}
+
       {(indicatorSelection === indicators.waterSurface.value && '') ||
         (indicatorSelection === indicators.mercuryHuman.value &&
           coordsHuman?.features?.map((cord) => (
