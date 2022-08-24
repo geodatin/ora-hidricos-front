@@ -11,10 +11,12 @@ import { useContextSelector } from 'use-context-selector';
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
 import RankingChart from '../../../../../components/Charts/Ranking';
+import Treemap from '../../../../../components/Charts/Treemap';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
 import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
+import { getTextWidth } from '../../../../../utils/helpers';
 import useStyles from './styles';
 
 /* This function provides a statistics list of WQI
@@ -53,6 +55,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
     totalPages: 1,
   });
 
+  const [treemapData, setTreemapData] = useState();
   const handle = useFullScreenHandle();
   const [rankingData, setRankingData] = useState();
   const [totalData, setTotalData] = useState();
@@ -144,6 +147,66 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
     };
   }, [code]);
 
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`/oil/field/situation`, {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed && data) {
+          setTreemapData({
+            datasets: [
+              {
+                tree: data,
+                key: 'amount',
+                groups: ['situation'],
+                borderColor: theme.background.main,
+                borderWidth: 2,
+                spacing: 0,
+                labels: {
+                  display: true,
+                  color: theme.background.main,
+                  font: {
+                    size: 16,
+                  },
+                  hoverFont: {
+                    weight: 'bold',
+                  },
+                  formatter: (ctx) => {
+                    const translation = t(
+                      `specific.oil.treemapChart.situation.${ctx?.raw.g}`
+                    );
+                    let label = '';
+                    Array.from(translation).forEach((c) => {
+                      if (getTextWidth(`${label}...`, 16) < ctx.raw.w - 40) {
+                        label += c;
+                      }
+                    });
+                    return label === translation
+                      ? `${translation} (${ctx.raw.v})`
+                      : `${label}...`;
+                  },
+                },
+                captions: {
+                  display: false,
+                },
+                backgroundColor: theme.primary.main,
+              },
+            ],
+          });
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [t, theme, code]);
+
+  console.log(treemapData);
+
   return (
     <ul>
       <div className={classes.wrapper}>
@@ -198,8 +261,8 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
       </div>
 
       <RankingChart
-        title="Ranking das empresas de campos de petróleo"
-        info="Este gráfico apresenta o ranking das empresas de campos de petróleo"
+        title={t('specific.oil.rankingChart.title')}
+        info={t('specific.oil.rankingChart.info')}
         data={rankingData}
         customFormatter={{
           formatter(value) {
@@ -208,6 +271,36 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
         }}
         params={rankingParams}
         setParams={setRankingParams}
+      />
+
+      <Treemap
+        title={t('specific.oil.treemapChart.title')}
+        info={t('specific.oil.treemapChart.info')}
+        data={treemapData}
+        fullScreenEnabled
+        options={{
+          plugins: {
+            tooltip: {
+              displayColors: false,
+              callbacks: {
+                label(ctx) {
+                  return `${t(
+                    `specific.oil.treemapChart.situation.${ctx.raw.g}`
+                  )}: ${ctx.raw.v} ${
+                    ctx.raw.v !== 1
+                      ? t(
+                          `specific.oil.treemapChart.station.plural`
+                        ).toLowerCase()
+                      : t(
+                          `specific.oil.treemapChart.station.singular`
+                        ).toLowerCase()
+                  }`;
+                },
+                title() {},
+              },
+            },
+          },
+        }}
       />
     </ul>
   );
