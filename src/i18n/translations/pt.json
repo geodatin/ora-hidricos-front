@@ -58,6 +58,47 @@
       "territoryLine": "Limites da Bacia Amazônica",
       "riverLine": "Linhas de drenagem"
     },
+    "oil": {
+      "treemapChart": {
+        "title": "Situação do campo de petróleo",
+        "info": "Este gráfico apresenta a situação do campo de petróleo",
+        "station": {
+          "singular": "Situação",
+          "plural": "Situações"
+        },
+        "situation": {
+            "en explotaciÃ³n": "Em operação",
+            "Ãrea Reservada a favor de YPFB": "Área Reservada a favor da YPFB",
+            "AREA EN EXPLORACION": "Área de exploração",
+            "Ãreas de promociÃ³n semiexplorada": "Áreas de promoção semi-exploradas",
+            "en exploraciÃ³n": "Em exploração",
+            "AREA DISPONIBLE": "Área disponível",
+            "AREA EN PRODUCCION": "Área de produção",
+            "ExploraÃ§Ã£o": "Exploração",
+            "Solicitud": "Solicitar",
+            "Ãreas de promociÃ³n frontera": "Áreas de promoção de fronteira",
+            "ExplotaciÃ³n": "Exploração",
+            "ProduÃ§Ã£o": "Produção",
+            "AREA RESERVADA": "Área reservada",
+            "ExploraciÃ³n": "Exploração",
+            "Convenio de evaluaciÃ³n tÃ©cnica contrato": "Contrato de acordo de avaliação técnica",
+            "Ãrea con CSP en NegociaciÃ³n": "Área com CSP em Negociação",
+            "NegociaciÃ³n": "Negociação",
+            "Desenvolvimento": "Desenvolvimento",
+            "TEA": "TEA",
+            "Em DevoluÃ§Ã£o": "Em Devolução",
+            "Proceso simplificado": "Processo simplificado",
+            "Ãrea Libre": "Área Livre",
+            "Ãrea con CSP en etapa de ProtocolizaciÃ³n": "Área com CSP em fase de Protocolização",
+            "Convenio de evaluaciÃ³n tÃ©cnica": "Contrato de avaliação técnica"
+          
+          }
+        },
+      "rankingChart": {
+        "title": "Ranking das empresas",
+        "info": "Este gráfico apresenta o ranking das empresas de campos de petróleo"
+      }
+    },
     "WaterSurface": {
       "dataDough": {
         "title": "Dados Gerais"
