@@ -128,9 +128,10 @@ export default function IllegalMining({
       })
       .then(({ data }) => {
         if (isSubscribed) {
-          const labels = data.x;
           setRankingData({
-            labels,
+            labels: data.x.map(
+              (label, index) => `${data.position[index]}°  ${label}`
+            ),
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
@@ -159,9 +160,10 @@ export default function IllegalMining({
       })
       .then(({ data }) => {
         if (isSubscribed) {
-          const labels = data.x;
           setRankingData({
-            labels,
+            labels: data.x.map(
+              (label, index) => `${data.position[index]}°  ${label}`
+            ),
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),

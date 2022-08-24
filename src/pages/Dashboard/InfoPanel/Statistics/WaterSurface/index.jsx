@@ -100,12 +100,12 @@ export default function WaterSurface() {
         .get(`/waterSurface/ranking/country/area?&page=${pageArea}`)
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWaterSurface({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
-                  label: labels.map((label) => label),
                   data: data.series[0].data.map((number) => number),
                   backgroundColor: [theme.primary.main],
                   borderRadius: 5,
@@ -120,9 +120,10 @@ export default function WaterSurface() {
         .get(`/waterSurface/ranking/${city}/area?code=${code}&page=${pageArea}`)
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWaterSurface({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
                   data: data.series[0].data.map((number) => number),
@@ -145,12 +146,12 @@ export default function WaterSurface() {
         .get(`/waterSurface/ranking/country/area?&page=${pageArea}`)
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWaterSurface({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
-                  label: labels.map((label) => label),
                   data: data.series[0].data.map((number) => number),
                   backgroundColor: [theme.primary.main],
                   borderRadius: 5,
@@ -169,9 +170,10 @@ export default function WaterSurface() {
         .get(`/waterSurface/ranking/${city}/area?code=${code}&page=${pageArea}`)
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWaterSurface({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
                   data: data.series[0].data.map((number) => number),
@@ -199,9 +201,10 @@ export default function WaterSurface() {
         .get(`/waterSurface/ranking/country/winLoss?&page=${pageWinLoss}`)
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWinLoss({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
                   label: name,
@@ -221,9 +224,10 @@ export default function WaterSurface() {
         )
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWinLoss({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
                   data: data.series[0].data.map((number) => number),
@@ -248,9 +252,10 @@ export default function WaterSurface() {
         .get(`/waterSurface/ranking/country/winLoss?&page=${pageWinLoss}`)
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWinLoss({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
                   label: name,
@@ -275,9 +280,10 @@ export default function WaterSurface() {
         )
         .then(({ data }) => {
           if (isSubscribed) {
-            const labels = data.x;
             setRankingWinLoss({
-              labels,
+              labels: data.x.map(
+                (label, index) => `${data.position[index]}°  ${label}`
+              ),
               datasets: [
                 {
                   data: data.series[0].data.map((number) => number),

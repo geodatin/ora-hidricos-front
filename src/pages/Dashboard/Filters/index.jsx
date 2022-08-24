@@ -46,6 +46,11 @@ export default function Filters() {
   );
   const [inputValue, setInputValue] = useState('');
 
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
+
   /**
    * Set the selection to context.
    */
@@ -84,12 +89,21 @@ export default function Filters() {
       setNoOptionsTextSelector(true);
       setAutocompleteLoading(true);
 
-      api.get(`/territory/${newInput}`).then(({ data }) => {
-        if (subscribed) {
-          setAutocompleteOptions(data);
-          setAutocompleteLoading(false);
-        }
-      });
+      api
+        .get(`/territory/${newInput}`, {
+          params: {
+            type:
+              indicatorSelection === indicators.waterSurface.value
+                ? 'waterSurface'
+                : '',
+          },
+        })
+        .then(({ data }) => {
+          if (subscribed) {
+            setAutocompleteOptions(data);
+            setAutocompleteLoading(false);
+          }
+        });
     } else {
       setNoOptionsTextSelector(false);
       setAutocompleteOptions([]);
@@ -121,6 +135,7 @@ export default function Filters() {
         }
         onClick={() => clearSelection()}
       />
+
       <div>
         <CustomSelect value={auxIndicatorSelection}>
           <MenuItem
