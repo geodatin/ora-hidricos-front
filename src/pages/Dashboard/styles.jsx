@@ -3,7 +3,6 @@ import { createUseStyles } from 'react-jss';
 const useStyles = createUseStyles((theme) => ({
   filtersNotificationsWrapper: {
     minWidth: 280,
-    zIndex: 998,
   },
   filtersNotificationsWrapperZ: {
     minWidth: 280,
@@ -15,6 +14,7 @@ const useStyles = createUseStyles((theme) => ({
     height: 400,
     padding: 15,
     backgroundColor: theme.background.main,
+    zIndex: 998,
   },
   filtersMobileWrapper: {
     position: 'absolute',
@@ -26,6 +26,7 @@ const useStyles = createUseStyles((theme) => ({
   },
   notificationsWrapper: {
     padding: 15,
+    zIndex: 0,
   },
   notificationsMobileWrapper: { padding: 15 },
   breadBarWrapper: {
