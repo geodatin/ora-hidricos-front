@@ -1,9 +1,7 @@
-import AlignHorizontalLeftRoundedIcon from '@mui/icons-material/AlignHorizontalLeftRounded';
-import { IconButton, Pagination } from '@mui/material';
+import { Pagination } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
-import { useTheme } from 'react-jss';
 
 import ChartContainer from '../../ChartContainer';
 import useStyles from './styles';
@@ -48,7 +46,6 @@ export default function RankingWinLossChart({
     },
   };
   const classes = useStyles();
-  const theme = useTheme();
 
   const options = {
     interaction: {
@@ -114,10 +111,6 @@ export default function RankingWinLossChart({
     ...customOptions,
   };
 
-  const handleChangeOrder = () => {
-    setParams((prevParams) => ({ ...prevParams, order: !prevParams.order }));
-  };
-
   return (
     <ChartContainer
       title={title}
@@ -125,17 +118,6 @@ export default function RankingWinLossChart({
       isLoaded={!!data}
       csvCallback={csvCallback}
       fullScreenEnabled={fullScreenEnabled}
-      extraButton={
-        <IconButton id="order-button" onClick={handleChangeOrder}>
-          <AlignHorizontalLeftRoundedIcon
-            style={{
-              fontSize: 20,
-              color: theme.secondary.dark,
-              transform: params.order ? 'scaleY(1)' : 'scaleY(-1)',
-            }}
-          />
-        </IconButton>
-      }
       pagination={
         <div
           style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
