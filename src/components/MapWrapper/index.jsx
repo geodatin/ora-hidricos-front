@@ -27,7 +27,7 @@ export default function MapWrapper({
   getMapRef,
   ...rest
 }) {
-  const position = [-7.3800011, -64.3420118];
+  const position = [-8.3800011, -59.3420118];
   const classes = useStyles();
   const itemsRef = useRef();
   const theme = useTheme();

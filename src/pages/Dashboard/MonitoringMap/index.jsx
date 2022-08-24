@@ -46,11 +46,6 @@ function Markers({ data }) {
     (filtering) => filtering.values.indicatorSelection
   );
 
-  /* {indicatorSelection === indicators.oil.value &&
-        coordsOilCode?.features?.map((cord) => (
-          <GeoJSON data={cord} color="blue" />
-        ))} */
-
   const geoJsonRef = useRef();
 
   const style = () => ({
@@ -361,10 +356,6 @@ export default function MonitoringMap() {
       getMapRef={(ref) => setMapRef(ref)}
       minZoom={5}
       maxZoom={15}
-      maxBounds={[
-        [-28.483177, -100.582582],
-        [14.211898, -30.591429],
-      ]}
       itemTopChildren={
         !isMobile ? (
           <MapItem onClick={() => nextLayoutConfig()}>
