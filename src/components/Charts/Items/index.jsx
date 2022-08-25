@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import ChartContainer from '../../ChartContainer';
 import Typography from '../../Typography';
@@ -31,6 +32,7 @@ export default function ItemsChart({
   };
 
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const itemComponent = (icon, label, value, dataType) => (
     <div key={label} className={classes.item}>
@@ -51,9 +53,13 @@ export default function ItemsChart({
           {' '}
           {value}{' '}
           {value !== 1 ? (
-            <Typography>Publicações</Typography>
+            <Typography>
+              {t('specific.mercuryFish.itemChart.plural')}
+            </Typography>
           ) : (
-            <Typography>Publicação</Typography>
+            <Typography>
+              {t('specific.mercuryFish.itemChart.plural')}
+            </Typography>
           )}
         </Typography>
         <Typography> {dataType}</Typography>

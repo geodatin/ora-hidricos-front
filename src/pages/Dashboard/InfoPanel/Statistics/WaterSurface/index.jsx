@@ -53,7 +53,7 @@ export default function WaterSurface() {
             labels: labels.map((label) => label),
             datasets: [
               {
-                label: 'Dados gerais',
+                label: t('specific.WaterSurface.lineWaterSurface.label'),
                 pointRadius: 3,
                 pointStyle: 'rectRot',
                 data: data.y,
@@ -88,7 +88,7 @@ export default function WaterSurface() {
       }
     };
     getTimeSeries();
-  }, [city, code]);
+  }, [city, code, t]);
 
   const pageArea = rankingParamsWaterSurface.page;
 
@@ -136,7 +136,7 @@ export default function WaterSurface() {
           }
         });
     }
-  }, [pageArea]);
+  }, [pageArea, t]);
 
   useEffect(() => {
     const isSubscribed = true;
@@ -190,7 +190,7 @@ export default function WaterSurface() {
           }
         });
     }
-  }, [city, code]);
+  }, [city, code, t]);
 
   const pageWinLoss = rankingParamsWinLoss.page;
 
@@ -243,7 +243,7 @@ export default function WaterSurface() {
     return () => {
       isSubscribed = false;
     };
-  }, [pageWinLoss]);
+  }, [pageWinLoss, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -304,7 +304,7 @@ export default function WaterSurface() {
     return () => {
       isSubscribed = false;
     };
-  }, [city, code]);
+  }, [city, code, t]);
 
   console.log(city, code);
   return (

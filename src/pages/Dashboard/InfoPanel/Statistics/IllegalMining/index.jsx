@@ -18,7 +18,7 @@ import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
 import useStyles from './styles';
 
-/* This function provides a statistics list of WQI
+/* This function provides a statistics list of illegal mining
  * @returns statistics list
  */
 export default function IllegalMining({
@@ -80,7 +80,7 @@ export default function IllegalMining({
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -97,7 +97,7 @@ export default function IllegalMining({
             labels,
             datasets: [
               {
-                label: 'Número de ocorrências',
+                label: t('specific.illegalMining.lineChart.label'),
                 data: data.y,
                 pointRadius: 3,
                 pointStyle: 'rectRot',
@@ -113,7 +113,7 @@ export default function IllegalMining({
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   const pageAtual = rankingParams.page;
 
@@ -147,7 +147,7 @@ export default function IllegalMining({
     return () => {
       isSubscribed = false;
     };
-  }, [pageAtual]);
+  }, [pageAtual, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -183,7 +183,7 @@ export default function IllegalMining({
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   return (
     <ul>
@@ -191,10 +191,10 @@ export default function IllegalMining({
         <div className={classes.header}>
           <div className={classes.headerTitle}>
             <Typography variant="body" format="bold">
-              Número total de ocorrências
+              {t('specific.illegalMining.pieChart.title')}
             </Typography>
             <CustomTooltip
-              title="Este gráfico apresenta o número total de ocorrências"
+              title={t('specific.illegalMining.pieChart.info')}
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -231,7 +231,11 @@ export default function IllegalMining({
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix={totalData?.count > 1 ? 'Ocorrências' : 'Ocorrência'}
+            sufix={
+              totalData?.count > 1
+                ? t('specific.illegalMining.pieChart.plural')
+                : t('specific.illegalMining.pieChart.singular')
+            }
             color={theme.primary.main}
             scale={1.2}
           />
@@ -239,8 +243,8 @@ export default function IllegalMining({
       </div>
 
       <LineChart
-        title="Ocorrências de mineração ilegal"
-        info="Este gráfico apresenta as ocorrências de mineração ilegal"
+        title={t('specific.illegalMining.lineChart.title')}
+        info={t('specific.illegalMining.lineChart.info')}
         data={timeSeries}
         options={{
           plugins: {

@@ -19,7 +19,7 @@ import api from '../../../../../services/api';
 import { getTextWidth } from '../../../../../utils/helpers';
 import useStyles from './styles';
 
-/* This function provides a statistics list of WQI
+/* This function provides a statistics list of oil
  * @returns statistics list
  */
 export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
@@ -77,7 +77,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   const pageAtual = rankingParams.page;
 
@@ -111,7 +111,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
     return () => {
       isSubscribed = false;
     };
-  }, [pageAtual]);
+  }, [pageAtual, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -147,7 +147,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -207,18 +207,16 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
     };
   }, [t, theme, code]);
 
-  console.log(treemapData);
-
   return (
     <ul>
       <div className={classes.wrapper}>
         <div className={classes.header}>
           <div className={classes.headerTitle}>
             <Typography variant="body" format="bold">
-              Número total de lotes
+              {t('specific.oil.pieChart.title')}
             </Typography>
             <CustomTooltip
-              title="Este gráfico apresenta o número total de lotes"
+              title={t('specific.oil.pieChart.title')}
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -255,7 +253,11 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix={totalData?.count > 1 ? 'Lotes' : 'Lote'}
+            sufix={
+              totalData?.count > 1
+                ? t('specific.oil.pieChart.plural')
+                : t('specific.oil.pieChart.singular')
+            }
             color={theme.primary.main}
             scale={1.2}
           />

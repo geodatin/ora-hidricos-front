@@ -48,6 +48,15 @@ export default function DataDoughComponent({
 
   const city = territorySelection?.type;
   const code = territorySelection?.code;
+  const classes = useStyles();
+  const theme = useTheme();
+
+  const childrenref = useRef(null);
+  const refContainer = useRef();
+
+  const handle = useFullScreenHandle();
+
+  const { t } = useTranslation();
 
   useEffect(() => {
     const getStatistics = async () => {
@@ -64,17 +73,7 @@ export default function DataDoughComponent({
       }
     };
     getStatistics();
-  }, [city, code]);
-
-  const classes = useStyles();
-  const theme = useTheme();
-
-  const childrenref = useRef(null);
-  const refContainer = useRef();
-
-  const handle = useFullScreenHandle();
-
-  const { t } = useTranslation();
+  }, [city, code, t]);
 
   return (
     <li ref={refContainer} className={classes.wrapper}>
@@ -84,7 +83,7 @@ export default function DataDoughComponent({
             {t('specific.WaterSurface.dataDough.title')}
           </Typography>
           <CustomTooltip
-            title={t('specific.WaterSurface.dataDough.title')}
+            title={t('specific.WaterSurface.dataDough.info')}
             placement="bottom"
           >
             <div className={classes.tooltipInner}>
@@ -122,7 +121,7 @@ export default function DataDoughComponent({
         <DataDough
           value={statistics.currentArea}
           sufix="ha"
-          label="Superfície d’água em 2021"
+          label={t('specific.WaterSurface.dataDough.label1')}
           color={theme.orange.main}
           scale={0.7}
         />
@@ -130,14 +129,14 @@ export default function DataDoughComponent({
           style={{ padding: 20 }}
           value={statistics.winLossArea}
           sufix="ha"
-          label="Perda/ganho de superfície d’água"
+          label={t('specific.WaterSurface.dataDough.label2')}
           color={theme.primary.main}
           scale={0.7}
         />
         <DataDough
           value={statistics.winLossPercent}
           sufix="%"
-          label="Percentual de perda/ganho"
+          label={t('specific.WaterSurface.dataDough.label3')}
           color={theme.green.main}
           scale={0.7}
         />

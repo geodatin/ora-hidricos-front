@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactCountryFlag from 'react-country-flag';
 import { useFullScreenHandle } from 'react-full-screen';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { useContextSelector } from 'use-context-selector';
 
@@ -19,7 +20,7 @@ import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
 import useStyles from './styles';
 
-/* This function provides a statistics list of WQI
+/* This function provides a statistics list of mercury fish
  * @returns statistics list
  */
 export default function MercuryFish({
@@ -47,6 +48,7 @@ export default function MercuryFish({
 
   const theme = useTheme();
   const classes = useStyles();
+  const { t } = useTranslation();
 
   const childrenref = useRef(null);
   const refContainer = useRef();
@@ -73,7 +75,7 @@ export default function MercuryFish({
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -90,7 +92,7 @@ export default function MercuryFish({
             labels,
             datasets: [
               {
-                label: 'Publicações de contaminação',
+                label: t('specific.mercuryFish.lineChart.label'),
                 data: data.y,
                 pointRadius: 3,
                 pointStyle: 'rectRot',
@@ -106,7 +108,7 @@ export default function MercuryFish({
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   useEffect(() => {
     let isSubscribed = true;
@@ -139,7 +141,7 @@ export default function MercuryFish({
     return () => {
       isSubscribed = false;
     };
-  }, [code]);
+  }, [code, t]);
 
   return (
     <ul>
@@ -147,10 +149,10 @@ export default function MercuryFish({
         <div className={classes.header}>
           <div className={classes.headerTitle}>
             <Typography variant="body" format="bold">
-              Número total de publicações
+              {t('specific.mercuryFish.pieChart.title')}
             </Typography>
             <CustomTooltip
-              title="Este gráfico apresenta o número total de publicações"
+              title={t('specific.mercuryFish.pieChart.title')}
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -187,7 +189,11 @@ export default function MercuryFish({
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix={totalData?.count > 1 ? 'Publicações' : 'Publicação'}
+            sufix={
+              totalData?.count > 1
+                ? t('specific.mercuryFish.pieChart.plural')
+                : t('specific.mercuryFish.pieChart.singular')
+            }
             color={theme.primary.main}
             scale={1.2}
           />
@@ -195,14 +201,14 @@ export default function MercuryFish({
       </div>
 
       <ItemsChart
-        title="Publicações por países"
-        info="Este gráfico apresenta as publicações por países"
+        title={t('specific.mercuryFish.itemChart.title')}
+        info={t('specific.mercuryFish.itemChart.info')}
         data={itemsData}
       />
 
       <LineChart
-        title="Publicações de contaminação por mercúrio"
-        info="Este gráfico apresenta as publicações de contaminação por mercúrio"
+        title={t('specific.mercuryFish.lineChart.title')}
+        info={t('specific.mercuryFish.lineChart.info')}
         data={timeSeries}
         options={{
           plugins: {

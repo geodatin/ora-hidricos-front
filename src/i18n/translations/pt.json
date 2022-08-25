@@ -91,29 +91,92 @@
             "Ãrea Libre": "Área Livre",
             "Ãrea con CSP en etapa de ProtocolizaciÃ³n": "Área com CSP em fase de Protocolização",
             "Convenio de evaluaciÃ³n tÃ©cnica": "Contrato de avaliação técnica"
-          
           }
         },
       "rankingChart": {
         "title": "Ranking das empresas",
         "info": "Este gráfico apresenta o ranking das empresas de campos de petróleo"
+      }, 
+      "pieChart": {
+        "title": "Número total de lotes",
+        "info": "Este gráfico apresenta o número total de lotes",
+        "plural": "Lotes",
+        "singular": "Lote"
+      }
+    },
+    "mercuryFish": {
+      "pieChart": {
+        "title": "Número total de publicações",
+        "info": "Este gráfico apresenta o número total de publicações",
+        "plural": "Publicações",
+        "singular": "Publicação"
+      },
+      "itemChart":{
+        "title": "Publicações por países",
+        "info": "Este gráfico apresenta as publicações por países",
+        "plural": "Publicações",
+        "singular": "Publicação"
+      },
+      "lineChart":{
+        "title": "Publicações de contaminação por mercúrio",
+        "info": "Este gráfico apresenta as publicações de contaminação por mercúrio",
+        "label": "Publicações de contaminação"
+      }
+    },
+    "mercuryHuman": {
+      "pieChart": {
+        "title": "Número total de publicações",
+        "info": "Este gráfico apresenta o número total de publicações",
+        "plural": "Publicações",
+        "singular": "Publicação"
+      },
+      "itemChart":{
+        "title": "Publicações por países",
+        "info": "Este gráfico apresenta as publicações por países"
+      },
+      "lineChart":{
+        "title": "Publicações de contaminação por mercúrio",
+        "info": "Este gráfico apresenta as publicações de contaminação por mercúrio",
+        "label": "Publicações de contaminação"
+      }
+    },
+    "illegalMining": {
+      "pieChart": {
+        "title": "Número total de ocorrências",
+        "info": "Este gráfico apresenta o número total de ocorrências",
+        "plural": "Ocorrências",
+        "singular": "Ocorrência"
+      },
+      "lineChart": {
+        "title": "Ocorrências de mineração ilegal",
+        "info": "Este gráfico apresenta as ocorrências de mineração ilegal", 
+        "label": "Número de ocorrências"
+      },
+      "rankingChart": {
+        "title": "Ranking das substâncias",
+        "info": "Este gráfico apresenta o ranking das substâncias"
       }
     },
     "WaterSurface": {
       "dataDough": {
-        "title": "Dados Gerais"
+        "title": "Dados Gerais",
+        "info": "Este gráfico apresenta os dados gerais",
+        "label1": "Superfície d’água em 2021",
+        "label2": "Perda/ganho de superfície d’água",
+        "label3": "Percentual de perda/ganho"
       },
       "lineWaterSurface": {
         "title": "Histórico da superfície d’água",
-        "info": "Este gráfico apresenta ..."
+        "info": "Este gráfico apresenta o histórico da superfície d’água",
+        "label": "Dados Gerais"
       },
       "rankingWaterSurfaceData": {
         "title": "Ranking de superfície d’água",
-        "info": "Este gráfico apresenta um ranking de ..."
+        "info": "Este gráfico apresenta um ranking de superfície d’água"
       },
       "rankingWaterLossAndGainData": {
         "title": "Ranking de ganho e perda",
-        "info": "Este gráfico apresenta um ranking de ..."
+        "info": "Este gráfico apresenta um ranking de ganho e perda"
       }
     },
     "WQI": {
