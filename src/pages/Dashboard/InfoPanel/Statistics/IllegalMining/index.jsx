@@ -130,7 +130,34 @@ export default function IllegalMining({
         if (isSubscribed) {
           setRankingData({
             labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
+              (label, index) =>
+                `${data.position[index]}°  ${
+                  (label === 'ouro' && 'ouro') ||
+                  (label === 'Oro' && 'Oro') ||
+                  (label === 'Sin informaciÃ³n' && 'Sin información') ||
+                  (label === 's.i.' && 's.i.') ||
+                  (label === 'Ouro' && 'Ouro') ||
+                  (label === 'oro' && 'oro') ||
+                  (label === 'MetÃ¡licos' && 'metálicos') ||
+                  (label === 'Diamante' && 'Diamante') ||
+                  (label === 'Cassiterita' && 'Cassiterita') ||
+                  (label === 'Arena' && 'Lapilli') ||
+                  (label === 'Lapilli' && 'Lapilli') ||
+                  (label === 'Oro, CarbÃ³n' && 'Oro, Carbono') ||
+                  (label === 'Tantalio' && 'Tantalio') ||
+                  (label === 'TantÃ¡lio' && 'Tantalio') ||
+                  (label === 'Ouro/Cassiterita' && 'Ouro/Cassiterita') ||
+                  (label === 'Ametista' && 'Ametista') ||
+                  (label === 'Pieda' && 'Pieda') ||
+                  (label === 'Ouro/Quartzo' && 'Ouro/Quartzo') ||
+                  (label === 'cassiterita' && 'cassiterita') ||
+                  (label === 'Ouro/Diamante' && 'Ouro/Diamante') ||
+                  (label === 'diamante' && 'diamante') ||
+                  (label === 'oro, diamante, gemas' &&
+                    'oro, diamante, gemas') ||
+                  (label === 'Materiales De Const' && 'Materiales De Const') ||
+                  (label === 'Oro-Coltan' && 'Oro-Coltan')
+                }`
             ),
             datasets: [
               {
@@ -162,7 +189,34 @@ export default function IllegalMining({
         if (isSubscribed) {
           setRankingData({
             labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
+              (label, index) =>
+                `${data.position[index]}°  ${
+                  (label === 'ouro' && 'ouro') ||
+                  (label === 'Oro' && 'Oro') ||
+                  (label === 'Sin informaciÃ³n' && 'Sin información') ||
+                  (label === 's.i.' && 's.i.') ||
+                  (label === 'Ouro' && 'Ouro') ||
+                  (label === 'oro' && 'oro') ||
+                  (label === 'MetÃ¡licos' && 'metálicos') ||
+                  (label === 'Diamante' && 'Diamante') ||
+                  (label === 'Lapilli' && 'Lapilli') ||
+                  (label === 'Cassiterita' && 'Cassiterita') ||
+                  (label === 'Arena' && 'Lapilli') ||
+                  (label === 'Oro, CarbÃ³n' && 'Oro, Carbono') ||
+                  (label === 'Tantalio' && 'Tantalio') ||
+                  (label === 'TantÃ¡lio' && 'Tantalio') ||
+                  (label === 'Ouro/Cassiterita' && 'Ouro/Cassiterita') ||
+                  (label === 'Ametista' && 'Ametista') ||
+                  (label === 'Pieda' && 'Pieda') ||
+                  (label === 'Ouro/Quartzo' && 'Ouro/Quartzo') ||
+                  (label === 'cassiterita' && 'cassiterita') ||
+                  (label === 'Ouro/Diamante' && 'Ouro/Diamante') ||
+                  (label === 'diamante' && 'diamante') ||
+                  (label === 'oro, diamante, gemas' &&
+                    'oro, diamante, gemas') ||
+                  (label === 'Materiales De Const' && 'Materiales De Const') ||
+                  (label === 'Oro-Coltan' && 'Oro-Coltan')
+                }`
             ),
             datasets: [
               {
