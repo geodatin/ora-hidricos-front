@@ -14,6 +14,8 @@ export function FilteringProvider({ embed, children }) {
   const [indicatorSelection, setIndicatorSelection] = useState(
     filterDefaults.indicatorSelection
   );
+  const [indicatorSelectionTerritory, setIndicatorSelectionTerritory] =
+    useState(filterDefaults.indicatorSelectionTerritory);
   const [territorySelection, setTerritorySelection] = useState(
     filterDefaults.territorySelection
   );
@@ -25,10 +27,12 @@ export function FilteringProvider({ embed, children }) {
           embed,
           indicatorSelection,
           territorySelection,
+          indicatorSelectionTerritory,
         },
         setters: {
           setIndicatorSelection,
           setTerritorySelection,
+          setIndicatorSelectionTerritory,
         },
         functions: {},
         loaders: {},

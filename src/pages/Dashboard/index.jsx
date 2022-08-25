@@ -11,7 +11,7 @@ import HLayout from '../../components/Layout/Horizontal';
 import MobileNavbarLayout from '../../components/Layout/Mobile/Navbar';
 import VLayout from '../../components/Layout/Vertical';
 import { breakpoints } from '../../constants/constraints';
-import { layoutConfigs } from '../../constants/options';
+import { indicators, layoutConfigs } from '../../constants/options';
 import FilteringContext from '../../contexts/filtering';
 import { useLayoutConfig } from '../../hooks/useLayoutConfig';
 import { useQuery } from '../../hooks/useQuery';
@@ -45,22 +45,22 @@ function Dashboard() {
   const { t } = useTranslation();
 
   const infoPanel =
-    (indicatorSelection === 1 && (
+    (indicatorSelection === indicators.waterResources.waterSurface.value && (
       <InfoPanel
         title={t('specific.infoPanel.WaterSurface.title')}
         subtitle="Last update in 11/08/2022"
       />
     )) ||
-    (indicatorSelection === 2 && (
+    (indicatorSelection === indicators.mercury.mercuryHuman.value && (
       <InfoPanel title={t('specific.infoPanel.mercuryHuman.title')} />
     )) ||
-    (indicatorSelection === 3 && (
+    (indicatorSelection === indicators.mercury.mercuryFish.value && (
       <InfoPanel title={t('specific.infoPanel.mercuryFish.title')} />
     )) ||
-    (indicatorSelection === 4 && (
+    (indicatorSelection === indicators.ground.oil.value && (
       <InfoPanel title={t('specific.infoPanel.oil.title')} />
     )) ||
-    (indicatorSelection === 5 && (
+    (indicatorSelection === indicators.ground.illegalMining.value && (
       <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
     ));
 

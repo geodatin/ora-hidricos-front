@@ -155,6 +155,9 @@
     }, 
     "indicators": {
       "type": {
+        "waterResources": "Recursos hídricos",
+        "mercury": "Mercúrio",
+        "ground": "Uso do Solo",
         "waterSurface": "Superfície d'água",
         "mercuryHuman": "Mercúrio em humanos",
         "mercuryFish": "Mercúrio em peixes",

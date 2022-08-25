@@ -44,12 +44,11 @@ export default function Filters() {
   const [auxIndicatorSelection, setAuxIndicatorSelection] = useState(
     filterDefaults.indicatorSelection
   );
-  const [inputValue, setInputValue] = useState('');
 
-  const indicatorSelection = useContextSelector(
-    FilteringContext,
-    (filtering) => filtering.values.indicatorSelection
-  );
+  const [auxIndicatorSelectionTerritory, setAuxIndicatorSelectionTerritory] =
+    useState(filterDefaults.indicatorSelectionTerritory);
+
+  const [inputValue, setInputValue] = useState('');
 
   /**
    * Set the selection to context.
@@ -69,13 +68,16 @@ export default function Filters() {
     } else {
       setFirstLoad(false);
     }
-  }, [auxIndicatorSelection]);
+  }, [auxIndicatorSelection, auxIndicatorSelectionTerritory]);
 
   /**
    * Clear the aux selection.
    */
   function clearSelection() {
     setAuxIndicatorSelection(filterDefaults.indicatorSelection);
+    setAuxIndicatorSelectionTerritory(
+      filterDefaults.indicatorSelectionTerritory
+    );
     setAuxAutocompleteSelection(filterDefaults.territorySelection);
     setAutocompleteOptions([]);
     setInputValue('');
@@ -93,7 +95,8 @@ export default function Filters() {
         .get(`/territory/${newInput}`, {
           params: {
             type:
-              indicatorSelection === indicators.waterSurface.value
+              auxIndicatorSelection ===
+              indicators.waterResources.waterSurface.value
                 ? 'waterSurface'
                 : '',
           },
@@ -119,6 +122,10 @@ export default function Filters() {
     setApplyDisabled(false);
   }
 
+  useEffect(() => {
+    setAuxAutocompleteSelection(filterDefaults.territorySelection);
+  }, [auxIndicatorSelection, auxIndicatorSelectionTerritory]);
+
   return (
     <div
       style={{
@@ -131,54 +138,114 @@ export default function Filters() {
         buttonTitle={t('specific.filters.clearButton')}
         buttonDisabled={
           auxIndicatorSelection === filterDefaults.indicatorSelection &&
+          auxIndicatorSelectionTerritory ===
+            filterDefaults.indicatorSelectionTerritory &&
           auxAutocompleteSelection === filterDefaults.territorySelection
         }
         onClick={() => clearSelection()}
       />
 
       <div>
-        <CustomSelect value={auxIndicatorSelection}>
+        <CustomSelect value={auxIndicatorSelectionTerritory}>
           <MenuItem
-            value={indicators.waterSurface.value}
+            value={indicators.waterResources.value}
             onClick={() =>
-              setAuxIndicatorSelection(indicators.waterSurface.value)
+              // eslint-disable-next-line no-unused-expressions
+              {
+                setAuxIndicatorSelectionTerritory(
+                  indicators.waterResources.value
+                );
+                setAuxIndicatorSelection(
+                  indicators.waterResources.waterSurface.value
+                );
+              }
             }
           >
-            {t(indicators.waterSurface.translation)}
+            {t(indicators.waterResources.translation)}
           </MenuItem>
           <MenuItem
-            value={indicators.mercuryHuman.value}
+            value={indicators.mercury.value}
             onClick={() => {
-              setAuxIndicatorSelection(indicators.mercuryHuman.value);
+              setAuxIndicatorSelectionTerritory(indicators.mercury.value);
+              setAuxIndicatorSelection(indicators.mercury.mercuryHuman.value);
             }}
           >
-            {t(indicators.mercuryHuman.translation)}
+            {t(indicators.mercury.translation)}
           </MenuItem>
           <MenuItem
-            value={indicators.mercuryFish.value}
+            value={indicators.ground.value}
             onClick={() => {
-              setAuxIndicatorSelection(indicators.mercuryFish.value);
+              setAuxIndicatorSelectionTerritory(indicators.ground.value);
+              setAuxIndicatorSelection(indicators.ground.oil.value);
             }}
           >
-            {t(indicators.mercuryFish.translation)}
-          </MenuItem>
-          <MenuItem
-            value={indicators.oil.value}
-            onClick={() => {
-              setAuxIndicatorSelection(indicators.oil.value);
-            }}
-          >
-            {t(indicators.oil.translation)}
-          </MenuItem>
-          <MenuItem
-            value={indicators.illegalMining.value}
-            onClick={() => {
-              setAuxIndicatorSelection(indicators.illegalMining.value);
-            }}
-          >
-            {t(indicators.illegalMining.translation)}
+            {t(indicators.ground.translation)}
           </MenuItem>
         </CustomSelect>
+      </div>
+
+      <div style={{ marginTop: '30px' }}>
+        {(auxIndicatorSelectionTerritory ===
+          indicators.waterResources.value && (
+          <CustomSelect value={auxIndicatorSelection}>
+            <MenuItem
+              value={indicators.waterResources.waterSurface.value}
+              onClick={() =>
+                setAuxIndicatorSelection(
+                  indicators.waterResources.waterSurface.value
+                )
+              }
+            >
+              {t(indicators.waterResources.waterSurface.translation)}
+            </MenuItem>
+          </CustomSelect>
+        )) ||
+          (auxIndicatorSelectionTerritory === indicators.mercury.value && (
+            <CustomSelect value={auxIndicatorSelection}>
+              <MenuItem
+                value={indicators.mercury.mercuryHuman.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(
+                    indicators.mercury.mercuryHuman.value
+                  );
+                }}
+              >
+                {t(indicators.mercury.mercuryHuman.translation)}
+              </MenuItem>
+              <MenuItem
+                value={indicators.mercury.mercuryFish.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(
+                    indicators.mercury.mercuryFish.value
+                  );
+                }}
+              >
+                {t(indicators.mercury.mercuryFish.translation)}
+              </MenuItem>
+            </CustomSelect>
+          )) ||
+          (auxIndicatorSelectionTerritory === indicators.ground.value && (
+            <CustomSelect value={auxIndicatorSelection}>
+              <MenuItem
+                value={indicators.ground.oil.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(indicators.ground.oil.value);
+                }}
+              >
+                {t(indicators.ground.oil.translation)}
+              </MenuItem>
+              <MenuItem
+                value={indicators.ground.illegalMining.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(
+                    indicators.ground.illegalMining.value
+                  );
+                }}
+              >
+                {t(indicators.ground.illegalMining.translation)}
+              </MenuItem>
+            </CustomSelect>
+          ))}
       </div>
       <span className={classes.separator} />
       <div>

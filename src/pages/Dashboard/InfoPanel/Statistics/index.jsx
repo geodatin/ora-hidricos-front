@@ -22,17 +22,17 @@ export default function Statistics() {
 
   return (
     <div>
-      {(indicatorSelection === indicators.waterSurface.value && (
+      {(indicatorSelection === indicators.waterResources.waterSurface.value && (
         <WaterSurface />
       )) ||
-        (indicatorSelection === indicators.mercuryHuman.value && (
+        (indicatorSelection === indicators.mercury.mercuryHuman.value && (
           <MercuryHuman />
         )) ||
-        (indicatorSelection === indicators.mercuryFish.value && (
+        (indicatorSelection === indicators.mercury.mercuryFish.value && (
           <MercuryFish />
         )) ||
-        (indicatorSelection === indicators.oil.value && <Oil />) ||
-        (indicatorSelection === indicators.illegalMining.value && (
+        (indicatorSelection === indicators.ground.oil.value && <Oil />) ||
+        (indicatorSelection === indicators.ground.illegalMining.value && (
           <IllegalMining />
         ))}
     </div>

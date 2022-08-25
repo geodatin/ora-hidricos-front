@@ -60,14 +60,14 @@ function Markers({ data }) {
   // set the data to new data whenever it changes
 
   // eslint-disable-next-line no-unused-expressions
-  (indicatorSelection === indicators.oil.value &&
+  (indicatorSelection === indicators.ground.oil.value &&
     useEffect(() => {
       if (geoJsonRef.current) {
         geoJsonRef.current.clearLayers(); // remove old data
         geoJsonRef.current.addData(coordsOilCode); // might need to be geojson.features
       }
     }, [geoJsonRef, coordsOilCode])) ||
-    (indicatorSelection === indicators.illegalMining.value &&
+    (indicatorSelection === indicators.ground.illegalMining.value &&
       useEffect(() => {
         if (geoJsonRef.current) {
           geoJsonRef.current.clearLayers(); // remove old data
@@ -76,7 +76,7 @@ function Markers({ data }) {
       }, [geoJsonRef, coordsIllegalMiningCode]));
 
   return (
-    (indicatorSelection === indicators.oil.value &&
+    (indicatorSelection === indicators.ground.oil.value &&
       data?.features?.map((cord) => (
         <Marker
           key={cord.properties.code}
@@ -159,7 +159,7 @@ function Markers({ data }) {
           </Popup>
         </Marker>
       ))) ||
-    (indicatorSelection === indicators.illegalMining.value &&
+    (indicatorSelection === indicators.ground.illegalMining.value &&
       data?.features?.map((cord) => (
         <Marker
           key={cord.properties.code}
@@ -505,14 +505,14 @@ export default function MonitoringMap() {
         })}
       />
 
-      {indicatorSelection === indicators.waterSurface.value && (
+      {indicatorSelection === indicators.waterResources.waterSurface.value && (
         <TileLayer
           url="https://storage.googleapis.com/ora-otca/water/2020/{z}/{x}/{y}.png"
           zIndex={2}
         />
       )}
 
-      {indicatorSelection !== indicators.waterSurface.value && (
+      {indicatorSelection !== indicators.waterResources.waterSurface.value && (
         <TileLayer
           url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
           opacity={theme === darkScheme ? 0.3 : 0.2}
@@ -520,8 +520,9 @@ export default function MonitoringMap() {
         />
       )}
 
-      {(indicatorSelection === indicators.waterSurface.value && '') ||
-        (indicatorSelection === indicators.mercuryHuman.value &&
+      {(indicatorSelection === indicators.waterResources.waterSurface.value &&
+        '') ||
+        (indicatorSelection === indicators.mercury.mercuryHuman.value &&
           coordsHuman?.features?.map((cord) => (
             <Marker
               key={cord.properties.code}
@@ -630,7 +631,7 @@ export default function MonitoringMap() {
               </Popup>
             </Marker>
           ))) ||
-        (indicatorSelection === indicators.mercuryFish.value &&
+        (indicatorSelection === indicators.mercury.mercuryFish.value &&
           coordsFish?.features?.map((cord) => (
             <Marker
               key={cord.properties.code}
@@ -730,10 +731,10 @@ export default function MonitoringMap() {
             </Marker>
           )))}
 
-      {(indicatorSelection === indicators.oil.value && (
+      {(indicatorSelection === indicators.ground.oil.value && (
         <Markers data={coordsOil} />
       )) ||
-        (indicatorSelection === indicators.illegalMining.value && (
+        (indicatorSelection === indicators.ground.illegalMining.value && (
           <Markers data={coordsMining} />
         ))}
     </MapWrapper>

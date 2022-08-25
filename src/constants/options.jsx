@@ -1,5 +1,45 @@
 export const indicators = {
-  waterSurface: {
+  waterResources: {
+    name: 'waterResources',
+    value: 1,
+    translation: 'specific.indicators.type.waterResources',
+    waterSurface: {
+      name: 'waterSurface',
+      value: 1,
+      translation: 'specific.indicators.type.waterSurface',
+    },
+  },
+  mercury: {
+    name: 'mercury',
+    value: 2,
+    translation: 'specific.indicators.type.mercury',
+    mercuryHuman: {
+      name: 'mercuryHuman',
+      value: 2,
+      translation: 'specific.indicators.type.mercuryHuman',
+    },
+    mercuryFish: {
+      name: 'mercuryFish',
+      value: 3,
+      translation: 'specific.indicators.type.mercuryFish',
+    },
+  },
+  ground: {
+    name: 'ground',
+    value: 3,
+    translation: 'specific.indicators.type.ground',
+    oil: {
+      name: 'oil',
+      value: 4,
+      translation: 'specific.indicators.type.oil',
+    },
+    illegalMining: {
+      name: 'illegalMining',
+      value: 5,
+      translation: 'specific.indicators.type.illegalMining',
+    },
+  },
+  /* waterSurface: {
     name: 'waterSurface',
     value: 1,
     translation: 'specific.indicators.type.waterSurface',
@@ -23,7 +63,7 @@ export const indicators = {
     name: 'illegalMining',
     value: 5,
     translation: 'specific.indicators.type.illegalMining',
-  },
+  }, */
 };
 
 export const countryCodes = {
@@ -36,7 +76,8 @@ export const countryCodes = {
 };
 
 export const filterDefaults = {
-  indicatorSelection: indicators.waterSurface.value,
+  indicatorSelection: indicators.waterResources.waterSurface.value,
+  indicatorSelectionTerritory: indicators.waterResources.value,
   territorySelection: null,
 };
 
