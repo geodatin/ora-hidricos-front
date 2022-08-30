@@ -38,6 +38,11 @@ export const indicators = {
       value: 5,
       translation: 'specific.indicators.type.illegalMining',
     },
+    minesMining: {
+      name: 'minesMining',
+      value: 6,
+      translation: 'specific.indicators.type.minesMining',
+    },
   },
   /* waterSurface: {
     name: 'waterSurface',

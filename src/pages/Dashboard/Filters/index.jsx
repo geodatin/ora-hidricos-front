@@ -244,6 +244,14 @@ export default function Filters() {
               >
                 {t(indicators.ground.illegalMining.translation)}
               </MenuItem>
+              <MenuItem
+                value={indicators.ground.minesMining.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(indicators.ground.minesMining.value);
+                }}
+              >
+                {t(indicators.ground.minesMining.translation)}
+              </MenuItem>
             </CustomSelect>
           ))}
       </div>

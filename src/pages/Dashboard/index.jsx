@@ -62,6 +62,9 @@ function Dashboard() {
     )) ||
     (indicatorSelection === indicators.ground.illegalMining.value && (
       <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
+    )) ||
+    (indicatorSelection === indicators.ground.minesMining.value && (
+      <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
     ));
 
   useEffect(() => {

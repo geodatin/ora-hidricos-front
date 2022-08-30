@@ -214,6 +214,9 @@
       },
       "illegalMining": {
         "title": "Mineração ilegal"
+      },
+      "minesMining": {
+        "title": "Lavras mineração"
       }
     }, 
     "indicators": {
@@ -225,7 +228,8 @@
         "mercuryHuman": "Mercúrio em humanos",
         "mercuryFish": "Mercúrio em peixes",
         "oil": "Lotes petrolíferos",
-        "illegalMining": "Mineração ilegal"
+        "illegalMining": "Mineração ilegal",
+        "minesMining": "Lavras mineração"
       }
     },
     "autocompletesearch": {

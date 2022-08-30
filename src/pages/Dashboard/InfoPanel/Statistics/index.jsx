@@ -8,6 +8,7 @@ import MercuryFish from './MercuryFish';
 import MercuryHuman from './MercuryHuman';
 import Oil from './Oil';
 import WaterSurface from './WaterSurface';
+import WQI from './WQI';
 
 /**
  * This function provides a statistics list
@@ -34,7 +35,8 @@ export default function Statistics() {
         (indicatorSelection === indicators.ground.oil.value && <Oil />) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
           <IllegalMining />
-        ))}
+        )) ||
+        (indicatorSelection === indicators.ground.minesMining.value && <WQI />)}
     </div>
   );
 }

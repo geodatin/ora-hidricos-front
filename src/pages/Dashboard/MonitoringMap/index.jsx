@@ -10,6 +10,7 @@ import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
+import 'leaflet.vectorgrid';
 // import imgMarker from '../../../assets/images/marker-24.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
@@ -28,6 +29,7 @@ import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
 import useStyles from './styles';
+import BlocksVectorGrid from './VectorGrid';
 
 /**
  * This function provides the monitoring map
@@ -493,6 +495,7 @@ export default function MonitoringMap() {
           fillOpacity: theme === darkScheme ? 0.5 : 0.7,
         })}
       />
+
       <GeoJSON
         data={BorderGeojson}
         style={() => ({
@@ -736,6 +739,9 @@ export default function MonitoringMap() {
       )) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
           <Markers data={coordsMining} />
+        )) ||
+        (indicatorSelection === indicators.ground.minesMining.value && (
+          <BlocksVectorGrid url="https://dev-rh-ora.geodatin.com/api/mining/mine/tiles/{z}/{x}/{y}.pbf" />
         ))}
     </MapWrapper>
   );
