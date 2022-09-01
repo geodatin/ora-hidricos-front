@@ -26,17 +26,35 @@ export default function Statistics() {
       {(indicatorSelection === indicators.waterResources.waterSurface.value && (
         <WaterSurface />
       )) ||
+        (indicatorSelection === indicators.waterResources.wetlands.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.waterResources.annualPrecipitation.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.waterResources.actualEvapotranspiration.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.waterResources.waterBalance.value && <WQI />) ||
         (indicatorSelection === indicators.mercury.mercuryHuman.value && (
           <MercuryHuman />
         )) ||
         (indicatorSelection === indicators.mercury.mercuryFish.value && (
           <MercuryFish />
         )) ||
+        (indicatorSelection === indicators.mercury.IPPO.value && <WQI />) ||
         (indicatorSelection === indicators.ground.oil.value && <Oil />) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
           <IllegalMining />
         )) ||
-        (indicatorSelection === indicators.ground.minesMining.value && <WQI />)}
+        (indicatorSelection === indicators.ground.minesMining.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.ground.agricultural.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.ground.deforesting.value && <WQI />)}
     </div>
   );
 }

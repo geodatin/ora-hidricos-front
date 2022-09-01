@@ -149,17 +149,14 @@ export default function Filters() {
         <CustomSelect value={auxIndicatorSelectionTerritory}>
           <MenuItem
             value={indicators.waterResources.value}
-            onClick={() =>
-              // eslint-disable-next-line no-unused-expressions
-              {
-                setAuxIndicatorSelectionTerritory(
-                  indicators.waterResources.value
-                );
-                setAuxIndicatorSelection(
-                  indicators.waterResources.waterSurface.value
-                );
-              }
-            }
+            onClick={() => {
+              setAuxIndicatorSelectionTerritory(
+                indicators.waterResources.value
+              );
+              setAuxIndicatorSelection(
+                indicators.waterResources.waterSurface.value
+              );
+            }}
           >
             {t(indicators.waterResources.translation)}
           </MenuItem>
@@ -188,6 +185,7 @@ export default function Filters() {
         {(auxIndicatorSelectionTerritory ===
           indicators.waterResources.value && (
           <CustomSelect value={auxIndicatorSelection}>
+            {/* Área de Superfície de água */}
             <MenuItem
               value={indicators.waterResources.waterSurface.value}
               onClick={() =>
@@ -198,10 +196,59 @@ export default function Filters() {
             >
               {t(indicators.waterResources.waterSurface.translation)}
             </MenuItem>
+            {/* Zonas Inundáveis */}
+            <MenuItem
+              value={indicators.waterResources.wetlands.value}
+              onClick={() =>
+                setAuxIndicatorSelection(
+                  indicators.waterResources.wetlands.value
+                )
+              }
+            >
+              {t(indicators.waterResources.wetlands.translation)}
+            </MenuItem>
+
+            {/* Precipitação anual */}
+            <MenuItem
+              value={indicators.waterResources.annualPrecipitation.value}
+              onClick={() =>
+                setAuxIndicatorSelection(
+                  indicators.waterResources.annualPrecipitation.value
+                )
+              }
+            >
+              {t(indicators.waterResources.annualPrecipitation.translation)}
+            </MenuItem>
+
+            {/* Evapotranspiração real */}
+            <MenuItem
+              value={indicators.waterResources.actualEvapotranspiration.value}
+              onClick={() =>
+                setAuxIndicatorSelection(
+                  indicators.waterResources.actualEvapotranspiration.value
+                )
+              }
+            >
+              {t(
+                indicators.waterResources.actualEvapotranspiration.translation
+              )}
+            </MenuItem>
+            {/* Balanço hídrico */}
+            <MenuItem
+              value={indicators.waterResources.waterBalance.value}
+              onClick={() =>
+                setAuxIndicatorSelection(
+                  indicators.waterResources.waterBalance.value
+                )
+              }
+            >
+              {t(indicators.waterResources.waterBalance.translation)}
+            </MenuItem>
           </CustomSelect>
         )) ||
           (auxIndicatorSelectionTerritory === indicators.mercury.value && (
             <CustomSelect value={auxIndicatorSelection}>
+              {/* Mercúrio em Humanos */}
               <MenuItem
                 value={indicators.mercury.mercuryHuman.value}
                 onClick={() => {
@@ -212,6 +259,7 @@ export default function Filters() {
               >
                 {t(indicators.mercury.mercuryHuman.translation)}
               </MenuItem>
+              {/* Mercúrio em Peixes */}
               <MenuItem
                 value={indicators.mercury.mercuryFish.value}
                 onClick={() => {
@@ -222,10 +270,21 @@ export default function Filters() {
               >
                 {t(indicators.mercury.mercuryFish.translation)}
               </MenuItem>
+
+              {/* Indicador Potencial de Poluição Orgânica */}
+              <MenuItem
+                value={indicators.mercury.IPPO.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(indicators.mercury.IPPO.value);
+                }}
+              >
+                {t(indicators.mercury.IPPO.translation)}
+              </MenuItem>
             </CustomSelect>
           )) ||
           (auxIndicatorSelectionTerritory === indicators.ground.value && (
             <CustomSelect value={auxIndicatorSelection}>
+              {/* Lotes petrolíferos */}
               <MenuItem
                 value={indicators.ground.oil.value}
                 onClick={() => {
@@ -234,6 +293,7 @@ export default function Filters() {
               >
                 {t(indicators.ground.oil.translation)}
               </MenuItem>
+              {/* Mineração ilegal */}
               <MenuItem
                 value={indicators.ground.illegalMining.value}
                 onClick={() => {
@@ -244,6 +304,7 @@ export default function Filters() {
               >
                 {t(indicators.ground.illegalMining.translation)}
               </MenuItem>
+              {/* Lavras de mineração */}
               <MenuItem
                 value={indicators.ground.minesMining.value}
                 onClick={() => {
@@ -251,6 +312,26 @@ export default function Filters() {
                 }}
               >
                 {t(indicators.ground.minesMining.translation)}
+              </MenuItem>
+              {/* Agropecuária */}
+              <MenuItem
+                value={indicators.ground.agricultural.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(
+                    indicators.ground.agricultural.value
+                  );
+                }}
+              >
+                {t(indicators.ground.agricultural.translation)}
+              </MenuItem>
+              {/* Desmatamento */}
+              <MenuItem
+                value={indicators.ground.deforesting.value}
+                onClick={() => {
+                  setAuxIndicatorSelection(indicators.ground.deforesting.value);
+                }}
+              >
+                {t(indicators.ground.deforesting.translation)}
               </MenuItem>
             </CustomSelect>
           ))}

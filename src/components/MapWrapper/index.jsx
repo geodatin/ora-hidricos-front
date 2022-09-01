@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { useTheme } from 'react-jss';
-import { MapContainer, TileLayer } from 'react-leaflet';
+import { Map, TileLayer } from 'react-leaflet';
 
 import DarkNorthIcon from '../../assets/images/dark-north.svg';
 import GeodatinLogo from '../../assets/images/geodatin-map.svg';
@@ -17,6 +17,7 @@ import ZoomButton from './ZoomButton';
  * This component renders a react-leaflet component
  * @returns Map component
  */
+
 export default function MapWrapper({
   children,
   itemChildren,
@@ -54,39 +55,33 @@ export default function MapWrapper({
   /**
    * Handle map darkmode
    */
-  useEffect(() => {
-    if (map && lightTileRef.current && darkTileRef.current) {
-      if (theme === darkScheme) {
-        lightTileRef.current.remove();
-        darkTileRef.current.addTo(map);
-      } else {
-        darkTileRef.current.remove();
-        lightTileRef.current.addTo(map);
-      }
-      map.getContainer().style.backgroundColor = theme.background.main;
-    }
-  }, [theme, map]);
 
   return (
-    <MapContainer
+    <Map
       whenCreated={setMap}
       className={classes.mapContainer}
+      id="leaflet-map"
       center={position}
       zoom={5}
       zoomControl={false}
       {...rest}
     >
-      <TileLayer
-        ref={lightTileRef}
-        attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <TileLayer
-        ref={darkTileRef}
-        attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        className={classes.tileLayer}
-      />
+      {theme !== darkScheme && (
+        <TileLayer
+          ref={lightTileRef}
+          attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+      )}
+
+      {theme === darkScheme && (
+        <TileLayer
+          ref={darkTileRef}
+          attribution='© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          className={classes.tileLayer}
+        />
+      )}
 
       <div
         ref={itemsRef}
@@ -125,7 +120,7 @@ export default function MapWrapper({
         />
       </a>
       {children}
-    </MapContainer>
+    </Map>
   );
 }
 

@@ -1,7 +1,6 @@
 /* eslint-disable no-lone-blocks */
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
 import VLayout from '../../../components/Layout/Vertical';
@@ -14,17 +13,17 @@ import useStyles from './styles';
  * This function provides a info panel
  * @returns info panel
  */
-export default function InfoPanel({ title, subtitle }) {
+export default function InfoPanel({ fonte, title, subtitle }) {
   InfoPanel.propTypes = {
     title: PropTypes.string.isRequired,
+    fonte: PropTypes.string,
     subtitle: PropTypes.string,
   };
 
   InfoPanel.defaultProps = {
     subtitle: undefined,
+    fonte: undefined,
   };
-
-  const { t } = useTranslation();
 
   const classes = useStyles();
   const theme = useTheme();
@@ -38,7 +37,7 @@ export default function InfoPanel({ title, subtitle }) {
             <Typography style={{ marginTop: 10, lineHeight: 0.5 }} variant="h3">
               {title}
             </Typography>
-            {subtitle && (
+            {fonte && (
               <Typography
                 style={{
                   color: theme.neutral.gray.main,
@@ -57,7 +56,7 @@ export default function InfoPanel({ title, subtitle }) {
                   }}
                   variant="p"
                 >
-                  {t('specific.infoPanel.font')}
+                  {fonte}
                 </Typography>
               </Typography>
             )}

@@ -198,38 +198,81 @@
       }
     },
     "infoPanel": {
-      "font": " Fonte de dados: GlobalSurfaceWater",
       "WaterSurface": {
-        "title": "Superfície d’água"
+        "title": "Área de Superfície de água",
+        "font": "Fonte de dados: GlobalSurfaceWater"
       },
-
-      "mercuryFish": {
-        "title": "Mercúrio em peixes"
+      "wetlands": {
+        "title": "Zonas Inundáveis",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "annualPrecipitation": {
+        "title": "Precipitação anual",
+        "font": "Fonte de dados: mapa 8 do atlas de vulnerabilidade da OTCA"
+      },
+      "actualEvapotranspiration": {
+        "title": "Evapotranspiração real",
+        "font": "Fonte de dados: mapa 9 do atlas de vulnerabilidade da OTCA"
+      },
+      "waterBalance": {
+        "title": "Balanço hídrico",
+        "font": "Fonte de dados: mapa 10 do atlas de vulnerabilidade da OTCA"
       },
       "mercuryHuman": {
-        "title": "Mercúrio em humanos"
+        "title": "Mercúrio em humanos",
+        "font": "Fonte de dados: Cobrape"
       },
+      "mercuryFish": {
+        "title": "Mercúrio em peixes",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "IPPO": {
+        "title": "IPPO",
+        "font": "Fonte de dados: Cobrape"
+      },
+      
       "oil": {
-        "title": "Lotes petrolíferos"
+        "title": "Lotes petrolíferos",
+        "font": "Fonte de dados: Cobrape"
       },
       "illegalMining": {
-        "title": "Mineração ilegal"
+        "title": "Mineração ilegal",
+        "font": "Fonte de dados: Cobrape"
       },
       "minesMining": {
-        "title": "Lavras mineração"
+        "title": "Lavras mineração",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "deforesting": {
+        "title": "Desmatamento",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "agricultural": {
+        "title": "Agropecuária",
+        "font": "Fonte de dados: Cobrape"
       }
     }, 
     "indicators": {
       "type": {
-        "waterResources": "Recursos hídricos",
-        "mercury": "Mercúrio",
-        "ground": "Uso do Solo",
-        "waterSurface": "Superfície d'água",
+        "waterResources": "OFERTA HÍDRICA",
+        "waterSurface": "Área de Superfície de água",
+        "wetlands": "Zonas Inundáveis",
+        "annualPrecipitation": "Precipitação anual",
+        "actualEvapotranspiration": "Evapotranspiração real",
+        "waterBalance": "Balanço hídrico",
+
+        "mercury": "QUALIDADE DA ÁGUA - INDICADORES DE CONTAMINAÇÃO",
         "mercuryHuman": "Mercúrio em humanos",
         "mercuryFish": "Mercúrio em peixes",
+        "IPPO": "IPPO",
+        
+        "ground": "QUALIDADE DA ÁGUA - FONTES DE CONTAMINAÇÃO",
         "oil": "Lotes petrolíferos",
         "illegalMining": "Mineração ilegal",
+        "agricultural": "Agropecuária",
+        "deforesting": "Desmatamento",
         "minesMining": "Lavras mineração"
+
       }
     },
     "autocompletesearch": {

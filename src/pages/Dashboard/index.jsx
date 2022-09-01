@@ -44,27 +44,88 @@ function Dashboard() {
 
   const { t } = useTranslation();
 
+  console.log(indicatorSelection);
+
   const infoPanel =
     (indicatorSelection === indicators.waterResources.waterSurface.value && (
       <InfoPanel
         title={t('specific.infoPanel.WaterSurface.title')}
-        subtitle="Last update in 11/08/2022"
+        fonte={t('specific.infoPanel.WaterSurface.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterResources.wetlands.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.wetlands.title')}
+        fonte={t('specific.infoPanel.wetlands.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.waterResources.annualPrecipitation.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.annualPrecipitation.title')}
+        fonte={t('specific.infoPanel.annualPrecipitation.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.waterResources.actualEvapotranspiration.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.actualEvapotranspiration.title')}
+        fonte={t('specific.infoPanel.actualEvapotranspiration.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterResources.waterBalance.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.waterBalance.title')}
+        fonte={t('specific.infoPanel.waterBalance.font')}
       />
     )) ||
     (indicatorSelection === indicators.mercury.mercuryHuman.value && (
-      <InfoPanel title={t('specific.infoPanel.mercuryHuman.title')} />
+      <InfoPanel
+        title={t('specific.infoPanel.mercuryHuman.title')}
+        fonte={t('specific.infoPanel.mercuryHuman.font')}
+      />
     )) ||
     (indicatorSelection === indicators.mercury.mercuryFish.value && (
-      <InfoPanel title={t('specific.infoPanel.mercuryFish.title')} />
+      <InfoPanel
+        title={t('specific.infoPanel.mercuryFish.title')}
+        fonte={t('specific.infoPanel.mercuryFish.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.mercury.IPPO.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.IPPO.title')}
+        fonte={t('specific.infoPanel.IPPO.font')}
+      />
     )) ||
     (indicatorSelection === indicators.ground.oil.value && (
-      <InfoPanel title={t('specific.infoPanel.oil.title')} />
+      <InfoPanel
+        title={t('specific.infoPanel.oil.title')}
+        fonte={t('specific.infoPanel.oil.font')}
+      />
     )) ||
     (indicatorSelection === indicators.ground.illegalMining.value && (
-      <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
+      <InfoPanel
+        title={t('specific.infoPanel.illegalMining.title')}
+        fonte={t('specific.infoPanel.illegalMining.font')}
+      />
     )) ||
     (indicatorSelection === indicators.ground.minesMining.value && (
-      <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
+      <InfoPanel
+        title={t('specific.infoPanel.minesMining.title')}
+        fonte={t('specific.infoPanel.minesMining.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.ground.agricultural.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.agricultural.title')}
+        fonte={t('specific.infoPanel.agricultural.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.ground.deforesting.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.deforesting.title')}
+        fonte={t('specific.infoPanel.deforesting.font')}
+      />
     ));
 
   useEffect(() => {

@@ -4,10 +4,11 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import L from 'leaflet';
+import { map } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
-import { TileLayer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet';
+import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
 import 'leaflet.vectorgrid';
@@ -37,7 +38,6 @@ import BlocksVectorGrid from './VectorGrid';
  */
 
 function Markers({ data }) {
-  const map = useMap();
   const classes = useStyles();
   const theme = useTheme();
   const [coordsOilCode, setCoordsOilCode] = useState();
@@ -355,6 +355,7 @@ export default function MonitoringMap() {
 
   return (
     <MapWrapper
+      preferCanvas={false}
       getMapRef={(ref) => setMapRef(ref)}
       minZoom={5}
       maxZoom={15}
@@ -741,7 +742,7 @@ export default function MonitoringMap() {
           <Markers data={coordsMining} />
         )) ||
         (indicatorSelection === indicators.ground.minesMining.value && (
-          <BlocksVectorGrid url="https://dev-rh-ora.geodatin.com/api/mining/mine/tiles/{z}/{x}/{y}.pbf" />
+          <BlocksVectorGrid />
         ))}
     </MapWrapper>
   );
