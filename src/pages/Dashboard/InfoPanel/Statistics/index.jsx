@@ -4,6 +4,7 @@ import { useContextSelector } from 'use-context-selector';
 import { indicators } from '../../../../constants/options';
 import FilteringContext from '../../../../contexts/filtering';
 import IllegalMining from './IllegalMining';
+import IPPO from './IPPO';
 import MercuryFish from './MercuryFish';
 import MercuryHuman from './MercuryHuman';
 import Oil from './Oil';
@@ -43,7 +44,7 @@ export default function Statistics() {
         (indicatorSelection === indicators.mercury.mercuryFish.value && (
           <MercuryFish />
         )) ||
-        (indicatorSelection === indicators.mercury.IPPO.value && <WQI />) ||
+        (indicatorSelection === indicators.mercury.IPPO.value && <IPPO />) ||
         (indicatorSelection === indicators.ground.oil.value && <Oil />) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
           <IllegalMining />
@@ -66,7 +67,10 @@ export default function Statistics() {
         (indicatorSelection === indicators.waterDemand.Population.value && (
           <WQI />
         )) ||
-        (indicatorSelection === indicators.waterDemand.CNARH.value && (
+        (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
           <WQI />
         )) ||
         (indicatorSelection ===

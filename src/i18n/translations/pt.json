@@ -58,6 +58,7 @@
       "territoryLine": "Limites da Bacia Amazônica",
       "riverLine": "Linhas de drenagem"
     },
+   
     "oil": {
       "treemapChart": {
         "title": "Situação do campo de petróleo",
@@ -103,6 +104,27 @@
         "plural": "Lotes",
         "singular": "Lote"
       }
+    },
+    "IPPO": {
+      "treemapChart": {
+        "title": "Situação de poluição",
+        "info": "Este gráfico apresenta a situação de poluição",
+        "station": {
+          "plural": "Ocorrências",
+          "singular": "Ocorrência"
+        },
+        "situation": {
+          "Atende ao padrão mais restritivo": "Atende ao padrão mais restritivo",
+          "Atende ao padrão mais permissível": "Atende ao padrão mais permissível",
+          "Acima do limite mais permissível": "Acima do limite mais permissível"
+        }
+      },
+        "pieChart": {
+          "title": "Número total de ocorrências de poluição",
+          "info": "Este gráfico apresenta o número total de ocorrências de poluição",
+          "plural": "Ocorrências",
+          "singular": "Ocorrência"
+        }
     },
     "mercuryFish": {
       "pieChart": {
@@ -263,7 +285,11 @@
         "title": "População na bacia",
         "font": "Fonte de dados: Cobrape"
       },
-      "CNARH": {
+      "CNARHunion": {
+        "title": "Dados do cadastro nacional de recursos hídricos do Brasil (CNARH)",
+        "font": "Fonte de dados: ANA https://dadosabertos.ana.gov.br/search?q=cadastro"
+      },
+      "CNARHstate": {
         "title": "Dados do cadastro nacional de recursos hídricos do Brasil (CNARH)",
         "font": "Fonte de dados: ANA https://dadosabertos.ana.gov.br/search?q=cadastro"
       },
@@ -322,45 +348,46 @@
     }, 
     "indicators": {
       "type": {
-        "waterResources": "OFERTA HÍDRICA",
+        "waterResources": "Oferta hídrica",
         "waterSurface": "Área de Superfície de água",
         "wetlands": "Zonas Inundáveis",
         "annualPrecipitation": "Precipitação anual",
         "actualEvapotranspiration": "Evapotranspiração real",
         "waterBalance": "Balanço hídrico",
 
-        "waterDemand": "DEMANDA HÍDRICA",
+        "waterDemand": "Demanda hídrica",
         "hydroelectric": "Hidrelétricas",
         "Waterways": "Hidrovias",
         "Population": "População na bacia",
-        "CNARH": "CNARH",
+        "CNARHunion": "CNARH - União",
+        "CNARHstate": "CNARH - Estado",
 
-        "mercury": "QUALIDADE DA ÁGUA - INDICADORES DE CONTAMINAÇÃO",
+        "mercury": "Qualidade da água - indicadores de contaminação",
         "mercuryHuman": "Mercúrio em humanos",
         "mercuryFish": "Mercúrio em peixes",
         "IPPO": "IPPO",
         
-        "ground": "QUALIDADE DA ÁGUA - FONTES DE CONTAMINAÇÃO",
+        "ground": "Qualidade da água - fontes de contaminação",
         "oil": "Lotes petrolíferos",
         "illegalMining": "Mineração ilegal",
         "agricultural": "Agropecuária",
         "deforesting": "Desmatamento",
         "minesMining": "Lavras mineração",
 
-        "generalFeatures": "CARACTERÍSTICAS GERAIS",
+        "generalFeatures": "Características gerais",
         "watershedArea": "Área da bacia por país",
         "areaPercentage": "Porcentagem da área da bacia sobre o território nacional",
         "surfaceHydrologicalUnits": "Unidades hidrológicas superficiais (divisão Otto Pfafstetter)",
         "undergroundHydrologicalUnits": "Unidades hidrológicas subterrâneas",
         "hydrogeochemicalCharacteristics": "Características Hidrogeoquímicas das águas",
 
-        "hydroclimaticVulnerability": "VULNERABILIDADE HIDROCLIMÁTICA",
+        "hydroclimaticVulnerability": "Vulnerabilidade hidroclimática",
         "droughtEvents": "Recorrência de eventos de secas extremas ",
         "floodEvents": "Recorrência de eventos de cheia",
         "droughtVulnerability": "Vulnerabilidade a secas",
         "floodVulnerability": "Vulnerabilidade a inundações",
 
-        "waterGovernance": "GOVERNANÇA DA ÁGUA",
+        "waterGovernance": "Dovernança da água",
         "authorities": "Autoridades de águas dos países e suas funções",
         "legislation": "Legislações de águas dos países",
         "publications": "Publicações e documentos científicos sobre recursos hídricos",

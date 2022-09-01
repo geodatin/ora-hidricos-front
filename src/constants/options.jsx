@@ -114,11 +114,17 @@ export const indicators = {
       value: 17,
       translation: 'specific.indicators.type.Population',
     },
-    // Dados do cadastro nacional de recursos hídricos do Brasil (CNARH)
-    CNARH: {
-      name: 'CNARH',
+    // Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) filtro União
+    CNARHunion: {
+      name: 'CNARHunion',
       value: 18,
-      translation: 'specific.indicators.type.CNARH',
+      translation: 'specific.indicators.type.CNARHunion',
+    },
+    // Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) filtro Estado
+    CNARHstate: {
+      name: 'CNARHstate',
+      value: 19,
+      translation: 'specific.indicators.type.CNARHstate',
     },
   },
   generalFeatures: {
@@ -128,31 +134,31 @@ export const indicators = {
     // Área da bacia por país
     watershedArea: {
       name: 'watershedArea',
-      value: 19,
+      value: 20,
       translation: 'specific.indicators.type.watershedArea',
     },
     // Porcentagem da área da bacia sobre o território nacional
     areaPercentage: {
       name: 'areaPercentage',
-      value: 20,
+      value: 21,
       translation: 'specific.indicators.type.areaPercentage',
     },
     // Unidades hidrológicas superficiais (divisão Otto Pfafstetter)
     surfaceHydrologicalUnits: {
       name: 'surfaceHydrologicalUnits',
-      value: 21,
+      value: 22,
       translation: 'specific.indicators.type.surfaceHydrologicalUnits',
     },
     // Unidades hidrológicas subterrâneas
     undergroundHydrologicalUnits: {
       name: 'undergroundHydrologicalUnits',
-      value: 22,
+      value: 23,
       translation: 'specific.indicators.type.undergroundHydrologicalUnits',
     },
     // Características Hidrogeoquímicas das águas
     hydrogeochemicalCharacteristics: {
       name: 'hydrogeochemicalCharacteristics',
-      value: 23,
+      value: 24,
       translation: 'specific.indicators.type.hydrogeochemicalCharacteristics',
     },
   },
@@ -163,25 +169,25 @@ export const indicators = {
     // Recorrência de eventos de secas extremas
     droughtEvents: {
       name: 'droughtEvents',
-      value: 24,
+      value: 25,
       translation: 'specific.indicators.type.droughtEvents',
     },
     // Recorrência de eventos de cheia
     floodEvents: {
       name: 'floodEvents',
-      value: 25,
+      value: 26,
       translation: 'specific.indicators.type.floodEvents',
     },
     // Vulnerabilidade a secas
     droughtVulnerability: {
       name: 'droughtVulnerability',
-      value: 26,
+      value: 27,
       translation: 'specific.indicators.type.droughtVulnerability',
     },
     // Vulnerabilidade a inundações
     floodVulnerability: {
       name: 'floodVulnerability',
-      value: 27,
+      value: 28,
       translation: 'specific.indicators.type.floodVulnerability',
     },
   },
@@ -193,25 +199,25 @@ export const indicators = {
     // Autoridades de águas dos países e suas funções
     authorities: {
       name: 'authorities',
-      value: 28,
+      value: 29,
       translation: 'specific.indicators.type.authorities',
     },
     // Legislações de águas dos países
     legislation: {
       name: 'legislation',
-      value: 29,
+      value: 30,
       translation: 'specific.indicators.type.legislation',
     },
     // Publicações e documentos científicos sobre recursos hídricos
     publications: {
       name: 'publications',
-      value: 30,
+      value: 31,
       translation: 'specific.indicators.type.publications',
     },
     // Relatórios dos países sobre recursos hídricos
     countryReports: {
       name: 'countryReports',
-      value: 31,
+      value: 32,
       translation: 'specific.indicators.type.countryReports',
     },
   },

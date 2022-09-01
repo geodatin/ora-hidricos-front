@@ -2,8 +2,8 @@ import AddRoundedIcon from '@mui/icons-material/AddRounded';
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import { Button } from '@mui/material';
 import L from 'leaflet';
-import { map } from 'lodash';
 import React, { useEffect, useRef } from 'react';
+import { useLeaflet } from 'react-leaflet';
 
 import useStyles from './styles';
 
@@ -12,6 +12,8 @@ import useStyles from './styles';
  * @returns Zoom container component
  */
 export default function ZoomButton() {
+  const { map } = useLeaflet();
+
   const classes = useStyles();
 
   const containerRef = useRef();

@@ -145,10 +145,16 @@ function Dashboard() {
         fonte={t('specific.infoPanel.Population.font')}
       />
     )) ||
-    (indicatorSelection === indicators.waterDemand.CNARH.value && (
+    (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
       <InfoPanel
-        title={t('specific.infoPanel.CNARH.title')}
-        fonte={t('specific.infoPanel.CNARH.font')}
+        title={t('specific.infoPanel.CNARHunion.title')}
+        fonte={t('specific.infoPanel.CNARHunion.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.CNARHstate.title')}
+        fonte={t('specific.infoPanel.CNARHstate.font')}
       />
     )) ||
     (indicatorSelection === indicators.generalFeatures.watershedArea.value && (

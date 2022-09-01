@@ -346,14 +346,27 @@ export default function Filters() {
                 {t(indicators.waterDemand.Population.translation)}
               </MenuItem>
 
-              {/* Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) */}
+              {/* Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) filtro União */}
               <MenuItem
-                value={indicators.waterDemand.CNARH.value}
+                value={indicators.waterDemand.CNARHunion.value}
                 onClick={() =>
-                  setAuxIndicatorSelection(indicators.waterDemand.CNARH.value)
+                  setAuxIndicatorSelection(
+                    indicators.waterDemand.CNARHunion.value
+                  )
                 }
               >
-                {t(indicators.waterDemand.CNARH.translation)}
+                {t(indicators.waterDemand.CNARHunion.translation)}
+              </MenuItem>
+              {/* Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) filtro Estado */}
+              <MenuItem
+                value={indicators.waterDemand.CNARHstate.value}
+                onClick={() =>
+                  setAuxIndicatorSelection(
+                    indicators.waterDemand.CNARHstate.value
+                  )
+                }
+              >
+                {t(indicators.waterDemand.CNARHstate.translation)}
               </MenuItem>
             </CustomSelect>
           )) ||

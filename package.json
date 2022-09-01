@@ -45,7 +45,9 @@
     "react-i18next": "^11.15.1",
     "react-jss": "^10.9.0",
     "react-leaflet": "2.6.3",
-    "react-leaflet-markercluster": "^3.0.0-rc1",
+    "react-leaflet-markercluster": "2.0.0-rc3",
+
+    "leaflet.markercluster": "1.4.1",
     "react-leaflet-vectorgrid": "^2.2.1",
     "react-router-dom": "^6.1.1",
     "react-scripts": "4.0.3",
