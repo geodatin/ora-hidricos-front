@@ -371,6 +371,114 @@ function Markers({ data }) {
             </div>
           </Popup>
         </Marker>
+      ))) ||
+    (indicatorSelection === indicators.waterDemand.CNARHstate.value &&
+      data?.features?.map((cord) => (
+        <Marker
+          key={cord.properties.code}
+          position={[
+            cord.geometry.coordinates[1],
+            cord.geometry.coordinates[0],
+          ]}
+        >
+          <Popup
+            className={classes.popup}
+            key={theme === darkScheme ? `dark` : `light`}
+          >
+            <Typography variant="caption" format="bold">
+              Organic pollution
+            </Typography>
+            <div className={classes.separator} />
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Bestowal type
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.bestowalType}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Interference type
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.interferenceType}
+              </Typography>
+            </div>
+
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Org name
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.orgName}
+              </Typography>
+            </div>
+
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Bestowal situation
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.bestowalSituation}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Interference subtype
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.interferenceSubtype}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Water body name
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.waterBodyName}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Goal
+              </Typography>
+              <Typography variant="caption">{cord.properties.goal}</Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                valid date
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.validDate}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Avg flow
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.avgFlow}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                Max flow
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.maxFlow}
+              </Typography>
+            </div>
+            <div className={classes.popupItem}>
+              <Typography variant="caption" className={classes.popupItemTitle}>
+                volume
+              </Typography>
+              <Typography variant="caption">
+                {cord.properties.volume}
+              </Typography>
+            </div>
+          </Popup>
+        </Marker>
       )))
   );
 }
@@ -381,6 +489,7 @@ export default function MonitoringMap() {
   const [coordsOil, setCoordsOil] = useState();
   const [coordsMining, setCoordsMining] = useState();
   const [coordsUnion, setCoordsUnion] = useState();
+  const [coordsState, setCoordsState] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -473,6 +582,18 @@ export default function MonitoringMap() {
       })
       .then(({ data }) => {
         setCoordsUnion(data);
+      });
+  }, [code]);
+
+  useEffect(() => {
+    api
+      .get('waterUsers/state/points', {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        setCoordsState(data);
       });
   }, [code]);
 
@@ -860,6 +981,11 @@ export default function MonitoringMap() {
         (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
           <MarkerClusterGroup>
             <Markers data={coordsUnion} />
+          </MarkerClusterGroup>
+        )) ||
+        (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
+          <MarkerClusterGroup>
+            <Markers data={coordsState} />
           </MarkerClusterGroup>
         ))}
 
