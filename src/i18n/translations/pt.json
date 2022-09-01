@@ -151,6 +151,30 @@
           "info": "Este gráfico apresenta a classificação das cidades do território"
         }
     },
+    "CNARHstate": {
+      "pieChart": {
+        "title": "Número total de ocorrências",
+        "info": "Este gráfico apresenta o número total de ocorrências",
+        "plural": "Ocorrências",
+        "singular": "Ocorrência"
+      },
+      "rankingChartType": {
+        "title": "Ranking para a outorga por typo",
+        "info": "Este gráfico apresenta a classificação para a outorga por typo"
+      },
+      "rankingChartSituation": {
+        "title": "Ranking para a outorga por situação",
+        "info": "Este gráfico apresenta a classificação para a outorga por situação"
+      },
+      "rankingChartInterference": {
+        "title": "Ranking para o tipo de interferência",
+        "info": "Este gráfico apresenta a classificação para o tipo de interferência"
+      },
+      "rankingChartCities": {
+        "title": "Ranking das cidades do território",
+        "info": "Este gráfico apresenta a classificação das cidades do território"
+      }
+  },
     "mercuryFish": {
       "pieChart": {
         "title": "Número total de publicações",

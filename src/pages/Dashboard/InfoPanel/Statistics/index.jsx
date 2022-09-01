@@ -3,6 +3,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import { indicators } from '../../../../constants/options';
 import FilteringContext from '../../../../contexts/filtering';
+import CNARHstate from './CNARHstate';
 import CNARHunion from './CNARHunion';
 import IllegalMining from './IllegalMining';
 import IPPO from './IPPO';
@@ -72,7 +73,7 @@ export default function Statistics() {
           <CNARHunion />
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
-          <WQI />
+          <CNARHstate />
         )) ||
         (indicatorSelection ===
           indicators.generalFeatures.watershedArea.value && <WQI />) ||
