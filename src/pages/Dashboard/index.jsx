@@ -126,6 +126,115 @@ function Dashboard() {
         title={t('specific.infoPanel.deforesting.title')}
         fonte={t('specific.infoPanel.deforesting.font')}
       />
+    )) ||
+    (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.hydroelectric.title')}
+        fonte={t('specific.infoPanel.hydroelectric.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterDemand.Waterways.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.Waterways.title')}
+        fonte={t('specific.infoPanel.Waterways.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterDemand.Population.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.Population.title')}
+        fonte={t('specific.infoPanel.Population.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterDemand.CNARH.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.CNARH.title')}
+        fonte={t('specific.infoPanel.CNARH.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.generalFeatures.watershedArea.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.watershedArea.title')}
+        fonte={t('specific.infoPanel.watershedArea.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.generalFeatures.areaPercentage.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.areaPercentage.title')}
+        fonte={t('specific.infoPanel.areaPercentage.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.generalFeatures.surfaceHydrologicalUnits.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.surfaceHydrologicalUnits.title')}
+        fonte={t('specific.infoPanel.surfaceHydrologicalUnits.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.generalFeatures.undergroundHydrologicalUnits.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.undergroundHydrologicalUnits.title')}
+        fonte={t('specific.infoPanel.undergroundHydrologicalUnits.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.hydrogeochemicalCharacteristics.title')}
+        fonte={t('specific.infoPanel.hydrogeochemicalCharacteristics.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.hydroclimaticVulnerability.droughtEvents.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.droughtEvents.title')}
+        fonte={t('specific.infoPanel.droughtEvents.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.hydroclimaticVulnerability.floodEvents.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.floodEvents.title')}
+        fonte={t('specific.infoPanel.floodEvents.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.hydroclimaticVulnerability.droughtVulnerability.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.droughtVulnerability.title')}
+        fonte={t('specific.infoPanel.droughtVulnerability.font')}
+      />
+    )) ||
+    (indicatorSelection ===
+      indicators.hydroclimaticVulnerability.floodVulnerability.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.floodVulnerability.title')}
+        fonte={t('specific.infoPanel.floodVulnerability.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterGovernance.authorities.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.authorities.title')}
+        fonte={t('specific.infoPanel.authorities.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterGovernance.legislation.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.legislation.title')}
+        fonte={t('specific.infoPanel.legislation.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterGovernance.publications.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.publications.title')}
+        fonte={t('specific.infoPanel.publications.font')}
+      />
+    )) ||
+    (indicatorSelection === indicators.waterGovernance.countryReports.value && (
+      <InfoPanel
+        title={t('specific.infoPanel.countryReports.title')}
+        fonte={t('specific.infoPanel.countryReports.font')}
+      />
     ));
 
   useEffect(() => {

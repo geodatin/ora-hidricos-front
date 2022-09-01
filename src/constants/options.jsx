@@ -92,31 +92,129 @@ export const indicators = {
       translation: 'specific.indicators.type.deforesting',
     },
   },
-  /* waterSurface: {
-    name: 'waterSurface',
-    value: 1,
-    translation: 'specific.indicators.type.waterSurface',
-  },
-  mercuryHuman: {
-    name: 'mercuryHuman',
-    value: 2,
-    translation: 'specific.indicators.type.mercuryHuman',
-  },
-  mercuryFish: {
-    name: 'mercuryFish',
-    value: 3,
-    translation: 'specific.indicators.type.mercuryFish',
-  },
-  oil: {
-    name: 'oil',
+  waterDemand: {
+    name: 'waterDemand',
     value: 4,
-    translation: 'specific.indicators.type.oil',
+    translation: 'specific.indicators.type.waterDemand',
+    // Hidrelétricas
+    hydroelectric: {
+      name: 'hydroelectric',
+      value: 15,
+      translation: 'specific.indicators.type.hydroelectric',
+    },
+    // Hidrovias
+    Waterways: {
+      name: 'Waterways',
+      value: 16,
+      translation: 'specific.indicators.type.Waterways',
+    },
+    // População na bacia
+    Population: {
+      name: 'Population',
+      value: 17,
+      translation: 'specific.indicators.type.Population',
+    },
+    // Dados do cadastro nacional de recursos hídricos do Brasil (CNARH)
+    CNARH: {
+      name: 'CNARH',
+      value: 18,
+      translation: 'specific.indicators.type.CNARH',
+    },
   },
-  illegalMining: {
-    name: 'illegalMining',
+  generalFeatures: {
+    name: 'generalFeatures',
     value: 5,
-    translation: 'specific.indicators.type.illegalMining',
-  }, */
+    translation: 'specific.indicators.type.generalFeatures',
+    // Área da bacia por país
+    watershedArea: {
+      name: 'watershedArea',
+      value: 19,
+      translation: 'specific.indicators.type.watershedArea',
+    },
+    // Porcentagem da área da bacia sobre o território nacional
+    areaPercentage: {
+      name: 'areaPercentage',
+      value: 20,
+      translation: 'specific.indicators.type.areaPercentage',
+    },
+    // Unidades hidrológicas superficiais (divisão Otto Pfafstetter)
+    surfaceHydrologicalUnits: {
+      name: 'surfaceHydrologicalUnits',
+      value: 21,
+      translation: 'specific.indicators.type.surfaceHydrologicalUnits',
+    },
+    // Unidades hidrológicas subterrâneas
+    undergroundHydrologicalUnits: {
+      name: 'undergroundHydrologicalUnits',
+      value: 22,
+      translation: 'specific.indicators.type.undergroundHydrologicalUnits',
+    },
+    // Características Hidrogeoquímicas das águas
+    hydrogeochemicalCharacteristics: {
+      name: 'hydrogeochemicalCharacteristics',
+      value: 23,
+      translation: 'specific.indicators.type.hydrogeochemicalCharacteristics',
+    },
+  },
+  hydroclimaticVulnerability: {
+    name: 'hydroclimaticVulnerability',
+    value: 7,
+    translation: 'specific.indicators.type.hydroclimaticVulnerability',
+    // Recorrência de eventos de secas extremas
+    droughtEvents: {
+      name: 'droughtEvents',
+      value: 24,
+      translation: 'specific.indicators.type.droughtEvents',
+    },
+    // Recorrência de eventos de cheia
+    floodEvents: {
+      name: 'floodEvents',
+      value: 25,
+      translation: 'specific.indicators.type.floodEvents',
+    },
+    // Vulnerabilidade a secas
+    droughtVulnerability: {
+      name: 'droughtVulnerability',
+      value: 26,
+      translation: 'specific.indicators.type.droughtVulnerability',
+    },
+    // Vulnerabilidade a inundações
+    floodVulnerability: {
+      name: 'floodVulnerability',
+      value: 27,
+      translation: 'specific.indicators.type.floodVulnerability',
+    },
+  },
+
+  waterGovernance: {
+    name: 'waterGovernance',
+    value: 8,
+    translation: 'specific.indicators.type.waterGovernance',
+    // Autoridades de águas dos países e suas funções
+    authorities: {
+      name: 'authorities',
+      value: 28,
+      translation: 'specific.indicators.type.authorities',
+    },
+    // Legislações de águas dos países
+    legislation: {
+      name: 'legislation',
+      value: 29,
+      translation: 'specific.indicators.type.legislation',
+    },
+    // Publicações e documentos científicos sobre recursos hídricos
+    publications: {
+      name: 'publications',
+      value: 30,
+      translation: 'specific.indicators.type.publications',
+    },
+    // Relatórios dos países sobre recursos hídricos
+    countryReports: {
+      name: 'countryReports',
+      value: 31,
+      translation: 'specific.indicators.type.countryReports',
+    },
+  },
 };
 
 export const countryCodes = {
@@ -129,8 +227,8 @@ export const countryCodes = {
 };
 
 export const filterDefaults = {
-  indicatorSelection: indicators.waterResources.waterSurface.value,
-  indicatorSelectionTerritory: indicators.waterResources.value,
+  indicatorSelection: indicators.generalFeatures.watershedArea.value,
+  indicatorSelectionTerritory: indicators.generalFeatures.value,
   territorySelection: null,
 };
 

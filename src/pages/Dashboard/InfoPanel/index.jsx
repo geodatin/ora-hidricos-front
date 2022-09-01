@@ -34,7 +34,7 @@ export default function InfoPanel({ fonte, title, subtitle }) {
         className: classes.headerWrapper,
         children: (
           <>
-            <Typography style={{ marginTop: 10, lineHeight: 0.5 }} variant="h3">
+            <Typography style={{ marginTop: 10, lineHeight: 1.2 }} variant="h3">
               {title}
             </Typography>
             {fonte && (

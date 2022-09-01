@@ -227,7 +227,7 @@
         "font": "Fonte de dados: Cobrape"
       },
       "IPPO": {
-        "title": "IPPO",
+        "title": "Indicador Potencial de Poluição Orgânica (IPPO)",
         "font": "Fonte de dados: Cobrape"
       },
       
@@ -250,6 +250,74 @@
       "agricultural": {
         "title": "Agropecuária",
         "font": "Fonte de dados: Cobrape"
+      },
+      "hydroelectric": {
+        "title": "Hidrelétricas",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "Waterways": {
+        "title": "Hidrovias",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "Population": {
+        "title": "População na bacia",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "CNARH": {
+        "title": "Dados do cadastro nacional de recursos hídricos do Brasil (CNARH)",
+        "font": "Fonte de dados: ANA https://dadosabertos.ana.gov.br/search?q=cadastro"
+      },
+      "watershedArea": {
+        "title": "Área da bacia por país",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "areaPercentage": {
+        "title": "Porcentagem da área da bacia sobre o território nacional",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "surfaceHydrologicalUnits": {
+        "title": "Unidades hidrológicas superficiais (divisão Otto Pfafstetter)",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "undergroundHydrologicalUnits": {
+        "title": "Unidades hidrológicas subterrâneas",
+        "font": "Fonte de dados: http://siagasweb.cprm.gov.br/layout/visualizar_mapa.php"
+      },
+      "hydrogeochemicalCharacteristics": {
+        "title": "Características Hidrogeoquímicas das águas",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "droughtEvents": {
+        "title": "Recorrência de eventos de secas extremas",
+        "font": "Fonte de dados: mapa 33 do atlas de vulnerabilidade da OTCA"
+      },
+      "floodEvents": {
+        "title": "Recorrência de eventos de cheia",
+        "font": "Fonte de dados: mapa 34 do atlas de vulnerabilidade da OTCA"
+      },
+      "droughtVulnerability": {
+        "title": "Vulnerabilidade a secas",
+        "font": "Fonte de dados: mapa 57 do atlas de vulnerabilidade da OTCA"
+      },
+      "floodVulnerability": {
+        "title": "Vulnerabilidade a inundações",
+        "font": "Fonte de dados: mapa 58 do atlas de vulnerabilidade da OTCA"
+      },
+      "authorities": {
+        "title": "Autoridades de águas dos países e suas funções",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "legislation": {
+        "title": "Legislações de águas dos países",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "publications": {
+        "title": "Publicações e documentos científicos sobre recursos hídricos ",
+        "font": "Fonte de dados: Cobrape"
+      },
+      "countryReports": {
+        "title": "Relatórios dos países sobre recursos hídricos",
+        "font": "Fonte de dados: Cobrape"
       }
     }, 
     "indicators": {
@@ -261,6 +329,12 @@
         "actualEvapotranspiration": "Evapotranspiração real",
         "waterBalance": "Balanço hídrico",
 
+        "waterDemand": "DEMANDA HÍDRICA",
+        "hydroelectric": "Hidrelétricas",
+        "Waterways": "Hidrovias",
+        "Population": "População na bacia",
+        "CNARH": "CNARH",
+
         "mercury": "QUALIDADE DA ÁGUA - INDICADORES DE CONTAMINAÇÃO",
         "mercuryHuman": "Mercúrio em humanos",
         "mercuryFish": "Mercúrio em peixes",
@@ -271,8 +345,26 @@
         "illegalMining": "Mineração ilegal",
         "agricultural": "Agropecuária",
         "deforesting": "Desmatamento",
-        "minesMining": "Lavras mineração"
+        "minesMining": "Lavras mineração",
 
+        "generalFeatures": "CARACTERÍSTICAS GERAIS",
+        "watershedArea": "Área da bacia por país",
+        "areaPercentage": "Porcentagem da área da bacia sobre o território nacional",
+        "surfaceHydrologicalUnits": "Unidades hidrológicas superficiais (divisão Otto Pfafstetter)",
+        "undergroundHydrologicalUnits": "Unidades hidrológicas subterrâneas",
+        "hydrogeochemicalCharacteristics": "Características Hidrogeoquímicas das águas",
+
+        "hydroclimaticVulnerability": "VULNERABILIDADE HIDROCLIMÁTICA",
+        "droughtEvents": "Recorrência de eventos de secas extremas ",
+        "floodEvents": "Recorrência de eventos de cheia",
+        "droughtVulnerability": "Vulnerabilidade a secas",
+        "floodVulnerability": "Vulnerabilidade a inundações",
+
+        "waterGovernance": "GOVERNANÇA DA ÁGUA",
+        "authorities": "Autoridades de águas dos países e suas funções",
+        "legislation": "Legislações de águas dos países",
+        "publications": "Publicações e documentos científicos sobre recursos hídricos",
+        "countryReports": "Relatórios dos países sobre recursos hídricos"
       }
     },
     "autocompletesearch": {

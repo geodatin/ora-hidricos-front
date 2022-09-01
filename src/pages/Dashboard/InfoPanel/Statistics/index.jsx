@@ -54,7 +54,59 @@ export default function Statistics() {
         (indicatorSelection === indicators.ground.agricultural.value && (
           <WQI />
         )) ||
-        (indicatorSelection === indicators.ground.deforesting.value && <WQI />)}
+        (indicatorSelection === indicators.ground.deforesting.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.waterDemand.Waterways.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.waterDemand.Population.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection === indicators.waterDemand.CNARH.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.generalFeatures.watershedArea.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.generalFeatures.areaPercentage.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.generalFeatures.surfaceHydrologicalUnits.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.generalFeatures.undergroundHydrologicalUnits.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.hydroclimaticVulnerability.droughtEvents.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.hydroclimaticVulnerability.floodEvents.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.hydroclimaticVulnerability.droughtVulnerability.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.hydroclimaticVulnerability.floodVulnerability.value && (
+          <WQI />
+        )) ||
+        (indicatorSelection ===
+          indicators.waterGovernance.authorities.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.waterGovernance.legislation.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.waterGovernance.publications.value && <WQI />) ||
+        (indicatorSelection ===
+          indicators.waterGovernance.countryReports.value && <WQI />)}
     </div>
   );
 }
