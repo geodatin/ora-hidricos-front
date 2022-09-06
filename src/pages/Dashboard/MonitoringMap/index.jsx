@@ -1,21 +1,21 @@
+/* eslint-disable func-names */
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable no-shadow */
 import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import L from 'leaflet';
-import { map } from 'lodash';
 import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
-import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
+import { TileLayer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useContextSelector } from 'use-context-selector';
-import 'react-leaflet-markercluster/dist/styles.min.css';
 
-import 'leaflet.vectorgrid';
 // import imgMarker from '../../../assets/images/marker-24.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
+import Point from '../../../assets/shapes/get-points.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
@@ -32,7 +32,7 @@ import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
 import useStyles from './styles';
-import BlocksVectorGrid from './VectorGrid';
+import TopoJSON from './TopoJSON';
 
 /**
  * This function provides the monitoring map
@@ -41,7 +41,9 @@ import BlocksVectorGrid from './VectorGrid';
 
 function Markers({ data }) {
   const classes = useStyles();
+  const map = useMap();
   const theme = useTheme();
+  const geoJsonRef = useRef();
   const [coordsOilCode, setCoordsOilCode] = useState();
   const [coordsIllegalMiningCode, setCoordsIllegalMiningCode] = useState();
 
@@ -49,8 +51,6 @@ function Markers({ data }) {
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
-
-  const geoJsonRef = useRef();
 
   const style = () => ({
     weight: 1.0,
@@ -525,6 +525,14 @@ export default function MonitoringMap() {
 
   L.Marker.prototype.options.icon = blueIcon;
 
+  const createClusterCustomIcon = function (cluster) {
+    return L.divIcon({
+      html: `<span>${cluster.getChildCount()}</span>`,
+      className: classes.markerClusterCustom,
+      iconSize: L.point(33, 33, true),
+    });
+  };
+
   useEffect(() => {
     api
       .get('mercury/human/points', {
@@ -599,7 +607,6 @@ export default function MonitoringMap() {
 
   return (
     <MapWrapper
-      preferCanvas={false}
       getMapRef={(ref) => setMapRef(ref)}
       minZoom={5}
       maxZoom={15}
@@ -765,6 +772,22 @@ export default function MonitoringMap() {
           url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
           opacity={theme === darkScheme ? 0.3 : 0.2}
           zIndex={2}
+        />
+      )}
+      {indicatorSelection === indicators.ground.minesMining.value && (
+        <TopoJSON
+          data={Point}
+          // eslint-disable-next-line react/jsx-no-bind
+          style={() => ({
+            fillColor: '#29dfec44',
+            fillOpacity: 0.5,
+            weight: 0.5,
+            opacity: 0.8,
+            dashArray: '3',
+            lineCap: 'round',
+            lineJoin: 'round ',
+            color: theme === darkScheme ? '#0cbfcc' : '#407387',
+          })}
         />
       )}
 
@@ -979,12 +1002,26 @@ export default function MonitoringMap() {
             </Marker>
           ))) ||
         (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
-          <MarkerClusterGroup>
+          <MarkerClusterGroup
+            iconCreateFunction={createClusterCustomIcon}
+            polygonOptions={{
+              color: theme === darkScheme ? '#0cbfcc' : '#407387',
+              weight: 1,
+              opacity: 0.9,
+            }}
+          >
             <Markers data={coordsUnion} />
           </MarkerClusterGroup>
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
-          <MarkerClusterGroup>
+          <MarkerClusterGroup
+            iconCreateFunction={createClusterCustomIcon}
+            polygonOptions={{
+              color: theme === darkScheme ? '#0cbfcc' : '#407387',
+              weight: 1,
+              opacity: 0.9,
+            }}
+          >
             <Markers data={coordsState} />
           </MarkerClusterGroup>
         ))}
@@ -993,19 +1030,16 @@ export default function MonitoringMap() {
         <Markers data={coordsOil} />
       )) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
-          <MarkerClusterGroup>
+          <MarkerClusterGroup
+            iconCreateFunction={createClusterCustomIcon}
+            polygonOptions={{
+              color: theme === darkScheme ? '#0cbfcc' : '#407387',
+              weight: 1,
+              opacity: 0.9,
+            }}
+          >
             <Markers data={coordsMining} />
           </MarkerClusterGroup>
-        )) ||
-        (indicatorSelection === indicators.ground.minesMining.value && (
-          <BlocksVectorGrid
-            url={`https://dev-rh-ora.geodatin.com/api/mining/mine/tiles/{z}/{x}/{y}.pbf?countryCode=${code}`}
-          />
-        )) ||
-        (indicatorSelection === indicators.mercury.IPPO.value && (
-          <BlocksVectorGrid
-            url={`https://dev-rh-ora.geodatin.com/api/pollution/tiles/{z}/{x}/{y}.pbf?countryCode=${code}`}
-          />
         ))}
     </MapWrapper>
   );
