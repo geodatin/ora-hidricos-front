@@ -203,6 +203,8 @@ export default function MercuryHuman({
       <ItemsChart
         title={t('specific.mercuryHuman.itemChart.title')}
         info={t('specific.mercuryHuman.itemChart.info')}
+        plural={t('specific.mercuryHuman.itemChart.plural')}
+        singular={t('specific.mercuryHuman.itemChart.singular')}
         data={itemsData}
       />
 

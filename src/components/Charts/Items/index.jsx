@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 
 import ChartContainer from '../../ChartContainer';
 import Typography from '../../Typography';
@@ -16,10 +15,14 @@ export default function ItemsChart({
   data,
   csvCallback,
   fullScreenEnabled,
+  singular,
+  plural,
 }) {
   ItemsChart.propTypes = {
     title: PropTypes.string.isRequired,
     info: PropTypes.string.isRequired,
+    singular: PropTypes.string.isRequired,
+    plural: PropTypes.string.isRequired,
     data: PropTypes.shape(),
     fullScreenEnabled: PropTypes.bool,
     csvCallback: PropTypes.func,
@@ -32,7 +35,6 @@ export default function ItemsChart({
   };
 
   const classes = useStyles();
-  const { t } = useTranslation();
 
   const itemComponent = (icon, label, value, dataType) => (
     <div key={label} className={classes.item}>
@@ -53,13 +55,9 @@ export default function ItemsChart({
           {' '}
           {value}{' '}
           {value !== 1 ? (
-            <Typography>
-              {t('specific.mercuryFish.itemChart.plural')}
-            </Typography>
+            <Typography>{plural}</Typography>
           ) : (
-            <Typography>
-              {t('specific.mercuryFish.itemChart.plural')}
-            </Typography>
+            <Typography>{singular}</Typography>
           )}
         </Typography>
         <Typography> {dataType}</Typography>

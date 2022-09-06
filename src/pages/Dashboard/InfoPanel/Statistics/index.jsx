@@ -9,6 +9,7 @@ import IllegalMining from './IllegalMining';
 import IPPO from './IPPO';
 import MercuryFish from './MercuryFish';
 import MercuryHuman from './MercuryHuman';
+import MiningMine from './MiningMine';
 import Oil from './Oil';
 import WaterSurface from './WaterSurface';
 import WQI from './WQI';
@@ -52,7 +53,7 @@ export default function Statistics() {
           <IllegalMining />
         )) ||
         (indicatorSelection === indicators.ground.minesMining.value && (
-          <WQI />
+          <MiningMine />
         )) ||
         (indicatorSelection === indicators.ground.agricultural.value && (
           <WQI />

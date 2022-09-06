@@ -203,6 +203,8 @@ export default function MercuryFish({
       <ItemsChart
         title={t('specific.mercuryFish.itemChart.title')}
         info={t('specific.mercuryFish.itemChart.info')}
+        plural={t('specific.mercuryFish.itemChart.plural')}
+        singular={t('specific.mercuryFish.itemChart.singular')}
         data={itemsData}
       />
 

@@ -126,6 +126,56 @@
           "singular": "Ocorrência"
         }
     },
+    "MiningMine": {
+      "treemapChart": {
+        "title": "Situação dos campos de mineração",
+        "info": "Este gráfico apresenta a situação dos campos de mineração",
+        "station": {
+          "plural": "Minerações",
+          "singular": "Mineração"
+        },
+        "situation": {
+          "REQUERIMENTO DE LAVRA GARIMPEIRA": "Requisito lavra garimpeira",
+          "ConcesiÃ³n sin actividad": "Arrendamento sem atividade",
+          "REQUERIMENTO DE PESQUISA": "Requisito de pesquisa",
+          "AUTORIZAÃ‡ÃƒO DE PESQUISA": "Autorização de pesquisa",
+          "en explotaciÃ³n": "Em operação",
+          "TrÃ¡mite": "Procedimento",
+          "sin dato": "Sem dados",
+          "LAVRA GARIMPEIRA": "Lavra garimpeira",
+          "Bloqueado": "Bloqueado",
+          "LICENCIAMENTO": "Licença",
+          "en exploraciÃ³n/en explotaciÃ³n": "Em exploração/em exploração",
+          "Otros": "Outros",
+          "REQUERIMENTO DE LICENCIAMENTO": "Requisito de licenciamento",
+          "DISPONIBILIDADE": "Disponibilidade",
+          "en exploraciÃ³n": "Em exploração",
+          "REQUERIMENTO DE LAVRA": "Requisito de lavra",
+          "solicitud": "Solicitar",
+          "CONCESSÃƒO DE LAVRA": "Concesso de lavra",
+          "Extinguido": "Extinto",
+          "DIREITO DE REQUERER A LAVRA": "Direto para requer uma lavra",
+          "REQUERIMENTO DE REGISTRO DE EXTRAÃ‡ÃƒO": "Requisito de registro de estranho",
+          "REGISTRO DE EXTRAÃ‡ÃƒO": "Registro de estranho"
+        } 
+      },
+      "itemChart":{
+        "title": "Número de minas por país",
+        "info": "Este gráfico apresenta número de minas por país",
+        "plural": "Minas",
+        "singular": "Mina"
+      },
+      "rankingData": {
+        "title": "Ranking das mineradoras",
+        "info": "Este gráfico apresenta a classificação das mineradoras"
+      },
+        "pieChart": {
+          "title": "Número total de ocorrências",
+          "info": "Este gráfico apresenta o número total de ocorrências",
+          "plural": "Ocorrências",
+          "singular": "Ocorrência"
+        }
+    },
 
     "CNARHunion": {
         "pieChart": {
@@ -203,7 +253,9 @@
       },
       "itemChart":{
         "title": "Publicações por países",
-        "info": "Este gráfico apresenta as publicações por países"
+        "info": "Este gráfico apresenta as publicações por países",
+        "plural": "Publicações",
+        "singular": "Publicação"
       },
       "lineChart":{
         "title": "Publicações de contaminação por mercúrio",

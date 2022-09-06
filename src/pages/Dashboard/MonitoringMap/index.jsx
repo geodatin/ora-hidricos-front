@@ -278,12 +278,12 @@ function Markers({ data }) {
             key={theme === darkScheme ? `dark` : `light`}
           >
             <Typography variant="caption" format="bold">
-              Organic pollution
+              Status da Interferência
             </Typography>
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Bestowal type
+                Tipo de Outorga
               </Typography>
               <Typography variant="caption">
                 {cord.properties.bestowalType}
@@ -291,7 +291,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Interference type
+                Tipo da Interferência
               </Typography>
               <Typography variant="caption">
                 {cord.properties.interferenceType}
@@ -300,7 +300,7 @@ function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Org name
+                Nome do Orgão gestor
               </Typography>
               <Typography variant="caption">
                 {cord.properties.orgName}
@@ -309,7 +309,7 @@ function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Bestowal situation
+                Situação da Outorga
               </Typography>
               <Typography variant="caption">
                 {cord.properties.bestowalSituation}
@@ -325,7 +325,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Water body name
+                Nome do Corpo Hídrico
               </Typography>
               <Typography variant="caption">
                 {cord.properties.waterBodyName}
@@ -333,13 +333,13 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Goal
+                Finalidade
               </Typography>
               <Typography variant="caption">{cord.properties.goal}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                valid date
+                Data de Vencimento
               </Typography>
               <Typography variant="caption">
                 {cord.properties.validDate}
@@ -347,7 +347,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Avg flow
+                Vazão Média
               </Typography>
               <Typography variant="caption">
                 {cord.properties.avgFlow}
@@ -355,7 +355,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Max flow
+                Vazão Máxima
               </Typography>
               <Typography variant="caption">
                 {cord.properties.maxFlow}
@@ -363,7 +363,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                volume
+                Volume
               </Typography>
               <Typography variant="caption">
                 {cord.properties.volume}
@@ -386,12 +386,12 @@ function Markers({ data }) {
             key={theme === darkScheme ? `dark` : `light`}
           >
             <Typography variant="caption" format="bold">
-              Organic pollution
+              Status da Interferência
             </Typography>
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Bestowal type
+                Tipo de Outorga
               </Typography>
               <Typography variant="caption">
                 {cord.properties.bestowalType}
@@ -399,7 +399,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Interference type
+                Tipo da Interferência
               </Typography>
               <Typography variant="caption">
                 {cord.properties.interferenceType}
@@ -408,7 +408,7 @@ function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Org name
+                Nome do Orgão gestor
               </Typography>
               <Typography variant="caption">
                 {cord.properties.orgName}
@@ -417,7 +417,7 @@ function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Bestowal situation
+                Situação da Outorga
               </Typography>
               <Typography variant="caption">
                 {cord.properties.bestowalSituation}
@@ -433,7 +433,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Water body name
+                Nome do Corpo Hídrico
               </Typography>
               <Typography variant="caption">
                 {cord.properties.waterBodyName}
@@ -441,13 +441,13 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Goal
+                Finalidade
               </Typography>
               <Typography variant="caption">{cord.properties.goal}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                valid date
+                Data de Vencimento
               </Typography>
               <Typography variant="caption">
                 {cord.properties.validDate}
@@ -455,7 +455,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Avg flow
+                Vazão Média
               </Typography>
               <Typography variant="caption">
                 {cord.properties.avgFlow}
@@ -463,7 +463,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Max flow
+                Vazão Máxima
               </Typography>
               <Typography variant="caption">
                 {cord.properties.maxFlow}
@@ -471,7 +471,7 @@ function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                volume
+                Volume
               </Typography>
               <Typography variant="caption">
                 {cord.properties.volume}
@@ -777,7 +777,6 @@ export default function MonitoringMap() {
       {indicatorSelection === indicators.ground.minesMining.value && (
         <TopoJSON
           data={Point}
-          // eslint-disable-next-line react/jsx-no-bind
           style={() => ({
             fillColor: '#29dfec44',
             fillOpacity: 0.5,
