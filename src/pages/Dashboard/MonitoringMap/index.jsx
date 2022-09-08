@@ -15,8 +15,8 @@ import { useContextSelector } from 'use-context-selector';
 
 // import imgMarker from '../../../assets/images/marker-24.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
-import Point from '../../../assets/shapes/get-points.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
+import Point from '../../../assets/shapes/points.json';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
 import Typography from '../../../components/Typography';
