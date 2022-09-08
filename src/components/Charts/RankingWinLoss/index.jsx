@@ -125,8 +125,8 @@ export default function RankingWinLossChart({
           <Pagination
             className={classes.pagination}
             size="small"
-            count={params.totalPages}
-            page={params.page}
+            count={params?.totalPages}
+            page={params?.page}
             onChange={(event, value) =>
               setParams((prevParams) => ({
                 ...prevParams,

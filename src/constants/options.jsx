@@ -233,8 +233,8 @@ export const countryCodes = {
 };
 
 export const filterDefaults = {
-  indicatorSelection: indicators.generalFeatures.watershedArea.value,
-  indicatorSelectionTerritory: indicators.generalFeatures.value,
+  indicatorSelection: indicators.waterDemand.CNARHunion.value,
+  indicatorSelectionTerritory: indicators.waterDemand.value,
   territorySelection: null,
 };
 

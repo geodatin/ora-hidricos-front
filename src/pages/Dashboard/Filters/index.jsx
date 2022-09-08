@@ -147,7 +147,7 @@ export default function Filters() {
 
       <div>
         <CustomSelect value={auxIndicatorSelectionTerritory}>
-          <MenuItem
+          {/* <MenuItem
             value={indicators.generalFeatures.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
@@ -159,14 +159,12 @@ export default function Filters() {
             }}
           >
             {t(indicators.generalFeatures.translation)}
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem
             value={indicators.waterDemand.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(indicators.waterDemand.value);
-              setAuxIndicatorSelection(
-                indicators.waterDemand.hydroelectric.value
-              );
+              setAuxIndicatorSelection(indicators.waterDemand.CNARHunion.value);
             }}
           >
             {t(indicators.waterDemand.translation)}
@@ -203,7 +201,7 @@ export default function Filters() {
           >
             {t(indicators.ground.translation)}
           </MenuItem>
-          <MenuItem
+          {/* <MenuItem
             value={indicators.hydroclimaticVulnerability.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
@@ -228,7 +226,7 @@ export default function Filters() {
             }}
           >
             {t(indicators.waterGovernance.translation)}
-          </MenuItem>
+          </MenuItem> */}
         </CustomSelect>
       </div>
 
@@ -312,7 +310,7 @@ export default function Filters() {
         )) ||
           (auxIndicatorSelectionTerritory === indicators.waterDemand.value && (
             <CustomSelect value={auxIndicatorSelection}>
-              {/* Hidrelétricas */}
+              {/* Hidrelétricas 
               <MenuItem
                 value={indicators.waterDemand.hydroelectric.value}
                 onClick={() =>
@@ -323,7 +321,7 @@ export default function Filters() {
               >
                 {t(indicators.waterDemand.hydroelectric.translation)}
               </MenuItem>
-              {/* Hidrovias */}
+              {/* Hidrovias 
               <MenuItem
                 value={indicators.waterDemand.Waterways.value}
                 onClick={() =>
@@ -334,7 +332,7 @@ export default function Filters() {
               >
                 {t(indicators.waterDemand.Waterways.translation)}
               </MenuItem>
-              {/* População na bacia */}
+              {/* População na bacia 
               <MenuItem
                 value={indicators.waterDemand.Population.value}
                 onClick={() =>
@@ -345,7 +343,7 @@ export default function Filters() {
               >
                 {t(indicators.waterDemand.Population.translation)}
               </MenuItem>
-
+            */}
               {/* Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) filtro União */}
               <MenuItem
                 value={indicators.waterDemand.CNARHunion.value}
@@ -384,7 +382,7 @@ export default function Filters() {
               >
                 {t(indicators.waterResources.waterSurface.translation)}
               </MenuItem>
-              {/* Zonas Inundáveis */}
+              {/* Zonas Inundáveis 
               <MenuItem
                 value={indicators.waterResources.wetlands.value}
                 onClick={() =>
@@ -396,7 +394,7 @@ export default function Filters() {
                 {t(indicators.waterResources.wetlands.translation)}
               </MenuItem>
 
-              {/* Precipitação anual */}
+              {/* Precipitação anual 
               <MenuItem
                 value={indicators.waterResources.annualPrecipitation.value}
                 onClick={() =>
@@ -408,7 +406,7 @@ export default function Filters() {
                 {t(indicators.waterResources.annualPrecipitation.translation)}
               </MenuItem>
 
-              {/* Evapotranspiração real */}
+              {/* Evapotranspiração real 
               <MenuItem
                 value={indicators.waterResources.actualEvapotranspiration.value}
                 onClick={() =>
@@ -421,7 +419,7 @@ export default function Filters() {
                   indicators.waterResources.actualEvapotranspiration.translation
                 )}
               </MenuItem>
-              {/* Balanço hídrico */}
+              {/* Balanço hídrico 
               <MenuItem
                 value={indicators.waterResources.waterBalance.value}
                 onClick={() =>
@@ -431,7 +429,7 @@ export default function Filters() {
                 }
               >
                 {t(indicators.waterResources.waterBalance.translation)}
-              </MenuItem>
+              </MenuItem> */}
             </CustomSelect>
           )) ||
           (auxIndicatorSelectionTerritory === indicators.mercury.value && (
@@ -501,7 +499,7 @@ export default function Filters() {
               >
                 {t(indicators.ground.minesMining.translation)}
               </MenuItem>
-              {/* Agropecuária */}
+              {/* Agropecuária 
               <MenuItem
                 value={indicators.ground.agricultural.value}
                 onClick={() => {
@@ -512,7 +510,7 @@ export default function Filters() {
               >
                 {t(indicators.ground.agricultural.translation)}
               </MenuItem>
-              {/* Desmatamento */}
+              {/* Desmatamento 
               <MenuItem
                 value={indicators.ground.deforesting.value}
                 onClick={() => {
@@ -520,7 +518,7 @@ export default function Filters() {
                 }}
               >
                 {t(indicators.ground.deforesting.translation)}
-              </MenuItem>
+              </MenuItem> */}
             </CustomSelect>
           )) ||
           (auxIndicatorSelectionTerritory ===
