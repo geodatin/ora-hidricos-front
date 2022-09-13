@@ -320,18 +320,8 @@ export default function Filters() {
                 }
               >
                 {t(indicators.waterDemand.hydroelectric.translation)}
-              </MenuItem>
-              {/* Hidrovias 
-              <MenuItem
-                value={indicators.waterDemand.Waterways.value}
-                onClick={() =>
-                  setAuxIndicatorSelection(
-                    indicators.waterDemand.Waterways.value
-                  )
-                }
-              >
-                {t(indicators.waterDemand.Waterways.translation)}
-              </MenuItem>
+              </MenuItem> */}
+
               {/* População na bacia 
               <MenuItem
                 value={indicators.waterDemand.Population.value}
@@ -365,6 +355,18 @@ export default function Filters() {
                 }
               >
                 {t(indicators.waterDemand.CNARHstate.translation)}
+              </MenuItem>
+
+              {/* Hidrovias */}
+              <MenuItem
+                value={indicators.waterDemand.Waterways.value}
+                onClick={() =>
+                  setAuxIndicatorSelection(
+                    indicators.waterDemand.Waterways.value
+                  )
+                }
+              >
+                {t(indicators.waterDemand.Waterways.translation)}
               </MenuItem>
             </CustomSelect>
           )) ||

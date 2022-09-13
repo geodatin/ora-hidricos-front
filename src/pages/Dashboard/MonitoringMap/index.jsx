@@ -490,6 +490,7 @@ export default function MonitoringMap() {
   const [coordsMining, setCoordsMining] = useState();
   const [coordsUnion, setCoordsUnion] = useState();
   const [coordsState, setCoordsState] = useState();
+  const [waterUrl, setWaterUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -604,6 +605,12 @@ export default function MonitoringMap() {
         setCoordsState(data);
       });
   }, [code]);
+
+  useEffect(() => {
+    api.get('waterway/tiles/image').then(({ data }) => {
+      setWaterUrl(data);
+    });
+  }, []);
 
   return (
     <MapWrapper
@@ -766,7 +773,9 @@ export default function MonitoringMap() {
           zIndex={2}
         />
       )}
-
+      {indicatorSelection === indicators.waterDemand.Waterways.value && (
+        <TileLayer url={waterUrl?.url} zIndex={2} />
+      )}
       {indicatorSelection !== indicators.waterResources.waterSurface.value && (
         <TileLayer
           url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
