@@ -225,6 +225,18 @@
         "info": "Este gráfico apresenta a classificação das cidades do território"
       }
   },
+  "Waterway": {
+    "pieChart": {
+      "title": "Número total de hidrovias",
+      "info": "Este gráfico apresenta o número total de hidrovia",
+      "plural": "Hidrovias",
+      "singular": "Hidrovia"
+    },
+    "rankingChart": {
+      "title": "Ranking por países",
+      "info": "Este gráfico apresenta a classificação para os países do território"
+    }
+  },
     "mercuryFish": {
       "pieChart": {
         "title": "Número total de publicações",

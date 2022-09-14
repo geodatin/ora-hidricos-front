@@ -12,6 +12,7 @@ import MercuryHuman from './MercuryHuman';
 import MiningMine from './MiningMine';
 import Oil from './Oil';
 import WaterSurface from './WaterSurface';
+import Waterway from './Waterway';
 import WQI from './WQI';
 
 /**
@@ -65,7 +66,7 @@ export default function Statistics() {
           <WQI />
         )) ||
         (indicatorSelection === indicators.waterDemand.Waterways.value && (
-          <WQI />
+          <Waterway />
         )) ||
         (indicatorSelection === indicators.waterDemand.Population.value && (
           <WQI />
