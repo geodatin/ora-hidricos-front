@@ -63,10 +63,17 @@ export default function CNARHstate({
     totalPages: 1,
   });
 
+  const [rankingParamsGoal, setRankingParamsGoal] = useState({
+    order: true,
+    page: 1,
+    totalPages: 1,
+  });
+
   const handle = useFullScreenHandle();
   const [rankingInterference, setRankingInterference] = useState();
   const [rankingCities, setRankingCities] = useState();
   const [rankingSituation, setRankingSituation] = useState();
+  const [rankingGoal, setRankingGoal] = useState();
   const [totalData, setTotalData] = useState();
 
   useEffect(() => {
@@ -153,6 +160,75 @@ export default function CNARHstate({
     };
   }, [pageSituation, t]);
 
+  const pageGoal = rankingParamsGoal.page;
+
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`waterUsers/ranking/goal/state`, {
+        params: {
+          countryCode: code,
+          page: pageGoal,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed) {
+          setRankingGoal({
+            labels: data.x.map(
+              (label, index) => `${data.position[index]}°  ${label}`
+            ),
+            datasets: [
+              {
+                data: data.series[0].data.map((number) => number),
+                backgroundColor: [theme.primary.main],
+                borderRadius: 5,
+                barThickness: 15,
+              },
+            ],
+          });
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [pageGoal, t]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`waterUsers/ranking/goal/state`, {
+        params: {
+          countryCode: code,
+          page: pageGoal,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed) {
+          setRankingGoal({
+            labels: data.x.map(
+              (label, index) => `${data.position[index]}°  ${label}`
+            ),
+            datasets: [
+              {
+                data: data.series[0].data.map((number) => number),
+                backgroundColor: [theme.primary.main],
+                borderRadius: 5,
+                barThickness: 15,
+              },
+            ],
+          });
+          setRankingParamsGoal({
+            page: 1,
+            totalPages: data.pages,
+          });
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [code, t]);
   useEffect(() => {
     let isSubscribed = true;
     api
@@ -337,6 +413,18 @@ export default function CNARHstate({
         }}
         params={rankingParamsCities}
         setParams={setRankingParamsCities}
+      />
+      <RankingChart
+        title={t('specific.CNARHstate.rankingChartGoal.title')}
+        info={t('specific.CNARHstate.rankingChartGoal.info')}
+        data={rankingGoal}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
+        params={rankingParamsGoal}
+        setParams={setRankingParamsGoal}
       />
 
       <RankingChart

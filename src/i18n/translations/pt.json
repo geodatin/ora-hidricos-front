@@ -199,6 +199,10 @@
         "rankingChartCities": {
           "title": "Ranking das cidades do território",
           "info": "Este gráfico apresenta a classificação das cidades do território"
+        },
+        "rankingChartGoal": {
+          "title": "Ranking por objetivo",
+          "info": "Este gráfico apresenta a classificação para o objetivo"
         }
     },
     "CNARHstate": {
@@ -223,6 +227,10 @@
       "rankingChartCities": {
         "title": "Ranking das cidades do território",
         "info": "Este gráfico apresenta a classificação das cidades do território"
+      },
+      "rankingChartGoal": {
+        "title": "Ranking por objetivo",
+        "info": "Este gráfico apresenta a classificação para o objetivo"
       }
   },
   "Waterway": {
