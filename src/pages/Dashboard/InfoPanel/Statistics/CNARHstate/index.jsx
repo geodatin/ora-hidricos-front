@@ -51,12 +51,6 @@ export default function CNARHstate({
 
   const { t } = useTranslation();
 
-  const [rankingParamsType, setRankingParamsType] = useState({
-    order: true,
-    page: 1,
-    totalPages: 1,
-  });
-
   const [rankingParamsSituation, setRankingParamsSituation] = useState({
     order: true,
     page: 1,
@@ -72,7 +66,6 @@ export default function CNARHstate({
   const handle = useFullScreenHandle();
   const [rankingInterference, setRankingInterference] = useState();
   const [rankingCities, setRankingCities] = useState();
-  const [rankingType, setRankingType] = useState();
   const [rankingSituation, setRankingSituation] = useState();
   const [totalData, setTotalData] = useState();
 
@@ -117,76 +110,6 @@ export default function CNARHstate({
                 barThickness: 15,
               },
             ],
-          });
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [code, t]);
-
-  const pageType = rankingParamsType.page;
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`waterUsers/ranking/bestowal/state/type`, {
-        params: {
-          countryCode: code,
-          page: pageType,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setRankingType({
-            labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
-            ),
-            datasets: [
-              {
-                data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
-                borderRadius: 5,
-                barThickness: 15,
-              },
-            ],
-          });
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [pageType, t]);
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`waterUsers/ranking/bestowal/state/type`, {
-        params: {
-          countryCode: code,
-          page: pageType,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setRankingType({
-            labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
-            ),
-            datasets: [
-              {
-                data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
-                borderRadius: 5,
-                barThickness: 15,
-              },
-            ],
-          });
-          setRankingParamsType({
-            page: 1,
-            totalPages: data.pages,
           });
         }
       });
@@ -394,31 +317,6 @@ export default function CNARHstate({
       </div>
 
       <RankingChart
-        title={t('specific.CNARHstate.rankingChartType.title')}
-        info={t('specific.CNARHstate.rankingChartType.info')}
-        data={rankingType}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-        params={rankingParamsType}
-        setParams={setRankingParamsType}
-      />
-      <RankingChart
-        title={t('specific.CNARHstate.rankingChartSituation.title')}
-        info={t('specific.CNARHstate.rankingChartSituation.info')}
-        data={rankingSituation}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-        params={rankingParamsSituation}
-        setParams={setRankingParamsSituation}
-      />
-
-      <RankingChart
         title={t('specific.CNARHstate.rankingChartInterference.title')}
         info={t('specific.CNARHstate.rankingChartInterference.info')}
         data={rankingInterference}
@@ -439,6 +337,19 @@ export default function CNARHstate({
         }}
         params={rankingParamsCities}
         setParams={setRankingParamsCities}
+      />
+
+      <RankingChart
+        title={t('specific.CNARHstate.rankingChartSituation.title')}
+        info={t('specific.CNARHstate.rankingChartSituation.info')}
+        data={rankingSituation}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
+        params={rankingParamsSituation}
+        setParams={setRankingParamsSituation}
       />
     </ul>
   );

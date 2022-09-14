@@ -31,6 +31,7 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
+import GetPopup from './GetPopupRaster';
 import useStyles from './styles';
 import TopoJSON from './TopoJSON';
 
@@ -58,6 +59,14 @@ function Markers({ data }) {
     color: theme === darkScheme ? '#accc0c' : '#728740',
     dashArray: '3',
     fillOpacity: 0.5,
+  });
+
+  const blueIcon = new L.Icon({
+    iconUrl:
+      'https://visualpharm.com/assets/825/Marker-595b40b75ba036ed117d9f54.svg',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
   });
 
   // eslint-disable-next-line no-underscore-dangle
@@ -106,6 +115,7 @@ function Markers({ data }) {
             lat: cord.geometry.coordinates[1],
             lng: cord.geometry.coordinates[0],
           }}
+          icon={blueIcon}
         >
           <Popup
             className={classes.popup}
@@ -189,6 +199,7 @@ function Markers({ data }) {
             lat: cord.geometry.coordinates[1],
             lng: cord.geometry.coordinates[0],
           }}
+          icon={blueIcon}
         >
           <Popup
             className={classes.popup}
@@ -272,6 +283,7 @@ function Markers({ data }) {
             cord.geometry.coordinates[1],
             cord.geometry.coordinates[0],
           ]}
+          icon={blueIcon}
         >
           <Popup
             className={classes.popup}
@@ -380,6 +392,7 @@ function Markers({ data }) {
             cord.geometry.coordinates[1],
             cord.geometry.coordinates[0],
           ]}
+          icon={blueIcon}
         >
           <Popup
             className={classes.popup}
@@ -523,8 +536,6 @@ export default function MonitoringMap() {
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
-
-  L.Marker.prototype.options.icon = blueIcon;
 
   const createClusterCustomIcon = function (cluster) {
     return L.divIcon({
@@ -774,7 +785,10 @@ export default function MonitoringMap() {
         />
       )}
       {indicatorSelection === indicators.waterDemand.Waterways.value && (
-        <TileLayer url={waterUrl?.url} zIndex={2} />
+        <>
+          <TileLayer url={waterUrl?.url} zIndex={2} />
+          <GetPopup />
+        </>
       )}
       {indicatorSelection !== indicators.waterResources.waterSurface.value && (
         <TileLayer
@@ -809,6 +823,7 @@ export default function MonitoringMap() {
                 cord.geometry.coordinates[1],
                 cord.geometry.coordinates[0],
               ]}
+              icon={blueIcon}
             >
               <Popup
                 className={classes.popup}
@@ -918,6 +933,7 @@ export default function MonitoringMap() {
                 cord.geometry.coordinates[1],
                 cord.geometry.coordinates[0],
               ]}
+              icon={blueIcon}
             >
               <Popup
                 className={classes.popup}

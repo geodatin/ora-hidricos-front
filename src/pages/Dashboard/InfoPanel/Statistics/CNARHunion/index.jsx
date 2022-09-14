@@ -60,7 +60,6 @@ export default function CNARHunion({
   const handle = useFullScreenHandle();
   const [rankingInterference, setRankingInterference] = useState();
   const [rankingCities, setRankingCities] = useState();
-  const [rankingType, setRankingType] = useState();
   const [rankingSituation, setRankingSituation] = useState();
   const [totalData, setTotalData] = useState();
 
@@ -94,37 +93,6 @@ export default function CNARHunion({
       .then(({ data }) => {
         if (isSubscribed) {
           setRankingInterference({
-            labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
-            ),
-            datasets: [
-              {
-                data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
-                borderRadius: 5,
-                barThickness: 15,
-              },
-            ],
-          });
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [code, t]);
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`waterUsers/ranking/bestowal/union/type`, {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setRankingType({
             labels: data.x.map(
               (label, index) => `${data.position[index]}°  ${label}`
             ),
@@ -304,27 +272,6 @@ export default function CNARHunion({
       </div>
 
       <RankingChart
-        title={t('specific.CNARHunion.rankingChartType.title')}
-        info={t('specific.CNARHunion.rankingChartType.info')}
-        data={rankingType}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-      />
-      <RankingChart
-        title={t('specific.CNARHunion.rankingChartSituation.title')}
-        info={t('specific.CNARHunion.rankingChartSituation.info')}
-        data={rankingSituation}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-      />
-
-      <RankingChart
         title={t('specific.CNARHunion.rankingChartInterference.title')}
         info={t('specific.CNARHunion.rankingChartInterference.info')}
         data={rankingInterference}
@@ -345,6 +292,17 @@ export default function CNARHunion({
         }}
         params={rankingParams}
         setParams={setRankingParams}
+      />
+
+      <RankingChart
+        title={t('specific.CNARHunion.rankingChartSituation.title')}
+        info={t('specific.CNARHunion.rankingChartSituation.info')}
+        data={rankingSituation}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
       />
     </ul>
   );
