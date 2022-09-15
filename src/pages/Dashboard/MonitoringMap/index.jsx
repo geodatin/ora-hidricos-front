@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup, useMap } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import { useQuery } from 'react-query';
 import { useContextSelector } from 'use-context-selector';
 
 // import imgMarker from '../../../assets/images/marker-24.png';
@@ -33,7 +34,9 @@ import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
 import GetPopup from './GetPopupRaster';
 import useStyles from './styles';
+import SuperCluster from './SuperCluster';
 import TopoJSON from './TopoJSON';
+import 'react-leaflet-markercluster/dist/styles.min.css';
 
 /**
  * This function provides the monitoring map
@@ -383,8 +386,8 @@ function Markers({ data }) {
             </div>
           </Popup>
         </Marker>
-      ))) ||
-    (indicatorSelection === indicators.waterDemand.CNARHstate.value &&
+      )))
+    /* (indicatorSelection === indicators.waterDemand.CNARHstate.value &&
       data?.features?.map((cord) => (
         <Marker
           key={cord.properties.code}
@@ -492,7 +495,7 @@ function Markers({ data }) {
             </div>
           </Popup>
         </Marker>
-      )))
+      ))) */
   );
 }
 
@@ -502,7 +505,6 @@ export default function MonitoringMap() {
   const [coordsOil, setCoordsOil] = useState();
   const [coordsMining, setCoordsMining] = useState();
   const [coordsUnion, setCoordsUnion] = useState();
-  const [coordsState, setCoordsState] = useState();
   const [waterUrl, setWaterUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
@@ -536,14 +538,6 @@ export default function MonitoringMap() {
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
-
-  const createClusterCustomIcon = function (cluster) {
-    return L.divIcon({
-      html: `<span>${cluster.getChildCount()}</span>`,
-      className: classes.markerClusterCustom,
-      iconSize: L.point(33, 33, true),
-    });
-  };
 
   useEffect(() => {
     api
@@ -606,22 +600,24 @@ export default function MonitoringMap() {
   }, [code]);
 
   useEffect(() => {
-    api
-      .get('waterUsers/state/points', {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        setCoordsState(data);
-      });
-  }, [code]);
-
-  useEffect(() => {
     api.get('waterway/tiles/image').then(({ data }) => {
       setWaterUrl(data);
     });
   }, []);
+
+  const [coords, setCoords] = useState();
+
+  const { isLoading, error } = useQuery('repoData', async () => {
+    const res = await fetch(
+      'https://dev-rh-ora.geodatin.com/api/waterUsers/state/points'
+    );
+    const data = await res.json();
+    setCoords(data);
+  });
+
+  if (isLoading) return 'Loading...';
+
+  if (error) return `An error has occurred: ${error.message}`;
 
   return (
     <MapWrapper
@@ -1027,41 +1023,29 @@ export default function MonitoringMap() {
           ))) ||
         (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
           <MarkerClusterGroup
-            iconCreateFunction={createClusterCustomIcon}
-            polygonOptions={{
-              color: theme === darkScheme ? '#0cbfcc' : '#407387',
-              weight: 1,
-              opacity: 0.9,
-            }}
+            spiderfyDistanceMultiplier={1}
+            showCoverageOnHover={false}
+            chunkedLoading
           >
             <Markers data={coordsUnion} />
           </MarkerClusterGroup>
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
-          <MarkerClusterGroup
-            iconCreateFunction={createClusterCustomIcon}
-            polygonOptions={{
-              color: theme === darkScheme ? '#0cbfcc' : '#407387',
-              weight: 1,
-              opacity: 0.9,
-            }}
+          /* <MarkerClusterGroup
+            spiderfyDistanceMultiplier={1}
+            showCoverageOnHover={false}
+            chunkedLoading
           >
             <Markers data={coordsState} />
-          </MarkerClusterGroup>
+          </MarkerClusterGroup> */
+          <SuperCluster data={coords?.features} />
         ))}
 
       {(indicatorSelection === indicators.ground.oil.value && (
         <Markers data={coordsOil} />
       )) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
-          <MarkerClusterGroup
-            iconCreateFunction={createClusterCustomIcon}
-            polygonOptions={{
-              color: theme === darkScheme ? '#0cbfcc' : '#407387',
-              weight: 1,
-              opacity: 0.9,
-            }}
-          >
+          <MarkerClusterGroup>
             <Markers data={coordsMining} />
           </MarkerClusterGroup>
         ))}
