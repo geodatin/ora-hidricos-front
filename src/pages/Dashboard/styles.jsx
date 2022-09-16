@@ -20,7 +20,7 @@ const useStyles = createUseStyles((theme) => ({
     position: 'absolute',
     top: 'initial',
     bottom: 0,
-    height: 200,
+    height: 350,
     borderRadius: '10px 10px 0px 0px',
     padding: 15,
   },

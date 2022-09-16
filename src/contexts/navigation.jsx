@@ -5,6 +5,7 @@ import React, { useCallback, useState } from 'react';
 import { createContext } from 'use-context-selector';
 
 import { breakpoints } from '../constants/constraints';
+import { mobileNavs, panels } from '../constants/options';
 
 const NavigationContext = createContext({});
 
@@ -20,6 +21,7 @@ export function NavigationProvider({ children }) {
   };
 
   const isMobile = useMediaQuery(breakpoints.max.lg);
+  const [mobileNavValue, setMobileNavValue] = useState(mobileNavs.map.value);
 
   const [isDisclaimerOpened, setIsDisclaimerOpened] = useState(true);
   const openDisclaimer = useCallback(() => {
@@ -29,15 +31,59 @@ export function NavigationProvider({ children }) {
     setIsDisclaimerOpened(false);
   }, []);
 
+  const [panelIndexValue, setPanelIndexValue] = useState(
+    panels.statistics.index
+  );
+  const handleOnChangePanel = useCallback((event, newPanel) => {
+    if (newPanel !== null) {
+      setPanelIndexValue(newPanel);
+    }
+  }, []);
+
+  const [station, setStation] = useState();
+  const openStation = useCallback(
+    (item) => {
+      setStation(item);
+      setPanelIndexValue(panels.station.index);
+      if (isMobile) setMobileNavValue(mobileNavs.panel.value);
+    },
+    [isMobile]
+  );
+
+  const closeStation = useCallback((panelRef) => {
+    setPanelIndexValue(panels.list.index);
+    panelRef?.current.scrollTo(0, 0);
+    setStation(undefined);
+  }, []);
+
+  const refreshStation = useCallback(() => {
+    setStation((prev) => {
+      const refreshed = { ...prev };
+      return refreshed;
+    });
+  }, []);
+
+  const handleOnFilterApplied = useCallback(() => {
+    if (station) closeStation();
+  }, [station]);
+
   return (
     <NavigationContext.Provider
       value={{
         values: {
-          isDisclaimerOpened,
+          mobileNavValue,
+          panelIndexValue,
+          station,
           isMobile,
+          isDisclaimerOpened,
         },
-        setters: {},
+        setters: { setMobileNavValue, setPanelIndexValue },
         functions: {
+          handleOnChangePanel,
+          handleOnFilterApplied,
+          openStation,
+          closeStation,
+          refreshStation,
           closeDisclaimer,
           openDisclaimer,
         },

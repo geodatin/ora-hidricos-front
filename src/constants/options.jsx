@@ -257,6 +257,21 @@ export const embedItems = [
   },
 ];
 
+export const panels = {
+  statistics: {
+    index: 0,
+    translation: 'specific.infoPanel.statistics',
+  },
+  list: {
+    index: 1,
+    translation: 'specific.dataType.station.plural',
+  },
+  station: {
+    index: 2,
+    translation: undefined,
+  },
+};
+
 export const mobileNavs = {
   map: {
     value: 0,

@@ -3,10 +3,13 @@
 /* eslint-disable react/prop-types */
 import L from 'leaflet';
 import React, { useCallback, useEffect, useState } from 'react';
-import { Marker, useMap } from 'react-leaflet';
+import { useTheme } from 'react-jss';
+import { Marker, Popup, useMap } from 'react-leaflet';
 import useSupercluster from 'use-supercluster';
 
-import useStyles from './styles';
+import Typography from '../../../../components/Typography';
+import { darkScheme } from '../../../../constants/schemes';
+import useStyles from '../styles';
 
 const blueIcon = new L.Icon({
   iconUrl:
@@ -18,6 +21,7 @@ const blueIcon = new L.Icon({
 
 function SuperCluster({ data }) {
   const classes = useStyles();
+  const theme = useTheme();
 
   const maxZoom = 22;
   const [bounds, setBounds] = useState(null);
@@ -62,15 +66,29 @@ function SuperCluster({ data }) {
     };
   }, [map, onMove]);
 
-  const points = data?.map((crime) => ({
+  const points = data?.map((coord) => ({
     type: 'Feature',
-    properties: { cluster: false, crimeId: crime.id, category: crime.category },
+    properties: {
+      cluster: false,
+      coordId: coord.id,
+      bestowalType: coord.properties.bestowalType,
+      interferenceType: coord.properties.interferenceType,
+      orgName: coord.properties.orgName,
+      bestowalSituation: coord.properties.bestowalSituation,
+      interferenceSubtype: coord.properties.interferenceSubtype,
+      waterBodyName: coord.properties.waterBodyName,
+      goal: coord.properties.goal,
+      validDate: coord.properties.validDate,
+      avgFlow: coord.properties.avgFlow,
+      maxFlow: coord.properties.maxFlow,
+      volume: coord.properties.volume,
+    },
 
     geometry: {
       type: 'Point',
       coordinates: [
-        parseFloat(crime.geometry.coordinates[0]),
-        parseFloat(crime.geometry.coordinates[1]),
+        parseFloat(coord.geometry.coordinates[0]),
+        parseFloat(coord.geometry.coordinates[1]),
       ],
     },
   }));
@@ -82,7 +100,7 @@ function SuperCluster({ data }) {
     options: { radius: 75, maxZoom: 17 },
   });
 
-  console.log(clusters.length);
+  console.log(clusters);
 
   console.log(clusters);
   return (
@@ -90,7 +108,7 @@ function SuperCluster({ data }) {
       {clusters.map((cluster) => {
         // every cluster point has coordinates
         const [longitude, latitude] = cluster?.geometry?.coordinates;
-        // the point may be either a cluster or a crime point
+        // the point may be either a cluster or a coord point
         const { cluster: isCluster, point_count: pointCount } =
           cluster?.properties;
 
@@ -119,14 +137,147 @@ function SuperCluster({ data }) {
           );
         }
 
-        // we have a single point (crime) to render
+        // we have a single point (coord) to render
         return (
           <Marker
-            key={cluster.properties.crimeId}
+            key={cluster.properties.coordId}
             position={[latitude, longitude]}
             // eslint-disable-next-line react/jsx-no-bind
             icon={blueIcon}
-          />
+          >
+            <Popup
+              className={classes.popup}
+              key={theme === darkScheme ? `dark` : `light`}
+            >
+              <Typography variant="caption" format="bold">
+                Status da Interferência
+              </Typography>
+              <div className={classes.separator} />
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Tipo de Outorga
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.bestowalType}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Tipo da Interferência
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.interferenceType}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Nome do Orgão gestor
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.orgName}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Situação da Outorga
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.bestowalSituation}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Interference subtype
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.interferenceSubtype}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Nome do Corpo Hídrico
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.waterBodyName}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Finalidade
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.goal}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Data de Vencimento
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.validDate}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Vazão Média
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.avgFlow}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Vazão Máxima
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.maxFlow}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  Volume
+                </Typography>
+                <Typography variant="caption">
+                  {cluster.properties.volume}
+                </Typography>
+              </div>
+            </Popup>
+          </Marker>
         );
       })}
     </>

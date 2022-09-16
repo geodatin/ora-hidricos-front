@@ -14,7 +14,7 @@ const useStyles = createUseStyles((theme) => ({
     height: `calc(100% - ${layout.mobile.navbar.height}px)`,
   },
   navComponentWrapper: {
-    zIndex: 1499,
+    zIndex: 1001,
     width: '100%',
     position: 'absolute',
     top: 0,

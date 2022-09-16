@@ -1,7 +1,6 @@
 import AutoGraphRoundedIcon from '@mui/icons-material/AutoGraphRounded';
 import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import MapRoundedIcon from '@mui/icons-material/MapRounded';
-import { useMediaQuery } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useContextSelector } from 'use-context-selector';
@@ -10,10 +9,10 @@ import Breadcrumb from '../../components/Breadcrumb';
 import HLayout from '../../components/Layout/Horizontal';
 import MobileNavbarLayout from '../../components/Layout/Mobile/Navbar';
 import VLayout from '../../components/Layout/Vertical';
-import { breakpoints } from '../../constants/constraints';
 import { indicators, layoutConfigs } from '../../constants/options';
 import FilteringContext from '../../contexts/filtering';
 import { useLayoutConfig } from '../../hooks/useLayoutConfig';
+import { useMobile } from '../../hooks/useMobile';
 import { useQuery } from '../../hooks/useQuery';
 import Filters from './Filters';
 import InfoPanel from './InfoPanel';
@@ -36,11 +35,11 @@ function Dashboard() {
   );
   const { layoutConfig, setLayoutConfig } = useLayoutConfig();
   const [mainTopSection, setMainTopSection] = useState(true);
+  const { isMobile, mobileNavValue, setMobileNavValue } = useMobile();
 
   const query = useQuery();
 
   const classes = useStyles();
-  const isMobile = useMediaQuery(breakpoints.max.md);
 
   const { t } = useTranslation();
 
@@ -265,6 +264,8 @@ function Dashboard() {
 
   return isMobile ? (
     <MobileNavbarLayout
+      value={mobileNavValue}
+      setValue={setMobileNavValue}
       mainContainer={{
         label: 'Map',
         icon: <MapRoundedIcon />,
