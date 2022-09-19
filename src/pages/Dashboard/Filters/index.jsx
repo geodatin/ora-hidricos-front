@@ -201,20 +201,20 @@ export default function Filters() {
           >
             {t(indicators.ground.translation)}
           </MenuItem>
-          {/* <MenuItem
+          <MenuItem
             value={indicators.hydroclimaticVulnerability.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
                 indicators.hydroclimaticVulnerability.value
               );
               setAuxIndicatorSelection(
-                indicators.hydroclimaticVulnerability.droughtEvents.value
+                indicators.hydroclimaticVulnerability.floodEvents.value
               );
             }}
           >
             {t(indicators.hydroclimaticVulnerability.translation)}
           </MenuItem>
-          <MenuItem
+          {/*  <MenuItem
             value={indicators.waterGovernance.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
@@ -526,7 +526,7 @@ export default function Filters() {
           (auxIndicatorSelectionTerritory ===
             indicators.hydroclimaticVulnerability.value && (
             <CustomSelect value={auxIndicatorSelection}>
-              {/* Recorrência de eventos de secas extremas */}
+              {/* Recorrência de eventos de secas extremas 
               <MenuItem
                 value={
                   indicators.hydroclimaticVulnerability.droughtEvents.value
@@ -541,7 +541,7 @@ export default function Filters() {
                   indicators.hydroclimaticVulnerability.droughtEvents
                     .translation
                 )}
-              </MenuItem>
+              </MenuItem> */}
               {/* Recorrência de eventos de cheia */}
               <MenuItem
                 value={indicators.hydroclimaticVulnerability.floodEvents.value}
@@ -556,7 +556,7 @@ export default function Filters() {
                 )}
               </MenuItem>
 
-              {/* Vulnerabilidade a secas */}
+              {/* Vulnerabilidade a secas 
               <MenuItem
                 value={
                   indicators.hydroclimaticVulnerability.droughtVulnerability
@@ -575,7 +575,7 @@ export default function Filters() {
                 )}
               </MenuItem>
 
-              {/* Vulnerabilidade a inundações */}
+              {/* Vulnerabilidade a inundações 
               <MenuItem
                 value={
                   indicators.hydroclimaticVulnerability.floodVulnerability.value
@@ -591,7 +591,7 @@ export default function Filters() {
                   indicators.hydroclimaticVulnerability.floodVulnerability
                     .translation
                 )}
-              </MenuItem>
+              </MenuItem> */}
             </CustomSelect>
           )) ||
           (auxIndicatorSelectionTerritory ===

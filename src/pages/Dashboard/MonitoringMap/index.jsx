@@ -57,6 +57,7 @@ export default function MonitoringMap() {
   const [coordsUnion, setCoordsUnion] = useState();
   const [waterUrl, setWaterUrl] = useState();
   const [mineUrl, setMineUrl] = useState();
+  const [floodEventsUrl, setFloodEventsUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -168,6 +169,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('waterway/tiles/image').then(({ data }) => {
       setWaterUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('flood/tiles').then(({ data }) => {
+      setFloodEventsUrl(data);
     });
   }, [code]);
 
@@ -359,6 +366,11 @@ export default function MonitoringMap() {
           <TileLayer url={mineUrl?.url} zIndex={2} />
           <GetPopupMiningMine />
         </>
+      )}
+
+      {indicatorSelection ===
+        indicators.hydroclimaticVulnerability.floodEvents.value && (
+        <TileLayer url={floodEventsUrl?.url} zIndex={2} />
       )}
 
       {indicatorSelection !== indicators.waterResources.waterSurface.value && (
