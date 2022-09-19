@@ -25,7 +25,7 @@ export default function GetPopupFloodEvents() {
           setTilesCoord(undefined);
         }
       });
-  }, [popup]);
+  }, [popup, tilesCoord]);
 
   useMapEvents({
     click(e) {
@@ -59,9 +59,9 @@ export default function GetPopupFloodEvents() {
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          area
+          Area
         </Typography>
-        <Typography variant="caption">{tilesCoord?.area}</Typography>
+        <Typography variant="caption">{tilesCoord?.area} ha</Typography>
       </div>
     </Popup>
   );

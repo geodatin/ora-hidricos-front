@@ -5,6 +5,7 @@ import { indicators } from '../../../../constants/options';
 import FilteringContext from '../../../../contexts/filtering';
 import CNARHstate from './CNARHstate';
 import CNARHunion from './CNARHunion';
+import FloodEvents from './FloodEvents';
 import IllegalMining from './IllegalMining';
 import IPPO from './IPPO';
 import MercuryFish from './MercuryFish';
@@ -98,7 +99,9 @@ export default function Statistics() {
           <WQI />
         )) ||
         (indicatorSelection ===
-          indicators.hydroclimaticVulnerability.floodEvents.value && <WQI />) ||
+          indicators.hydroclimaticVulnerability.floodEvents.value && (
+          <FloodEvents />
+        )) ||
         (indicatorSelection ===
           indicators.hydroclimaticVulnerability.droughtVulnerability.value && (
           <WQI />

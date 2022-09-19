@@ -105,6 +105,17 @@
         "singular": "Lote"
       }
     },
+    "floodEvents": {
+      "rankingChart": {
+        "title": "Ranking para a área das zonas de inundação",
+        "info": "Este gráfico apresenta a classificação para a área das zonas de inundação"
+      }, 
+      "pieChart": {
+        "title": "Área total das zonas de inundação",
+        "info": "Este gráfico apresenta a área total das zonas de inundação",
+        "area": "ha"
+      }
+    },
     "IPPO": {
       "treemapChart": {
         "title": "Situação de poluição",
