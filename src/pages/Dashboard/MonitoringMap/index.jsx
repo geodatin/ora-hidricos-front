@@ -183,8 +183,7 @@ export default function MonitoringMap() {
 
   const { isLoading, error } = useQuery('repoData', async () => {
     const res = await fetch(
-      // mudar
-      'https://dev-rh-ora.geodatin.com/api/waterUsers/union/points'
+      'https://dev-rh-ora.geodatin.com/api/waterUsers/state/points'
     );
     const data = await res.json();
     setCoords(data);
