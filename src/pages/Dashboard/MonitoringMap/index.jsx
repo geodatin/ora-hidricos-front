@@ -36,6 +36,7 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
+import GetPopupFloodEvents from './GetPopupFloodEvents';
 import GetPopupMiningMine from './GetPopupMiningMine';
 import GetPopupWaterway from './GetPopupWaterway';
 import Markers from './Markers';
@@ -370,7 +371,10 @@ export default function MonitoringMap() {
 
       {indicatorSelection ===
         indicators.hydroclimaticVulnerability.floodEvents.value && (
-        <TileLayer url={floodEventsUrl?.url} zIndex={2} />
+        <>
+          <TileLayer url={floodEventsUrl?.url} zIndex={2} />
+          <GetPopupFloodEvents />
+        </>
       )}
 
       {indicatorSelection !== indicators.waterResources.waterSurface.value && (
