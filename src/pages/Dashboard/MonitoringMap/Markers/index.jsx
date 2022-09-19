@@ -61,7 +61,7 @@ export default function Markers({ data }) {
 
   return (
     (indicatorSelection === indicators.ground.oil.value &&
-      data?.features?.map((cord) => (
+      data?.map((cord) => (
         <Marker
           key={cord.properties.code}
           eventHandlers={{
@@ -145,7 +145,7 @@ export default function Markers({ data }) {
         </Marker>
       ))) ||
     (indicatorSelection === indicators.ground.illegalMining.value &&
-      data?.features?.map((cord) => (
+      data?.map((cord) => (
         <Marker
           key={cord.properties.code}
           eventHandlers={{
@@ -247,7 +247,7 @@ export default function Markers({ data }) {
         </Marker>
       ))) ||
     (indicatorSelection === indicators.waterDemand.CNARHunion.value &&
-      data?.features?.map((cord) => (
+      data?.map((cord) => (
         <Marker
           key={cord.properties.code}
           position={[

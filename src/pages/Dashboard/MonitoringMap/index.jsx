@@ -22,7 +22,6 @@ import { useContextSelector } from 'use-context-selector';
 // import imgMarker from '../../../assets/images/marker-24.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
-import Point from '../../../assets/shapes/points.json';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
 import Typography from '../../../components/Typography';
@@ -37,11 +36,11 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
-import GetPopup from './GetPopupRaster';
+import GetPopupMiningMine from './GetPopupMiningMine';
+import GetPopupWaterway from './GetPopupWaterway';
 import Markers from './Markers';
 import useStyles from './styles';
 import SuperCluster from './SuperCluster';
-import TopoJSON from './TopoJSON';
 
 import 'react-leaflet-markercluster/dist/styles.min.css';
 
@@ -57,6 +56,7 @@ export default function MonitoringMap() {
   const [coordsMining, setCoordsMining] = useState();
   const [coordsUnion, setCoordsUnion] = useState();
   const [waterUrl, setWaterUrl] = useState();
+  const [mineUrl, setMineUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -160,16 +160,23 @@ export default function MonitoringMap() {
   }, [code]);
 
   useEffect(() => {
+    api.get('mining/mine/tiles').then(({ data }) => {
+      setMineUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
     api.get('waterway/tiles/image').then(({ data }) => {
       setWaterUrl(data);
     });
-  }, []);
+  }, [code]);
 
   const [coords, setCoords] = useState();
 
   const { isLoading, error } = useQuery('repoData', async () => {
     const res = await fetch(
-      'https://dev-rh-ora.geodatin.com/api/waterUsers/state/points'
+      // mudar
+      'https://dev-rh-ora.geodatin.com/api/waterUsers/union/points'
     );
     const data = await res.json();
     setCoords(data);
@@ -343,29 +350,22 @@ export default function MonitoringMap() {
       {indicatorSelection === indicators.waterDemand.Waterways.value && (
         <>
           <TileLayer url={waterUrl?.url} zIndex={2} />
-          <GetPopup />
+          <GetPopupWaterway />
         </>
       )}
+
+      {indicatorSelection === indicators.ground.minesMining.value && (
+        <>
+          <TileLayer url={mineUrl?.url} zIndex={2} />
+          <GetPopupMiningMine />
+        </>
+      )}
+
       {indicatorSelection !== indicators.waterResources.waterSurface.value && (
         <TileLayer
           url="https://storage.googleapis.com/ora-otca/water/drainage/{z}/{x}/{y}.png"
           opacity={theme === darkScheme ? 0.3 : 0.2}
           zIndex={2}
-        />
-      )}
-      {indicatorSelection === indicators.ground.minesMining.value && (
-        <TopoJSON
-          data={Point}
-          style={() => ({
-            fillColor: '#29dfec44',
-            fillOpacity: 0.5,
-            weight: 0.5,
-            opacity: 0.8,
-            dashArray: '3',
-            lineCap: 'round',
-            lineJoin: 'round ',
-            color: theme === darkScheme ? '#0cbfcc' : '#407387',
-          })}
         />
       )}
 
@@ -586,7 +586,7 @@ export default function MonitoringMap() {
             iconCreateFunction={createClusterCustomIcon}
             showCoverageOnHover={false}
           >
-            <Markers data={coordsUnion} />
+            <Markers data={coordsUnion?.features} />
           </MarkerClusterGroup>
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
@@ -594,14 +594,14 @@ export default function MonitoringMap() {
         ))}
 
       {(indicatorSelection === indicators.ground.oil.value && (
-        <Markers data={coordsOil} />
+        <Markers data={coordsOil?.features} />
       )) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
           <MarkerClusterGroup
             iconCreateFunction={createClusterCustomIcon}
             showCoverageOnHover={false}
           >
-            <Markers data={coordsMining} />
+            <Markers data={coordsMining?.features} />
           </MarkerClusterGroup>
         ))}
     </MapWrapper>

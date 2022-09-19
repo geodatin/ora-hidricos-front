@@ -7,22 +7,22 @@ import { darkScheme } from '../../../../constants/schemes';
 import api from '../../../../services/api';
 import useStyles from '../styles';
 
-export default function GetPopup() {
+export default function GetPopupMiningMine() {
   const classes = useStyles();
   const theme = useTheme();
 
   const [popup, setPopup] = useState();
-  const [tilesCoord, setTilesCoord] = useState();
+  const [tilesCoordMine, setTilesCoordMine] = useState();
 
   useEffect(() => {
     api
-      .get(`waterway/properties/tiles/${popup?.lng}/${popup?.lat}`)
+      .get(`mining/mine/tiles/properties/${popup?.lng}/${popup?.lat}`)
       .then(({ data }) => {
-        setTilesCoord(data);
+        setTilesCoordMine(data);
       })
       .catch((error) => {
         if (error.response) {
-          setTilesCoord(undefined);
+          setTilesCoordMine(undefined);
         }
       });
   }, [popup]);
@@ -33,28 +33,50 @@ export default function GetPopup() {
     },
   });
 
-  return tilesCoord === undefined ? null : (
+  return tilesCoordMine === undefined ? null : (
     <Popup
       key={theme === darkScheme ? `dark` : `light`}
       className={classes.popup}
       position={[popup?.lat, popup?.lng]}
     >
       <Typography variant="caption" format="bold">
-        {tilesCoord?.country}
+        {tilesCoordMine?.company}
       </Typography>
       <div className={classes.separator} />
-      <div className={classes.popupItem}>
-        <Typography variant="caption" className={classes.popupItemTitle}>
-          Name
-        </Typography>
-        <Typography variant="caption">{tilesCoord?.name}</Typography>
-      </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
           Code
         </Typography>
-        <Typography variant="caption">{tilesCoord?.code}</Typography>
+        <Typography variant="caption">{tilesCoordMine?.code}</Typography>
+      </div>
+
+      <div className={classes.popupItem}>
+        <Typography variant="caption" className={classes.popupItemTitle}>
+          Institution
+        </Typography>
+        <Typography variant="caption">{tilesCoordMine?.institution}</Typography>
+      </div>
+
+      <div className={classes.popupItem}>
+        <Typography variant="caption" className={classes.popupItemTitle}>
+          Name
+        </Typography>
+        <Typography variant="caption">{tilesCoordMine?.name}</Typography>
+      </div>
+
+      <div className={classes.popupItem}>
+        <Typography variant="caption" className={classes.popupItemTitle}>
+          Situation
+        </Typography>
+        <Typography variant="caption">{tilesCoordMine?.situation}</Typography>
+      </div>
+
+      <div className={classes.popupItem}>
+        <Typography variant="caption" className={classes.popupItemTitle}>
+          Source
+        </Typography>
+        <Typography variant="caption">{tilesCoordMine?.source}</Typography>
       </div>
     </Popup>
   );
