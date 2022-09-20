@@ -36,6 +36,7 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
+import GetPopupIPPO from './GetPopupIPPO';
 import GetPopupMiningMine from './GetPopupMiningMine';
 import GetPopupWaterway from './GetPopupWaterway';
 import GetPopupWetlands from './GetPopupWetlands';
@@ -61,6 +62,7 @@ export default function MonitoringMap() {
   const [wetlandsUrl, setWetlandsUrl] = useState();
   const [coords, setCoords] = useState();
   const [coordsHydroelectric, setCoordsHydroelectric] = useState();
+  const [pollutionUrl, setPollutionUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -178,6 +180,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('flood/tiles').then(({ data }) => {
       setWetlandsUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('pollution/tiles').then(({ data }) => {
+      setPollutionUrl(data);
     });
   }, [code]);
 
@@ -384,6 +392,13 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={wetlandsUrl?.url} zIndex={2} />
           <GetPopupWetlands />
+        </>
+      )}
+
+      {indicatorSelection === indicators.mercury.IPPO.value && (
+        <>
+          <TileLayer url={pollutionUrl?.url} zIndex={2} />
+          <GetPopupIPPO />
         </>
       )}
 
@@ -630,140 +645,14 @@ export default function MonitoringMap() {
             <Markers data={coordsMining?.features} />
           </MarkerClusterGroup>
         )) ||
-        (indicatorSelection === indicators.waterDemand.hydroelectric.value &&
-          coordsHydroelectric?.features?.map((cord) => (
-            <Marker
-              key={cord.properties.code}
-              position={[
-                cord.geometry.coordinates[1],
-                cord.geometry.coordinates[0],
-              ]}
-              icon={blueIcon}
-            >
-              <Popup
-                className={classes.popup}
-                key={theme === darkScheme ? `dark` : `light`}
-              >
-                <Typography variant="caption" format="bold">
-                  {cord.properties.country}
-                </Typography>
-                <div className={classes.separator} />
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Code
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.code}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Type
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.type}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Author
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.author}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Source
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.source}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Potency
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.potency}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Sub
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.sub}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Institution
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.institution}
-                  </Typography>
-                </div>
-
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Company
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.company}
-                  </Typography>
-                </div>
-
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Name
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.name}
-                  </Typography>
-                </div>
-
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Status
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.status}
-                  </Typography>
-                </div>
-              </Popup>
-            </Marker>
-          )))}
+        (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
+          <MarkerClusterGroup
+            iconCreateFunction={createClusterCustomIcon}
+            showCoverageOnHover={false}
+          >
+            <Markers data={coordsHydroelectric?.features} />
+          </MarkerClusterGroup>
+        ))}
     </MapWrapper>
   );
 }

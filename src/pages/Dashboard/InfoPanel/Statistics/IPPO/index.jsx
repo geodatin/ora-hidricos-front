@@ -117,7 +117,7 @@ export default function IPPO({ extraButton, csvCallback, fullScreenEnabled }) {
                 captions: {
                   display: false,
                 },
-                backgroundColor: theme.primary.main,
+                backgroundColor: 'green',
               },
             ],
           });
@@ -180,7 +180,7 @@ export default function IPPO({ extraButton, csvCallback, fullScreenEnabled }) {
                 ? t('specific.IPPO.pieChart.plural')
                 : t('specific.IPPO.pieChart.singular')
             }
-            color={theme.primary.main}
+            color="green"
             scale={1.2}
           />
         </div>
