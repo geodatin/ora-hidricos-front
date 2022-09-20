@@ -12,7 +12,7 @@ import { useContextSelector } from 'use-context-selector';
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
 import ItemsChart from '../../../../../components/Charts/Items';
-import RankingChart from '../../../../../components/Charts/Ranking';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import Treemap from '../../../../../components/Charts/Treemap';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
@@ -141,7 +141,7 @@ export default function MiningMine({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'green',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -173,7 +173,7 @@ export default function MiningMine({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'green',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -237,7 +237,7 @@ export default function MiningMine({
                 captions: {
                   display: false,
                 },
-                backgroundColor: theme.primary.main,
+                backgroundColor: 'green',
               },
             ],
           });
@@ -300,7 +300,7 @@ export default function MiningMine({
                 ? t('specific.MiningMine.pieChart.plural')
                 : t('specific.MiningMine.pieChart.singular')
             }
-            color={theme.primary.main}
+            color="green"
             scale={1.2}
           />
         </div>
@@ -314,10 +314,11 @@ export default function MiningMine({
         data={itemsData}
       />
 
-      <RankingChart
+      <RankingCustom
         title={t('specific.MiningMine.rankingData.title')}
         info={t('specific.MiningMine.rankingData.info')}
         data={rankingData}
+        stylePagination={classes.pagination}
         customFormatter={{
           formatter(value) {
             return t('general.number', { value });

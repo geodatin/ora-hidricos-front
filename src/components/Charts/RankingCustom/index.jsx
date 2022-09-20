@@ -4,13 +4,12 @@ import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 import ChartContainer from '../../ChartContainer';
-import useStyles from './styles';
 
 /**
  * This component renders a Ranking Chart
  * @returns Ranking Chart
  */
-export default function RankingWinLossChart({
+export default function RankingCustom({
   title,
   info,
   data,
@@ -20,11 +19,13 @@ export default function RankingWinLossChart({
   setParams,
   customOptions,
   customFormatter,
+  stylePagination,
 }) {
-  RankingWinLossChart.propTypes = {
+  RankingCustom.propTypes = {
     title: PropTypes.string.isRequired,
     info: PropTypes.string.isRequired,
     data: PropTypes.shape(),
+    stylePagination: PropTypes.shape(),
     csvCallback: PropTypes.func,
     params: PropTypes.shape(),
     customOptions: PropTypes.shape(),
@@ -33,7 +34,8 @@ export default function RankingWinLossChart({
     setParams: PropTypes.func.isRequired,
   };
 
-  RankingWinLossChart.defaultProps = {
+  RankingCustom.defaultProps = {
+    stylePagination: undefined,
     data: undefined,
     customOptions: {},
     customFormatter: {},
@@ -45,7 +47,6 @@ export default function RankingWinLossChart({
       totalPages: 1,
     },
   };
-  const classes = useStyles();
 
   const options = {
     interaction: {
@@ -123,7 +124,7 @@ export default function RankingWinLossChart({
           style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
         >
           <Pagination
-            className={classes.pagination}
+            className={stylePagination}
             size="small"
             count={params?.totalPages}
             page={params?.page}

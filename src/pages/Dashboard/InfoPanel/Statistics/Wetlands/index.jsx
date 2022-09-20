@@ -10,28 +10,28 @@ import { useContextSelector } from 'use-context-selector';
 
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
-import RankingChart from '../../../../../components/Charts/Ranking';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
 import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
 import useStyles from './styles';
 
-/* This function provides a statistics list of FloodEvents
+/* This function provides a statistics list of Wetlands
  * @returns statistics list
  */
-export default function FloodEvents({
+export default function Wetlands({
   extraButton,
   csvCallback,
   fullScreenEnabled,
 }) {
-  FloodEvents.propTypes = {
+  Wetlands.propTypes = {
     extraButton: PropTypes.node,
     fullScreenEnabled: PropTypes.bool,
     csvCallback: PropTypes.func,
   };
 
-  FloodEvents.defaultProps = {
+  Wetlands.defaultProps = {
     extraButton: undefined,
     csvCallback: undefined,
     fullScreenEnabled: false,
@@ -100,7 +100,7 @@ export default function FloodEvents({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'blue',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -132,7 +132,7 @@ export default function FloodEvents({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'blue',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -156,10 +156,10 @@ export default function FloodEvents({
         <div className={classes.header}>
           <div className={classes.headerTitle}>
             <Typography variant="body" format="bold">
-              {t('specific.floodEvents.pieChart.title')}
+              {t('specific.wetlands.pieChart.title')}
             </Typography>
             <CustomTooltip
-              title={t('specific.floodEvents.pieChart.title')}
+              title={t('specific.wetlands.pieChart.title')}
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -196,17 +196,18 @@ export default function FloodEvents({
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix={t('specific.floodEvents.pieChart.area')}
-            color={theme.primary.main}
+            sufix={t('specific.wetlands.pieChart.area')}
+            color="blue"
             scale={1.2}
           />
         </div>
       </div>
 
-      <RankingChart
-        title={t('specific.floodEvents.rankingChart.title')}
-        info={t('specific.floodEvents.rankingChart.info')}
+      <RankingCustom
+        title={t('specific.wetlands.rankingChart.title')}
+        info={t('specific.wetlands.rankingChart.info')}
         data={rankingData}
+        stylePagination={classes.pagination}
         customFormatter={{
           formatter(value) {
             return t('general.number', { value });

@@ -36,9 +36,9 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
-import GetPopupFloodEvents from './GetPopupFloodEvents';
 import GetPopupMiningMine from './GetPopupMiningMine';
 import GetPopupWaterway from './GetPopupWaterway';
+import GetPopupWetlands from './GetPopupWetlands';
 import Markers from './Markers';
 import useStyles from './styles';
 import SuperCluster from './SuperCluster';
@@ -58,7 +58,7 @@ export default function MonitoringMap() {
   const [coordsUnion, setCoordsUnion] = useState();
   const [waterUrl, setWaterUrl] = useState();
   const [mineUrl, setMineUrl] = useState();
-  const [floodEventsUrl, setFloodEventsUrl] = useState();
+  const [wetlandsUrl, setWetlandsUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -175,7 +175,7 @@ export default function MonitoringMap() {
 
   useEffect(() => {
     api.get('flood/tiles').then(({ data }) => {
-      setFloodEventsUrl(data);
+      setWetlandsUrl(data);
     });
   }, [code]);
 
@@ -356,7 +356,7 @@ export default function MonitoringMap() {
       )}
       {indicatorSelection === indicators.waterDemand.Waterways.value && (
         <>
-          <TileLayer url={waterUrl?.url} zIndex={2} />
+          <TileLayer url={waterUrl?.url} zIndex={2} filter="red" />
           <GetPopupWaterway />
         </>
       )}
@@ -368,11 +368,10 @@ export default function MonitoringMap() {
         </>
       )}
 
-      {indicatorSelection ===
-        indicators.hydroclimaticVulnerability.floodEvents.value && (
+      {indicatorSelection === indicators.waterResources.wetlands.value && (
         <>
-          <TileLayer url={floodEventsUrl?.url} zIndex={2} />
-          <GetPopupFloodEvents />
+          <TileLayer url={wetlandsUrl?.url} zIndex={2} />
+          <GetPopupWetlands />
         </>
       )}
 

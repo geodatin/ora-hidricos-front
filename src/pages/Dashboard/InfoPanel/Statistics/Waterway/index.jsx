@@ -10,7 +10,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
-import RankingChart from '../../../../../components/Charts/Ranking';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
 import FilteringContext from '../../../../../contexts/filtering';
@@ -100,7 +100,7 @@ export default function Waterway({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'blue',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -132,7 +132,7 @@ export default function Waterway({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'blue',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -201,16 +201,17 @@ export default function Waterway({
                 ? t('specific.Waterway.pieChart.plural')
                 : t('specific.Waterway.pieChart.singular')
             }
-            color={theme.primary.main}
+            color="blue"
             scale={1.2}
           />
         </div>
       </div>
 
-      <RankingChart
+      <RankingCustom
         title={t('specific.Waterway.rankingChart.title')}
         info={t('specific.Waterway.rankingChart.info')}
         data={rankingCities}
+        stylePagination={classes.pagination}
         customFormatter={{
           formatter(value) {
             return t('general.number', { value });

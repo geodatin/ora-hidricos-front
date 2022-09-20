@@ -201,7 +201,7 @@ export default function Filters() {
           >
             {t(indicators.ground.translation)}
           </MenuItem>
-          <MenuItem
+          {/*  <MenuItem
             value={indicators.hydroclimaticVulnerability.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
@@ -214,7 +214,7 @@ export default function Filters() {
           >
             {t(indicators.hydroclimaticVulnerability.translation)}
           </MenuItem>
-          {/*  <MenuItem
+           <MenuItem
             value={indicators.waterGovernance.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
@@ -384,7 +384,7 @@ export default function Filters() {
               >
                 {t(indicators.waterResources.waterSurface.translation)}
               </MenuItem>
-              {/* Zonas Inundáveis 
+              {/* Zonas Inundáveis */}
               <MenuItem
                 value={indicators.waterResources.wetlands.value}
                 onClick={() =>

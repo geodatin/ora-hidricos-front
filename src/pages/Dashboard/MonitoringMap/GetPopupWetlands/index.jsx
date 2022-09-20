@@ -7,37 +7,37 @@ import { darkScheme } from '../../../../constants/schemes';
 import api from '../../../../services/api';
 import useStyles from '../styles';
 
-export default function GetPopupFloodEvents() {
+export default function GetPopupWetlands() {
   const classes = useStyles();
   const theme = useTheme();
 
-  const [popup, setPopup] = useState();
-  const [tilesCoord, setTilesCoord] = useState();
+  const [popupWetlands, setPopupWetlands] = useState();
+  const [tilesCoordWetlands, setTilesCoordWetlands] = useState();
 
   useEffect(() => {
     api
-      .get(`flood/tiles/properties/${popup?.lng}/${popup?.lat}`)
+      .get(`flood/tiles/properties/${popupWetlands?.lng}/${popupWetlands?.lat}`)
       .then(({ data }) => {
-        setTilesCoord(data);
+        setTilesCoordWetlands(data);
       })
       .catch((error) => {
         if (error.response) {
-          setTilesCoord(undefined);
+          setTilesCoordWetlands(undefined);
         }
       });
-  }, [popup, tilesCoord]);
+  }, [popupWetlands]);
 
   useMapEvents({
     click(e) {
-      setPopup(e.latlng);
+      setPopupWetlands(e.latlng);
     },
   });
 
-  return tilesCoord === undefined ? null : (
+  return tilesCoordWetlands === undefined ? null : (
     <Popup
       key={theme === darkScheme ? `dark` : `light`}
       className={classes.popup}
-      position={[popup?.lat, popup?.lng]}
+      position={[popupWetlands?.lat, popupWetlands?.lng]}
     >
       <Typography variant="caption" format="bold">
         Flood Zone
@@ -47,21 +47,21 @@ export default function GetPopupFloodEvents() {
         <Typography variant="caption" className={classes.popupItemTitle}>
           Name
         </Typography>
-        <Typography variant="caption">{tilesCoord?.name}</Typography>
+        <Typography variant="caption">{tilesCoordWetlands?.name}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
           Code
         </Typography>
-        <Typography variant="caption">{tilesCoord?.code}</Typography>
+        <Typography variant="caption">{tilesCoordWetlands?.code}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
           Area
         </Typography>
-        <Typography variant="caption">{tilesCoord?.area} ha</Typography>
+        <Typography variant="caption">{tilesCoordWetlands?.area} ha</Typography>
       </div>
     </Popup>
   );

@@ -6,9 +6,10 @@ import { useContextSelector } from 'use-context-selector';
 import DataDoughComponent from '../../../../../components/Charts/DataDough/DataDoughComponent';
 import LineChart from '../../../../../components/Charts/Line';
 import RankingChart from '../../../../../components/Charts/Ranking';
-import RankingWinLossChart from '../../../../../components/Charts/RankingWinLoss';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
+import useStyles from './styles';
 
 /**
  * This function provides a statistics list of waterSurface
@@ -23,6 +24,7 @@ export default function WaterSurface() {
 
   const theme = useTheme();
   const { t } = useTranslation();
+  const classes = useStyles();
 
   const [rankingParamsWaterSurface, setRankingParamsWaterSurface] = useState({
     order: true,
@@ -333,10 +335,11 @@ export default function WaterSurface() {
         setParams={setRankingParamsWaterSurface}
       />
 
-      <RankingWinLossChart
+      <RankingCustom
         title={t('specific.WaterSurface.rankingWaterLossAndGainData.title')}
         info={t('specific.WaterSurface.rankingWaterLossAndGainData.info')}
         data={rankingWinLoss}
+        stylePagination={classes.pagination}
         customFormatter={{
           formatter(value) {
             return t('general.number', { value });
