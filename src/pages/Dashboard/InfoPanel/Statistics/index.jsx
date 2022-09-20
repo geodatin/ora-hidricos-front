@@ -5,6 +5,7 @@ import { indicators } from '../../../../constants/options';
 import FilteringContext from '../../../../contexts/filtering';
 import CNARHstate from './CNARHstate';
 import CNARHunion from './CNARHunion';
+import Hydroelectric from './Hydroelectric';
 import IllegalMining from './IllegalMining';
 import IPPO from './IPPO';
 import MercuryFish from './MercuryFish';
@@ -64,7 +65,7 @@ export default function Statistics() {
           <WQI />
         )) ||
         (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
-          <WQI />
+          <Hydroelectric />
         )) ||
         (indicatorSelection === indicators.waterDemand.Waterways.value && (
           <Waterway />

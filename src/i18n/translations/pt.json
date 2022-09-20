@@ -216,6 +216,23 @@
           "info": "Este gráfico apresenta a classificação para o objetivo"
         }
     },
+
+    "hydroelectric": {
+      "pieChart": {
+        "title": "Número total de hidrelétricas",
+        "info": "Este gráfico apresenta o número total de hidrelétricas",
+        "plural": "Hidrelétricas",
+        "singular": "Hidrelétrica"
+      },
+      "rankingChartCountry": {
+        "title": "Ranking de países de todas as hidrelétricas",
+        "info": "Este gráfico apresenta a classificação de hidrelétricas por países"
+      },
+      "rankingChartPotency": {
+        "title": "Ranking de potência de todas as hidrelétricas",
+        "info": "Este gráfico apresenta a classificação de potência de todas as hidrelétricas"
+      }
+  },
     "CNARHstate": {
       "pieChart": {
         "title": "Número total de ocorrências",
