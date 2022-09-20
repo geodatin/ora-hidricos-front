@@ -310,18 +310,6 @@ export default function Filters() {
         )) ||
           (auxIndicatorSelectionTerritory === indicators.waterDemand.value && (
             <CustomSelect value={auxIndicatorSelection}>
-              {/* Hidrelétricas 
-              <MenuItem
-                value={indicators.waterDemand.hydroelectric.value}
-                onClick={() =>
-                  setAuxIndicatorSelection(
-                    indicators.waterDemand.hydroelectric.value
-                  )
-                }
-              >
-                {t(indicators.waterDemand.hydroelectric.translation)}
-              </MenuItem> */}
-
               {/* População na bacia 
               <MenuItem
                 value={indicators.waterDemand.Population.value}
@@ -355,6 +343,18 @@ export default function Filters() {
                 }
               >
                 {t(indicators.waterDemand.CNARHstate.translation)}
+              </MenuItem>
+
+              {/* Hidrelétricas */}
+              <MenuItem
+                value={indicators.waterDemand.hydroelectric.value}
+                onClick={() =>
+                  setAuxIndicatorSelection(
+                    indicators.waterDemand.hydroelectric.value
+                  )
+                }
+              >
+                {t(indicators.waterDemand.hydroelectric.translation)}
               </MenuItem>
 
               {/* Hidrovias */}
