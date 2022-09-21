@@ -310,18 +310,6 @@ export default function Filters() {
         )) ||
           (auxIndicatorSelectionTerritory === indicators.waterDemand.value && (
             <CustomSelect value={auxIndicatorSelection}>
-              {/* População na bacia 
-              <MenuItem
-                value={indicators.waterDemand.Population.value}
-                onClick={() =>
-                  setAuxIndicatorSelection(
-                    indicators.waterDemand.Population.value
-                  )
-                }
-              >
-                {t(indicators.waterDemand.Population.translation)}
-              </MenuItem>
-            */}
               {/* Dados do cadastro nacional de recursos hídricos do Brasil (CNARH) filtro União */}
               <MenuItem
                 value={indicators.waterDemand.CNARHunion.value}
@@ -367,6 +355,17 @@ export default function Filters() {
                 }
               >
                 {t(indicators.waterDemand.Waterways.translation)}
+              </MenuItem>
+              {/* População na bacia  */}
+              <MenuItem
+                value={indicators.waterDemand.Population.value}
+                onClick={() =>
+                  setAuxIndicatorSelection(
+                    indicators.waterDemand.Population.value
+                  )
+                }
+              >
+                {t(indicators.waterDemand.Population.translation)}
               </MenuItem>
             </CustomSelect>
           )) ||

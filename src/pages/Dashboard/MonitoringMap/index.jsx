@@ -38,6 +38,7 @@ import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
 import GetPopupIPPO from './GetPopupIPPO';
 import GetPopupMiningMine from './GetPopupMiningMine';
+import GetPopupPopulation from './GetPopupPopulation';
 import GetPopupWaterway from './GetPopupWaterway';
 import GetPopupWetlands from './GetPopupWetlands';
 import Markers from './Markers';
@@ -63,6 +64,7 @@ export default function MonitoringMap() {
   const [coords, setCoords] = useState();
   const [coordsHydroelectric, setCoordsHydroelectric] = useState();
   const [pollutionUrl, setPollutionUrl] = useState();
+  const [PopulationUrl, setPopulationUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -180,6 +182,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('flood/tiles').then(({ data }) => {
       setWetlandsUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('population/tiles').then(({ data }) => {
+      setPopulationUrl(data);
     });
   }, [code]);
 
@@ -399,6 +407,13 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={pollutionUrl?.url} zIndex={2} />
           <GetPopupIPPO />
+        </>
+      )}
+
+      {indicatorSelection === indicators.waterDemand.Population.value && (
+        <>
+          <TileLayer url={PopulationUrl?.url} zIndex={2} />
+          <GetPopupPopulation />
         </>
       )}
 
