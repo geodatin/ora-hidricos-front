@@ -273,6 +273,18 @@
       "info": "Este gráfico apresenta a classificação para os países do território"
     }
   },
+  "Population": {
+    "pieChart": {
+      "title": "Número total de ocorrências da população",
+      "info": "Este gráfico apresenta o número total de ocorrências da população",
+      "plural": "Ocorrências",
+      "singular": "Ocorrência"
+    },
+    "rankingChart": {
+      "title": "Ranking das substâncias",
+      "info": "Este gráfico apresenta a classificação das substâncias"
+    }
+  },
     "mercuryFish": {
       "pieChart": {
         "title": "Número total de publicações",

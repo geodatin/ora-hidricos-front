@@ -17,21 +17,21 @@ import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
 import useStyles from './styles';
 
-/* This function provides a statistics list of Waterway
+/* This function provides a statistics list of Population
  * @returns statistics list
  */
-export default function Waterway({
+export default function Population({
   extraButton,
   csvCallback,
   fullScreenEnabled,
 }) {
-  Waterway.propTypes = {
+  Population.propTypes = {
     extraButton: PropTypes.node,
     fullScreenEnabled: PropTypes.bool,
     csvCallback: PropTypes.func,
   };
 
-  Waterway.defaultProps = {
+  Population.defaultProps = {
     extraButton: undefined,
     csvCallback: undefined,
     fullScreenEnabled: false,
@@ -59,12 +59,12 @@ export default function Waterway({
 
   const handle = useFullScreenHandle();
   const [totalData, setTotalData] = useState();
-  const [rankingCountry, setRankingCountry] = useState();
+  const [rankingCities, setRankingData] = useState();
 
   useEffect(() => {
     let isSubscribed = true;
     api
-      .get(`waterway/total`, {
+      .get(`population/total`, {
         params: {
           countryCode: code,
         },
@@ -85,7 +85,7 @@ export default function Waterway({
   useEffect(() => {
     let isSubscribed = true;
     api
-      .get(`waterway/country/ranking`, {
+      .get(`population/ranking`, {
         params: {
           countryCode: code,
           page: pageAtual,
@@ -93,7 +93,7 @@ export default function Waterway({
       })
       .then(({ data }) => {
         if (isSubscribed) {
-          setRankingCountry({
+          setRankingData({
             labels: data.x.map(
               (label, index) => `${data.position[index]}°  ${label}`
             ),
@@ -117,7 +117,7 @@ export default function Waterway({
   useEffect(() => {
     let isSubscribed = true;
     api
-      .get(`waterway/country/ranking`, {
+      .get(`population/ranking`, {
         params: {
           countryCode: code,
           page: pageAtual,
@@ -125,7 +125,7 @@ export default function Waterway({
       })
       .then(({ data }) => {
         if (isSubscribed) {
-          setRankingCountry({
+          setRankingData({
             labels: data.x.map(
               (label, index) => `${data.position[index]}°  ${label}`
             ),
@@ -156,10 +156,10 @@ export default function Waterway({
         <div className={classes.header}>
           <div className={classes.headerTitle}>
             <Typography variant="body" format="bold">
-              {t('specific.Waterway.pieChart.title')}
+              {t('specific.Population.pieChart.title')}
             </Typography>
             <CustomTooltip
-              title={t('specific.Waterway.pieChart.title')}
+              title={t('specific.Population.pieChart.title')}
               placement="bottom"
             >
               <div className={classes.tooltipInner}>
@@ -198,8 +198,8 @@ export default function Waterway({
             value={totalData?.count}
             sufix={
               totalData?.count > 1
-                ? t('specific.Waterway.pieChart.plural')
-                : t('specific.Waterway.pieChart.singular')
+                ? t('specific.Population.pieChart.plural')
+                : t('specific.Population.pieChart.singular')
             }
             color="blue"
             scale={1.2}
@@ -208,9 +208,9 @@ export default function Waterway({
       </div>
 
       <RankingCustom
-        title={t('specific.Waterway.rankingChart.title')}
-        info={t('specific.Waterway.rankingChart.info')}
-        data={rankingCountry}
+        title={t('specific.Population.rankingChart.title')}
+        info={t('specific.Population.rankingChart.info')}
+        data={rankingCities}
         stylePagination={classes.pagination}
         customFormatter={{
           formatter(value) {

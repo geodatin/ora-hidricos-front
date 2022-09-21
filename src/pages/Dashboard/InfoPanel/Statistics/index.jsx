@@ -12,6 +12,7 @@ import MercuryFish from './MercuryFish';
 import MercuryHuman from './MercuryHuman';
 import MiningMine from './MiningMine';
 import Oil from './Oil';
+import Population from './Population';
 import WaterSurface from './WaterSurface';
 import Waterway from './Waterway';
 import Wetlands from './Wetlands';
@@ -71,7 +72,7 @@ export default function Statistics() {
           <Waterway />
         )) ||
         (indicatorSelection === indicators.waterDemand.Population.value && (
-          <WQI />
+          <Population />
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
           <CNARHunion />
