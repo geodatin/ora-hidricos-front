@@ -65,6 +65,7 @@ export default function MonitoringMap() {
   const [coordsHydroelectric, setCoordsHydroelectric] = useState();
   const [pollutionUrl, setPollutionUrl] = useState();
   const [PopulationUrl, setPopulationUrl] = useState();
+  const [CoordsHydrogeochemistry, setCoordsHydrogeochemistry] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -208,6 +209,37 @@ export default function MonitoringMap() {
         setCoordsHydroelectric(data);
       });
   }, [code]);
+
+  useEffect(() => {
+    api.get('hydrogeochemistry/shape').then(({ data }) => {
+      setCoordsHydrogeochemistry(data);
+    });
+  }, [code]);
+
+  const PopupClass = {
+    className: classes.popup,
+  };
+  function onEachFeature(feature, layer) {
+    layer.bindPopup(
+      `
+      <div>
+          <p class=${classes.popupItem}>Code
+            </br><span class=${classes.popupItemTitle}>${feature.properties.code}</span>
+          </p>
+          <p class=${classes.popupItem}>Domain 
+            </br><span class=${classes.popupItemTitle}>${feature.properties.domain}</span>
+          </p> 
+          <p class=${classes.popupItem}>River name 
+            </br><span class=${classes.popupItemTitle}>${feature.properties.riverName}</span>
+          </p> 
+          <p class=${classes.popupItem}>Aspect 
+            </br><span class=${classes.popupItemTitle}>${feature.properties.aspect}</span>
+          </p> 
+          </div>
+        `,
+      PopupClass
+    );
+  }
 
   const { isLoading, error } = useQuery('repoData', async () => {
     const res = await fetch(
@@ -375,6 +407,20 @@ export default function MonitoringMap() {
           color: theme === darkScheme ? '#accc0c' : '#728740',
         })}
       />
+
+      {indicatorSelection ===
+        indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
+        <GeoJSON
+          key={theme === darkScheme ? `dark` : `light`}
+          data={CoordsHydrogeochemistry}
+          onEachFeature={onEachFeature}
+          style={() => ({
+            fillColor: 'transparent',
+            weight: 4,
+            color: theme.orange.main,
+          })}
+        />
+      )}
 
       {indicatorSelection === indicators.waterResources.waterSurface.value && (
         <TileLayer

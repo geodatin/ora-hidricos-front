@@ -147,19 +147,19 @@ export default function Filters() {
 
       <div>
         <CustomSelect value={auxIndicatorSelectionTerritory}>
-          {/* <MenuItem
+          <MenuItem
             value={indicators.generalFeatures.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
                 indicators.generalFeatures.value
               );
               setAuxIndicatorSelection(
-                indicators.generalFeatures.watershedArea.value
+                indicators.generalFeatures.hydrogeochemicalCharacteristics.value
               );
             }}
           >
             {t(indicators.generalFeatures.translation)}
-          </MenuItem> */}
+          </MenuItem>
           <MenuItem
             value={indicators.waterDemand.value}
             onClick={() => {
@@ -234,7 +234,7 @@ export default function Filters() {
         {(auxIndicatorSelectionTerritory ===
           indicators.generalFeatures.value && (
           <CustomSelect value={auxIndicatorSelection}>
-            {/* Área da bacia por país */}
+            {/* Área da bacia por país 
             <MenuItem
               value={indicators.generalFeatures.watershedArea.value}
               onClick={() =>
@@ -246,7 +246,7 @@ export default function Filters() {
               {t(indicators.generalFeatures.watershedArea.translation)}
             </MenuItem>
 
-            {/* Porcentagem da área da bacia sobre o território nacional */}
+            {/* Porcentagem da área da bacia sobre o território nacional 
             <MenuItem
               value={indicators.generalFeatures.areaPercentage.value}
               onClick={() =>
@@ -258,7 +258,7 @@ export default function Filters() {
               {t(indicators.generalFeatures.areaPercentage.translation)}
             </MenuItem>
 
-            {/* Unidades hidrológicas superficiais (divisão Otto Pfafstetter) */}
+            {/* Unidades hidrológicas superficiais (divisão Otto Pfafstetter) 
             <MenuItem
               value={indicators.generalFeatures.surfaceHydrologicalUnits.value}
               onClick={() =>
@@ -272,7 +272,7 @@ export default function Filters() {
               )}
             </MenuItem>
 
-            {/* Unidades hidrológicas subterrâneas */}
+            {/* Unidades hidrológicas subterrâneas 
             <MenuItem
               value={
                 indicators.generalFeatures.undergroundHydrologicalUnits.value
@@ -287,7 +287,7 @@ export default function Filters() {
                 indicators.generalFeatures.undergroundHydrologicalUnits
                   .translation
               )}
-            </MenuItem>
+            </MenuItem> */}
 
             {/* Características Hidrogeoquímicas das águas */}
             <MenuItem
