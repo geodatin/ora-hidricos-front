@@ -6,6 +6,7 @@ import FilteringContext from '../../../../contexts/filtering';
 import CNARHstate from './CNARHstate';
 import CNARHunion from './CNARHunion';
 import Hydroelectric from './Hydroelectric';
+import Hydrogeochemistry from './Hydrogeochemistry';
 import IllegalMining from './IllegalMining';
 import IPPO from './IPPO';
 import MercuryFish from './MercuryFish';
@@ -94,7 +95,7 @@ export default function Statistics() {
         )) ||
         (indicatorSelection ===
           indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
-          <WQI />
+          <Hydrogeochemistry />
         )) ||
         (indicatorSelection ===
           indicators.hydroclimaticVulnerability.droughtEvents.value && (

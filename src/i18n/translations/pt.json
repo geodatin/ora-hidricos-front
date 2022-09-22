@@ -233,6 +233,23 @@
         "info": "Este gráfico apresenta a classificação de potência de todas as hidrelétricas"
       }
   },
+
+  "Hydrogeochemistry": {
+    "pieChart": {
+      "title": "Número total de ocorrências Hidrogeoquímicas",
+      "info": "Este gráfico apresenta o número ttotal de ocorrências Hidrogeoquímicas",
+      "plural": "Ocorrências",
+      "singular": "Ocorrência"
+    },
+    "rankingChartDomain": {
+      "title": "Ranking das substâncias",
+      "info": "Este gráfico apresenta a classificação das substâncias"
+    },
+    "rankingChartAspects": {
+      "title": "Ranking das substâncias",
+      "info": "Este gráfico apresenta a classificação das substâncias"
+    }
+},
     "CNARHstate": {
       "pieChart": {
         "title": "Número total de ocorrências",
