@@ -348,7 +348,8 @@ function Dashboard() {
           indicatorSelection ===
             indicators.waterResources.annualPrecipitation.value ||
           indicatorSelection ===
-            indicators.waterResources.actualEvapotranspiration.value
+            indicators.waterResources.actualEvapotranspiration.value ||
+          indicatorSelection === indicators.waterResources.waterBalance.value
             ? layoutConfigs.isRightHiddenPermanent[layoutConfig]
             : layoutConfigs.isRightHidden[layoutConfig],
         className: classes.infoPanelWrapper,

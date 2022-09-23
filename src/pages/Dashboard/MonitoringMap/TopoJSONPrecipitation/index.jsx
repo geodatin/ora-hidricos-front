@@ -31,25 +31,25 @@ export default function TopoJSONPrecipitation(props) {
 
   function onEachFeature(feature, layer) {
     if (feature.properties.class === 0) {
-      layer.setStyle({ fillColor: '#ffe6e6' });
+      layer.setStyle({ fillColor: '#e6f5ff' });
     } else if (feature.properties.class === 1) {
-      layer.setStyle({ fillColor: '#ffcccc' });
+      layer.setStyle({ fillColor: '#ccebff' });
     } else if (feature.properties.class === 2) {
-      layer.setStyle({ fillColor: '#ffb3b3' });
+      layer.setStyle({ fillColor: '#b3e0ff' });
     } else if (feature.properties.class === 3) {
-      layer.setStyle({ fillColor: '#ff9999' });
+      layer.setStyle({ fillColor: '#99d6ff' });
     } else if (feature.properties.class === 4) {
-      layer.setStyle({ fillColor: '#ff8080' });
+      layer.setStyle({ fillColor: '#80ccff' });
     } else if (feature.properties.class === 5) {
-      layer.setStyle({ fillColor: '#ff6666' });
+      layer.setStyle({ fillColor: '#66c2ff' });
     } else if (feature.properties.class === 6) {
-      layer.setStyle({ fillColor: '#ff4d4d' });
+      layer.setStyle({ fillColor: '#4db8ff' });
     } else if (feature.properties.class === 7) {
-      layer.setStyle({ fillColor: '#ff3333' });
+      layer.setStyle({ fillColor: '#33adff' });
     } else if (feature.properties.class === 8) {
-      layer.setStyle({ fillColor: '#ff1a1a' });
+      layer.setStyle({ fillColor: '#1aa3ff' });
     } else if (feature.properties.class === 9) {
-      layer.setStyle({ fillColor: '#ff0000' });
+      layer.setStyle({ fillColor: '#0099ff' });
     }
     layer.bindPopup(
       `

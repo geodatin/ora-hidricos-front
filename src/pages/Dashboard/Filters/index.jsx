@@ -418,7 +418,7 @@ export default function Filters() {
                   indicators.waterResources.actualEvapotranspiration.translation
                 )}
               </MenuItem>
-              {/* Balanço hídrico 
+              {/* Balanço hídrico */}
               <MenuItem
                 value={indicators.waterResources.waterBalance.value}
                 onClick={() =>
@@ -428,7 +428,7 @@ export default function Filters() {
                 }
               >
                 {t(indicators.waterResources.waterBalance.translation)}
-              </MenuItem> */}
+              </MenuItem>
             </CustomSelect>
           )) ||
           (auxIndicatorSelectionTerritory === indicators.mercury.value && (

@@ -47,6 +47,8 @@ import SuperCluster from './SuperCluster';
 import TopoJSONEvapotranspiration from './TopoJSONEvapotranspiration';
 import TopoJSONHydrogeochemistry from './TopoJSONHydrogeochemistry';
 import TopoJSONPrecipitation from './TopoJSONPrecipitation';
+import TopoJSONWaterBalance from './TopoJSONWaterBalance';
+
 import 'react-leaflet-markercluster/dist/styles.min.css';
 
 /**
@@ -70,6 +72,7 @@ export default function MonitoringMap() {
   const [coordsHydrogeochemistry, setCoordsHydrogeochemistry] = useState();
   const [coordsPrecipitation, setCoordsPrecipitation] = useState();
   const [coordsEvapotranspiration, setCoordsEvapotranspiration] = useState();
+  const [coordsWaterBalance, setCoordsWaterBalance] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -229,6 +232,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('vulnerability/shape/evapotranspiration').then(({ data }) => {
       setCoordsEvapotranspiration(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('vulnerability/shape/hydricBalance').then(({ data }) => {
+      setCoordsWaterBalance(data);
     });
   }, [code]);
 
@@ -420,7 +429,7 @@ export default function MonitoringMap() {
           style={() => ({
             fillOpacity: 0.8,
             weight: 2,
-            color: '#dd1e1e',
+            color: '#008ae6',
           })}
         />
       )}
@@ -433,7 +442,19 @@ export default function MonitoringMap() {
           style={() => ({
             fillOpacity: 0.8,
             weight: 2,
-            color: '#dd1e1e',
+            color: '#008ae6',
+          })}
+        />
+      )}
+
+      {indicatorSelection === indicators.waterResources.waterBalance.value && (
+        <TopoJSONWaterBalance
+          key={theme === darkScheme ? `dark` : `light`}
+          data={coordsWaterBalance}
+          style={() => ({
+            fillOpacity: 0.8,
+            weight: 2,
+            color: '#008ae6',
           })}
         />
       )}
