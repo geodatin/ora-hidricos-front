@@ -344,7 +344,11 @@ function Dashboard() {
         ),
       }}
       rightColumn={{
-        isHidden: layoutConfigs.isRightHidden[layoutConfig],
+        isHidden:
+          indicatorSelection ===
+          indicators.waterResources.annualPrecipitation.value
+            ? layoutConfigs.isRightHiddenPermanent[layoutConfig]
+            : layoutConfigs.isRightHidden[layoutConfig],
         className: classes.infoPanelWrapper,
         children: infoPanel,
       }}

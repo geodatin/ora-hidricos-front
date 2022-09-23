@@ -100,9 +100,6 @@ function SuperCluster({ data }) {
     options: { radius: 75, maxZoom: 17 },
   });
 
-  console.log(clusters);
-
-  console.log(clusters);
   return (
     <>
       {clusters.map((cluster) => {

@@ -395,7 +395,7 @@ export default function Filters() {
                 {t(indicators.waterResources.wetlands.translation)}
               </MenuItem>
 
-              {/* Precipitação anual 
+              {/* Precipitação anual */}
               <MenuItem
                 value={indicators.waterResources.annualPrecipitation.value}
                 onClick={() =>

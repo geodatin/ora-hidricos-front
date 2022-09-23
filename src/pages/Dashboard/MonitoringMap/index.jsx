@@ -44,7 +44,8 @@ import GetPopupWetlands from './GetPopupWetlands';
 import Markers from './Markers';
 import useStyles from './styles';
 import SuperCluster from './SuperCluster';
-
+import TopoJSONHydrogeochemistry from './TopoJSONHydrogeochemistry';
+import TopoJSONPrecipitation from './TopoJSONPrecipitation';
 import 'react-leaflet-markercluster/dist/styles.min.css';
 
 /**
@@ -64,8 +65,9 @@ export default function MonitoringMap() {
   const [coords, setCoords] = useState();
   const [coordsHydroelectric, setCoordsHydroelectric] = useState();
   const [pollutionUrl, setPollutionUrl] = useState();
-  const [PopulationUrl, setPopulationUrl] = useState();
-  const [CoordsHydrogeochemistry, setCoordsHydrogeochemistry] = useState();
+  const [populationUrl, setPopulationUrl] = useState();
+  const [coordsHydrogeochemistry, setCoordsHydrogeochemistry] = useState();
+  const [coordsPrecipitation, setCoordsPrecipitation] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -216,30 +218,11 @@ export default function MonitoringMap() {
     });
   }, [code]);
 
-  const PopupClass = {
-    className: classes.popup,
-  };
-  function onEachFeature(feature, layer) {
-    layer.bindPopup(
-      `
-      <div>
-          <p class=${classes.popupItem}>Code
-            </br><span class=${classes.popupItemTitle}>${feature.properties.code}</span>
-          </p>
-          <p class=${classes.popupItem}>Domain 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.domain}</span>
-          </p> 
-          <p class=${classes.popupItem}>River name 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.riverName}</span>
-          </p> 
-          <p class=${classes.popupItem}>Aspect 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.aspect}</span>
-          </p> 
-          </div>
-        `,
-      PopupClass
-    );
-  }
+  useEffect(() => {
+    api.get('vulnerability/shape/precipitation').then(({ data }) => {
+      setCoordsPrecipitation(data);
+    });
+  }, [code]);
 
   const { isLoading, error } = useQuery('repoData', async () => {
     const res = await fetch(
@@ -410,14 +393,26 @@ export default function MonitoringMap() {
 
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
-        <GeoJSON
+        <TopoJSONHydrogeochemistry
           key={theme === darkScheme ? `dark` : `light`}
-          data={CoordsHydrogeochemistry}
-          onEachFeature={onEachFeature}
+          data={coordsHydrogeochemistry}
           style={() => ({
             fillColor: 'transparent',
             weight: 4,
             color: theme.orange.main,
+          })}
+        />
+      )}
+
+      {indicatorSelection ===
+        indicators.waterResources.annualPrecipitation.value && (
+        <TopoJSONPrecipitation
+          key={theme === darkScheme ? `dark` : `light`}
+          data={coordsPrecipitation}
+          style={() => ({
+            fillOpacity: 0.8,
+            weight: 2,
+            color: '#dd1e1e',
           })}
         />
       )}
@@ -458,7 +453,7 @@ export default function MonitoringMap() {
 
       {indicatorSelection === indicators.waterDemand.Population.value && (
         <>
-          <TileLayer url={PopulationUrl?.url} zIndex={2} />
+          <TileLayer url={populationUrl?.url} zIndex={2} />
           <GetPopupPopulation />
         </>
       )}

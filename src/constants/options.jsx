@@ -291,4 +291,5 @@ export const mobileNavs = {
 export const layoutConfigs = {
   isLeftHidden: [false, true, true, false],
   isRightHidden: [false, false, true, true],
+  isRightHiddenPermanent: [true, true, true, true],
 };

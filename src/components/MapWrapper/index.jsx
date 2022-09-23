@@ -4,11 +4,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import { useTheme } from 'react-jss';
 import { MapContainer, TileLayer } from 'react-leaflet';
+import { useContextSelector } from 'use-context-selector';
 
 import DarkNorthIcon from '../../assets/images/dark-north.svg';
 import GeodatinLogo from '../../assets/images/geodatin-map.svg';
 import LightNorthIcon from '../../assets/images/light-north.svg';
+import { indicators } from '../../constants/options';
 import { darkScheme } from '../../constants/schemes';
+import FilteringContext from '../../contexts/filtering';
 import { useLayoutConfig } from '../../hooks/useLayoutConfig';
 import useStyles from './styles';
 import ZoomButton from './ZoomButton';
@@ -35,6 +38,10 @@ export default function MapWrapper({
   const [map, setMap] = useState();
   const lightTileRef = useRef();
   const darkTileRef = useRef();
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
 
   useEffect(() => {
     if (getMapRef) getMapRef(map);
@@ -111,11 +118,15 @@ export default function MapWrapper({
         alt="north"
         src={theme === darkScheme ? DarkNorthIcon : LightNorthIcon}
         className={
-          layoutConfig === 2 || layoutConfig === 3
+          layoutConfig === 2 ||
+          layoutConfig === 3 ||
+          indicatorSelection ===
+            indicators.waterResources.annualPrecipitation.value
             ? classes.northIconZ
             : classes.northIcon
         }
       />
+
       <a
         href="https://geodatin.com"
         target="_blank"
