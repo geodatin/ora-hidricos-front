@@ -394,7 +394,6 @@ export default function Filters() {
               >
                 {t(indicators.waterResources.wetlands.translation)}
               </MenuItem>
-
               {/* Precipitação anual */}
               <MenuItem
                 value={indicators.waterResources.annualPrecipitation.value}
@@ -406,8 +405,7 @@ export default function Filters() {
               >
                 {t(indicators.waterResources.annualPrecipitation.translation)}
               </MenuItem>
-
-              {/* Evapotranspiração real 
+              Evapotranspiração real
               <MenuItem
                 value={indicators.waterResources.actualEvapotranspiration.value}
                 onClick={() =>

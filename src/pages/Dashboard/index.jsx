@@ -346,7 +346,9 @@ function Dashboard() {
       rightColumn={{
         isHidden:
           indicatorSelection ===
-          indicators.waterResources.annualPrecipitation.value
+            indicators.waterResources.annualPrecipitation.value ||
+          indicatorSelection ===
+            indicators.waterResources.actualEvapotranspiration.value
             ? layoutConfigs.isRightHiddenPermanent[layoutConfig]
             : layoutConfigs.isRightHidden[layoutConfig],
         className: classes.infoPanelWrapper,

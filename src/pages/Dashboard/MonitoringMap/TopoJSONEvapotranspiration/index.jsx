@@ -9,7 +9,7 @@ import * as topojson from 'topojson-client';
 
 import useStyles from '../styles';
 
-export default function TopoJSONPrecipitation(props) {
+export default function TopoJSONEvapotranspiration(props) {
   const layerRef = useRef(null);
   const { data, ...otherProps } = props;
   const classes = useStyles();

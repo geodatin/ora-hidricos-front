@@ -121,7 +121,9 @@ export default function MapWrapper({
           layoutConfig === 2 ||
           layoutConfig === 3 ||
           indicatorSelection ===
-            indicators.waterResources.annualPrecipitation.value
+            indicators.waterResources.annualPrecipitation.value ||
+          indicatorSelection ===
+            indicators.waterResources.actualEvapotranspiration.value
             ? classes.northIconZ
             : classes.northIcon
         }

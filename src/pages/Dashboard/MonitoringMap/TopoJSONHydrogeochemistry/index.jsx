@@ -15,7 +15,7 @@ export default function TopoJSONHydrogeochemistry(props) {
   const classes = useStyles();
 
   function addData(layer, jsonData) {
-    if (jsonData.type === 'Topology') {
+    if (jsonData?.type === 'Topology') {
       for (const key in jsonData.objects) {
         const geojson = topojson.feature(jsonData, jsonData.objects[key]);
 
