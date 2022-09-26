@@ -131,7 +131,7 @@ export const indicators = {
     name: 'generalFeatures',
     value: 5,
     translation: 'specific.indicators.type.generalFeatures',
-    // Área da bacia por país
+    // Características da bacia
     watershedArea: {
       name: 'watershedArea',
       value: 20,
@@ -230,11 +230,13 @@ export const countryCodes = {
   7: 'CO',
   9: 'BR',
   6: 'BO',
+  3: 'GF',
+  1: 'GY',
+  2: 'SR',
 };
 
 export const filterDefaults = {
-  indicatorSelection:
-    indicators.generalFeatures.hydrogeochemicalCharacteristics.value,
+  indicatorSelection: indicators.generalFeatures.watershedArea.value,
   indicatorSelectionTerritory: indicators.generalFeatures.value,
   territorySelection: null,
 };

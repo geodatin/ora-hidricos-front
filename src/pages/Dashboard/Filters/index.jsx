@@ -154,7 +154,7 @@ export default function Filters() {
                 indicators.generalFeatures.value
               );
               setAuxIndicatorSelection(
-                indicators.generalFeatures.hydrogeochemicalCharacteristics.value
+                indicators.generalFeatures.watershedArea.value
               );
             }}
           >
@@ -234,7 +234,7 @@ export default function Filters() {
         {(auxIndicatorSelectionTerritory ===
           indicators.generalFeatures.value && (
           <CustomSelect value={auxIndicatorSelection}>
-            {/* Área da bacia por país 
+            {/* Características da bacia */}
             <MenuItem
               value={indicators.generalFeatures.watershedArea.value}
               onClick={() =>

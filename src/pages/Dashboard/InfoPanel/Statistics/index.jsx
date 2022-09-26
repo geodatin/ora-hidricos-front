@@ -14,6 +14,7 @@ import MercuryHuman from './MercuryHuman';
 import MiningMine from './MiningMine';
 import Oil from './Oil';
 import Population from './Population';
+import WatershedArea from './WatershedArea';
 import WaterSurface from './WaterSurface';
 import Waterway from './Waterway';
 import Wetlands from './Wetlands';
@@ -82,7 +83,9 @@ export default function Statistics() {
           <CNARHstate />
         )) ||
         (indicatorSelection ===
-          indicators.generalFeatures.watershedArea.value && <WQI />) ||
+          indicators.generalFeatures.watershedArea.value && (
+          <WatershedArea />
+        )) ||
         (indicatorSelection ===
           indicators.generalFeatures.areaPercentage.value && <WQI />) ||
         (indicatorSelection ===

@@ -105,6 +105,24 @@
         "singular": "Lote"
       }
     },
+    "watershedArea": {
+      "rankingChart": {
+        "title": "Ranking da área da bacia hidrográfica por país",
+        "info": "Este gráfico apresenta o ranking da área da bacia hidrográfica por país"
+      }, 
+      "pieChart": {
+        "title": "Área total do território da bacia hidrográfica",
+        "info": "Este gráfico apresenta a área total do território da bacia hidrográfica",
+        "plural": "ha",
+        "singular": "ha"
+      },
+      "itemChart":{
+        "title": "Porcentagem do território da bacia hidrográfica por país",
+        "info": "Este gráfico apresenta a porcentagem do território da bacia hidrográfica por país",
+        "plural": "%",
+        "singular": "%"
+      }
+    },
     "wetlands": {
       "rankingChart": {
         "title": "Ranking para a área das zonas de inundação",
@@ -472,7 +490,7 @@
         "font": "Fonte de dados: ANA https://dadosabertos.ana.gov.br/search?q=cadastro"
       },
       "watershedArea": {
-        "title": "Área da bacia por país",
+        "title": "Características da bacia",
         "font": "Fonte de dados: Cobrape"
       },
       "areaPercentage": {
@@ -553,7 +571,7 @@
         "minesMining": "Lavras mineração",
 
         "generalFeatures": "Características gerais",
-        "watershedArea": "Área da bacia por país",
+        "watershedArea": "Características da bacia",
         "areaPercentage": "Porcentagem da área da bacia sobre o território nacional",
         "surfaceHydrologicalUnits": "Unidades hidrológicas superficiais (divisão Otto Pfafstetter)",
         "undergroundHydrologicalUnits": "Unidades hidrológicas subterrâneas",
