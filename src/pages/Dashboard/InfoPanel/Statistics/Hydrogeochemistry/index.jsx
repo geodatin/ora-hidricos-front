@@ -240,17 +240,6 @@ export default function Hydrogeochemistry({
       </div>
 
       <RankingCustom
-        title={t('specific.Hydrogeochemistry.rankingChartDomain.title')}
-        info={t('specific.Hydrogeochemistry.rankingChartDomain.info')}
-        data={rankingDomain}
-        stylePagination={classes.pagination}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-      />
-      <RankingCustom
         title={t('specific.Hydrogeochemistry.rankingChartAspects.title')}
         info={t('specific.Hydrogeochemistry.rankingChartAspects.info')}
         data={rankingAspects}
@@ -262,6 +251,18 @@ export default function Hydrogeochemistry({
         }}
         params={rankingParams}
         setParams={setRankingParams}
+      />
+
+      <RankingCustom
+        title={t('specific.Hydrogeochemistry.rankingChartDomain.title')}
+        info={t('specific.Hydrogeochemistry.rankingChartDomain.info')}
+        data={rankingDomain}
+        stylePagination={classes.pagination}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
       />
     </ul>
   );

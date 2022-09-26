@@ -10,7 +10,6 @@ import { useContextSelector } from 'use-context-selector';
 
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
-import LineChart from '../../../../../components/Charts/Line';
 import RankingChart from '../../../../../components/Charts/Ranking';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
@@ -61,7 +60,6 @@ export default function IllegalMining({
   const handle = useFullScreenHandle();
   const [rankingData, setRankingData] = useState();
   const [totalData, setTotalData] = useState();
-  const [timeSeries, setTimeSeries] = useState();
 
   useEffect(() => {
     let isSubscribed = true;
@@ -74,39 +72,6 @@ export default function IllegalMining({
       .then(({ data }) => {
         if (isSubscribed) {
           setTotalData(data);
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [code, t]);
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`mining/illegal/time-series`, {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          const labels = data.x;
-          setTimeSeries({
-            labels,
-            datasets: [
-              {
-                label: t('specific.illegalMining.lineChart.label'),
-                data: data.y,
-                pointRadius: 3,
-                pointStyle: 'rectRot',
-                backgroundColor: [theme.primary.main],
-                borderColor: [theme.primary.main],
-                borderWidth: 1,
-              },
-            ],
-          });
         }
       });
 
@@ -295,17 +260,6 @@ export default function IllegalMining({
           />
         </div>
       </div>
-
-      <LineChart
-        title={t('specific.illegalMining.lineChart.title')}
-        info={t('specific.illegalMining.lineChart.info')}
-        data={timeSeries}
-        options={{
-          plugins: {
-            autocolors: false,
-          },
-        }}
-      />
 
       <RankingChart
         title="Ranking das substâncias"

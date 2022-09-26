@@ -61,7 +61,9 @@ export default function GetPopupWetlands() {
         <Typography variant="caption" className={classes.popupItemTitle}>
           Area
         </Typography>
-        <Typography variant="caption">{tilesCoordWetlands?.area} ha</Typography>
+        <Typography variant="caption">
+          {tilesCoordWetlands?.area} km2
+        </Typography>
       </div>
     </Popup>
   );

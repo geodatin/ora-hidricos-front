@@ -31,25 +31,25 @@ export default function TopoJSONEvapotranspiration(props) {
 
   function onEachFeature(feature, layer) {
     if (feature.properties.class === 0) {
-      layer.setStyle({ fillColor: '#e6f5ff' });
+      layer.setStyle({ fillColor: '#b3ffb3' });
     } else if (feature.properties.class === 1) {
-      layer.setStyle({ fillColor: '#ccebff' });
+      layer.setStyle({ fillColor: '#99ff99' });
     } else if (feature.properties.class === 2) {
-      layer.setStyle({ fillColor: '#b3e0ff' });
+      layer.setStyle({ fillColor: '#80ff80' });
     } else if (feature.properties.class === 3) {
-      layer.setStyle({ fillColor: '#99d6ff' });
+      layer.setStyle({ fillColor: '#66ff66' });
     } else if (feature.properties.class === 4) {
-      layer.setStyle({ fillColor: '#80ccff' });
+      layer.setStyle({ fillColor: '#4dff4d' });
     } else if (feature.properties.class === 5) {
-      layer.setStyle({ fillColor: '#66c2ff' });
+      layer.setStyle({ fillColor: '#33ff33' });
     } else if (feature.properties.class === 6) {
-      layer.setStyle({ fillColor: '#4db8ff' });
+      layer.setStyle({ fillColor: '#1aff1a' });
     } else if (feature.properties.class === 7) {
-      layer.setStyle({ fillColor: '#33adff' });
+      layer.setStyle({ fillColor: '#00ff00' });
     } else if (feature.properties.class === 8) {
-      layer.setStyle({ fillColor: '#1aa3ff' });
+      layer.setStyle({ fillColor: '#00e600' });
     } else if (feature.properties.class === 9) {
-      layer.setStyle({ fillColor: '#0099ff' });
+      layer.setStyle({ fillColor: '#00cc00' });
     }
     layer.bindPopup(
       `

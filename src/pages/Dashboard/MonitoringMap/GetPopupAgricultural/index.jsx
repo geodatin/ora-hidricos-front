@@ -61,7 +61,7 @@ export default function GetPopupAgricultural() {
         <Typography variant="caption" className={classes.popupItemTitle}>
           Area
         </Typography>
-        <Typography variant="caption">{tilesCoord?.area} ha</Typography>
+        <Typography variant="caption">{tilesCoord?.area} km2</Typography>
       </div>
     </Popup>
   );

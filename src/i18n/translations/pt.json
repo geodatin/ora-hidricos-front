@@ -113,7 +113,7 @@
       "pieChart": {
         "title": "Área agrícola total",
         "info": "Este gráfico apresenta a área agrícola total",
-        "area": "ha"
+        "area": "km2"
       }
     },
     "watershedArea": {
@@ -124,12 +124,12 @@
       "pieChart": {
         "title": "Área total do território da bacia hidrográfica",
         "info": "Este gráfico apresenta a área total do território da bacia hidrográfica",
-        "plural": "ha",
-        "singular": "ha"
+        "plural": "km2",
+        "singular": "km2"
       },
       "itemChart":{
-        "title": "Porcentagem do território da bacia hidrográfica por país",
-        "info": "Este gráfico apresenta a porcentagem do território da bacia hidrográfica por país",
+        "title": "Porcentagem do país ocupado pela bacia amazônica",
+        "info": "Este gráfico apresenta a porcentagem do país ocupado pela bacia amazônica",
         "plural": "%",
         "singular": "%"
       }
@@ -142,7 +142,7 @@
       "pieChart": {
         "title": "Área total das zonas de inundação",
         "info": "Este gráfico apresenta a área total das zonas de inundação",
-        "area": "ha"
+        "area": "km2"
       }
     },
     "IPPO": {
@@ -271,12 +271,12 @@
       "singular": "Ocorrência"
     },
     "rankingChartDomain": {
-      "title": "Ranking das substâncias",
-      "info": "Este gráfico apresenta a classificação das substâncias"
+      "title": "Ranking por domínios",
+      "info": "Este gráfico apresenta a classificação por domínio"
     },
     "rankingChartAspects": {
-      "title": "Ranking das substâncias",
-      "info": "Este gráfico apresenta a classificação das substâncias"
+      "title": "Rankingpor por aspectos",
+      "info": "Este gráfico apresenta a classificação por aspectos"
     }
 },
     "CNARHstate": {

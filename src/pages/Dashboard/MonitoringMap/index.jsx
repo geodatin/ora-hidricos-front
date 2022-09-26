@@ -430,9 +430,8 @@ export default function MonitoringMap() {
           key={theme === darkScheme ? `dark` : `light`}
           data={coordsHydrogeochemistry}
           style={() => ({
-            fillColor: 'transparent',
+            fillOpacity: 0.8,
             weight: 4,
-            color: theme.orange.main,
           })}
         />
       )}
@@ -445,7 +444,7 @@ export default function MonitoringMap() {
           style={() => ({
             fillOpacity: 0.8,
             weight: 2,
-            color: '#008ae6',
+            color: '#e69500',
           })}
         />
       )}
@@ -458,7 +457,7 @@ export default function MonitoringMap() {
           style={() => ({
             fillOpacity: 0.8,
             weight: 2,
-            color: '#008ae6',
+            color: '#008000',
           })}
         />
       )}
@@ -470,7 +469,7 @@ export default function MonitoringMap() {
           style={() => ({
             fillOpacity: 0.8,
             weight: 2,
-            color: '#008ae6',
+            color: '#0000b3',
           })}
         />
       )}
