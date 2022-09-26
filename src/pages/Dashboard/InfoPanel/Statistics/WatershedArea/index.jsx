@@ -12,7 +12,7 @@ import { useContextSelector } from 'use-context-selector';
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
 import ItemsChart from '../../../../../components/Charts/Items';
-import RankingChart from '../../../../../components/Charts/Ranking';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
 import { countryCodes } from '../../../../../constants/options';
@@ -130,7 +130,7 @@ export default function WatershedArea({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'green',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -161,7 +161,7 @@ export default function WatershedArea({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: 'green',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -230,7 +230,7 @@ export default function WatershedArea({
                 ? t('specific.watershedArea.pieChart.plural')
                 : t('specific.watershedArea.pieChart.singular')
             }
-            color={theme.primary.main}
+            color="green"
             scale={1.2}
           />
         </div>
@@ -244,9 +244,10 @@ export default function WatershedArea({
         data={itemsData}
       />
 
-      <RankingChart
+      <RankingCustom
         title={t('specific.watershedArea.rankingChart.title')}
         info={t('specific.watershedArea.rankingChart.info')}
+        stylePagination={classes.pagination}
         data={rankingData}
         customFormatter={{
           formatter(value) {

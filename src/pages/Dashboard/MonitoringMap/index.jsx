@@ -39,6 +39,7 @@ import 'leaflet/dist/leaflet.css';
 import GetPopupIPPO from './GetPopupIPPO';
 import GetPopupMiningMine from './GetPopupMiningMine';
 import GetPopupPopulation from './GetPopupPopulation';
+import GetPopupWatershed from './GetPopupWatershed';
 import GetPopupWaterway from './GetPopupWaterway';
 import GetPopupWetlands from './GetPopupWetlands';
 import Markers from './Markers';
@@ -73,6 +74,7 @@ export default function MonitoringMap() {
   const [coordsPrecipitation, setCoordsPrecipitation] = useState();
   const [coordsEvapotranspiration, setCoordsEvapotranspiration] = useState();
   const [coordsWaterBalance, setCoordsWaterBalance] = useState();
+  const [watershedUrl, setWatershedUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -238,6 +240,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('vulnerability/shape/hydricBalance').then(({ data }) => {
       setCoordsWaterBalance(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('territory/watershed/tiles').then(({ data }) => {
+      setWatershedUrl(data);
     });
   }, [code]);
 
@@ -497,6 +505,14 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={populationUrl?.url} zIndex={2} />
           <GetPopupPopulation />
+        </>
+      )}
+
+      {indicatorSelection ===
+        indicators.generalFeatures.watershedArea.value && (
+        <>
+          <TileLayer url={watershedUrl?.url} zIndex={2} />
+          <GetPopupWatershed />
         </>
       )}
 
