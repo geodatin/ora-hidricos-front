@@ -105,6 +105,17 @@
         "singular": "Lote"
       }
     },
+    "Agricultural": {
+      "rankingChart": {
+        "title": "Ranking para a área agrícola",
+        "info": "Este gráfico apresenta o ranking para a área Agrícola"
+      }, 
+      "pieChart": {
+        "title": "Área agrícola total",
+        "info": "Este gráfico apresenta a área agrícola total",
+        "area": "ha"
+      }
+    },
     "watershedArea": {
       "rankingChart": {
         "title": "Ranking da área da bacia hidrográfica por país",

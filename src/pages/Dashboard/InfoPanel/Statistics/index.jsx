@@ -3,6 +3,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import { indicators } from '../../../../constants/options';
 import FilteringContext from '../../../../contexts/filtering';
+import Agricultural from './Agricultural';
 import CNARHstate from './CNARHstate';
 import CNARHunion from './CNARHunion';
 import Hydroelectric from './Hydroelectric';
@@ -62,7 +63,7 @@ export default function Statistics() {
           <MiningMine />
         )) ||
         (indicatorSelection === indicators.ground.agricultural.value && (
-          <WQI />
+          <Agricultural />
         )) ||
         (indicatorSelection === indicators.ground.deforesting.value && (
           <WQI />

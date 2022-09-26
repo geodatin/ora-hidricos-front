@@ -766,7 +766,87 @@ export default function Filters() {
           />
         </div>
       )}
-      {auxIndicatorSelectionTerritory === indicators.ground.value && (
+      {auxIndicatorSelection === indicators.ground.illegalMining.value && (
+        <div>
+          <AutocompleteSearch
+            options={autocompleteOptions}
+            onSelect={(e) => handleAutocompleteSelect(e)}
+            onInputChange={(e, newInput) => {
+              onAutocompleteInputChange(newInput);
+            }}
+            getOptionLabel={(option) => option.name}
+            noOptionsText={
+              noOptionsTextSelector
+                ? t('specific.autocompletesearch.noOptionsText')
+                : t('specific.autocompletesearch.emptyText')
+            }
+            loadingText={t('specific.autocompletesearch.loadingText')}
+            loading={autocompleteLoading}
+            renderGroup={(params, index) => [
+              <ListSubheader
+                classes={{ root: classes.autocompleteGroup }}
+                key={`${params.group}_${index}`}
+                component="div"
+              >
+                {params.group}
+              </ListSubheader>,
+              params.children,
+            ]}
+            renderOption={(props, option) => (
+              <li {...props} key={option.code}>
+                {option.name}
+              </li>
+            )}
+            paperClass={classes.autocompletePaper}
+            defaultValue={auxAutocompleteSelection}
+            value={auxAutocompleteSelection}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            isOptionEqualToValue={(option, value) => option.code === value.code}
+          />
+        </div>
+      )}
+      {auxIndicatorSelection === indicators.ground.minesMining.value && (
+        <div>
+          <AutocompleteSearch
+            options={autocompleteOptions}
+            onSelect={(e) => handleAutocompleteSelect(e)}
+            onInputChange={(e, newInput) => {
+              onAutocompleteInputChange(newInput);
+            }}
+            getOptionLabel={(option) => option.name}
+            noOptionsText={
+              noOptionsTextSelector
+                ? t('specific.autocompletesearch.noOptionsText')
+                : t('specific.autocompletesearch.emptyText')
+            }
+            loadingText={t('specific.autocompletesearch.loadingText')}
+            loading={autocompleteLoading}
+            renderGroup={(params, index) => [
+              <ListSubheader
+                classes={{ root: classes.autocompleteGroup }}
+                key={`${params.group}_${index}`}
+                component="div"
+              >
+                {params.group}
+              </ListSubheader>,
+              params.children,
+            ]}
+            renderOption={(props, option) => (
+              <li {...props} key={option.code}>
+                {option.name}
+              </li>
+            )}
+            paperClass={classes.autocompletePaper}
+            defaultValue={auxAutocompleteSelection}
+            value={auxAutocompleteSelection}
+            inputValue={inputValue}
+            setInputValue={setInputValue}
+            isOptionEqualToValue={(option, value) => option.code === value.code}
+          />
+        </div>
+      )}
+      {auxIndicatorSelection === indicators.ground.oil.value && (
         <div>
           <AutocompleteSearch
             options={autocompleteOptions}
