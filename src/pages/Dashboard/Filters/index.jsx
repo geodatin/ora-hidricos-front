@@ -498,7 +498,7 @@ export default function Filters() {
               >
                 {t(indicators.ground.minesMining.translation)}
               </MenuItem>
-              {/* Agropecuária 
+              {/* Agropecuária */}
               <MenuItem
                 value={indicators.ground.agricultural.value}
                 onClick={() => {

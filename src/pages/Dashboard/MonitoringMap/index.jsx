@@ -36,6 +36,7 @@ import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import api from '../../../services/api';
 import 'leaflet/dist/leaflet.css';
+import GetPopupAgricultural from './GetPopupAgricultural';
 import GetPopupIPPO from './GetPopupIPPO';
 import GetPopupMiningMine from './GetPopupMiningMine';
 import GetPopupPopulation from './GetPopupPopulation';
@@ -75,6 +76,7 @@ export default function MonitoringMap() {
   const [coordsEvapotranspiration, setCoordsEvapotranspiration] = useState();
   const [coordsWaterBalance, setCoordsWaterBalance] = useState();
   const [watershedUrl, setWatershedUrl] = useState();
+  const [agriculturalUrl, setAgriculturalUrl] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -246,6 +248,12 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('territory/watershed/tiles').then(({ data }) => {
       setWatershedUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('agricultural/tiles').then(({ data }) => {
+      setAgriculturalUrl(data);
     });
   }, [code]);
 
@@ -513,6 +521,13 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={watershedUrl?.url} zIndex={2} />
           <GetPopupWatershed />
+        </>
+      )}
+
+      {indicatorSelection === indicators.ground.agricultural.value && (
+        <>
+          <TileLayer url={agriculturalUrl?.url} zIndex={2} />
+          <GetPopupAgricultural />
         </>
       )}
 
