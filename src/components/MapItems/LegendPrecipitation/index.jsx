@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 
-import api from '../../../../services/api';
+import api from '../../../services/api';
 import useStyles from './styles';
 
-const LegendEvapotranspiration = () => {
+const LegendPrecipitation = () => {
   const [coordsPrecipitation, setCoordsPrecipitation] = useState();
   const classes = useStyles();
 
   useEffect(() => {
-    api.get('vulnerability/shape/evapotranspiration').then(({ data }) => {
+    api.get('vulnerability/shape/precipitation').then(({ data }) => {
       setCoordsPrecipitation(data);
     });
   }, []);
@@ -23,7 +23,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#00cc00',
+            backgroundColor: '#ffa500',
           }}
         />
         <span>{coordsPrecipitation?.features?.[9]?.properties?.range}</span>
@@ -32,7 +32,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#00e600',
+            backgroundColor: '#ffaf1a',
           }}
         />
         <span>{coordsPrecipitation?.features?.[8]?.properties?.range}</span>
@@ -41,7 +41,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#00ff00',
+            backgroundColor: '#ffb833',
           }}
         />
         <span>{coordsPrecipitation?.features?.[7]?.properties?.range}</span>
@@ -50,7 +50,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#1aff1a',
+            backgroundColor: '#ffc14d',
           }}
         />
         <span>{coordsPrecipitation?.features?.[6]?.properties?.range}</span>
@@ -59,7 +59,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#33ff33',
+            backgroundColor: '#ffc966',
           }}
         />
         <span>{coordsPrecipitation?.features?.[5]?.properties?.range}</span>
@@ -68,7 +68,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#4dff4d',
+            backgroundColor: '#ffd280',
           }}
         />
         <span>{coordsPrecipitation?.features?.[4]?.properties?.range}</span>
@@ -77,7 +77,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#66ff66',
+            backgroundColor: '#ffdb99',
           }}
         />
         <span>{coordsPrecipitation?.features?.[3]?.properties?.range}</span>
@@ -86,7 +86,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#80ff80',
+            backgroundColor: '#ffe4b3',
           }}
         />
         <span>{coordsPrecipitation?.features?.[2]?.properties?.range}</span>
@@ -95,7 +95,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#99ff99',
+            backgroundColor: '#ffedcc',
           }}
         />
         <span>{coordsPrecipitation?.features?.[1]?.properties?.range}</span>
@@ -105,7 +105,7 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#b3ffb3',
+            backgroundColor: '#fff6e6',
           }}
         />
         <span>{coordsPrecipitation?.features?.[0]?.properties?.range}</span>
@@ -113,4 +113,4 @@ const LegendEvapotranspiration = () => {
     </div>
   );
 };
-export default LegendEvapotranspiration;
+export default LegendPrecipitation;

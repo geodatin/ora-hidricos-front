@@ -7,8 +7,8 @@ import { useTheme } from 'react-jss';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import useSupercluster from 'use-supercluster';
 
-import Typography from '../../../../components/Typography';
-import { darkScheme } from '../../../../constants/schemes';
+import { darkScheme } from '../../../constants/schemes';
+import Typography from '../../Typography';
 import useStyles from '../styles';
 
 const blueIcon = new L.Icon({

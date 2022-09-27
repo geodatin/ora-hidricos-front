@@ -4,11 +4,11 @@ import { useTheme } from 'react-jss';
 import { Marker, Popup, useMap, GeoJSON } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
-import Typography from '../../../../components/Typography';
-import { indicators } from '../../../../constants/options';
-import { darkScheme } from '../../../../constants/schemes';
-import FilteringContext from '../../../../contexts/filtering';
-import api from '../../../../services/api';
+import { indicators } from '../../../constants/options';
+import { darkScheme } from '../../../constants/schemes';
+import FilteringContext from '../../../contexts/filtering';
+import api from '../../../services/api';
+import Typography from '../../Typography';
 import useStyles from '../styles';
 
 export default function Markers({ data }) {

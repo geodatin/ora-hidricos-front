@@ -1,15 +1,15 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
 
-import api from '../../../../services/api';
+import api from '../../../services/api';
 import useStyles from './styles';
 
-const LegendWaterBalance = () => {
+const LegendEvapotranspiration = () => {
   const [coordsPrecipitation, setCoordsPrecipitation] = useState();
   const classes = useStyles();
 
   useEffect(() => {
-    api.get('vulnerability/shape/hydricBalance').then(({ data }) => {
+    api.get('vulnerability/shape/evapotranspiration').then(({ data }) => {
       setCoordsPrecipitation(data);
     });
   }, []);
@@ -23,7 +23,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#0099ff',
+            backgroundColor: '#00cc00',
           }}
         />
         <span>{coordsPrecipitation?.features?.[9]?.properties?.range}</span>
@@ -32,7 +32,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#1aa3ff',
+            backgroundColor: '#00e600',
           }}
         />
         <span>{coordsPrecipitation?.features?.[8]?.properties?.range}</span>
@@ -41,7 +41,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#33adff',
+            backgroundColor: '#00ff00',
           }}
         />
         <span>{coordsPrecipitation?.features?.[7]?.properties?.range}</span>
@@ -50,7 +50,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#4db8ff',
+            backgroundColor: '#1aff1a',
           }}
         />
         <span>{coordsPrecipitation?.features?.[6]?.properties?.range}</span>
@@ -59,7 +59,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#66c2ff',
+            backgroundColor: '#33ff33',
           }}
         />
         <span>{coordsPrecipitation?.features?.[5]?.properties?.range}</span>
@@ -68,7 +68,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#80ccff',
+            backgroundColor: '#4dff4d',
           }}
         />
         <span>{coordsPrecipitation?.features?.[4]?.properties?.range}</span>
@@ -77,7 +77,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#99d6ff',
+            backgroundColor: '#66ff66',
           }}
         />
         <span>{coordsPrecipitation?.features?.[3]?.properties?.range}</span>
@@ -86,7 +86,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#b3e0ff',
+            backgroundColor: '#80ff80',
           }}
         />
         <span>{coordsPrecipitation?.features?.[2]?.properties?.range}</span>
@@ -95,7 +95,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ccebff',
+            backgroundColor: '#99ff99',
           }}
         />
         <span>{coordsPrecipitation?.features?.[1]?.properties?.range}</span>
@@ -105,7 +105,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#e6f5ff',
+            backgroundColor: '#b3ffb3',
           }}
         />
         <span>{coordsPrecipitation?.features?.[0]?.properties?.range}</span>
@@ -113,4 +113,4 @@ const LegendWaterBalance = () => {
     </div>
   );
 };
-export default LegendWaterBalance;
+export default LegendEvapotranspiration;

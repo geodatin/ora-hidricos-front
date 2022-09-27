@@ -1,6 +1,6 @@
 import { createUseStyles } from 'react-jss';
 
-import { darkScheme } from '../../../../constants/schemes';
+import { darkScheme } from '../../../constants/schemes';
 
 const useStyles = createUseStyles((theme) => ({
   container: {

@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
-import Typography from '../../../../components/Typography';
-import { darkScheme } from '../../../../constants/schemes';
-import api from '../../../../services/api';
+import { darkScheme } from '../../../constants/schemes';
+import api from '../../../services/api';
+import Typography from '../../Typography';
 import useStyles from '../styles';
 
-export default function GetPopupIPPO() {
+export default function GetPopupWaterway() {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -16,7 +16,7 @@ export default function GetPopupIPPO() {
 
   useEffect(() => {
     api
-      .get(`pollution/tiles/properties/${popup?.lng}/${popup?.lat}`)
+      .get(`waterway/properties/tiles/${popup?.lng}/${popup?.lat}`)
       .then(({ data }) => {
         setTilesCoord(data);
       })
@@ -40,21 +40,14 @@ export default function GetPopupIPPO() {
       position={[popup?.lat, popup?.lng]}
     >
       <Typography variant="caption" format="bold">
-        Pollution
+        {tilesCoord?.country}
       </Typography>
       <div className={classes.separator} />
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Sub watershed
+          Name
         </Typography>
-        <Typography variant="caption">{tilesCoord?.subWatershed}</Typography>
-      </div>
-
-      <div className={classes.popupItem}>
-        <Typography variant="caption" className={classes.popupItemTitle}>
-          Condition
-        </Typography>
-        <Typography variant="caption">{tilesCoord?.condition}</Typography>
+        <Typography variant="caption">{tilesCoord?.name}</Typography>
       </div>
 
       <div className={classes.popupItem}>

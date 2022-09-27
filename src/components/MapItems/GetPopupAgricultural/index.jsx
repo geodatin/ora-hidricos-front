@@ -2,12 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
-import Typography from '../../../../components/Typography';
-import { darkScheme } from '../../../../constants/schemes';
-import api from '../../../../services/api';
+import { darkScheme } from '../../../constants/schemes';
+import api from '../../../services/api';
+import Typography from '../../Typography';
 import useStyles from '../styles';
 
-export default function GetPopupWaterway() {
+export default function GetPopupAgricultural() {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -16,7 +16,7 @@ export default function GetPopupWaterway() {
 
   useEffect(() => {
     api
-      .get(`waterway/properties/tiles/${popup?.lng}/${popup?.lat}`)
+      .get(`agricultural/tiles/properties/${popup?.lng}/${popup?.lat}`)
       .then(({ data }) => {
         setTilesCoord(data);
       })
@@ -40,9 +40,10 @@ export default function GetPopupWaterway() {
       position={[popup?.lat, popup?.lng]}
     >
       <Typography variant="caption" format="bold">
-        {tilesCoord?.country}
+        Agricultural
       </Typography>
       <div className={classes.separator} />
+
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
           Name
@@ -55,6 +56,12 @@ export default function GetPopupWaterway() {
           Code
         </Typography>
         <Typography variant="caption">{tilesCoord?.code}</Typography>
+      </div>
+      <div className={classes.popupItem}>
+        <Typography variant="caption" className={classes.popupItemTitle}>
+          Area
+        </Typography>
+        <Typography variant="caption">{tilesCoord?.area} km2</Typography>
       </div>
     </Popup>
   );

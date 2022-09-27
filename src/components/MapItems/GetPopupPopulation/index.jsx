@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
-import Typography from '../../../../components/Typography';
-import { darkScheme } from '../../../../constants/schemes';
-import api from '../../../../services/api';
+import { darkScheme } from '../../../constants/schemes';
+import api from '../../../services/api';
+import Typography from '../../Typography';
 import useStyles from '../styles';
 
 export default function GetPopupPopulation() {
