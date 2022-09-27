@@ -3,6 +3,7 @@ import FullscreenRoundedIcon from '@mui/icons-material/FullscreenRounded';
 import { IconButton } from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import ReactCountryFlag from 'react-country-flag';
 import { useFullScreenHandle } from 'react-full-screen';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
@@ -10,9 +11,11 @@ import { useContextSelector } from 'use-context-selector';
 
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
+import ItemsChart from '../../../../../components/Charts/Items';
 import RankingChart from '../../../../../components/Charts/Ranking';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
+import { countryCodes } from '../../../../../constants/options';
 import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
 import useStyles from './styles';
@@ -58,8 +61,9 @@ export default function IllegalMining({
   });
 
   const handle = useFullScreenHandle();
-  const [rankingData, setRankingData] = useState();
   const [totalData, setTotalData] = useState();
+  const [itemsData, setItemsData] = useState();
+  const [rankingData, setRankingData] = useState();
 
   useEffect(() => {
     let isSubscribed = true;
@@ -72,6 +76,39 @@ export default function IllegalMining({
       .then(({ data }) => {
         if (isSubscribed) {
           setTotalData(data);
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [code, t]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`mining/illegal/countries`, {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed && data) {
+          setItemsData({
+            labels: data.map(({ country }) => country),
+            datasets: [
+              {
+                data: data.map(({ count }) => count),
+                icons: data.map(({ countryCode }) => (
+                  <ReactCountryFlag
+                    svg
+                    countryCode={countryCodes[countryCode]}
+                    style={{ fontSize: 30, marginRight: 5, borderRadius: 12 }}
+                  />
+                )),
+              },
+            ],
+          });
         }
       });
 
@@ -260,6 +297,14 @@ export default function IllegalMining({
           />
         </div>
       </div>
+
+      <ItemsChart
+        title={t('specific.illegalMining.itemChart.title')}
+        info={t('specific.illegalMining.itemChart.info')}
+        plural={t('specific.illegalMining.itemChart.plural')}
+        singular={t('specific.illegalMining.itemChart.singular')}
+        data={itemsData}
+      />
 
       <RankingChart
         title="Ranking das substâncias"

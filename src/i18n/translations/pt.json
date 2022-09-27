@@ -376,10 +376,11 @@
         "plural": "Ocorrências",
         "singular": "Ocorrência"
       },
-      "lineChart": {
-        "title": "Ocorrências de mineração ilegal",
-        "info": "Este gráfico apresenta as ocorrências de mineração ilegal", 
-        "label": "Número de ocorrências"
+      "itemChart":{
+        "title": "Número de minas por país",
+        "info": "Este gráfico apresenta o número de minas por país",
+        "plural": "Minas",
+        "singular": "Mina"
       },
       "rankingChart": {
         "title": "Ranking das substâncias",
