@@ -43,6 +43,9 @@ import GetPopupPopulation from './GetPopupPopulation';
 import GetPopupWatershed from './GetPopupWatershed';
 import GetPopupWaterway from './GetPopupWaterway';
 import GetPopupWetlands from './GetPopupWetlands';
+import LegendEvapotranspiration from './LegendEvapotranspiration';
+import LegendPrecipitation from './LegendPrecipitation';
+import LegendWaterBalance from './LegendWaterBalance';
 import Markers from './Markers';
 import useStyles from './styles';
 import SuperCluster from './SuperCluster';
@@ -438,40 +441,49 @@ export default function MonitoringMap() {
 
       {indicatorSelection ===
         indicators.waterResources.annualPrecipitation.value && (
-        <TopoJSONPrecipitation
-          key={theme === darkScheme ? `dark` : `light`}
-          data={coordsPrecipitation}
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 2,
-            color: '#e69500',
-          })}
-        />
+        <>
+          <TopoJSONPrecipitation
+            key={theme === darkScheme ? `dark` : `light`}
+            data={coordsPrecipitation}
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 2,
+              color: '#e69500',
+            })}
+          />
+          <LegendPrecipitation />
+        </>
       )}
 
       {indicatorSelection ===
         indicators.waterResources.actualEvapotranspiration.value && (
-        <TopoJSONEvapotranspiration
-          key={theme === darkScheme ? `dark` : `light`}
-          data={coordsEvapotranspiration}
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 2,
-            color: '#008000',
-          })}
-        />
+        <>
+          <TopoJSONEvapotranspiration
+            key={theme === darkScheme ? `dark` : `light`}
+            data={coordsEvapotranspiration}
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 2,
+              color: '#008000',
+            })}
+          />
+          <LegendEvapotranspiration />
+        </>
       )}
 
       {indicatorSelection === indicators.waterResources.waterBalance.value && (
-        <TopoJSONWaterBalance
-          key={theme === darkScheme ? `dark` : `light`}
-          data={coordsWaterBalance}
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 2,
-            color: '#0000b3',
-          })}
-        />
+        <>
+          <TopoJSONWaterBalance
+            key={theme === darkScheme ? `dark` : `light`}
+            data={coordsWaterBalance}
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 2,
+              color: '#0000b3',
+            })}
+          />
+          <LegendWaterBalance />
+        </>
       )}
 
       {indicatorSelection === indicators.waterResources.waterSurface.value && (
