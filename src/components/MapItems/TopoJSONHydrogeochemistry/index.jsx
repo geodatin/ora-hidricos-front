@@ -39,7 +39,7 @@ export default function TopoJSONHydrogeochemistry(props) {
     } else if (feature.properties.aspect === 'Preta') {
       layer.setStyle({ color: '#000000' });
     } else if (feature.properties.aspect === 'Branca') {
-      layer.setStyle({ color: '#ffffff' });
+      layer.setStyle({ color: '#e6ddd3' });
     } else if (feature.properties.aspect === 'Intermediária Tipo A') {
       layer.setStyle({ color: '#ffa500' });
     } else if (feature.properties.aspect === null) {

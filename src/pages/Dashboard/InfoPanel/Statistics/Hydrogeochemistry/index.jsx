@@ -134,7 +134,7 @@ export default function Hydrogeochemistry({
                 data: data.series[0].data.map((number) => number),
                 backgroundColor: [
                   pageAtual === 1 ? '#ffa500' : '#7e6330',
-                  '#ffffff',
+                  '#e6ddd3',
                   '#080808',
                   '#ecb247',
                   '#f1d8af',
@@ -172,8 +172,7 @@ export default function Hydrogeochemistry({
                 data: data.series[0].data.map((number) => number),
                 backgroundColor: [
                   pageAtual === 1 ? '#ffa500' : '#7e6330',
-
-                  '#ffffff',
+                  '#e6ddd3',
                   '#080808',
                   '#ecb247',
                   '#f1d8af',

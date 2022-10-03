@@ -92,7 +92,7 @@ export default function WatershedArea({
             labels: data.map(({ country }) => country),
             datasets: [
               {
-                data: data.map(({ count }) => count),
+                data: data.map(({ count }) => count * 100),
                 icons: data.map(({ countryCode }) => (
                   <ReactCountryFlag
                     svg

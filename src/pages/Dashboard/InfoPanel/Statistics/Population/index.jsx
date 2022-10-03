@@ -100,7 +100,13 @@ export default function Population({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'blue',
+                backgroundColor: [
+                  '#011f4b',
+                  '#03396c',
+                  '#005b96',
+                  '#6497b1',
+                  '#b3cde0',
+                ],
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -132,7 +138,13 @@ export default function Population({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'blue',
+                backgroundColor: [
+                  '#011f4b',
+                  '#03396c',
+                  '#005b96',
+                  '#6497b1',
+                  '#b3cde0',
+                ],
                 borderRadius: 5,
                 barThickness: 15,
               },

@@ -288,14 +288,6 @@ function Dashboard() {
             children: <Statistics />,
           },
         },
-        /* {
-          label: 'Notifications',
-          icon: <NotificationsActiveRoundedIcon />,
-          navContainer: {
-            className: classes.notificationsMobileWrapper,
-            children: <div>Notifications</div>,
-          },
-        }, */
       ]}
     />
   ) : (

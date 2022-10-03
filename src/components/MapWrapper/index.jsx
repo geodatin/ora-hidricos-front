@@ -42,11 +42,11 @@ export default function MapWrapper({
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
+  const { layoutConfig } = useLayoutConfig();
 
   useEffect(() => {
     if (getMapRef) getMapRef(map);
   }, [map]);
-  const { layoutConfig } = useLayoutConfig();
 
   /**
    * Disable click propagation
