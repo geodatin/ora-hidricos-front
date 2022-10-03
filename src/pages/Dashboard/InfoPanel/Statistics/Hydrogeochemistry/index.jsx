@@ -132,7 +132,13 @@ export default function Hydrogeochemistry({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.orange.main],
+                backgroundColor: [
+                  pageAtual === 1 ? '#ffa500' : '#7e6330',
+                  '#ffffff',
+                  '#080808',
+                  '#ecb247',
+                  '#f1d8af',
+                ],
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -164,7 +170,15 @@ export default function Hydrogeochemistry({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.orange.main],
+                backgroundColor: [
+                  pageAtual === 1 ? '#ffa500' : '#7e6330',
+
+                  '#ffffff',
+                  '#080808',
+                  '#ecb247',
+                  '#f1d8af',
+                  '#7e6330',
+                ],
                 borderRadius: 5,
                 barThickness: 15,
               },
