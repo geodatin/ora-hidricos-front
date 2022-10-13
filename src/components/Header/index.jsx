@@ -40,6 +40,9 @@ export default function Header({ items, projectName }) {
             >
               <Button className={classes.button}>API</Button>
             </a>
+            <a href="data-sources.png" target="_blank" rel="noreferrer">
+              <Button className={classes.button}>Fontes de dados</Button>
+            </a>
           </div>
         </div>
         <div className={classes.endItems}>
