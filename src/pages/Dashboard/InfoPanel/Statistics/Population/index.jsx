@@ -99,7 +99,7 @@ export default function Population({
             ),
             datasets: [
               {
-                data: data.series[0].data.map((number) => number),
+                data: data.series[0].data.map((number) => Math.trunc(number)),
                 backgroundColor: [
                   '#011f4b',
                   '#03396c',
@@ -137,7 +137,7 @@ export default function Population({
             ),
             datasets: [
               {
-                data: data.series[0].data.map((number) => number),
+                data: data.series[0].data.map((number) => Math.trunc(number)),
                 backgroundColor: [
                   '#011f4b',
                   '#03396c',
@@ -207,7 +207,7 @@ export default function Population({
         </div>
         <div ref={childrenref}>
           <DataDough
-            value={totalData?.count}
+            value={Math.trunc(totalData?.count)}
             sufix={
               totalData?.count > 1
                 ? t('specific.Population.pieChart.plural')

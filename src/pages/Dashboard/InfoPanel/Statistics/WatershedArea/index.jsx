@@ -129,7 +129,7 @@ export default function WatershedArea({
             ),
             datasets: [
               {
-                data: data.series[0].data.map((number) => number),
+                data: data.series[0].data.map((number) => Math.trunc(number)),
                 backgroundColor: 'green',
                 borderRadius: 5,
                 barThickness: 15,
@@ -160,7 +160,7 @@ export default function WatershedArea({
             ),
             datasets: [
               {
-                data: data.series[0].data.map((number) => number),
+                data: data.series[0].data.map((number) => Math.trunc(number)),
                 backgroundColor: 'green',
                 borderRadius: 5,
                 barThickness: 15,
@@ -224,7 +224,7 @@ export default function WatershedArea({
         </div>
         <div ref={childrenref}>
           <DataDough
-            value={totalData?.count}
+            value={Math.trunc(totalData?.count)}
             sufix={
               totalData?.count > 1
                 ? t('specific.watershedArea.pieChart.plural')
