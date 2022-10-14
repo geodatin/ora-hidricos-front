@@ -4,6 +4,12 @@ import { useTheme } from 'react-jss';
 import { Marker, Popup, useMap, GeoJSON } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
+import circleBuildingIcon from '../../../assets/icons/map/circle-map-building.svg';
+import circleOperationIcon from '../../../assets/icons/map/circle-map-operation.svg';
+import circlePlannedIcon from '../../../assets/icons/map/circle-map-project.svg';
+import buildingIcon from '../../../assets/icons/map/map-building.svg';
+import operationIcon from '../../../assets/icons/map/map-operation.svg';
+import plannedIcon from '../../../assets/icons/map/map-project.svg';
 import { indicators } from '../../../constants/options';
 import { darkScheme } from '../../../constants/schemes';
 import FilteringContext from '../../../contexts/filtering';
@@ -40,6 +46,47 @@ export default function Markers({ data }) {
     popupAnchor: [1, -34],
   });
 
+  const MarkerPlannedIcon = new L.Icon({
+    iconUrl: plannedIcon,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const MarkerOperationIcon = new L.Icon({
+    iconUrl: operationIcon,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const MarkerBuildingIcon = new L.Icon({
+    iconUrl: buildingIcon,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const CircleMarkerPlannedIcon = new L.Icon({
+    iconUrl: circlePlannedIcon,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const CircleMarkerOperationIcon = new L.Icon({
+    iconUrl: circleOperationIcon,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const CircleMarkerBuildingIcon = new L.Icon({
+    iconUrl: circleBuildingIcon,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
   // eslint-disable-next-line no-underscore-dangle
   // set the data to new data whenever it changes
 
@@ -363,7 +410,24 @@ export default function Markers({ data }) {
             cord.geometry.coordinates[1],
             cord.geometry.coordinates[0],
           ]}
-          icon={blueIcon}
+          icon={(() => {
+            switch (cord.properties.sub + cord.properties.type) {
+              case 'planeadaUHE':
+                return MarkerPlannedIcon;
+              case 'en operaciónUHE':
+                return MarkerOperationIcon;
+              case 'en construcciónUHE':
+                return MarkerBuildingIcon;
+              case 'planeadaPCH':
+                return CircleMarkerPlannedIcon;
+              case 'en operaciónPCH':
+                return CircleMarkerOperationIcon;
+              case 'en construcciónPCH':
+                return CircleMarkerBuildingIcon;
+              default:
+                return blueIcon;
+            }
+          })()}
         >
           <Popup
             className={classes.popup}

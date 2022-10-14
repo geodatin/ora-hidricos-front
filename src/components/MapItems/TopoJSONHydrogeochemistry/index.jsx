@@ -31,17 +31,17 @@ export default function TopoJSONHydrogeochemistry(props) {
 
   function onEachFeature(feature, layer) {
     if (feature.properties.aspect === 'Salobra') {
-      layer.setStyle({ color: '#7e6330' });
+      layer.setStyle({ color: '#ba6ea3' });
     } else if (feature.properties.aspect === 'Clara') {
-      layer.setStyle({ color: '#f1d8af' });
+      layer.setStyle({ color: '#3a5298' });
     } else if (feature.properties.aspect === 'Intermediária Tipo B') {
-      layer.setStyle({ color: '#ecb247' });
+      layer.setStyle({ color: '#ee3c37' });
     } else if (feature.properties.aspect === 'Preta') {
-      layer.setStyle({ color: '#000000' });
+      layer.setStyle({ color: '#010101' });
     } else if (feature.properties.aspect === 'Branca') {
-      layer.setStyle({ color: '#e6ddd3' });
+      layer.setStyle({ color: '#f68f30' });
     } else if (feature.properties.aspect === 'Intermediária Tipo A') {
-      layer.setStyle({ color: '#ffa500' });
+      layer.setStyle({ color: '#00a94d' });
     } else if (feature.properties.aspect === null) {
       layer.setStyle({ color: '#868583' });
     }

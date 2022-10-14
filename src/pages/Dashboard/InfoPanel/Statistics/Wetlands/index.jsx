@@ -100,7 +100,7 @@ export default function Wetlands({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'blue',
+                backgroundColor: '#02607e',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -132,7 +132,7 @@ export default function Wetlands({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'blue',
+                backgroundColor: '#02607e',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -197,7 +197,7 @@ export default function Wetlands({
           <DataDough
             value={totalData?.count}
             sufix={t('specific.wetlands.pieChart.area')}
-            color="blue"
+            color="#02607e"
             scale={1.2}
           />
         </div>

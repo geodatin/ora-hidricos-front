@@ -30,6 +30,7 @@ import GetPopupWatershed from '../../../components/MapItems/GetPopupWatershed';
 import GetPopupWaterway from '../../../components/MapItems/GetPopupWaterway';
 import GetPopupWetlands from '../../../components/MapItems/GetPopupWetlands';
 import LegendEvapotranspiration from '../../../components/MapItems/LegendEvapotranspiration';
+import LegendHydroeletric from '../../../components/MapItems/LegendHydroeletric';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
 import LegendWaterBalance from '../../../components/MapItems/LegendWaterBalance';
 import Markers from '../../../components/MapItems/Markers';
@@ -785,12 +786,10 @@ export default function MonitoringMap() {
           </MarkerClusterGroup>
         )) ||
         (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
-          <MarkerClusterGroup
-            iconCreateFunction={createClusterCustomIcon}
-            showCoverageOnHover={false}
-          >
+          <>
             <Markers data={coordsHydroelectric?.features} />
-          </MarkerClusterGroup>
+            <LegendHydroeletric />
+          </>
         ))}
     </MapWrapper>
   );

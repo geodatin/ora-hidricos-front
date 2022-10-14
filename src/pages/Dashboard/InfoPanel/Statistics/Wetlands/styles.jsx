@@ -6,7 +6,7 @@ const useStyles = createUseStyles((theme) => ({
       color: theme.secondary.dark,
     },
     '& .MuiPaginationItem-page.Mui-selected': {
-      backgroundColor: 'blue',
+      backgroundColor: '#02607e',
       color: theme.background.main,
     },
     '& .MuiPaginationItem-page.Mui-selected:disabled': {
@@ -14,7 +14,7 @@ const useStyles = createUseStyles((theme) => ({
       color: 'gray',
     },
     '& .MuiPaginationItem-page.Mui-selected:hover': {
-      backgroundColor: '#1a1aff',
+      backgroundColor: '#276980',
     },
   },
   wrapper: {
