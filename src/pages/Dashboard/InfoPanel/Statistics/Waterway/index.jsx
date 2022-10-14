@@ -100,7 +100,7 @@ export default function Waterway({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'blue',
+                backgroundColor: '#f38145',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -132,7 +132,7 @@ export default function Waterway({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'blue',
+                backgroundColor: '#f38145',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -201,7 +201,7 @@ export default function Waterway({
                 ? t('specific.Waterway.pieChart.plural')
                 : t('specific.Waterway.pieChart.singular')
             }
-            color="blue"
+            color="#f38145"
             scale={1.2}
           />
         </div>

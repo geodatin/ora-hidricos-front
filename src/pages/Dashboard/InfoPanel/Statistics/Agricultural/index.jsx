@@ -100,7 +100,7 @@ export default function Agricultural({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: '#96522f',
+                backgroundColor: '#b2a637',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -132,7 +132,7 @@ export default function Agricultural({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: '#96522f',
+                backgroundColor: '#b2a637',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -197,7 +197,7 @@ export default function Agricultural({
           <DataDough
             value={totalData?.count}
             sufix={t('specific.Agricultural.pieChart.area')}
-            color="#96522f"
+            color="#b2a637"
             scale={1.2}
           />
         </div>
