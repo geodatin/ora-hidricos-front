@@ -15,6 +15,7 @@ export const lightScheme = {
   },
   neutral: {
     white: '#FFFFFF',
+    border: '#DEDEDE',
     gray: {
       light: '#DEDEDE',
       main: '#A4A4A4',
@@ -89,6 +90,7 @@ export const darkScheme = {
   },
   neutral: {
     white: '#FFFFFF',
+    border: '#464646',
     gray: {
       light: '#DEDEDE',
       main: '#A4A4A4',

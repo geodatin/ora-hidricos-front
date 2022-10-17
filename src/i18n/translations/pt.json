@@ -260,6 +260,14 @@
       "rankingChartPotency": {
         "title": "Ranking de potência de todas as hidrelétricas",
         "info": "Este gráfico apresenta a classificação de potência de todas as hidrelétricas"
+      },
+      "table": {
+        "title": "Tabela",
+        "info": "Usinas hidrelétricas e pequenascentrais hidrelétricas na BHA",
+        "type": "Tipo",
+        "operation": "Operação",
+        "construction": "Construção",
+        "planned": "Planejada"
       }
   },
 
@@ -567,8 +575,8 @@
         "hydroelectric": "Hidrelétricas",
         "Waterways": "Hidrovias",
         "Population": "População na bacia",
-        "CNARHunion": "CNARH - União",
-        "CNARHstate": "CNARH - Estado",
+        "CNARHunion": "Usuários da agua - Municipios",
+        "CNARHstate": "Usuários da agua - Estado",
 
         "mercury": "Qualidade da água - indicadores de contaminação",
         "mercuryHuman": "Mercúrio em humanos",

@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 
 import circleBuildingIcon from '../../../assets/icons/map/circle-map-building.svg';

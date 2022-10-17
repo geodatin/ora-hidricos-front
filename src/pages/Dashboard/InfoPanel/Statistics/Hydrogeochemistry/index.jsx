@@ -58,7 +58,6 @@ export default function Hydrogeochemistry({
   });
 
   const handle = useFullScreenHandle();
-  const [rankingDomain, setRankingDomain] = useState();
   const [rankingAspects, setRankingAspects] = useState();
   const [totalData, setTotalData] = useState();
 
@@ -73,37 +72,6 @@ export default function Hydrogeochemistry({
       .then(({ data }) => {
         if (isSubscribed) {
           setTotalData(data);
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [code, t]);
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`hydrogeochemistry/ranking/domain`, {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setRankingDomain({
-            labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
-            ),
-            datasets: [
-              {
-                data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.orange.main],
-                borderRadius: 5,
-                barThickness: 15,
-              },
-            ],
-          });
         }
       });
 
@@ -263,18 +231,6 @@ export default function Hydrogeochemistry({
         }}
         params={rankingParams}
         setParams={setRankingParams}
-      />
-
-      <RankingCustom
-        title={t('specific.Hydrogeochemistry.rankingChartDomain.title')}
-        info={t('specific.Hydrogeochemistry.rankingChartDomain.info')}
-        data={rankingDomain}
-        stylePagination={classes.pagination}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
       />
     </ul>
   );

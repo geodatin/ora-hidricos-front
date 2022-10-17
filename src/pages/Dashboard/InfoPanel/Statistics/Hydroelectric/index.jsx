@@ -1,6 +1,13 @@
 import { InfoOutlined } from '@mui/icons-material';
 import FullscreenRoundedIcon from '@mui/icons-material/FullscreenRounded';
-import { IconButton } from '@mui/material';
+import {
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from '@mui/material';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import { useFullScreenHandle } from 'react-full-screen';
@@ -47,6 +54,8 @@ export default function Hydroelectric({
   const classes = useStyles();
 
   const childrenref = useRef(null);
+  const childrentableref = useRef(null);
+
   const refContainer = useRef();
 
   const { t } = useTranslation();
@@ -60,6 +69,8 @@ export default function Hydroelectric({
   const handle = useFullScreenHandle();
   const [rankingCountry, setRankingCountry] = useState();
   const [rankingPotency, setRankingPotency] = useState();
+  const [statusPCH, setStatusPCH] = useState();
+  const [statusUHE, setStatusUHE] = useState();
   const [totalData, setTotalData] = useState();
 
   useEffect(() => {
@@ -73,6 +84,44 @@ export default function Hydroelectric({
       .then(({ data }) => {
         if (isSubscribed) {
           setTotalData(data);
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [code, t]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`hydroelectric/PCH/status`, {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed) {
+          setStatusPCH(data);
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [code, t]);
+
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`hydroelectric/UHE/status`, {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed) {
+          setStatusUHE(data);
         }
       });
 
@@ -261,6 +310,134 @@ export default function Hydroelectric({
         params={rankingParams}
         setParams={setRankingParams}
       />
+
+      <div className={classes.tableContainer}>
+        <div className={classes.header}>
+          <div className={classes.headerTitle}>
+            <Typography variant="body" format="bold">
+              {t('specific.hydroelectric.table.title')}
+            </Typography>
+            <CustomTooltip
+              title={t('specific.hydroelectric.table.info')}
+              placement="bottom"
+            >
+              <div className={classes.tooltipInner}>
+                <InfoOutlined
+                  style={{
+                    color: theme.secondary.dark,
+                    fontSize: '18px',
+                  }}
+                />
+              </div>
+            </CustomTooltip>
+          </div>
+
+          <div>
+            {extraButton && extraButton}
+            {fullScreenEnabled && (
+              <IconButton
+                id="export-button"
+                className={classes.button}
+                onClick={handle.enter}
+              >
+                <FullscreenRoundedIcon
+                  style={{ fontSize: 20, color: theme.secondary.dark }}
+                />
+              </IconButton>
+            )}
+            <ChartExportMenu
+              csvCallback={csvCallback}
+              containerRef={refContainer}
+              childrenRef={childrentableref}
+            />
+          </div>
+        </div>
+        <div ref={childrentableref}>
+          <Table
+            aria-label="customized table"
+            sx={{
+              '& .MuiTableCell-root': {
+                borderColor: theme.neutral.border,
+              },
+            }}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell>{t('specific.hydroelectric.table.type')}</TableCell>
+                <TableCell align="right">
+                  {statusUHE === undefined ? '' : statusUHE[0]?.type}
+                </TableCell>
+                <TableCell align="right">
+                  {statusPCH === undefined ? '' : statusPCH[0]?.type}
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell style={{ color: theme.neutral.gray.main }}>
+                  {t('specific.hydroelectric.table.planned')}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ color: theme.neutral.gray.main }}
+                >
+                  {statusUHE === undefined ? '' : statusUHE[0]?.total}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ color: theme.neutral.gray.main }}
+                >
+                  {statusPCH === undefined ? '' : statusPCH[0]?.total}
+                </TableCell>
+              </TableRow>
+              <TableRow
+                sx={{
+                  '&:last-child td, &:last-child th': {
+                    border: 0,
+                  },
+                }}
+              >
+                <TableCell style={{ color: theme.neutral.gray.main }}>
+                  {t('specific.hydroelectric.table.operation')}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ color: theme.neutral.gray.main }}
+                >
+                  {statusUHE === undefined ? '' : statusUHE[2]?.total}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ color: theme.neutral.gray.main }}
+                >
+                  {statusPCH === undefined ? '' : statusPCH[1]?.total}
+                </TableCell>
+              </TableRow>
+              <TableRow
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell style={{ color: theme.neutral.gray.main }}>
+                  {t('specific.hydroelectric.table.construction')}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ color: theme.neutral.gray.main }}
+                >
+                  {statusUHE === undefined ? '' : statusUHE[1]?.total}
+                </TableCell>
+                <TableCell
+                  align="right"
+                  style={{ color: theme.neutral.gray.main }}
+                >
+                  {statusPCH === undefined ? '' : statusPCH[2]?.total}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
+      </div>
     </ul>
   );
 }

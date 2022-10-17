@@ -54,6 +54,10 @@ const useStyles = createUseStyles((theme) => ({
       backgroundColor: theme.popup.actived,
     },
   },
+  tableContainer: {
+    zIndex: 99999,
+    padding: '1rem',
+  },
 }));
 
 export default useStyles;
