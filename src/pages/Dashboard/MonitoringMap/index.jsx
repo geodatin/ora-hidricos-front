@@ -782,12 +782,7 @@ export default function MonitoringMap() {
         </>
       )) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
-          <MarkerClusterGroup
-            iconCreateFunction={createClusterCustomIcon}
-            showCoverageOnHover={false}
-          >
-            <Markers data={coordsMining?.features} />
-          </MarkerClusterGroup>
+          <Markers data={coordsMining?.features} />
         )) ||
         (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
           <>

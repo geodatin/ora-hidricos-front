@@ -1,6 +1,22 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles((theme) => ({
+  pagination: {
+    '& .MuiPaginationItem-root': {
+      color: theme.secondary.dark,
+    },
+    '& .MuiPaginationItem-page.Mui-selected': {
+      backgroundColor: '#ef2c35',
+      color: theme.background.main,
+    },
+    '& .MuiPaginationItem-page.Mui-selected:disabled': {
+      backgroundColor: 'transparent',
+      color: 'gray',
+    },
+    '& .MuiPaginationItem-page.Mui-selected:hover': {
+      backgroundColor: '#e26167',
+    },
+  },
   wrapper: {
     display: 'flex',
     flexFlow: 'column nowrap',
@@ -8,6 +24,7 @@ const useStyles = createUseStyles((theme) => ({
     padding: 15,
     marginBottom: 10,
   },
+
   fullScreenWrapper: {
     backgroundColor: theme.background.main,
     height: '100%',

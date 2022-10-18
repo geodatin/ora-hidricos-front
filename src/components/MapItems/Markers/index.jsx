@@ -7,6 +7,7 @@ import { useContextSelector } from 'use-context-selector';
 import circleBuildingIcon from '../../../assets/icons/map/circle-map-building.svg';
 import circleExploitation from '../../../assets/icons/map/circle-map-exploitation.svg';
 import circleExploration from '../../../assets/icons/map/circle-map-exploration.svg';
+import circleIllegalMining from '../../../assets/icons/map/circle-map-illegal-mining.svg';
 import circleOperationIcon from '../../../assets/icons/map/circle-map-operation.svg';
 import circleOthers from '../../../assets/icons/map/circle-map-others.svg';
 import circlePlannedIcon from '../../../assets/icons/map/circle-map-project.svg';
@@ -114,6 +115,13 @@ export default function Markers({ data }) {
 
   const CircleOthersIcon = new L.Icon({
     iconUrl: circleOthers,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const CircleIllegalMiningIcon = new L.Icon({
+    iconUrl: circleIllegalMining,
     iconSize: [12, 12],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
@@ -326,7 +334,7 @@ export default function Markers({ data }) {
             lat: cord.geometry.coordinates[1],
             lng: cord.geometry.coordinates[0],
           }}
-          icon={blueIcon}
+          icon={CircleIllegalMiningIcon}
         >
           <Popup
             className={classes.popup}

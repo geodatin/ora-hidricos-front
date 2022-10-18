@@ -12,7 +12,7 @@ import { useContextSelector } from 'use-context-selector';
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
 import ItemsChart from '../../../../../components/Charts/Items';
-import RankingChart from '../../../../../components/Charts/Ranking';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
 import { countryCodes } from '../../../../../constants/options';
@@ -164,7 +164,7 @@ export default function IllegalMining({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: ['#ef2c35'],
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -223,7 +223,7 @@ export default function IllegalMining({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: ['#ef2c35'],
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -292,7 +292,7 @@ export default function IllegalMining({
                 ? t('specific.illegalMining.pieChart.plural')
                 : t('specific.illegalMining.pieChart.singular')
             }
-            color={theme.primary.main}
+            color="#ef2c35"
             scale={1.2}
           />
         </div>
@@ -306,9 +306,10 @@ export default function IllegalMining({
         data={itemsData}
       />
 
-      <RankingChart
+      <RankingCustom
         title="Ranking das substâncias"
         info="Este gráfico apresenta o ranking das substâncias"
+        stylePagination={classes.pagination}
         data={rankingData}
         customFormatter={{
           formatter(value) {

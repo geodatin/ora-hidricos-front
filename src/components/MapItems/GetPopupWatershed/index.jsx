@@ -46,16 +46,16 @@ export default function GetPopupWatershed() {
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Name
+          Id
         </Typography>
-        <Typography variant="caption">{tilesCoord?.name}</Typography>
+        <Typography variant="caption">{tilesCoord?.id}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Code
+          Name
         </Typography>
-        <Typography variant="caption">{tilesCoord?.code}</Typography>
+        <Typography variant="caption">{tilesCoord?.name}</Typography>
       </div>
     </Popup>
   );
