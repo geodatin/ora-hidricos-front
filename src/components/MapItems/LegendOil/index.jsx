@@ -2,6 +2,7 @@ import React from 'react';
 
 import circleExploitation from '../../../assets/icons/map/circle-map-exploitation.svg';
 import circleExploration from '../../../assets/icons/map/circle-map-exploration.svg';
+import circleOthers from '../../../assets/icons/map/circle-map-others.svg';
 import circlePotential from '../../../assets/icons/map/circle-map-potential.svg';
 import circleRequest from '../../../assets/icons/map/circle-map-request.svg';
 import useStyles from './styles';
@@ -47,6 +48,10 @@ const LegendOil = () => {
           alt="Icon solicitação"
         />
         <span>Solicitação</span>
+      </div>
+      <div className={classes.content}>
+        <img className={classes.image} src={circleOthers} alt="Icon outros" />
+        <span>Outros</span>
       </div>
     </div>
   );

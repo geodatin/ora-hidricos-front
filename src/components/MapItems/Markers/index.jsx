@@ -8,6 +8,7 @@ import circleBuildingIcon from '../../../assets/icons/map/circle-map-building.sv
 import circleExploitation from '../../../assets/icons/map/circle-map-exploitation.svg';
 import circleExploration from '../../../assets/icons/map/circle-map-exploration.svg';
 import circleOperationIcon from '../../../assets/icons/map/circle-map-operation.svg';
+import circleOthers from '../../../assets/icons/map/circle-map-others.svg';
 import circlePlannedIcon from '../../../assets/icons/map/circle-map-project.svg';
 import circleRequest from '../../../assets/icons/map/circle-map-request.svg';
 import buildingIcon from '../../../assets/icons/map/map-building.svg';
@@ -111,6 +112,13 @@ export default function Markers({ data }) {
     popupAnchor: [1, -34],
   });
 
+  const CircleOthersIcon = new L.Icon({
+    iconUrl: circleOthers,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
   // eslint-disable-next-line no-underscore-dangle
   // set the data to new data whenever it changes
 
@@ -181,55 +189,55 @@ export default function Markers({ data }) {
                 return CircleExploitationIcon;
 
               case 'Ãrea con CSP en etapa de ProtocolizaciÃ³n':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Ãrea Reservada a favor de YPFB':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Ãreas de promociÃ³n frontera':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Ãreas de promociÃ³n semiexplorada':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'NegociaciÃ³n':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'AREA DISPONIBLE':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'TEA':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'AREA EN PRODUCCION':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'AREA RESERVADA':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Desenvolvimento':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Em DevoluÃ§Ã£o':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Convenio de evaluaciÃ³n tÃ©cnica contrato':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Proceso simplificado':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Convenio de evaluaciÃ³n tÃ©cnica':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'ProduÃ§Ã£o':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Ãrea con CSP en NegociaciÃ³n':
-                return blueIcon;
+                return CircleOthersIcon;
 
               case 'Ãrea Libre':
-                return blueIcon;
+                return CircleOthersIcon;
 
               default:
                 return '';
