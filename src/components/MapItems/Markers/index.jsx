@@ -5,8 +5,11 @@ import { Marker, Popup, useMap, GeoJSON } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
 
 import circleBuildingIcon from '../../../assets/icons/map/circle-map-building.svg';
+import circleExploitation from '../../../assets/icons/map/circle-map-exploitation.svg';
+import circleExploration from '../../../assets/icons/map/circle-map-exploration.svg';
 import circleOperationIcon from '../../../assets/icons/map/circle-map-operation.svg';
 import circlePlannedIcon from '../../../assets/icons/map/circle-map-project.svg';
+import circleRequest from '../../../assets/icons/map/circle-map-request.svg';
 import buildingIcon from '../../../assets/icons/map/map-building.svg';
 import operationIcon from '../../../assets/icons/map/map-operation.svg';
 import plannedIcon from '../../../assets/icons/map/map-project.svg';
@@ -33,7 +36,7 @@ export default function Markers({ data }) {
   const style = () => ({
     weight: 1.0,
     opacity: 0.8,
-    color: theme === darkScheme ? '#accc0c' : '#728740',
+    color: '#fbb7e0',
     dashArray: '3',
     fillOpacity: 0.5,
   });
@@ -41,7 +44,7 @@ export default function Markers({ data }) {
   const blueIcon = new L.Icon({
     iconUrl:
       'https://visualpharm.com/assets/825/Marker-595b40b75ba036ed117d9f54.svg',
-    iconSize: [24, 24],
+    iconSize: [18, 18],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
@@ -87,6 +90,27 @@ export default function Markers({ data }) {
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
+
+  const CircleExplorationIcon = new L.Icon({
+    iconUrl: circleExploration,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const CircleRequestIcon = new L.Icon({
+    iconUrl: circleRequest,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+  const CircleExploitationIcon = new L.Icon({
+    iconUrl: circleExploitation,
+    iconSize: [12, 12],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
   // eslint-disable-next-line no-underscore-dangle
   // set the data to new data whenever it changes
 
@@ -133,7 +157,84 @@ export default function Markers({ data }) {
             lat: cord.geometry.coordinates[1],
             lng: cord.geometry.coordinates[0],
           }}
-          icon={blueIcon}
+          icon={(() => {
+            switch (cord.properties.situation) {
+              case 'en exploraciÃ³n':
+                return CircleExplorationIcon;
+
+              case 'AREA EN EXPLORACION':
+                return CircleExplorationIcon;
+
+              case 'ExploraciÃ³n':
+                return CircleExplorationIcon;
+
+              case 'ExploraÃ§Ã£o':
+                return CircleExplorationIcon;
+
+              case 'Solicitud':
+                return CircleRequestIcon;
+
+              case 'en explotaciÃ³n':
+                return CircleExploitationIcon;
+
+              case 'ExplotaciÃ³n':
+                return CircleExploitationIcon;
+
+              case 'Ãrea con CSP en etapa de ProtocolizaciÃ³n':
+                return blueIcon;
+
+              case 'Ãrea Reservada a favor de YPFB':
+                return blueIcon;
+
+              case 'Ãreas de promociÃ³n frontera':
+                return blueIcon;
+
+              case 'Ãreas de promociÃ³n semiexplorada':
+                return blueIcon;
+
+              case 'NegociaciÃ³n':
+                return blueIcon;
+
+              case 'AREA DISPONIBLE':
+                return blueIcon;
+
+              case 'TEA':
+                return blueIcon;
+
+              case 'AREA EN PRODUCCION':
+                return blueIcon;
+
+              case 'AREA RESERVADA':
+                return blueIcon;
+
+              case 'Desenvolvimento':
+                return blueIcon;
+
+              case 'Em DevoluÃ§Ã£o':
+                return blueIcon;
+
+              case 'Convenio de evaluaciÃ³n tÃ©cnica contrato':
+                return blueIcon;
+
+              case 'Proceso simplificado':
+                return blueIcon;
+
+              case 'Convenio de evaluaciÃ³n tÃ©cnica':
+                return blueIcon;
+
+              case 'ProduÃ§Ã£o':
+                return blueIcon;
+
+              case 'Ãrea con CSP en NegociaciÃ³n':
+                return blueIcon;
+
+              case 'Ãrea Libre':
+                return blueIcon;
+
+              default:
+                return '';
+            }
+          })()}
         >
           <Popup
             className={classes.popup}

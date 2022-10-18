@@ -10,7 +10,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
-import RankingChart from '../../../../../components/Charts/Ranking';
+import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import Treemap from '../../../../../components/Charts/Treemap';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
@@ -194,7 +194,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: ['#ec249c'],
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -321,7 +321,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: [theme.primary.main],
+                backgroundColor: ['#ec249c'],
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -385,7 +385,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
                 captions: {
                   display: false,
                 },
-                backgroundColor: theme.primary.main,
+                backgroundColor: '#ec249c',
               },
             ],
           });
@@ -448,15 +448,16 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
                 ? t('specific.oil.pieChart.plural')
                 : t('specific.oil.pieChart.singular')
             }
-            color={theme.primary.main}
+            color="#ec249c"
             scale={1.2}
           />
         </div>
       </div>
 
-      <RankingChart
+      <RankingCustom
         title={t('specific.oil.rankingChart.title')}
         info={t('specific.oil.rankingChart.info')}
+        stylePagination={classes.pagination}
         data={rankingData}
         customFormatter={{
           formatter(value) {

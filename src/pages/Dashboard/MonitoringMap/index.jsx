@@ -31,6 +31,7 @@ import GetPopupWaterway from '../../../components/MapItems/GetPopupWaterway';
 import GetPopupWetlands from '../../../components/MapItems/GetPopupWetlands';
 import LegendEvapotranspiration from '../../../components/MapItems/LegendEvapotranspiration';
 import LegendHydroeletric from '../../../components/MapItems/LegendHydroeletric';
+import LegendOil from '../../../components/MapItems/LegendOil';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
 import LegendWaterBalance from '../../../components/MapItems/LegendWaterBalance';
 import Markers from '../../../components/MapItems/Markers';
@@ -775,7 +776,10 @@ export default function MonitoringMap() {
         ))}
 
       {(indicatorSelection === indicators.ground.oil.value && (
-        <Markers data={coordsOil?.features} />
+        <>
+          <Markers data={coordsOil?.features} />
+          <LegendOil />
+        </>
       )) ||
         (indicatorSelection === indicators.ground.illegalMining.value && (
           <MarkerClusterGroup
