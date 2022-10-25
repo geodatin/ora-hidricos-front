@@ -241,6 +241,130 @@ export const filterDefaults = {
   territorySelection: null,
 };
 
+export const autocompletePropertyTypes = {
+  name: { key: 'name' },
+};
+
+export const networkByValueT = {
+  1: {
+    ...indicators.waterResources,
+  },
+  2: {
+    ...indicators.mercury,
+  },
+  3: {
+    ...indicators.ground,
+  },
+  4: {
+    ...indicators.waterDemand,
+  },
+  5: {
+    ...indicators.generalFeatures,
+  },
+  6: {
+    ...indicators.hydroclimaticVulnerability,
+  },
+  7: {
+    ...indicators.waterGovernance,
+  },
+};
+
+export const networkByValue = {
+  1: {
+    ...indicators.waterResources.waterSurface,
+  },
+  2: {
+    ...indicators.waterResources.wetlands,
+  },
+  3: {
+    ...indicators.waterResources.annualPrecipitation,
+  },
+  4: {
+    ...indicators.waterResources.actualEvapotranspiration,
+  },
+  5: {
+    ...indicators.waterResources.waterBalance,
+  },
+  6: {
+    ...indicators.mercury.mercuryHuman,
+  },
+  7: {
+    ...indicators.mercury.mercuryFish,
+  },
+  8: {
+    ...indicators.mercury.IPPO,
+  },
+  9: {
+    ...indicators.ground.oil,
+  },
+  10: {
+    ...indicators.ground.illegalMining,
+  },
+  11: {
+    ...indicators.ground.minesMining,
+  },
+  13: {
+    ...indicators.ground.agricultural,
+  },
+  14: {
+    ...indicators.ground.deforesting,
+  },
+  15: {
+    ...indicators.waterDemand.hydroelectric,
+  },
+  16: {
+    ...indicators.waterDemand.Waterways,
+  },
+  17: {
+    ...indicators.waterDemand.Population,
+  },
+  18: {
+    ...indicators.waterDemand.CNARHunion,
+  },
+  19: {
+    ...indicators.waterDemand.CNARHstate,
+  },
+  20: {
+    ...indicators.generalFeatures.watershedArea,
+  },
+  21: {
+    ...indicators.generalFeatures.areaPercentage,
+  },
+  22: {
+    ...indicators.generalFeatures.surfaceHydrologicalUnits,
+  },
+  23: {
+    ...indicators.generalFeatures.undergroundHydrologicalUnits,
+  },
+  24: {
+    ...indicators.generalFeatures.hydrogeochemicalCharacteristics,
+  },
+  25: {
+    ...indicators.hydroclimaticVulnerability.droughtEvents,
+  },
+  26: {
+    ...indicators.hydroclimaticVulnerability.floodEvents,
+  },
+  27: {
+    ...indicators.hydroclimaticVulnerability.droughtVulnerability,
+  },
+  28: {
+    ...indicators.hydroclimaticVulnerability.floodVulnerability,
+  },
+  29: {
+    ...indicators.waterGovernance.authorities,
+  },
+  30: {
+    ...indicators.waterGovernance.legislation,
+  },
+  31: {
+    ...indicators.waterGovernance.publications,
+  },
+  32: {
+    ...indicators.waterGovernance.countryReports,
+  },
+};
+
 export const embedItems = [
   {
     key: 'leftBar',

@@ -43,8 +43,6 @@ function Dashboard() {
 
   const { t } = useTranslation();
 
-  console.log(indicatorSelection);
-
   const infoPanel =
     (indicatorSelection === indicators.waterResources.waterSurface.value && (
       <InfoPanel
@@ -341,7 +339,8 @@ function Dashboard() {
             indicators.waterResources.annualPrecipitation.value ||
           indicatorSelection ===
             indicators.waterResources.actualEvapotranspiration.value ||
-          indicatorSelection === indicators.waterResources.waterBalance.value
+          indicatorSelection === indicators.waterResources.waterBalance.value ||
+          indicatorSelection === indicators.waterGovernance.legislation.value
             ? layoutConfigs.isRightHiddenPermanent[layoutConfig]
             : layoutConfigs.isRightHidden[layoutConfig],
         className: classes.infoPanelWrapper,

@@ -213,20 +213,20 @@ export default function Filters() {
             }}
           >
             {t(indicators.hydroclimaticVulnerability.translation)}
-          </MenuItem>
-           <MenuItem
+          </MenuItem> */}
+          <MenuItem
             value={indicators.waterGovernance.value}
             onClick={() => {
               setAuxIndicatorSelectionTerritory(
                 indicators.waterGovernance.value
               );
               setAuxIndicatorSelection(
-                indicators.waterGovernance.authorities.value
+                indicators.waterGovernance.legislation.value
               );
             }}
           >
             {t(indicators.waterGovernance.translation)}
-          </MenuItem> */}
+          </MenuItem>
         </CustomSelect>
       </div>
 
@@ -594,7 +594,7 @@ export default function Filters() {
           (auxIndicatorSelectionTerritory ===
             indicators.waterGovernance.value && (
             <CustomSelect value={auxIndicatorSelection}>
-              {/* Autoridades de águas dos países e suas funções */}
+              {/* Autoridades de águas dos países e suas funções 
               <MenuItem
                 value={indicators.waterGovernance.authorities.value}
                 onClick={() => {
@@ -604,7 +604,7 @@ export default function Filters() {
                 }}
               >
                 {t(indicators.waterGovernance.authorities.translation)}
-              </MenuItem>
+              </MenuItem> */}
               {/* Legislações de águas dos países */}
               <MenuItem
                 value={indicators.waterGovernance.legislation.value}
@@ -617,7 +617,7 @@ export default function Filters() {
                 {t(indicators.waterGovernance.legislation.translation)}
               </MenuItem>
 
-              {/* Publicações e documentos científicos sobre recursos hídricos */}
+              {/* Publicações e documentos científicos sobre recursos hídricos 
               <MenuItem
                 value={indicators.waterGovernance.publications.value}
                 onClick={() => {
@@ -627,9 +627,9 @@ export default function Filters() {
                 }}
               >
                 {t(indicators.waterGovernance.publications.translation)}
-              </MenuItem>
+              </MenuItem> */}
 
-              {/* Relatórios dos países sobre recursos hídricos */}
+              {/* Relatórios dos países sobre recursos hídricos 
               <MenuItem
                 value={indicators.waterGovernance.countryReports.value}
                 onClick={() => {
@@ -639,7 +639,7 @@ export default function Filters() {
                 }}
               >
                 {t(indicators.waterGovernance.countryReports.translation)}
-              </MenuItem>
+              </MenuItem> */}
             </CustomSelect>
           ))}
       </div>

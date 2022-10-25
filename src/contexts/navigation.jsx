@@ -50,6 +50,23 @@ export function NavigationProvider({ children }) {
     [isMobile]
   );
 
+  const closeStation = useCallback((panelRef) => {
+    setPanelIndexValue(panels.list.index);
+    panelRef?.current.scrollTo(0, 0);
+    setStation(undefined);
+  }, []);
+
+  const refreshStation = useCallback(() => {
+    setStation((prev) => {
+      const refreshed = { ...prev };
+      return refreshed;
+    });
+  }, []);
+
+  const handleOnFilterApplied = useCallback(() => {
+    if (station) closeStation();
+  }, [station]);
+
   return (
     <NavigationContext.Provider
       value={{
@@ -63,7 +80,9 @@ export function NavigationProvider({ children }) {
         setters: { setMobileNavValue, setPanelIndexValue },
         functions: {
           handleOnChangePanel,
+          handleOnFilterApplied,
           openStation,
+          refreshStation,
           closeDisclaimer,
           openDisclaimer,
         },

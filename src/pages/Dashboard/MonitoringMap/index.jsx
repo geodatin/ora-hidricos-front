@@ -4,6 +4,7 @@
 import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
+// import ShareIcon from '@mui/icons-material/Share';
 import {
   Checkbox,
   FormControlLabel,
@@ -42,6 +43,7 @@ import TopoJSONPrecipitation from '../../../components/MapItems/TopoJSONPrecipit
 import TopoJSONWaterBalance from '../../../components/MapItems/TopoJSONWaterBalance';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
+// import ShareDialog from '../../../components/ShareDialog';
 import Typography from '../../../components/Typography';
 import { indicators } from '../../../constants/options';
 import { darkScheme, lightScheme } from '../../../constants/schemes';
@@ -52,7 +54,9 @@ import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap as MapHook } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
+// import { useQuery as useQueryHook } from '../../../hooks/useQuery';
 import api from '../../../services/api';
+import LegislationTable from '../InfoPanel/Statistics/LegislationTable';
 import useStyles from './styles';
 
 import 'react-leaflet-markercluster/dist/styles.min.css';
@@ -81,6 +85,7 @@ export default function MonitoringMap() {
   const [coordsWaterBalance, setCoordsWaterBalance] = useState();
   const [watershedUrl, setWatershedUrl] = useState();
   const [agriculturalUrl, setAgriculturalUrl] = useState();
+  // const [openShare, setOpenShare] = useState(false);
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
@@ -91,6 +96,20 @@ export default function MonitoringMap() {
     FilteringContext,
     (filtering) => filtering.values.territorySelection
   );
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
+
+  /* const autocompleteSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.autocompleteSelection
+  );
+
+  const generateRoute = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.functions.generateRoute
+  ); */
   const code = territorySelection?.code;
 
   const { nextLayoutConfig } = useLayoutConfig();
@@ -101,10 +120,7 @@ export default function MonitoringMap() {
   const classes = useStyles();
   const theme = useTheme();
 
-  const indicatorSelection = useContextSelector(
-    FilteringContext,
-    (filtering) => filtering.values.indicatorSelection
-  );
+  // const query = useQueryHook();
 
   const blueIcon = new L.Icon({
     iconUrl:
@@ -261,9 +277,42 @@ export default function MonitoringMap() {
     });
   }, [code]);
 
+  /*
+  function handleShareDialog() {
+    setOpenShare(!openShare);
+  }
+
+  const embedCustomParam = useMemo(
+    () => generateRoute(''),
+    [indicatorSelection, autocompleteSelection]
+  );
+
+  const shareUrl = useMemo(
+    () =>
+      window.location.origin +
+      generateRoute(`/${process.env.REACT_APP_URL_BASE}/filter?`),
+    [indicatorSelection, autocompleteSelection]
+  );
+
+  const embedEnabled = useMemo(() => {
+    if (
+      window.location.pathname === `/${process.env.REACT_APP_URL_BASE}/embed`
+    ) {
+      const embedingParam = query.get('embeding');
+
+      if (embedingParam === 'false') {
+        return false;
+      }
+
+      return true;
+    }
+
+    return true;
+  }, []); */
+
   const { isLoading, error } = useQuery('repoData', async () => {
     const res = await fetch(
-      'https://dev-rh-ora.geodatin.com/api/waterUsers/state/points'
+      'https://dev-rh-ora.geodatin.com/api/waterUsers/union/points'
     );
     const data = await res.json();
     setCoords(data);
@@ -273,7 +322,9 @@ export default function MonitoringMap() {
 
   if (error) return `An error has occurred: ${error.message}`;
 
-  return (
+  return indicatorSelection === indicators.waterGovernance.legislation.value ? (
+    <LegislationTable />
+  ) : (
     <MapWrapper
       getMapRef={(ref) => setMapRef(ref)}
       minZoom={5}
@@ -351,6 +402,24 @@ export default function MonitoringMap() {
           <LayersRoundedIcon style={{ fontSize: 20 }} />
         </MapItem>
       }
+      /*   itemChildren={
+        <>
+          <MapItem onClick={() => handleShareDialog()}>
+            <ShareIcon style={{ fontSize: 18 }} />
+          </MapItem>
+
+        <ShareDialog
+            open={openShare}
+            onClose={() => setOpenShare(false)}
+            url={shareUrl}
+            shareMessage="Teste"
+            setOpen={setOpenShare}
+            embedItems={embedItems}
+            customParam={embedCustomParam}
+            embedEnabled={embedEnabled}
+          /> 
+        </> 
+      } */
       itemBottomChildren={
         <MapItem
           popupContent={
