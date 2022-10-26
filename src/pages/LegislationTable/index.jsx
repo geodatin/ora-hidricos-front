@@ -16,10 +16,10 @@ import React, { useRef, useState, useMemo } from 'react';
 import { useFullScreenHandle } from 'react-full-screen';
 import { useTheme } from 'react-jss';
 
-import legislationDate from '../../../../../assets/shapes/legislation.json';
-import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
-import CustomTooltip from '../../../../../components/CustomTooltip';
-import Typography from '../../../../../components/Typography';
+import legislationDate from '../../assets/shapes/legislation.json';
+import ChartExportMenu from '../../components/ChartContainer/ChartExportMenu';
+import CustomTooltip from '../../components/CustomTooltip';
+import Typography from '../../components/Typography';
 import useStyles from './styles';
 
 /* This function provides a statistics list of LegislationTable

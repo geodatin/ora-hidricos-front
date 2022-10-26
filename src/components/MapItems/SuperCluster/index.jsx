@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable no-unsafe-optional-chaining */
 /* eslint-disable react/prop-types */
 import L from 'leaflet';
@@ -55,7 +54,7 @@ function SuperCluster({ data }) {
     updateMap();
   }, [map]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateMap();
   }, [map]);
 
@@ -99,6 +98,8 @@ function SuperCluster({ data }) {
     zoom,
     options: { radius: 75, maxZoom: 17 },
   });
+
+  console.log(updateMap);
 
   return (
     <>

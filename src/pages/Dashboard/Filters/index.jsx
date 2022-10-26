@@ -213,7 +213,7 @@ export default function Filters() {
             }}
           >
             {t(indicators.hydroclimaticVulnerability.translation)}
-          </MenuItem> */}
+          </MenuItem> 
           <MenuItem
             value={indicators.waterGovernance.value}
             onClick={() => {
@@ -226,7 +226,7 @@ export default function Filters() {
             }}
           >
             {t(indicators.waterGovernance.translation)}
-          </MenuItem>
+          </MenuItem> */}
         </CustomSelect>
       </div>
 

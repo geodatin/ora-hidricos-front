@@ -82,6 +82,7 @@ export function NavigationProvider({ children }) {
           handleOnChangePanel,
           handleOnFilterApplied,
           openStation,
+          closeStation,
           refreshStation,
           closeDisclaimer,
           openDisclaimer,

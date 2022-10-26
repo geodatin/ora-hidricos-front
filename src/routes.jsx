@@ -15,6 +15,7 @@ import { FilteringProvider } from './contexts/filtering';
 import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
 import Dashboard from './pages/Dashboard';
+import LegislationTable from './pages/LegislationTable';
 
 function FilteringWrapper({ redirect, children }) {
   const [searchParams] = useSearchParams();
@@ -48,6 +49,10 @@ function Routes() {
         projectName={t('general.projectName')}
         items={[
           { title: 'Dashboard', to: `/${process.env.REACT_APP_URL_BASE}` },
+          {
+            title: 'Legislação',
+            to: `/${process.env.REACT_APP_URL_BASE}/legislation`,
+          },
         ]}
       />
       <BaseRoutes>
@@ -55,6 +60,11 @@ function Routes() {
           exact
           path={`/${process.env.REACT_APP_URL_BASE}`}
           element={<DefaultPage />}
+        />
+        <Route
+          exact
+          path={`/${process.env.REACT_APP_URL_BASE}/legislation`}
+          element={<LegislationTable />}
         />
         <Route
           exact

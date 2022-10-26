@@ -15,7 +15,10 @@ export default function HeaderButton({ to, title }) {
 
   const actived = useMemo(() => {
     const path1 = pathname.substring(1);
-    const path2 = pathname.substring(0, path1.indexOf('/') + 1);
+    const path2 = pathname.substring(
+      0,
+      path1.indexOf(`${process.env.REACT_APP_URL_BASE}/`)
+    );
 
     if (path2) {
       return path2 === to;
@@ -23,6 +26,8 @@ export default function HeaderButton({ to, title }) {
 
     return pathname === to;
   }, [pathname]);
+
+  console.log(actived);
 
   return (
     <Link to={to} className={classes.link}>

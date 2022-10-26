@@ -5,19 +5,13 @@ import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 // import ShareIcon from '@mui/icons-material/Share';
-import {
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  LinearProgress,
-} from '@mui/material';
+import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import L from 'leaflet';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
-import { useQuery } from 'react-query';
 import { useContextSelector } from 'use-context-selector';
 
 import BorderGeojson from '../../../assets/shapes/border.json';
@@ -51,12 +45,11 @@ import FilteringContext from '../../../contexts/filtering';
 import { useAllStations } from '../../../hooks/useAllStations';
 import { useDisclaimer } from '../../../hooks/useDisclaimer';
 import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
-import { useMap as MapHook } from '../../../hooks/useMap';
+import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
 // import { useQuery as useQueryHook } from '../../../hooks/useQuery';
 import api from '../../../services/api';
-import LegislationTable from '../InfoPanel/Statistics/LegislationTable';
 import useStyles from './styles';
 
 import 'react-leaflet-markercluster/dist/styles.min.css';
@@ -90,7 +83,6 @@ export default function MonitoringMap() {
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
   const { viewAllStations, handleOnViewAllStations } = useAllStations();
-  const { setMapRef } = MapHook();
 
   const territorySelection = useContextSelector(
     FilteringContext,
@@ -110,6 +102,8 @@ export default function MonitoringMap() {
     FilteringContext,
     (filtering) => filtering.functions.generateRoute
   ); */
+  const { setMapRef } = useMap();
+
   const code = territorySelection?.code;
 
   const { nextLayoutConfig } = useLayoutConfig();
@@ -188,46 +182,46 @@ export default function MonitoringMap() {
   }, [code]);
 
   useEffect(() => {
-    api
-      .get('waterUsers/union/points', {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        setCoordsUnion(data);
-      });
+    api.get('waterUsers/union/points').then(({ data }) => {
+      setCoordsUnion(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('waterUsers/state/points').then(({ data }) => {
+      setCoords(data);
+    });
   }, [code]);
 
   useEffect(() => {
     api.get('mining/mine/tiles').then(({ data }) => {
       setMineUrl(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('waterway/tiles/image').then(({ data }) => {
       setWaterUrl(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('flood/tiles').then(({ data }) => {
       setWetlandsUrl(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('population/tiles').then(({ data }) => {
       setPopulationUrl(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('pollution/tiles').then(({ data }) => {
       setPollutionUrl(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api
@@ -245,37 +239,37 @@ export default function MonitoringMap() {
     api.get('hydrogeochemistry/shape').then(({ data }) => {
       setCoordsHydrogeochemistry(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('vulnerability/shape/precipitation').then(({ data }) => {
       setCoordsPrecipitation(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('vulnerability/shape/evapotranspiration').then(({ data }) => {
       setCoordsEvapotranspiration(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('vulnerability/shape/hydricBalance').then(({ data }) => {
       setCoordsWaterBalance(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('territory/watershed/tiles').then(({ data }) => {
       setWatershedUrl(data);
     });
-  }, [code]);
+  }, []);
 
   useEffect(() => {
     api.get('agricultural/tiles').then(({ data }) => {
       setAgriculturalUrl(data);
     });
-  }, [code]);
+  }, []);
 
   /*
   function handleShareDialog() {
@@ -310,25 +304,11 @@ export default function MonitoringMap() {
     return true;
   }, []); */
 
-  const { isLoading, error } = useQuery('repoData', async () => {
-    const res = await fetch(
-      'https://dev-rh-ora.geodatin.com/api/waterUsers/union/points'
-    );
-    const data = await res.json();
-    setCoords(data);
-  });
-
-  if (isLoading) return <LinearProgress />;
-
-  if (error) return `An error has occurred: ${error.message}`;
-
-  return indicatorSelection === indicators.waterGovernance.legislation.value ? (
-    <LegislationTable />
-  ) : (
+  return (
     <MapWrapper
-      getMapRef={(ref) => setMapRef(ref)}
       minZoom={5}
       maxZoom={15}
+      getMapRef={(ref) => setMapRef(ref)}
       itemTopChildren={
         !isMobile ? (
           <MapItem onClick={() => nextLayoutConfig()}>
@@ -564,35 +544,70 @@ export default function MonitoringMap() {
       )}
       {indicatorSelection === indicators.waterDemand.Waterways.value && (
         <>
-          <TileLayer url={waterUrl?.url} zIndex={2} filter="red" />
+          <TileLayer
+            url={
+              waterUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/06de53c3b97af5222d0cb3166c78f48f-6ff39f8fcf7264e96afca3b0b76d6abd/tiles/{z}/{x}/{y}'
+                : waterUrl?.url
+            }
+            zIndex={2}
+          />
           <GetPopupWaterway />
         </>
       )}
 
       {indicatorSelection === indicators.ground.minesMining.value && (
         <>
-          <TileLayer url={mineUrl?.url} zIndex={2} />
+          <TileLayer
+            url={
+              mineUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/2331ff62d07cbc51fd01f63f94ec62d1-66976cfe78f1a412385f17be6d897f27/tiles/{z}/{x}/{y}'
+                : mineUrl?.url
+            }
+            zIndex={2}
+          />
           <GetPopupMiningMine />
         </>
       )}
 
       {indicatorSelection === indicators.waterResources.wetlands.value && (
         <>
-          <TileLayer url={wetlandsUrl?.url} zIndex={2} />
+          <TileLayer
+            url={
+              wetlandsUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/da5a942cb234453f93a789f81ede2ab0-430aca5892b6c060f4fd9eefe3195ab4/tiles/{z}/{x}/{y}'
+                : wetlandsUrl?.url
+            }
+            zIndex={2}
+          />
           <GetPopupWetlands />
         </>
       )}
 
       {indicatorSelection === indicators.mercury.IPPO.value && (
         <>
-          <TileLayer url={pollutionUrl?.url} zIndex={2} />
+          <TileLayer
+            url={
+              pollutionUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/b4a9a58aeb4d9821ba4c0e72c17d158f-b2cd7dde7e91f6d11d27c11bd3cdb73e/tiles/{z}/{x}/{y}'
+                : pollutionUrl?.url
+            }
+            zIndex={2}
+          />
           <GetPopupIPPO />
         </>
       )}
 
       {indicatorSelection === indicators.waterDemand.Population.value && (
         <>
-          <TileLayer url={populationUrl?.url} zIndex={2} />
+          <TileLayer
+            url={
+              populationUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/955ac3bbeca5226bee248494ba2a33fe-3368874f5c56849a7f7b77ef8ff6abf6/tiles/{z}/{x}/{y}'
+                : populationUrl?.ur
+            }
+            zIndex={2}
+          />
           <GetPopupPopulation />
         </>
       )}
@@ -600,14 +615,28 @@ export default function MonitoringMap() {
       {indicatorSelection ===
         indicators.generalFeatures.watershedArea.value && (
         <>
-          <TileLayer url={watershedUrl?.url} zIndex={2} />
+          <TileLayer
+            url={
+              watershedUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/001bfa15a31668b7ebc3cc94b772d92f-1fd8a5d97e168fe1450f440fbab4dc88/tiles/{z}/{x}/{y}'
+                : watershedUrl?.url
+            }
+            zIndex={2}
+          />
           <GetPopupWatershed />
         </>
       )}
 
       {indicatorSelection === indicators.ground.agricultural.value && (
         <>
-          <TileLayer url={agriculturalUrl?.url} zIndex={2} />
+          <TileLayer
+            url={
+              agriculturalUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/d9372586a137116b3c6711ef768d3696-a08bd8d62ee47286e773f6f8a211ccce/tiles/{z}/{x}/{y}'
+                : agriculturalUrl?.url
+            }
+            zIndex={2}
+          />
           <GetPopupAgricultural />
         </>
       )}
@@ -841,7 +870,13 @@ export default function MonitoringMap() {
           </MarkerClusterGroup>
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
-          <SuperCluster data={coords?.features} />
+          <SuperCluster
+            data={
+              coords?.features === undefined
+                ? coordsUnion?.features
+                : coords?.features
+            }
+          />
         ))}
 
       {(indicatorSelection === indicators.ground.oil.value && (

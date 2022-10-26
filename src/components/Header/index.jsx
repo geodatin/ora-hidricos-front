@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import dataSourcesImg from '../../assets/images/data-sources.png';
 import { ReactComponent as OraLogo } from '../../assets/images/ora-logo.svg';
 import Typography from '../Typography';
 import HeaderButton from './HeaderButton';
@@ -40,7 +41,7 @@ export default function Header({ items, projectName }) {
             >
               <Button className={classes.button}>API</Button>
             </a>
-            <a href="data-sources.png" target="_blank" rel="noreferrer">
+            <a href={dataSourcesImg} target="_blank" rel="noreferrer">
               <Button className={classes.button}>Fontes de dados</Button>
             </a>
           </div>
