@@ -16,6 +16,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
+import StateJson from '../../../assets/shapes/StateJson.json';
 import 'leaflet/dist/leaflet.css';
 import GetPopupAgricultural from '../../../components/MapItems/GetPopupAgricultural';
 import GetPopupIPPO from '../../../components/MapItems/GetPopupIPPO';
@@ -873,7 +874,7 @@ export default function MonitoringMap() {
           <SuperCluster
             data={
               coords?.features === undefined
-                ? coordsUnion?.features
+                ? StateJson?.features
                 : coords?.features
             }
           />
