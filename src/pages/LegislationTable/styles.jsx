@@ -13,6 +13,19 @@ const useStyles = createUseStyles((theme) => ({
     marginBottom: 25,
   },
 
+  table: {
+    overflow: 'auto',
+    width: '100%',
+    '&::-webkit-scrollbar': {
+      width: '4px',
+      height: '4px',
+    },
+    '&::-webkit-scrollbar-thumb': {
+      backgroundColor: theme.neutral.gray.main,
+      borderRadius: '4px',
+    },
+  },
+
   searchInput: {
     padding: '15px',
     border: `1px solid ${theme.neutral.gray.main}`,

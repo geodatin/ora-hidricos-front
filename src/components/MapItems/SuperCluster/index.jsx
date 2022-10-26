@@ -99,8 +99,6 @@ function SuperCluster({ data }) {
     options: { radius: 75, maxZoom: 17 },
   });
 
-  console.log(updateMap);
-
   return (
     <>
       {clusters.map((cluster) => {

@@ -121,7 +121,7 @@ export default function LegislationTable({
           />
         </div>
       </div>
-      <div ref={childrentableref}>
+      <div ref={childrentableref} className={classes.table}>
         <Table
           aria-label="customized table"
           sx={{
@@ -141,7 +141,7 @@ export default function LegislationTable({
               <TableCell>Tema</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className={classes.tableBody}>
             {filterData.map((legislation) => (
               <TableRow
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
