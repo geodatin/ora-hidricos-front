@@ -17,7 +17,7 @@ export default function TopoJSONEvapotranspiration(props) {
   function addData(layer, jsonData) {
     if (jsonData?.type === 'Topology') {
       for (const key in jsonData.objects) {
-        const geojson = topojson.feature(jsonData, jsonData.objects[key]);
+        const geojson = topojson?.feature(jsonData, jsonData.objects[key]);
 
         layer.addData(geojson);
       }
@@ -31,25 +31,25 @@ export default function TopoJSONEvapotranspiration(props) {
 
   function onEachFeature(feature, layer) {
     if (feature.properties.class === 0) {
-      layer.setStyle({ fillColor: '#b3ffb3' });
+      layer.setStyle({ fillColor: '#ff5302' });
     } else if (feature.properties.class === 1) {
-      layer.setStyle({ fillColor: '#99ff99' });
+      layer.setStyle({ fillColor: '#ff9c00' });
     } else if (feature.properties.class === 2) {
-      layer.setStyle({ fillColor: '#80ff80' });
+      layer.setStyle({ fillColor: '#ffec00' });
     } else if (feature.properties.class === 3) {
-      layer.setStyle({ fillColor: '#66ff66' });
+      layer.setStyle({ fillColor: '#a1f000' });
     } else if (feature.properties.class === 4) {
-      layer.setStyle({ fillColor: '#4dff4d' });
+      layer.setStyle({ fillColor: '#2de700' });
     } else if (feature.properties.class === 5) {
-      layer.setStyle({ fillColor: '#33ff33' });
+      layer.setStyle({ fillColor: '#09cc26' });
     } else if (feature.properties.class === 6) {
-      layer.setStyle({ fillColor: '#1aff1a' });
+      layer.setStyle({ fillColor: '#13af6d' });
     } else if (feature.properties.class === 7) {
-      layer.setStyle({ fillColor: '#00ff00' });
+      layer.setStyle({ fillColor: '#1b9a91' });
     } else if (feature.properties.class === 8) {
-      layer.setStyle({ fillColor: '#00e600' });
+      layer.setStyle({ fillColor: '#166486' });
     } else if (feature.properties.class === 9) {
-      layer.setStyle({ fillColor: '#00cc00' });
+      layer.setStyle({ fillColor: '#0a2c7c' });
     }
     layer.bindPopup(
       `

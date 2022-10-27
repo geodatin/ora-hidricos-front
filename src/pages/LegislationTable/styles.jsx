@@ -16,14 +16,6 @@ const useStyles = createUseStyles((theme) => ({
   table: {
     overflow: 'auto',
     width: '100%',
-    '&::-webkit-scrollbar': {
-      width: '4px',
-      height: '4px',
-    },
-    '&::-webkit-scrollbar-thumb': {
-      backgroundColor: theme.neutral.gray.main,
-      borderRadius: '4px',
-    },
   },
 
   searchInput: {
@@ -34,6 +26,9 @@ const useStyles = createUseStyles((theme) => ({
     width: '600px',
     height: '40px',
     borderRadius: '8px',
+    '@media (max-width: 600px)': {
+      width: '350px',
+    },
   },
 
   searchIcon: {
@@ -60,7 +55,7 @@ const useStyles = createUseStyles((theme) => ({
   },
   tableContainer: {
     zIndex: 99999,
-    padding: '1rem',
+    padding: '1rem 1rem 0 1rem',
   },
 }));
 

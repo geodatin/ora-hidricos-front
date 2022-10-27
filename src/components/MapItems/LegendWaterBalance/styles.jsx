@@ -13,6 +13,9 @@ const useStyles = createUseStyles((theme) => ({
     zIndex: 99999,
     padding: '1em',
     width: '14rem',
+    '@media (max-width: 600px)': {
+      width: '8rem',
+    },
   },
   separator: {
     backgroundColor: theme.stroke.dark,
@@ -25,7 +28,18 @@ const useStyles = createUseStyles((theme) => ({
     color: theme === darkScheme ? '#FFFFFF' : '#000000',
     fontSize: '1.2em',
     fontWeight: 'bold',
+    '@media (max-width: 600px)': {
+      fontSize: '0.8em',
+    },
   },
+
+  subtitle: {
+    color: theme.neutral.gray.main,
+    '@media (max-width: 600px)': {
+      fontSize: '0.7em',
+    },
+  },
+
   content: {
     zIndex: 99999,
     display: 'flex',
@@ -34,6 +48,9 @@ const useStyles = createUseStyles((theme) => ({
     margin: '0.2rem',
     fontSize: '1.2em',
     fontWeight: 'bold',
+    '@media (max-width: 600px)': {
+      fontSize: '0.8em',
+    },
   },
 
   box: {
@@ -41,6 +58,10 @@ const useStyles = createUseStyles((theme) => ({
     height: '1.5rem',
     width: '2.5rem',
     marginRight: '0.5rem',
+    '@media (max-width: 600px)': {
+      height: '0.5rem',
+      width: '1rem',
+    },
   },
 }));
 

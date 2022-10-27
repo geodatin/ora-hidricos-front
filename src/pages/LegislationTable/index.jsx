@@ -132,61 +132,59 @@ export default function LegislationTable({
         >
           <TableHead>
             <TableRow>
-              <TableCell>País</TableCell>
-              <TableCell>Objetivo</TableCell>
-              <TableCell>Lei</TableCell>
-              <TableCell>Link</TableCell>
-              <TableCell>Produtos</TableCell>
-              <TableCell>Responsabilidade</TableCell>
-              <TableCell>Tema</TableCell>
+              <TableCell style={{ minWidth: '100px' }}>País</TableCell>
+              <TableCell style={{ minWidth: '450px' }}>Objetivo</TableCell>
+              <TableCell style={{ minWidth: '180px' }}>Lei</TableCell>
+              <TableCell style={{ minWidth: '100px' }}>Link</TableCell>
+              <TableCell style={{ minWidth: '100px' }}>Produtos</TableCell>
+              <TableCell style={{ minWidth: '150px' }}>
+                Responsabilidade
+              </TableCell>
+              <TableCell style={{ minWidth: '150px' }}>Tema</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody className={classes.tableBody}>
+          <TableBody>
             {filterData.map((legislation) => (
               <TableRow
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell
-                  width={100}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{
+                    color: theme.neutral.gray.main,
+                    minWidth: '100px',
+                  }}
                 >
                   {legislation.country}
                 </TableCell>
                 <TableCell
-                  width={400}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{ color: theme.neutral.gray.main, minWidth: '450px' }}
                 >
                   {legislation.goal}
                 </TableCell>
                 <TableCell
-                  width={100}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{ color: theme.neutral.gray.main, minWidth: '180px' }}
                 >
                   {legislation.law}
                 </TableCell>
                 <TableCell
-                  width={100}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{ color: theme.neutral.gray.main, minWidth: '100px' }}
                 >
                   <a href={legislation.link} target="_blank" rel="noreferrer">
                     <LinkIcon />
                   </a>
                 </TableCell>
                 <TableCell
-                  width={100}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{ color: theme.neutral.gray.main, minWidth: '100px' }}
                 >
                   {legislation.product}
                 </TableCell>
                 <TableCell
-                  width={100}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{ color: theme.neutral.gray.main, minWidth: '150px' }}
                 >
                   {legislation.responsible}
                 </TableCell>
                 <TableCell
-                  width={100}
-                  style={{ color: theme.neutral.gray.main }}
+                  style={{ color: theme.neutral.gray.main, minWidth: '150px' }}
                 >
                   {legislation.theme}
                 </TableCell>

@@ -16,77 +16,33 @@ const LegendEvapotranspiration = () => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Range</h2>
+      <h2 className={classes.title}>Evapotranspiração real</h2>
+      <p className={classes.subtitle}>Milímetros (mm)</p>
 
       <div className={classes.separator} />
       <div className={classes.content}>
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#00cc00',
+            backgroundColor: '#ff5302',
           }}
         />
-        <span>{coordsPrecipitation?.features?.[9]?.properties?.range}</span>
+        <span>{coordsPrecipitation?.features?.[0]?.properties?.range}</span>
       </div>
       <div className={classes.content}>
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#00e600',
+            backgroundColor: '#ff9c00',
           }}
         />
-        <span>{coordsPrecipitation?.features?.[8]?.properties?.range}</span>
+        <span>{coordsPrecipitation?.features?.[1]?.properties?.range}</span>
       </div>
       <div className={classes.content}>
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#00ff00',
-          }}
-        />
-        <span>{coordsPrecipitation?.features?.[7]?.properties?.range}</span>
-      </div>
-      <div className={classes.content}>
-        <div
-          className={classes.box}
-          style={{
-            backgroundColor: '#1aff1a',
-          }}
-        />
-        <span>{coordsPrecipitation?.features?.[6]?.properties?.range}</span>
-      </div>
-      <div className={classes.content}>
-        <div
-          className={classes.box}
-          style={{
-            backgroundColor: '#33ff33',
-          }}
-        />
-        <span>{coordsPrecipitation?.features?.[5]?.properties?.range}</span>
-      </div>
-      <div className={classes.content}>
-        <div
-          className={classes.box}
-          style={{
-            backgroundColor: '#4dff4d',
-          }}
-        />
-        <span>{coordsPrecipitation?.features?.[4]?.properties?.range}</span>
-      </div>
-      <div className={classes.content}>
-        <div
-          className={classes.box}
-          style={{
-            backgroundColor: '#66ff66',
-          }}
-        />
-        <span>{coordsPrecipitation?.features?.[3]?.properties?.range}</span>
-      </div>
-      <div className={classes.content}>
-        <div
-          className={classes.box}
-          style={{
-            backgroundColor: '#80ff80',
+            backgroundColor: '#ffec00',
           }}
         />
         <span>{coordsPrecipitation?.features?.[2]?.properties?.range}</span>
@@ -95,20 +51,65 @@ const LegendEvapotranspiration = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#99ff99',
+            backgroundColor: '#a1f000',
           }}
         />
-        <span>{coordsPrecipitation?.features?.[1]?.properties?.range}</span>
+        <span>{coordsPrecipitation?.features?.[3]?.properties?.range}</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#2de700',
+          }}
+        />
+        <span>{coordsPrecipitation?.features?.[4]?.properties?.range}</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#09cc26',
+          }}
+        />
+        <span>{coordsPrecipitation?.features?.[5]?.properties?.range}</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#13af6d',
+          }}
+        />
+        <span>{coordsPrecipitation?.features?.[6]?.properties?.range}</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#1b9a91',
+          }}
+        />
+        <span>{coordsPrecipitation?.features?.[7]?.properties?.range}</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#166486',
+          }}
+        />
+        <span>{coordsPrecipitation?.features?.[8]?.properties?.range}</span>
       </div>
 
       <div className={classes.content}>
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#b3ffb3',
+            backgroundColor: '#0a2c7c',
           }}
         />
-        <span>{coordsPrecipitation?.features?.[0]?.properties?.range}</span>
+        <span>{coordsPrecipitation?.features?.[9]?.properties?.range}</span>
       </div>
     </div>
   );

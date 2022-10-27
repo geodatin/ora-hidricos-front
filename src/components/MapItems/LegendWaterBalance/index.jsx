@@ -16,14 +16,15 @@ const LegendWaterBalance = () => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Range</h2>
+      <h2 className={classes.title}>Balanço hídrico</h2>
+      <p className={classes.subtitle}>Milímetros (mm)</p>
 
       <div className={classes.separator} />
       <div className={classes.content}>
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#0099ff',
+            backgroundColor: '#2995c6',
           }}
         />
         <span>{coordsPrecipitation?.features?.[9]?.properties?.range}</span>
@@ -32,7 +33,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#1aa3ff',
+            backgroundColor: '#67a8b2',
           }}
         />
         <span>{coordsPrecipitation?.features?.[8]?.properties?.range}</span>
@@ -41,7 +42,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#33adff',
+            backgroundColor: '#97bfa5',
           }}
         />
         <span>{coordsPrecipitation?.features?.[7]?.properties?.range}</span>
@@ -50,7 +51,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#4db8ff',
+            backgroundColor: '#c4d290',
           }}
         />
         <span>{coordsPrecipitation?.features?.[6]?.properties?.range}</span>
@@ -59,7 +60,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#66c2ff',
+            backgroundColor: '#e4ef74',
           }}
         />
         <span>{coordsPrecipitation?.features?.[5]?.properties?.range}</span>
@@ -68,7 +69,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#80ccff',
+            backgroundColor: '#fde45e',
           }}
         />
         <span>{coordsPrecipitation?.features?.[4]?.properties?.range}</span>
@@ -77,7 +78,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#99d6ff',
+            backgroundColor: '#feb341',
           }}
         />
         <span>{coordsPrecipitation?.features?.[3]?.properties?.range}</span>
@@ -86,7 +87,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#b3e0ff',
+            backgroundColor: '#f98531',
           }}
         />
         <span>{coordsPrecipitation?.features?.[2]?.properties?.range}</span>
@@ -95,7 +96,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ccebff',
+            backgroundColor: '#fe5526',
           }}
         />
         <span>{coordsPrecipitation?.features?.[1]?.properties?.range}</span>
@@ -105,7 +106,7 @@ const LegendWaterBalance = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#e6f5ff',
+            backgroundColor: '#eb0d16',
           }}
         />
         <span>{coordsPrecipitation?.features?.[0]?.properties?.range}</span>

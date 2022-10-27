@@ -16,14 +16,14 @@ const LegendPrecipitation = () => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Range</h2>
-
+      <h2 className={classes.title}>Precipitação anual</h2>
+      <p className={classes.subtitle}>Milímetros (mm)</p>
       <div className={classes.separator} />
       <div className={classes.content}>
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffa500',
+            backgroundColor: '#072d76',
           }}
         />
         <span>{coordsPrecipitation?.features?.[9]?.properties?.range}</span>
@@ -32,7 +32,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffaf1a',
+            backgroundColor: '#126c87',
           }}
         />
         <span>{coordsPrecipitation?.features?.[8]?.properties?.range}</span>
@@ -41,7 +41,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffb833',
+            backgroundColor: '#1d9e85',
           }}
         />
         <span>{coordsPrecipitation?.features?.[7]?.properties?.range}</span>
@@ -50,7 +50,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffc14d',
+            backgroundColor: '#0dc140',
           }}
         />
         <span>{coordsPrecipitation?.features?.[6]?.properties?.range}</span>
@@ -59,7 +59,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffc966',
+            backgroundColor: '#38e200',
           }}
         />
         <span>{coordsPrecipitation?.features?.[5]?.properties?.range}</span>
@@ -68,7 +68,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffd280',
+            backgroundColor: '#c1f500',
           }}
         />
         <span>{coordsPrecipitation?.features?.[4]?.properties?.range}</span>
@@ -77,7 +77,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffdb99',
+            backgroundColor: '#f0d500',
           }}
         />
         <span>{coordsPrecipitation?.features?.[3]?.properties?.range}</span>
@@ -86,7 +86,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffe4b3',
+            backgroundColor: '#f5a207',
           }}
         />
         <span>{coordsPrecipitation?.features?.[2]?.properties?.range}</span>
@@ -95,7 +95,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#ffedcc',
+            backgroundColor: '#d9792f',
           }}
         />
         <span>{coordsPrecipitation?.features?.[1]?.properties?.range}</span>
@@ -105,7 +105,7 @@ const LegendPrecipitation = () => {
         <div
           className={classes.box}
           style={{
-            backgroundColor: '#fff6e6',
+            backgroundColor: '#bd513d',
           }}
         />
         <span>{coordsPrecipitation?.features?.[0]?.properties?.range}</span>

@@ -498,8 +498,7 @@ export default function MonitoringMap() {
             data={coordsPrecipitation}
             style={() => ({
               fillOpacity: 0.8,
-              weight: 2,
-              color: '#e69500',
+              weight: 0,
             })}
           />
           <LegendPrecipitation />
@@ -514,8 +513,7 @@ export default function MonitoringMap() {
             data={coordsEvapotranspiration}
             style={() => ({
               fillOpacity: 0.8,
-              weight: 2,
-              color: '#008000',
+              weight: 0,
             })}
           />
           <LegendEvapotranspiration />
@@ -529,8 +527,7 @@ export default function MonitoringMap() {
             data={coordsWaterBalance}
             style={() => ({
               fillOpacity: 0.8,
-              weight: 2,
-              color: '#0000b3',
+              weight: 0,
             })}
           />
           <LegendWaterBalance />
@@ -678,7 +675,9 @@ export default function MonitoringMap() {
                     Publication year
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.publicationYear}
+                    {cord.properties.publicationYear === null
+                      ? '--'
+                      : cord.properties.publicationYear}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -689,9 +688,54 @@ export default function MonitoringMap() {
                     Study
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.study}
+                    {cord.properties.study === null
+                      ? '--'
+                      : cord.properties.study}
                   </Typography>
                 </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    hgMin
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.hgMin === null
+                      ? '--'
+                      : cord.properties.hgMin}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    hgMax
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.hgMax === null
+                      ? '--'
+                      : cord.properties.hgMax}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    hgMean
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.hgMean === null
+                      ? '--'
+                      : cord.properties.hgMean}
+                  </Typography>
+                </div>
+
                 <div className={classes.popupItem}>
                   <Typography
                     variant="caption"
@@ -700,7 +744,9 @@ export default function MonitoringMap() {
                     Author
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.author}
+                    {cord.properties.author === null
+                      ? '--'
+                      : cord.properties.author}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -711,7 +757,9 @@ export default function MonitoringMap() {
                     Title
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.title}
+                    {cord.properties.title === null
+                      ? '--'
+                      : cord.properties.title}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -722,7 +770,9 @@ export default function MonitoringMap() {
                     Age group
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.ageGroup}
+                    {cord.properties.ageGroup === null
+                      ? '--'
+                      : cord.properties.ageGroup}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -733,7 +783,10 @@ export default function MonitoringMap() {
                     Collection year
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.collectionYear}
+                    {cord.properties.collectionYear === '-' ||
+                    cord.properties.collectionYear === null
+                      ? '--'
+                      : cord.properties.collectionYear}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -744,7 +797,9 @@ export default function MonitoringMap() {
                     Community
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.community}
+                    {cord.properties.community === null
+                      ? '--'
+                      : cord.properties.community}
                   </Typography>
                 </div>
 
@@ -756,7 +811,9 @@ export default function MonitoringMap() {
                     Measurement unit
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.measurementUnit}
+                    {cord.properties.measurementUnit === null
+                      ? '--'
+                      : cord.properties.measurementUnit}
                   </Typography>
                 </div>
               </Popup>
@@ -788,7 +845,9 @@ export default function MonitoringMap() {
                     Publication year
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.publicationYear}
+                    {cord.properties.publicationYear === null
+                      ? '--'
+                      : cord.properties.publicationYear}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -799,7 +858,51 @@ export default function MonitoringMap() {
                     Study
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.study}
+                    {cord.properties.study === null
+                      ? '--'
+                      : cord.properties.study}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    hgMin
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.hgMin === null
+                      ? '--'
+                      : cord.properties.hgMin}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    hgMax
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.hgMax === null
+                      ? '--'
+                      : cord.properties.hgMax}
+                  </Typography>
+                </div>
+
+                <div className={classes.popupItem}>
+                  <Typography
+                    variant="caption"
+                    className={classes.popupItemTitle}
+                  >
+                    hgMean
+                  </Typography>
+                  <Typography variant="caption">
+                    {cord.properties.hgMean === null
+                      ? '--'
+                      : cord.properties.hgMean}
                   </Typography>
                 </div>
 
@@ -811,7 +914,9 @@ export default function MonitoringMap() {
                     Author
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.author}
+                    {cord.properties.author === null
+                      ? '--'
+                      : cord.properties.author}
                   </Typography>
                 </div>
 
@@ -823,7 +928,9 @@ export default function MonitoringMap() {
                     Title
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.title}
+                    {cord.properties.title === null
+                      ? '--'
+                      : cord.properties.title}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -834,7 +941,10 @@ export default function MonitoringMap() {
                     Collection year
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.collectionYear}
+                    {cord.properties.collectionYear === '-' ||
+                    cord.properties.collectionYear === null
+                      ? '--'
+                      : cord.properties.collectionYear}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -845,7 +955,9 @@ export default function MonitoringMap() {
                     Community
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.community}
+                    {cord.properties.community === null
+                      ? '--'
+                      : cord.properties.community}
                   </Typography>
                 </div>
                 <div className={classes.popupItem}>
@@ -856,7 +968,9 @@ export default function MonitoringMap() {
                     Measurement unit
                   </Typography>
                   <Typography variant="caption">
-                    {cord.properties.measurementUnit}
+                    {cord.properties.measurementUnit === null
+                      ? '--'
+                      : cord.properties.measurementUnit}
                   </Typography>
                 </div>
               </Popup>
