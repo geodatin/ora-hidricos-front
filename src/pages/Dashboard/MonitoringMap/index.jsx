@@ -7,13 +7,15 @@ import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 // import ShareIcon from '@mui/icons-material/Share';
 import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 import L from 'leaflet';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useContextSelector } from 'use-context-selector';
 
+import markerHumanIcon from '../../../assets/icons/map/humano1.png';
+import markerFishIcon from '../../../assets/icons/map/peixe1.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import StateJson from '../../../assets/shapes/StateJson.json';
@@ -117,13 +119,20 @@ export default function MonitoringMap() {
 
   // const query = useQueryHook();
 
-  const blueIcon = new L.Icon({
-    iconUrl:
-      'https://visualpharm.com/assets/825/Marker-595b40b75ba036ed117d9f54.svg',
-    iconSize: [24, 24],
+  const fishIcon = new L.Icon({
+    iconUrl: markerFishIcon,
+    iconSize: [16, 16],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
+
+  const humanIcon = new L.Icon({
+    iconUrl: markerHumanIcon,
+    iconSize: [16, 16],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
   const createClusterCustomIcon = (cluster) =>
     L.divIcon({
       html: `<span>${cluster.getChildCount()}</span>`,
@@ -198,31 +207,31 @@ export default function MonitoringMap() {
     api.get('mining/mine/tiles').then(({ data }) => {
       setMineUrl(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('waterway/tiles/image').then(({ data }) => {
       setWaterUrl(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('flood/tiles').then(({ data }) => {
       setWetlandsUrl(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('population/tiles').then(({ data }) => {
       setPopulationUrl(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('pollution/tiles').then(({ data }) => {
       setPollutionUrl(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api
@@ -240,37 +249,37 @@ export default function MonitoringMap() {
     api.get('hydrogeochemistry/shape').then(({ data }) => {
       setCoordsHydrogeochemistry(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('vulnerability/shape/precipitation').then(({ data }) => {
       setCoordsPrecipitation(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('vulnerability/shape/evapotranspiration').then(({ data }) => {
       setCoordsEvapotranspiration(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('vulnerability/shape/hydricBalance').then(({ data }) => {
       setCoordsWaterBalance(data);
     });
-  }, []);
+  }, [code]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     api.get('territory/watershed/tiles').then(({ data }) => {
       setWatershedUrl(data);
     });
-  }, []);
+  }, [code]);
 
   useEffect(() => {
     api.get('agricultural/tiles').then(({ data }) => {
       setAgriculturalUrl(data);
     });
-  }, []);
+  }, [code]);
 
   /*
   function handleShareDialog() {
@@ -482,7 +491,9 @@ export default function MonitoringMap() {
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
         <TopoJSONHydrogeochemistry
           key={theme === darkScheme ? `dark` : `light`}
-          data={coordsHydrogeochemistry}
+          data={
+            coordsHydrogeochemistry === undefined ? '' : coordsHydrogeochemistry
+          }
           style={() => ({
             fillOpacity: 0.8,
             weight: 4,
@@ -598,14 +609,7 @@ export default function MonitoringMap() {
 
       {indicatorSelection === indicators.waterDemand.Population.value && (
         <>
-          <TileLayer
-            url={
-              populationUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/955ac3bbeca5226bee248494ba2a33fe-3368874f5c56849a7f7b77ef8ff6abf6/tiles/{z}/{x}/{y}'
-                : populationUrl?.ur
-            }
-            zIndex={2}
-          />
+          <TileLayer url={populationUrl?.url} zIndex={2} />
           <GetPopupPopulation />
         </>
       )}
@@ -614,11 +618,7 @@ export default function MonitoringMap() {
         indicators.generalFeatures.watershedArea.value && (
         <>
           <TileLayer
-            url={
-              watershedUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/001bfa15a31668b7ebc3cc94b772d92f-1fd8a5d97e168fe1450f440fbab4dc88/tiles/{z}/{x}/{y}'
-                : watershedUrl?.url
-            }
+            url={watershedUrl === undefined ? '' : watershedUrl.url}
             zIndex={2}
           />
           <GetPopupWatershed />
@@ -657,7 +657,7 @@ export default function MonitoringMap() {
                 cord.geometry.coordinates[1],
                 cord.geometry.coordinates[0],
               ]}
-              icon={blueIcon}
+              icon={humanIcon}
             >
               <Popup
                 className={classes.popup}
@@ -827,7 +827,7 @@ export default function MonitoringMap() {
                 cord.geometry.coordinates[1],
                 cord.geometry.coordinates[0],
               ]}
-              icon={blueIcon}
+              icon={fishIcon}
             >
               <Popup
                 className={classes.popup}

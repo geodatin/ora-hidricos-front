@@ -234,6 +234,23 @@ export default function Filters() {
         {(auxIndicatorSelectionTerritory ===
           indicators.generalFeatures.value && (
           <CustomSelect value={auxIndicatorSelection}>
+            {/* Características Hidrogeoquímicas das águas */}
+            <MenuItem
+              value={
+                indicators.generalFeatures.hydrogeochemicalCharacteristics.value
+              }
+              onClick={() =>
+                setAuxIndicatorSelection(
+                  indicators.generalFeatures.hydrogeochemicalCharacteristics
+                    .value
+                )
+              }
+            >
+              {t(
+                indicators.generalFeatures.hydrogeochemicalCharacteristics
+                  .translation
+              )}
+            </MenuItem>
             {/* Características da bacia */}
             <MenuItem
               value={indicators.generalFeatures.watershedArea.value}
@@ -288,24 +305,6 @@ export default function Filters() {
                   .translation
               )}
             </MenuItem> */}
-
-            {/* Características Hidrogeoquímicas das águas */}
-            <MenuItem
-              value={
-                indicators.generalFeatures.hydrogeochemicalCharacteristics.value
-              }
-              onClick={() =>
-                setAuxIndicatorSelection(
-                  indicators.generalFeatures.hydrogeochemicalCharacteristics
-                    .value
-                )
-              }
-            >
-              {t(
-                indicators.generalFeatures.hydrogeochemicalCharacteristics
-                  .translation
-              )}
-            </MenuItem>
           </CustomSelect>
         )) ||
           (auxIndicatorSelectionTerritory === indicators.waterDemand.value && (

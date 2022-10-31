@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import {
   Routes as BaseRoutes,
   Route,
@@ -15,7 +16,10 @@ import { FilteringProvider } from './contexts/filtering';
 import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
 import Dashboard from './pages/Dashboard';
+import DocumentsTable from './pages/DocumentsTable';
 import LegislationTable from './pages/LegislationTable';
+
+const queryClient = new QueryClient();
 
 function FilteringWrapper({ redirect, children }) {
   const [searchParams] = useSearchParams();
@@ -30,12 +34,14 @@ function FilteringWrapper({ redirect, children }) {
 function DefaultPage({ embed }) {
   return (
     <NavigationProvider>
-      <FilteringProvider embed={embed}>
-        <MappingProvider>
-          <Disclaimer />
-          <Dashboard />
-        </MappingProvider>
-      </FilteringProvider>
+      <QueryClientProvider client={queryClient}>
+        <FilteringProvider embed={embed}>
+          <MappingProvider>
+            <Disclaimer />
+            <Dashboard />
+          </MappingProvider>
+        </FilteringProvider>
+      </QueryClientProvider>
     </NavigationProvider>
   );
 }
@@ -53,6 +59,10 @@ function Routes() {
             title: 'Legislação',
             to: `/${process.env.REACT_APP_URL_BASE}/legislation`,
           },
+          {
+            title: 'Documentos',
+            to: `/${process.env.REACT_APP_URL_BASE}/documents`,
+          },
         ]}
       />
       <BaseRoutes>
@@ -65,6 +75,11 @@ function Routes() {
           exact
           path={`/${process.env.REACT_APP_URL_BASE}/legislation`}
           element={<LegislationTable />}
+        />
+        <Route
+          exact
+          path={`/${process.env.REACT_APP_URL_BASE}/documents`}
+          element={<DocumentsTable />}
         />
         <Route
           exact

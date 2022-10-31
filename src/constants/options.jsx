@@ -236,7 +236,8 @@ export const countryCodes = {
 };
 
 export const filterDefaults = {
-  indicatorSelection: indicators.generalFeatures.watershedArea.value,
+  indicatorSelection:
+    indicators.generalFeatures.hydrogeochemicalCharacteristics.value,
   indicatorSelectionTerritory: indicators.generalFeatures.value,
   territorySelection: null,
 };
