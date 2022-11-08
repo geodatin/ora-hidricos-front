@@ -21,8 +21,8 @@ import CustomTooltip from '../../components/CustomTooltip';
 import Typography from '../../components/Typography';
 import useStyles from './styles';
 
-/* This function provides a statistics list of DocumentsTable
- * @returns statistics list
+/* This function provides DocumentsTable component
+ * @returns document table
  */
 export default function DocumentsTable({
   extraButton,

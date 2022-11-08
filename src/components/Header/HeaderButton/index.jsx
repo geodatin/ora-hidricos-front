@@ -27,8 +27,6 @@ export default function HeaderButton({ to, title }) {
     return pathname === to;
   }, [pathname]);
 
-  console.log(actived);
-
   return (
     <Link to={to} className={classes.link}>
       <Button

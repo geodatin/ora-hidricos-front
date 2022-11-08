@@ -22,9 +22,10 @@ import CustomTooltip from '../../components/CustomTooltip';
 import Typography from '../../components/Typography';
 import useStyles from './styles';
 
-/* This function provides a statistics list of LegislationTable
- * @returns statistics list
+/* This function provides LegislationTable component
+ * @returns legislation table
  */
+
 export default function LegislationTable({
   extraButton,
   csvCallback,

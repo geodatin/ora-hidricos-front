@@ -15,6 +15,7 @@ import Header from './components/Header';
 import { FilteringProvider } from './contexts/filtering';
 import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
+import Authorities from './pages/Authorities';
 import Dashboard from './pages/Dashboard';
 import DocumentsTable from './pages/DocumentsTable';
 import LegislationTable from './pages/LegislationTable';
@@ -60,6 +61,10 @@ function Routes() {
             to: `/${process.env.REACT_APP_URL_BASE}/legislation`,
           },
           {
+            title: 'Autoridades',
+            to: `/${process.env.REACT_APP_URL_BASE}/authorities`,
+          },
+          {
             title: 'Documentos',
             to: `/${process.env.REACT_APP_URL_BASE}/documents`,
           },
@@ -75,6 +80,11 @@ function Routes() {
           exact
           path={`/${process.env.REACT_APP_URL_BASE}/legislation`}
           element={<LegislationTable />}
+        />
+        <Route
+          exact
+          path={`/${process.env.REACT_APP_URL_BASE}/authorities`}
+          element={<Authorities />}
         />
         <Route
           exact
