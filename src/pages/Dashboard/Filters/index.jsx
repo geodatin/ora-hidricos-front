@@ -152,8 +152,6 @@ export default function Filters() {
     setAuxAutocompleteSelection(territorySelection);
   }, [paramsLoaded]);
 
-  console.log(territorySelection);
-
   return (
     <div
       style={{

@@ -54,8 +54,6 @@ export function FilteringProvider({ embed, children }) {
       const queryObject = JSON.parse(decodedURI);
 
       setTerritorySelection(queryObject);
-
-      console.log(String(queryObject.name));
     }
     setParamsLoaded(true);
   }, []);
@@ -85,24 +83,18 @@ export function FilteringProvider({ embed, children }) {
         newQuery += `indicatorSelection=${indicatorSelection}`;
       }
 
-      const selectionAux = {};
-
       Object.keys(
         territorySelection === null || territorySelection === undefined
           ? ''
           : territorySelection
       ).forEach((key) => {
         if (territorySelection[key].length > 0) {
-          selectionAux[key] = territorySelection[key];
+          trySeparator();
+          const searchValueParams = JSON.stringify(territorySelection);
+          const searchValueEncoded = encodeURI(searchValueParams);
+          newQuery += `search=${searchValueEncoded}`;
         }
       });
-
-      if (Object.keys(selectionAux).length > 0) {
-        trySeparator();
-        const searchValueParams = JSON.stringify(selectionAux);
-        const searchValueEncoded = encodeURI(searchValueParams);
-        newQuery += `search=${searchValueEncoded}`;
-      }
 
       if (newQuery.length === initialSize) {
         return `/${process.env.REACT_APP_URL_BASE}`;
