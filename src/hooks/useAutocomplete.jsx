@@ -3,14 +3,14 @@ import { useContextSelector } from 'use-context-selector';
 import FilteringContext from '../contexts/filtering';
 
 export function useAutocomplete() {
-  const autocompleteSelection = useContextSelector(
+  const territorySelection = useContextSelector(
     FilteringContext,
-    (filtering) => filtering.values.autocompleteSelection
+    (filtering) => filtering.values.territorySelection
   );
 
-  const setAutocompleteSelection = useContextSelector(
+  const setTerritorySelection = useContextSelector(
     FilteringContext,
-    (filtering) => filtering.setters.setAutocompleteSelection
+    (filtering) => filtering.setters.setTerritorySelection
   );
 
   const autocompleteStraightSelection = useContextSelector(
@@ -24,8 +24,8 @@ export function useAutocomplete() {
   );
 
   return {
-    autocompleteSelection,
-    setAutocompleteSelection,
+    territorySelection,
+    setTerritorySelection,
     autocompleteStraightSelection,
     setAutocompleteStraightSelection,
   };

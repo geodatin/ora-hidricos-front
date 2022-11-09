@@ -4,14 +4,20 @@
 import AspectRatioRoundedIcon from '@mui/icons-material/AspectRatioRounded';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
-// import ShareIcon from '@mui/icons-material/Share';
-import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
+import ShareIcon from '@mui/icons-material/Share';
+import {
+  Checkbox,
+  CircularProgress,
+  FormControlLabel,
+  FormGroup,
+} from '@mui/material';
 import L from 'leaflet';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
+import { useQuery } from 'react-query';
 import { useContextSelector } from 'use-context-selector';
 
 import markerHumanIcon from '../../../assets/icons/map/humano1.png';
@@ -40,9 +46,9 @@ import TopoJSONPrecipitation from '../../../components/MapItems/TopoJSONPrecipit
 import TopoJSONWaterBalance from '../../../components/MapItems/TopoJSONWaterBalance';
 import MapWrapper from '../../../components/MapWrapper';
 import MapItem from '../../../components/MapWrapper/Mapitem';
-// import ShareDialog from '../../../components/ShareDialog';
+import ShareDialog from '../../../components/ShareDialog';
 import Typography from '../../../components/Typography';
-import { indicators } from '../../../constants/options';
+import { indicators, embedItems } from '../../../constants/options';
 import { darkScheme, lightScheme } from '../../../constants/schemes';
 import FilteringContext from '../../../contexts/filtering';
 import { useAllStations } from '../../../hooks/useAllStations';
@@ -51,7 +57,7 @@ import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
 import { useProjectedStations } from '../../../hooks/useProjectedStations';
-// import { useQuery as useQueryHook } from '../../../hooks/useQuery';
+import { useQuery as useQueryHook } from '../../../hooks/useQuery';
 import api from '../../../services/api';
 import useStyles from './styles';
 
@@ -81,30 +87,27 @@ export default function MonitoringMap() {
   const [coordsWaterBalance, setCoordsWaterBalance] = useState();
   const [watershedUrl, setWatershedUrl] = useState();
   const [agriculturalUrl, setAgriculturalUrl] = useState();
-  // const [openShare, setOpenShare] = useState(false);
+  const [openShare, setOpenShare] = useState(false);
+  const [coordsLoad, setCoordsLoad] = useState();
 
   const { viewProjectedStations, handleOnViewProjectedStations } =
     useProjectedStations();
   const { viewAllStations, handleOnViewAllStations } = useAllStations();
 
-  const territorySelection = useContextSelector(
-    FilteringContext,
-    (filtering) => filtering.values.territorySelection
-  );
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
   );
 
-  /* const autocompleteSelection = useContextSelector(
+  const territorySelection = useContextSelector(
     FilteringContext,
-    (filtering) => filtering.values.autocompleteSelection
+    (filtering) => filtering.values.territorySelection
   );
 
   const generateRoute = useContextSelector(
     FilteringContext,
     (filtering) => filtering.functions.generateRoute
-  ); */
+  );
   const { setMapRef } = useMap();
 
   const code = territorySelection?.code;
@@ -117,7 +120,7 @@ export default function MonitoringMap() {
   const classes = useStyles();
   const theme = useTheme();
 
-  // const query = useQueryHook();
+  const query = useQueryHook();
 
   const fishIcon = new L.Icon({
     iconUrl: markerFishIcon,
@@ -281,21 +284,20 @@ export default function MonitoringMap() {
     });
   }, [code]);
 
-  /*
   function handleShareDialog() {
     setOpenShare(!openShare);
   }
 
   const embedCustomParam = useMemo(
     () => generateRoute(''),
-    [indicatorSelection, autocompleteSelection]
+    [indicatorSelection, territorySelection]
   );
 
   const shareUrl = useMemo(
     () =>
       window.location.origin +
       generateRoute(`/${process.env.REACT_APP_URL_BASE}/filter?`),
-    [indicatorSelection, autocompleteSelection]
+    [indicatorSelection, territorySelection]
   );
 
   const embedEnabled = useMemo(() => {
@@ -312,7 +314,32 @@ export default function MonitoringMap() {
     }
 
     return true;
-  }, []); */
+  }, []);
+
+  const { isLoading, error } = useQuery('repoData', async () => {
+    const res = await fetch(
+      'https://dev-rh-ora.geodatin.com/api/waterUsers/union/points'
+    );
+    const data = await res.json();
+    setCoordsLoad(data);
+    console.log(coordsLoad);
+  });
+
+  if (isLoading)
+    return (
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
+
+  if (error) return `An error has occurred: ${error.message}`;
 
   return (
     <MapWrapper
@@ -392,24 +419,24 @@ export default function MonitoringMap() {
           <LayersRoundedIcon style={{ fontSize: 20 }} />
         </MapItem>
       }
-      /*   itemChildren={
+      itemChildren={
         <>
           <MapItem onClick={() => handleShareDialog()}>
             <ShareIcon style={{ fontSize: 18 }} />
           </MapItem>
 
-        <ShareDialog
+          <ShareDialog
             open={openShare}
             onClose={() => setOpenShare(false)}
             url={shareUrl}
-            shareMessage="Teste"
+            shareMessage="Acompanhe os dados de monitoramento hídricos"
             setOpen={setOpenShare}
             embedItems={embedItems}
             customParam={embedCustomParam}
             embedEnabled={embedEnabled}
-          /> 
-        </> 
-      } */
+          />
+        </>
+      }
       itemBottomChildren={
         <MapItem
           popupContent={
@@ -506,7 +533,7 @@ export default function MonitoringMap() {
         <>
           <TopoJSONPrecipitation
             key={theme === darkScheme ? `dark` : `light`}
-            data={coordsPrecipitation}
+            data={coordsPrecipitation === undefined ? '' : coordsPrecipitation}
             style={() => ({
               fillOpacity: 0.8,
               weight: 0,
@@ -521,7 +548,11 @@ export default function MonitoringMap() {
         <>
           <TopoJSONEvapotranspiration
             key={theme === darkScheme ? `dark` : `light`}
-            data={coordsEvapotranspiration}
+            data={
+              coordsEvapotranspiration === undefined
+                ? ''
+                : coordsEvapotranspiration
+            }
             style={() => ({
               fillOpacity: 0.8,
               weight: 0,
@@ -535,7 +566,7 @@ export default function MonitoringMap() {
         <>
           <TopoJSONWaterBalance
             key={theme === darkScheme ? `dark` : `light`}
-            data={coordsWaterBalance}
+            data={coordsWaterBalance === undefined ? '' : coordsWaterBalance}
             style={() => ({
               fillOpacity: 0.8,
               weight: 0,
@@ -553,56 +584,28 @@ export default function MonitoringMap() {
       )}
       {indicatorSelection === indicators.waterDemand.Waterways.value && (
         <>
-          <TileLayer
-            url={
-              waterUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/06de53c3b97af5222d0cb3166c78f48f-6ff39f8fcf7264e96afca3b0b76d6abd/tiles/{z}/{x}/{y}'
-                : waterUrl?.url
-            }
-            zIndex={2}
-          />
+          <TileLayer url={waterUrl?.url} zIndex={2} />
           <GetPopupWaterway />
         </>
       )}
 
       {indicatorSelection === indicators.ground.minesMining.value && (
         <>
-          <TileLayer
-            url={
-              mineUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/2331ff62d07cbc51fd01f63f94ec62d1-66976cfe78f1a412385f17be6d897f27/tiles/{z}/{x}/{y}'
-                : mineUrl?.url
-            }
-            zIndex={2}
-          />
+          <TileLayer url={mineUrl?.url} zIndex={2} />
           <GetPopupMiningMine />
         </>
       )}
 
       {indicatorSelection === indicators.waterResources.wetlands.value && (
         <>
-          <TileLayer
-            url={
-              wetlandsUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/da5a942cb234453f93a789f81ede2ab0-430aca5892b6c060f4fd9eefe3195ab4/tiles/{z}/{x}/{y}'
-                : wetlandsUrl?.url
-            }
-            zIndex={2}
-          />
+          <TileLayer url={wetlandsUrl?.url} zIndex={2} />
           <GetPopupWetlands />
         </>
       )}
 
       {indicatorSelection === indicators.mercury.IPPO.value && (
         <>
-          <TileLayer
-            url={
-              pollutionUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/b4a9a58aeb4d9821ba4c0e72c17d158f-b2cd7dde7e91f6d11d27c11bd3cdb73e/tiles/{z}/{x}/{y}'
-                : pollutionUrl?.url
-            }
-            zIndex={2}
-          />
+          <TileLayer url={pollutionUrl?.url} zIndex={2} />
           <GetPopupIPPO />
         </>
       )}
@@ -617,10 +620,7 @@ export default function MonitoringMap() {
       {indicatorSelection ===
         indicators.generalFeatures.watershedArea.value && (
         <>
-          <TileLayer
-            url={watershedUrl === undefined ? '' : watershedUrl.url}
-            zIndex={2}
-          />
+          <TileLayer url={watershedUrl.url} zIndex={2} />
           <GetPopupWatershed />
         </>
       )}

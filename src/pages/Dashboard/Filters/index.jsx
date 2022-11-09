@@ -10,6 +10,8 @@ import ShareDialog from '../../../components/ShareDialog';
 import TitleButton from '../../../components/TitleButton';
 import { filterDefaults, indicators } from '../../../constants/options';
 import FilteringContext from '../../../contexts/filtering';
+import NavigationContext from '../../../contexts/navigation';
+import { useAutocomplete } from '../../../hooks/useAutocomplete';
 import api from '../../../services/api';
 import useStyles from './styles';
 
@@ -18,18 +20,40 @@ import useStyles from './styles';
  * @returns filters components
  */
 export default function Filters() {
+  const { territorySelection, setTerritorySelection } = useAutocomplete();
+
   const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
   const [firstLoad, setFirstLoad] = useState(true);
+
+  const indicatorSelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelection
+  );
+
+  const indicatorSelectionTerritory = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.indicatorSelectionTerritory
+  );
+
+  const setIndicatorSelectionTerritory = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.setters.setIndicatorSelectionTerritory
+  );
 
   const setIndicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.setters.setIndicatorSelection
   );
 
-  const setTerritorySelection = useContextSelector(
+  const handleOnFilterApplied = useContextSelector(
+    NavigationContext,
+    (navigation) => navigation.functions.handleOnFilterApplied
+  );
+
+  const paramsLoaded = useContextSelector(
     FilteringContext,
-    (filtering) => filtering.setters.setTerritorySelection
+    (filtering) => filtering.loaders.paramsLoaded
   );
 
   const classes = useStyles();
@@ -37,16 +61,14 @@ export default function Filters() {
   const [autocompleteLoading, setAutocompleteLoading] = useState(false);
   const [noOptionsTextSelector, setNoOptionsTextSelector] = useState(false);
   const [autocompleteOptions, setAutocompleteOptions] = useState([]);
-  const [auxAutocompleteSelection, setAuxAutocompleteSelection] = useState(
-    filterDefaults.territorySelection
-  );
+  const [auxAutocompleteSelection, setAuxAutocompleteSelection] =
+    useState(territorySelection);
 
-  const [auxIndicatorSelection, setAuxIndicatorSelection] = useState(
-    filterDefaults.indicatorSelection
-  );
+  const [auxIndicatorSelection, setAuxIndicatorSelection] =
+    useState(indicatorSelection);
 
   const [auxIndicatorSelectionTerritory, setAuxIndicatorSelectionTerritory] =
-    useState(filterDefaults.indicatorSelectionTerritory);
+    useState(indicatorSelectionTerritory);
 
   const [inputValue, setInputValue] = useState('');
 
@@ -54,6 +76,8 @@ export default function Filters() {
    * Set the selection to context.
    */
   function applySelection() {
+    handleOnFilterApplied();
+    setIndicatorSelectionTerritory(auxIndicatorSelectionTerritory);
     setIndicatorSelection(auxIndicatorSelection);
     setTerritorySelection(auxAutocompleteSelection);
     setApplyDisabled(true);
@@ -123,8 +147,12 @@ export default function Filters() {
   }
 
   useEffect(() => {
-    setAuxAutocompleteSelection(filterDefaults.territorySelection);
-  }, [auxIndicatorSelection, auxIndicatorSelectionTerritory]);
+    setAuxIndicatorSelection(indicatorSelection);
+    setAuxIndicatorSelectionTerritory(indicatorSelectionTerritory);
+    setAuxAutocompleteSelection(territorySelection);
+  }, [paramsLoaded]);
+
+  console.log(territorySelection);
 
   return (
     <div
@@ -154,7 +182,7 @@ export default function Filters() {
                 indicators.generalFeatures.value
               );
               setAuxIndicatorSelection(
-                indicators.generalFeatures.watershedArea.value
+                indicators.generalFeatures.hydrogeochemicalCharacteristics.value
               );
             }}
           >
