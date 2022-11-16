@@ -52,7 +52,7 @@ export default function DocumentsTable({
 
     return documentsTable.filter(
       (documents) =>
-        documents['Nome do projeto  ou iniciativa']
+        documents['Nome do projeto ou iniciativa']
           .toLowerCase()
           .includes(lowerSearch) ||
         documents.Categoria.toLowerCase().includes(lowerSearch)
@@ -130,7 +130,7 @@ export default function DocumentsTable({
         >
           <TableHead>
             <TableRow>
-              <TableCell style={{ minWidth: '120px' }}>
+              <TableCell style={{ minWidth: '200px' }}>
                 Nome do projeto ou iniciativa
               </TableCell>
               <TableCell style={{ minWidth: '120px' }}>Categoria</TableCell>
@@ -152,10 +152,10 @@ export default function DocumentsTable({
                 <TableCell
                   style={{
                     color: theme.neutral.gray.main,
-                    minWidth: '120px',
+                    minWidth: '200px',
                   }}
                 >
-                  {documents['Nome do projeto  ou iniciativa']}
+                  {documents['Nome do projeto ou iniciativa']}
                 </TableCell>
                 <TableCell
                   style={{ color: theme.neutral.gray.main, minWidth: '120px' }}
@@ -180,7 +180,7 @@ export default function DocumentsTable({
                 <TableCell
                   style={{ color: theme.neutral.gray.main, minWidth: '200px' }}
                 >
-                  {documents['Contribuições  para Qualidade da  Água']}
+                  {documents['Contribuições para Qualidade da Água']}
                 </TableCell>
               </TableRow>
             ))}
