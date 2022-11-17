@@ -20,8 +20,14 @@ import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useQuery } from 'react-query';
 import { useContextSelector } from 'use-context-selector';
 
-import markerHumanIcon from '../../../assets/icons/map/humano1.png';
-import markerFishIcon from '../../../assets/icons/map/peixe1.png';
+import markerFish1Icon from '../../../assets/icons/map/fish1.png';
+import markerFish2Icon from '../../../assets/icons/map/fish2.png';
+import markerFish3Icon from '../../../assets/icons/map/fish3.png';
+import markerFish4Icon from '../../../assets/icons/map/fish4.png';
+import markerHuman1Icon from '../../../assets/icons/map/human1.png';
+import markerHuman2Icon from '../../../assets/icons/map/human2.png';
+import markerHuman3Icon from '../../../assets/icons/map/human3.png';
+import markerHuman4Icon from '../../../assets/icons/map/human4.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import StateJson from '../../../assets/shapes/StateJson.json';
@@ -35,6 +41,8 @@ import GetPopupWaterway from '../../../components/MapItems/GetPopupWaterway';
 import GetPopupWetlands from '../../../components/MapItems/GetPopupWetlands';
 import LegendEvapotranspiration from '../../../components/MapItems/LegendEvapotranspiration';
 import LegendHydroeletric from '../../../components/MapItems/LegendHydroeletric';
+import LegendMercuryFish from '../../../components/MapItems/LegendMercuryFish';
+import LegendMercuryHuman from '../../../components/MapItems/LegendMercuryHuman';
 import LegendOil from '../../../components/MapItems/LegendOil';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
 import LegendWaterBalance from '../../../components/MapItems/LegendWaterBalance';
@@ -122,16 +130,58 @@ export default function MonitoringMap() {
 
   const query = useQueryHook();
 
-  const fishIcon = new L.Icon({
-    iconUrl: markerFishIcon,
-    iconSize: [16, 16],
+  const fish1Icon = new L.Icon({
+    iconUrl: markerFish1Icon,
+    iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
 
-  const humanIcon = new L.Icon({
-    iconUrl: markerHumanIcon,
-    iconSize: [16, 16],
+  const fish2Icon = new L.Icon({
+    iconUrl: markerFish2Icon,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const fish3Icon = new L.Icon({
+    iconUrl: markerFish3Icon,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const fish4con = new L.Icon({
+    iconUrl: markerFish4Icon,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const human1Icon = new L.Icon({
+    iconUrl: markerHuman1Icon,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const human2Icon = new L.Icon({
+    iconUrl: markerHuman2Icon,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const human3Icon = new L.Icon({
+    iconUrl: markerHuman3Icon,
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, -34],
+  });
+
+  const human4Icon = new L.Icon({
+    iconUrl: markerHuman4Icon,
+    iconSize: [24, 24],
     iconAnchor: [12, 12],
     popupAnchor: [1, -34],
   });
@@ -651,330 +701,376 @@ export default function MonitoringMap() {
         '') ||
         (indicatorSelection === indicators.mercury.mercuryHuman.value &&
           coordsHuman?.features?.map((cord) => (
-            <Marker
-              key={cord.properties.code}
-              position={[
-                cord.geometry.coordinates[1],
-                cord.geometry.coordinates[0],
-              ]}
-              icon={humanIcon}
-            >
-              <Popup
-                className={classes.popup}
-                key={theme === darkScheme ? `dark` : `light`}
+            <>
+              <Marker
+                key={cord.properties.code}
+                position={[
+                  cord.geometry.coordinates[1],
+                  cord.geometry.coordinates[0],
+                ]}
+                icon={(() => {
+                  if (cord.properties.hgMean < 2) {
+                    return human1Icon;
+                  }
+                  if (
+                    cord.properties.hgMean >= 2 &&
+                    cord.properties.hgMean < 6
+                  ) {
+                    return human2Icon;
+                  }
+                  if (
+                    cord.properties.hgMean >= 6 &&
+                    cord.properties.hgMean <= 10
+                  ) {
+                    return human3Icon;
+                  }
+                  if (cord.properties.hgMean > 10) {
+                    return human4Icon;
+                  }
+                  return null;
+                })()}
               >
-                <Typography variant="caption" format="bold">
-                  {cord.properties.state}
-                </Typography>
-                <div className={classes.separator} />
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Publication year
+                <Popup
+                  className={classes.popup}
+                  key={theme === darkScheme ? `dark` : `light`}
+                >
+                  <Typography variant="caption" format="bold">
+                    {cord.properties.state}
                   </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.publicationYear === null
-                      ? '--'
-                      : cord.properties.publicationYear}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Study
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.study === null
-                      ? '--'
-                      : cord.properties.study}
-                  </Typography>
-                </div>
+                  <div className={classes.separator} />
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Publication year
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.publicationYear === null
+                        ? '--'
+                        : cord.properties.publicationYear}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Study
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.study === null
+                        ? '--'
+                        : cord.properties.study}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    hgMin
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.hgMin === null
-                      ? '--'
-                      : cord.properties.hgMin}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      hgMin
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.hgMin === null
+                        ? '--'
+                        : cord.properties.hgMin}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    hgMax
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.hgMax === null
-                      ? '--'
-                      : cord.properties.hgMax}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      hgMax
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.hgMax === null
+                        ? '--'
+                        : cord.properties.hgMax}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    hgMean
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.hgMean === null
-                      ? '--'
-                      : cord.properties.hgMean}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      hgMean
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.hgMean === null
+                        ? '--'
+                        : cord.properties.hgMean}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Author
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.author === null
-                      ? '--'
-                      : cord.properties.author}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Title
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.title === null
-                      ? '--'
-                      : cord.properties.title}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Age group
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.ageGroup === null
-                      ? '--'
-                      : cord.properties.ageGroup}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Collection year
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.collectionYear === '-' ||
-                    cord.properties.collectionYear === null
-                      ? '--'
-                      : cord.properties.collectionYear}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Community
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.community === null
-                      ? '--'
-                      : cord.properties.community}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Author
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.author === null
+                        ? '--'
+                        : cord.properties.author}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Title
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.title === null
+                        ? '--'
+                        : cord.properties.title}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Age group
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.ageGroup === null
+                        ? '--'
+                        : cord.properties.ageGroup}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Collection year
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.collectionYear === '-' ||
+                      cord.properties.collectionYear === null
+                        ? '--'
+                        : cord.properties.collectionYear}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Community
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.community === null
+                        ? '--'
+                        : cord.properties.community}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Measurement unit
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.measurementUnit === null
-                      ? '--'
-                      : cord.properties.measurementUnit}
-                  </Typography>
-                </div>
-              </Popup>
-            </Marker>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Measurement unit
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.measurementUnit === null
+                        ? '--'
+                        : cord.properties.measurementUnit}
+                    </Typography>
+                  </div>
+                </Popup>
+              </Marker>
+              <LegendMercuryHuman />
+            </>
           ))) ||
         (indicatorSelection === indicators.mercury.mercuryFish.value &&
           coordsFish?.features?.map((cord) => (
-            <Marker
-              key={cord.properties.code}
-              position={[
-                cord.geometry.coordinates[1],
-                cord.geometry.coordinates[0],
-              ]}
-              icon={fishIcon}
-            >
-              <Popup
-                className={classes.popup}
-                key={theme === darkScheme ? `dark` : `light`}
+            <>
+              <Marker
+                key={cord.properties.code}
+                position={[
+                  cord.geometry.coordinates[1],
+                  cord.geometry.coordinates[0],
+                ]}
+                icon={(() => {
+                  if (cord.properties.hgMean < 0.1) {
+                    return fish1Icon;
+                  }
+                  if (
+                    cord.properties.hgMean >= 0.1 &&
+                    cord.properties.hgMean < 0.5
+                  ) {
+                    return fish2Icon;
+                  }
+                  if (
+                    cord.properties.hgMean >= 0.5 &&
+                    cord.properties.hgMean <= 1.0
+                  ) {
+                    return fish3Icon;
+                  }
+                  if (cord.properties.hgMean > 1.0) {
+                    return fish4con;
+                  }
+                  return null;
+                })()}
               >
-                <Typography variant="caption" format="bold">
-                  {cord.properties.state}
-                </Typography>
-                <div className={classes.separator} />
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Publication year
+                <Popup
+                  className={classes.popup}
+                  key={theme === darkScheme ? `dark` : `light`}
+                >
+                  <Typography variant="caption" format="bold">
+                    {cord.properties.state}
                   </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.publicationYear === null
-                      ? '--'
-                      : cord.properties.publicationYear}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Study
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.study === null
-                      ? '--'
-                      : cord.properties.study}
-                  </Typography>
-                </div>
+                  <div className={classes.separator} />
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Publication year
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.publicationYear === null
+                        ? '--'
+                        : cord.properties.publicationYear}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Study
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.study === null
+                        ? '--'
+                        : cord.properties.study}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    hgMin
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.hgMin === null
-                      ? '--'
-                      : cord.properties.hgMin}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      hgMin
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.hgMin === null
+                        ? '--'
+                        : cord.properties.hgMin}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    hgMax
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.hgMax === null
-                      ? '--'
-                      : cord.properties.hgMax}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      hgMax
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.hgMax === null
+                        ? '--'
+                        : cord.properties.hgMax}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    hgMean
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.hgMean === null
-                      ? '--'
-                      : cord.properties.hgMean}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      hgMean
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.hgMean === null
+                        ? '--'
+                        : cord.properties.hgMean}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Author
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.author === null
-                      ? '--'
-                      : cord.properties.author}
-                  </Typography>
-                </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Author
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.author === null
+                        ? '--'
+                        : cord.properties.author}
+                    </Typography>
+                  </div>
 
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Title
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.title === null
-                      ? '--'
-                      : cord.properties.title}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Collection year
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.collectionYear === '-' ||
-                    cord.properties.collectionYear === null
-                      ? '--'
-                      : cord.properties.collectionYear}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Community
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.community === null
-                      ? '--'
-                      : cord.properties.community}
-                  </Typography>
-                </div>
-                <div className={classes.popupItem}>
-                  <Typography
-                    variant="caption"
-                    className={classes.popupItemTitle}
-                  >
-                    Measurement unit
-                  </Typography>
-                  <Typography variant="caption">
-                    {cord.properties.measurementUnit === null
-                      ? '--'
-                      : cord.properties.measurementUnit}
-                  </Typography>
-                </div>
-              </Popup>
-            </Marker>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Title
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.title === null
+                        ? '--'
+                        : cord.properties.title}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Collection year
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.collectionYear === '-' ||
+                      cord.properties.collectionYear === null
+                        ? '--'
+                        : cord.properties.collectionYear}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Community
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.community === null
+                        ? '--'
+                        : cord.properties.community}
+                    </Typography>
+                  </div>
+                  <div className={classes.popupItem}>
+                    <Typography
+                      variant="caption"
+                      className={classes.popupItemTitle}
+                    >
+                      Measurement unit
+                    </Typography>
+                    <Typography variant="caption">
+                      {cord.properties.measurementUnit === null
+                        ? '--'
+                        : cord.properties.measurementUnit}
+                    </Typography>
+                  </div>
+                </Popup>
+              </Marker>
+              <LegendMercuryFish />
+            </>
           ))) ||
         (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
           <MarkerClusterGroup
