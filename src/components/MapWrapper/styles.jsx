@@ -10,7 +10,7 @@ const useStyles = createUseStyles({
   },
   itemContainer: {
     position: 'absolute',
-    left: 290,
+    left: 380,
     top: 10,
 
     '& > div': {

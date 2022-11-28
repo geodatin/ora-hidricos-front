@@ -1,28 +1,24 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles((theme) => ({
-  filtersNotificationsWrapper: {
-    minWidth: 280,
-  },
-  filtersNotificationsWrapperZ: {
-    minWidth: 280,
-    zIndex: 0,
-  },
   filtersWrapper: {
+    minWidth: 370,
     borderRight: `1px solid ${theme.stroke.dark}`,
-    borderBottom: `1px solid ${theme.stroke.dark}`,
-    height: 400,
-    padding: 15,
+    overflow: 'auto',
+    height: '100vh',
+    padding: 8,
     backgroundColor: theme.background.main,
     zIndex: 998,
   },
   filtersMobileWrapper: {
     position: 'absolute',
     top: 'initial',
+    overflow: 'auto',
+    borderTop: `1px solid ${theme.stroke.dark}`,
+    padding: 8,
     bottom: 0,
-    height: 450,
+    height: 250,
     borderRadius: '10px 10px 0px 0px',
-    padding: 15,
   },
   notificationsWrapper: {
     padding: 15,
@@ -31,7 +27,7 @@ const useStyles = createUseStyles((theme) => ({
   notificationsMobileWrapper: { padding: 15 },
   breadBarWrapper: {
     padding: 15,
-    borderBottom: `1px solid ${theme.stroke.dark}`,
+    marginLeft: 120,
   },
   mapWrapper: {},
   statisticsWrapper: {

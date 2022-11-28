@@ -3,6 +3,7 @@ import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from 'react-jss';
 import { useContextSelector } from 'use-context-selector';
 
 import Breadcrumb from '../../components/Breadcrumb';
@@ -14,7 +15,7 @@ import FilteringContext from '../../contexts/filtering';
 import { useLayoutConfig } from '../../hooks/useLayoutConfig';
 import { useMobile } from '../../hooks/useMobile';
 import { useQuery } from '../../hooks/useQuery';
-import Filters from './Filters';
+import Filters2 from './Filters2';
 import InfoPanel from './InfoPanel';
 import Statistics from './InfoPanel/Statistics';
 import MonitoringMap from './MonitoringMap';
@@ -36,6 +37,7 @@ function Dashboard() {
   const { layoutConfig, setLayoutConfig } = useLayoutConfig();
   const [mainTopSection, setMainTopSection] = useState(true);
   const { isMobile, mobileNavValue, setMobileNavValue } = useMobile();
+  const theme = useTheme();
 
   const query = useQuery();
 
@@ -275,7 +277,7 @@ function Dashboard() {
           icon: <ManageSearchRoundedIcon />,
           navContainer: {
             className: classes.filtersMobileWrapper,
-            children: <Filters />,
+            children: <Filters2 />,
           },
         },
         {
@@ -323,12 +325,24 @@ function Dashboard() {
         children: (
           <VLayout
             upRow={{
-              className: classes.filtersWrapper,
-              children: <Filters />,
+              children: (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    height: '50px',
+                    width: '380px',
+                    borderBottom: `1px solid ${theme.stroke.dark}`,
+                  }}
+                >
+                  <h1>Filtros</h1>
+                </div>
+              ),
             }}
             mainContainer={{
-              className: classes.notificationsWrapper,
-              children: <div />,
+              className: classes.filtersWrapper,
+              children: <Filters2 />,
             }}
           />
         ),

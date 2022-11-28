@@ -8,13 +8,15 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.background.main,
     flexDirection: 'column',
     position: 'absolute',
-    bottom: 160,
-    left: 20,
+    bottom: 110,
+    left: 380,
     zIndex: 99999,
     padding: '1em',
     width: '16rem',
     '@media (max-width: 600px)': {
       width: '12rem',
+      bottom: 120,
+      left: 6,
     },
   },
   separator: {

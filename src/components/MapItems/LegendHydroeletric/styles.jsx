@@ -8,11 +8,16 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.background.main,
     flexDirection: 'column',
     position: 'absolute',
-    bottom: 160,
-    left: 20,
+    bottom: 110,
+    left: 380,
     zIndex: 99999,
     padding: '0.5rem',
     width: '18rem',
+    '@media (max-width: 600px)': {
+      width: '12rem',
+      bottom: 120,
+      left: 6,
+    },
   },
   separator: {
     backgroundColor: theme.stroke.dark,
@@ -25,6 +30,9 @@ const useStyles = createUseStyles((theme) => ({
     color: theme === darkScheme ? '#FFFFFF' : '#000000',
     fontSize: '1.2em',
     fontWeight: 'bold',
+    '@media (max-width: 600px)': {
+      fontSize: '0.8em',
+    },
   },
   content: {
     zIndex: 99999,
@@ -34,6 +42,9 @@ const useStyles = createUseStyles((theme) => ({
     margin: '0.2rem',
     fontSize: '1.2em',
     fontWeight: 'bold',
+    '@media (max-width: 600px)': {
+      fontSize: '0.7em',
+    },
   },
 
   image: {
