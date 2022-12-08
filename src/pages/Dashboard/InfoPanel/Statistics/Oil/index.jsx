@@ -1,19 +1,10 @@
-import { InfoOutlined } from '@mui/icons-material';
-import FullscreenRoundedIcon from '@mui/icons-material/FullscreenRounded';
-import { IconButton } from '@mui/material';
-import PropTypes from 'prop-types';
-import React, { useEffect, useRef, useState } from 'react';
-import { useFullScreenHandle } from 'react-full-screen';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { useContextSelector } from 'use-context-selector';
 
-import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
-import DataDough from '../../../../../components/Charts/DataDough';
 import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import Treemap from '../../../../../components/Charts/Treemap';
-import CustomTooltip from '../../../../../components/CustomTooltip';
-import Typography from '../../../../../components/Typography';
 import FilteringContext from '../../../../../contexts/filtering';
 import api from '../../../../../services/api';
 import { getTextWidth } from '../../../../../utils/helpers';
@@ -22,19 +13,7 @@ import useStyles from './styles';
 /* This function provides a statistics list of oil
  * @returns statistics list
  */
-export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
-  Oil.propTypes = {
-    extraButton: PropTypes.node,
-    fullScreenEnabled: PropTypes.bool,
-    csvCallback: PropTypes.func,
-  };
-
-  Oil.defaultProps = {
-    extraButton: undefined,
-    csvCallback: undefined,
-    fullScreenEnabled: false,
-  };
-
+export default function Oil() {
   const territorySelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.territorySelection
@@ -43,9 +22,6 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
 
   const theme = useTheme();
   const classes = useStyles();
-
-  const childrenref = useRef(null);
-  const refContainer = useRef();
 
   const { t } = useTranslation();
 
@@ -56,28 +32,7 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
   });
 
   const [treemapData, setTreemapData] = useState();
-  const handle = useFullScreenHandle();
   const [rankingData, setRankingData] = useState();
-  const [totalData, setTotalData] = useState();
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`oil/field/total`, {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setTotalData(data);
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [code, t]);
 
   const pageAtual = rankingParams.page;
 
@@ -399,61 +354,6 @@ export default function Oil({ extraButton, csvCallback, fullScreenEnabled }) {
 
   return (
     <ul>
-      <div className={classes.wrapper}>
-        <div className={classes.header}>
-          <div className={classes.headerTitle}>
-            <Typography variant="body" format="bold">
-              {t('specific.oil.pieChart.title')}
-            </Typography>
-            <CustomTooltip
-              title={t('specific.oil.pieChart.title')}
-              placement="bottom"
-            >
-              <div className={classes.tooltipInner}>
-                <InfoOutlined
-                  style={{
-                    color: theme.secondary.dark,
-                    fontSize: '18px',
-                  }}
-                />
-              </div>
-            </CustomTooltip>
-          </div>
-
-          <div>
-            {extraButton && extraButton}
-            {fullScreenEnabled && (
-              <IconButton
-                id="export-button"
-                className={classes.button}
-                onClick={handle.enter}
-              >
-                <FullscreenRoundedIcon
-                  style={{ fontSize: 20, color: theme.secondary.dark }}
-                />
-              </IconButton>
-            )}
-            <ChartExportMenu
-              csvCallback={csvCallback}
-              containerRef={refContainer}
-              childrenRef={childrenref}
-            />
-          </div>
-        </div>
-        <div ref={childrenref}>
-          <DataDough
-            value={totalData?.count}
-            sufix={
-              totalData?.count > 1
-                ? t('specific.oil.pieChart.plural')
-                : t('specific.oil.pieChart.singular')
-            }
-            color="#ec249c"
-            scale={1.2}
-          />
-        </div>
-      </div>
-
       <RankingCustom
         title={t('specific.oil.rankingChart.title')}
         info={t('specific.oil.rankingChart.info')}

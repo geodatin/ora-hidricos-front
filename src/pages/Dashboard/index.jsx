@@ -3,10 +3,8 @@ import ManageSearchRoundedIcon from '@mui/icons-material/ManageSearchRounded';
 import MapRoundedIcon from '@mui/icons-material/MapRounded';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useTheme } from 'react-jss';
 import { useContextSelector } from 'use-context-selector';
 
-import Breadcrumb from '../../components/Breadcrumb';
 import HLayout from '../../components/Layout/Horizontal';
 import MobileNavbarLayout from '../../components/Layout/Mobile/Navbar';
 import VLayout from '../../components/Layout/Vertical';
@@ -35,9 +33,8 @@ function Dashboard() {
     (filtering) => filtering.values.embed
   );
   const { layoutConfig, setLayoutConfig } = useLayoutConfig();
-  const [mainTopSection, setMainTopSection] = useState(true);
+  const [setMainTopSection] = useState(true);
   const { isMobile, mobileNavValue, setMobileNavValue } = useMobile();
-  const theme = useTheme();
 
   const query = useQuery();
 
@@ -296,19 +293,6 @@ function Dashboard() {
         className: classes.breadMapWrapper,
         children: (
           <VLayout
-            upRow={
-              mainTopSection
-                ? {
-                    className: classes.breadBarWrapper,
-                    children: (
-                      <Breadcrumb
-                        items={['Monitoramento', 'Todas as redes']}
-                        onClickItem={() => {}}
-                      />
-                    ),
-                  }
-                : undefined
-            }
             mainContainer={{
               className: classes.map,
               children: <MonitoringMap />,
@@ -325,20 +309,7 @@ function Dashboard() {
         children: (
           <VLayout
             upRow={{
-              children: (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    height: '50px',
-                    width: '380px',
-                    borderBottom: `1px solid ${theme.stroke.dark}`,
-                  }}
-                >
-                  <h1>Filtros</h1>
-                </div>
-              ),
+              children: <div />,
             }}
             mainContainer={{
               className: classes.filtersWrapper,

@@ -1,21 +1,12 @@
-import {
-  ListSubheader,
-  MenuItem,
-  createTheme,
-  ThemeProvider,
-} from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { MenuItem, createTheme, ThemeProvider } from '@mui/material';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { useContextSelector } from 'use-context-selector';
 
-import AutocompleteSearch from '../../../components/AutocompleteSearch';
-import ShareDialog from '../../../components/ShareDialog';
 import Typography from '../../../components/Typography';
 import { indicators } from '../../../constants/options';
 import FilteringContext from '../../../contexts/filtering';
-import { useAutocomplete } from '../../../hooks/useAutocomplete';
-import api from '../../../services/api';
 import useStyles from './styles';
 
 /**
@@ -23,9 +14,6 @@ import useStyles from './styles';
  * @returns filters components
  */
 export default function Filters2() {
-  const { territorySelection } = useAutocomplete();
-
-  const [open, setOpen] = React.useState(false);
   const { t } = useTranslation();
 
   const indicatorSelection = useContextSelector(
@@ -38,67 +26,8 @@ export default function Filters2() {
     (filtering) => filtering.setters.setIndicatorSelection
   );
 
-  const paramsLoaded = useContextSelector(
-    FilteringContext,
-    (filtering) => filtering.loaders.paramsLoaded
-  );
-
   const classes = useStyles();
   const theme = useTheme();
-  const [setApplyDisabled] = useState(true);
-  const [autocompleteLoading, setAutocompleteLoading] = useState(false);
-  const [noOptionsTextSelector, setNoOptionsTextSelector] = useState(false);
-  const [autocompleteOptions, setAutocompleteOptions] = useState([]);
-  const [auxAutocompleteSelection, setAuxAutocompleteSelection] =
-    useState(territorySelection);
-
-  const [auxIndicatorSelection, setAuxIndicatorSelection] =
-    useState(indicatorSelection);
-
-  const [inputValue, setInputValue] = useState('');
-
-  function onAutocompleteInputChange(newInput) {
-    let subscribed = true;
-
-    if (newInput.length > 0) {
-      setNoOptionsTextSelector(true);
-      setAutocompleteLoading(true);
-
-      api
-        .get(`/territory/${newInput}`, {
-          params: {
-            type:
-              auxIndicatorSelection ===
-              indicators.waterResources.waterSurface.value
-                ? 'waterSurface'
-                : '',
-          },
-        })
-        .then(({ data }) => {
-          if (subscribed) {
-            setAutocompleteOptions(data);
-            setAutocompleteLoading(false);
-          }
-        });
-    } else {
-      setNoOptionsTextSelector(false);
-      setAutocompleteOptions([]);
-    }
-
-    return () => {
-      subscribed = false;
-    };
-  }
-
-  function handleAutocompleteSelect(newItem) {
-    setAuxAutocompleteSelection(newItem);
-    setApplyDisabled(false);
-  }
-
-  useEffect(() => {
-    setAuxIndicatorSelection(indicatorSelection);
-    setAuxAutocompleteSelection(territorySelection);
-  }, [paramsLoaded]);
 
   return (
     <div
@@ -107,6 +36,23 @@ export default function Filters2() {
         flexDirection: 'column',
       }}
     >
+      <div
+        style={{
+          display: 'flex',
+          position: 'absolute',
+          alignItems: 'center',
+          justifyContent: 'center',
+          top: '50px',
+          left: '0',
+          height: '50px',
+          width: '370px',
+          borderBottom: `1px solid ${theme.stroke.dark}`,
+          zIndex: 100,
+          backgroundColor: theme.background.main,
+        }}
+      >
+        Filtros
+      </div>
       <ThemeProvider
         theme={createTheme({
           components: {
@@ -578,100 +524,6 @@ export default function Filters2() {
                 {t(indicators.waterGovernance.countryReports.translation)}
               </MenuItem> */}
       </ThemeProvider>
-      {auxIndicatorSelection === indicators.waterDemand.hydroelectric.value && (
-        <div>
-          <AutocompleteSearch
-            options={autocompleteOptions}
-            onSelect={(e) => handleAutocompleteSelect(e)}
-            onInputChange={(e, newInput) => {
-              onAutocompleteInputChange(newInput);
-            }}
-            getOptionLabel={(option) => option.name}
-            noOptionsText={
-              noOptionsTextSelector
-                ? t('specific.autocompletesearch.noOptionsText')
-                : t('specific.autocompletesearch.emptyText')
-            }
-            loadingText={t('specific.autocompletesearch.loadingText')}
-            loading={autocompleteLoading}
-            renderGroup={(params, index) => [
-              <ListSubheader
-                classes={{ root: classes.autocompleteGroup }}
-                key={`${params.group}_${index}`}
-                component="div"
-              >
-                {params.group}
-              </ListSubheader>,
-              params.children,
-            ]}
-            renderOption={(props, option) => (
-              <li {...props} key={option.code}>
-                {option.name}
-              </li>
-            )}
-            paperClass={classes.autocompletePaper}
-            defaultValue={auxAutocompleteSelection}
-            value={auxAutocompleteSelection}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            isOptionEqualToValue={(option, value) => option.code === value.code}
-          />
-        </div>
-      )}
-      {auxIndicatorSelection ===
-        indicators.waterResources.waterSurface.value && (
-        <div>
-          <AutocompleteSearch
-            options={autocompleteOptions}
-            onSelect={(e) => handleAutocompleteSelect(e)}
-            onInputChange={(e, newInput) => {
-              onAutocompleteInputChange(newInput);
-            }}
-            getOptionLabel={(option) => option.name}
-            noOptionsText={
-              noOptionsTextSelector
-                ? t('specific.autocompletesearch.noOptionsText')
-                : t('specific.autocompletesearch.emptyText')
-            }
-            loadingText={t('specific.autocompletesearch.loadingText')}
-            loading={autocompleteLoading}
-            renderGroup={(params, index) => [
-              <ListSubheader
-                classes={{ root: classes.autocompleteGroup }}
-                key={`${params.group}_${index}`}
-                component="div"
-              >
-                {params.group}
-              </ListSubheader>,
-              params.children,
-            ]}
-            renderOption={(props, option) => (
-              <li {...props} key={option.code}>
-                {option.name}
-              </li>
-            )}
-            paperClass={classes.autocompletePaper}
-            defaultValue={auxAutocompleteSelection}
-            value={auxAutocompleteSelection}
-            inputValue={inputValue}
-            setInputValue={setInputValue}
-            isOptionEqualToValue={(option, value) => option.code === value.code}
-          />
-        </div>
-      )}
-
-      <ShareDialog
-        open={open}
-        onClose={() => setOpen(false)}
-        url={window.location.href}
-        shareMessage="a"
-        setOpen={(b) => setOpen(b)}
-        embedItems={[
-          { label: 'label1', key: 'key1', defaultOption: false },
-          { label: 'label2', key: 'key2', defaultOption: true },
-          { label: 'label3', key: 'key3', defaultOption: true },
-        ]}
-      />
     </div>
   );
 }

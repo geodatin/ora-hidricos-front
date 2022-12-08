@@ -47,7 +47,7 @@ export default function Markers({ data }) {
     iconUrl:
       'https://visualpharm.com/assets/825/Marker-595b40b75ba036ed117d9f54.svg',
     iconSize: [18, 18],
-    iconAnchor: [12, 12],
+    iconAnchor: [24, 24],
     popupAnchor: [1, -34],
   });
 
