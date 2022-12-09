@@ -6,10 +6,11 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LayersRoundedIcon from '@mui/icons-material/LayersRounded';
 import ShareIcon from '@mui/icons-material/Share';
 import {
-  Checkbox,
   CircularProgress,
   FormControlLabel,
   FormGroup,
+  Radio,
+  RadioGroup,
 } from '@mui/material';
 import L from 'leaflet';
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
@@ -31,6 +32,7 @@ import markerHuman4Icon from '../../../assets/icons/map/human4.png';
 import BorderGeojson from '../../../assets/shapes/border.json';
 import InverseShape from '../../../assets/shapes/inverseShape.json';
 import StateJson from '../../../assets/shapes/StateJson.json';
+import WatershedGeojson from '../../../assets/shapes/subwatersheds.json';
 import 'leaflet/dist/leaflet.css';
 import GetPopupAgricultural from '../../../components/MapItems/GetPopupAgricultural';
 import GetPopupIPPO from '../../../components/MapItems/GetPopupIPPO';
@@ -59,12 +61,10 @@ import Typography from '../../../components/Typography';
 import { indicators, embedItems } from '../../../constants/options';
 import { darkScheme, lightScheme } from '../../../constants/schemes';
 import FilteringContext from '../../../contexts/filtering';
-import { useAllStations } from '../../../hooks/useAllStations';
 import { useDisclaimer } from '../../../hooks/useDisclaimer';
 import { useLayoutConfig } from '../../../hooks/useLayoutConfig';
 import { useMap } from '../../../hooks/useMap';
 import { useMobile } from '../../../hooks/useMobile';
-import { useProjectedStations } from '../../../hooks/useProjectedStations';
 import { useQuery as useQueryHook } from '../../../hooks/useQuery';
 import api from '../../../services/api';
 import useStyles from './styles';
@@ -98,10 +98,6 @@ export default function MonitoringMap() {
   const [openShare, setOpenShare] = useState(false);
   const [coordsLoad, setCoordsLoad] = useState();
 
-  const { viewProjectedStations, handleOnViewProjectedStations } =
-    useProjectedStations();
-  const { viewAllStations, handleOnViewAllStations } = useAllStations();
-
   const indicatorSelection = useContextSelector(
     FilteringContext,
     (filtering) => filtering.values.indicatorSelection
@@ -129,6 +125,11 @@ export default function MonitoringMap() {
   const theme = useTheme();
 
   const query = useQueryHook();
+
+  const [value, setValue] = useState('country');
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
 
   const fish1Icon = new L.Icon({
     iconUrl: markerFish1Icon,
@@ -416,49 +417,56 @@ export default function MonitoringMap() {
                 <FormGroup>
                   <FormControlLabel
                     control={
-                      <Checkbox
+                      <RadioGroup
+                        aria-labelledby="demo-controlled-radio-buttons-group"
+                        name="controlled-radio-buttons-group"
+                        value={value}
+                        onChange={handleChange}
                         sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                        checked={viewProjectedStations}
-                        onChange={handleOnViewProjectedStations}
-                      />
-                    }
-                    label={
-                      <Typography
-                        variant="caption"
-                        style={{
-                          whiteSpace: 'nowrap',
+                          paddingLeft: 2,
                         }}
                       >
-                        {t('specific.infoPanel.WaterSurface.title')}
-                      </Typography>
+                        <FormControlLabel
+                          value="country"
+                          control={<Radio />}
+                          label={
+                            <Typography
+                              variant="caption"
+                              style={{
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              Country
+                            </Typography>
+                          }
+                          sx={{
+                            '& .MuiSvgIcon-root': {
+                              fontSize: 18,
+                            },
+                          }}
+                        />
+                        <FormControlLabel
+                          value="watershed"
+                          control={<Radio />}
+                          label={
+                            <Typography
+                              variant="caption"
+                              style={{
+                                whiteSpace: 'nowrap',
+                              }}
+                            >
+                              Watershed
+                            </Typography>
+                          }
+                          sx={{
+                            '& .MuiSvgIcon-root': {
+                              fontSize: 18,
+                            },
+                          }}
+                        />
+                      </RadioGroup>
                     }
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        sx={{
-                          '& .MuiSvgIcon-root': {
-                            fontSize: 18,
-                          },
-                        }}
-                        checked={viewAllStations}
-                        onChange={handleOnViewAllStations}
-                      />
-                    }
-                    label={
-                      <Typography
-                        variant="caption"
-                        style={{
-                          whiteSpace: 'nowrap',
-                        }}
-                      >
-                        {t('specific.infoPanel.WQI.title')}
-                      </Typography>
-                    }
+                    label={<div />}
                   />
                 </FormGroup>
               </div>
@@ -552,17 +560,35 @@ export default function MonitoringMap() {
         })}
       />
 
-      <GeoJSON
-        data={BorderGeojson}
-        style={() => ({
-          fillColor: 'transparent',
-          weight: 0.5,
-          dashArray: 8,
-          lineCap: 'round',
-          lineJoin: 'round ',
-          color: theme === darkScheme ? '#accc0c' : '#728740',
-        })}
-      />
+      {value === 'country' && (
+        <GeoJSON
+          data={BorderGeojson}
+          style={() => ({
+            fillColor: 'transparent',
+            // alterar
+            weight: 0.5,
+            dashArray: 8,
+            lineCap: 'round',
+            lineJoin: 'round ',
+            color: theme === darkScheme ? '#accc0c' : '#728740',
+          })}
+        />
+      )}
+
+      {value === 'watershed' && (
+        <GeoJSON
+          data={WatershedGeojson}
+          style={() => ({
+            fillColor: 'transparent',
+            // alterar
+            weight: 0.5,
+            dashArray: 8,
+            lineCap: 'round',
+            lineJoin: 'round ',
+            color: theme === darkScheme ? '#38a00f' : '#508740',
+          })}
+        />
+      )}
 
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
@@ -573,7 +599,7 @@ export default function MonitoringMap() {
           }
           style={() => ({
             fillOpacity: 0.8,
-            weight: 4,
+            weight: 2,
           })}
         />
       )}

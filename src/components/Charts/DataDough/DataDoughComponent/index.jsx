@@ -120,7 +120,7 @@ export default function DataDoughComponent({
       <div ref={childrenref} style={{ display: 'flex' }}>
         <DataDough
           value={statistics.currentArea}
-          sufix="ha"
+          sufix="km2"
           label={t('specific.WaterSurface.dataDough.label1')}
           color={theme.orange.main}
           scale={0.7}
@@ -128,7 +128,7 @@ export default function DataDoughComponent({
         <DataDough
           style={{ padding: 20 }}
           value={statistics.winLossArea}
-          sufix="ha"
+          sufix="km2"
           label={t('specific.WaterSurface.dataDough.label2')}
           color={theme.primary.main}
           scale={0.7}

@@ -349,6 +349,19 @@ export default function CNARHunion({
       </div>
 
       <RankingChart
+        title={t('specific.CNARHunion.rankingChartGoal.title')}
+        info={t('specific.CNARHunion.rankingChartGoal.info')}
+        data={rankingGoal}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
+        params={rankingParamsGoal}
+        setParams={setRankingParamsGoal}
+      />
+
+      <RankingChart
         title={t('specific.CNARHunion.rankingChartInterference.title')}
         info={t('specific.CNARHunion.rankingChartInterference.info')}
         data={rankingInterference}
@@ -371,18 +384,6 @@ export default function CNARHunion({
         setParams={setRankingParams}
       />
 
-      <RankingChart
-        title={t('specific.CNARHunion.rankingChartGoal.title')}
-        info={t('specific.CNARHunion.rankingChartGoal.info')}
-        data={rankingGoal}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-        params={rankingParamsGoal}
-        setParams={setRankingParamsGoal}
-      />
       <RankingChart
         title={t('specific.CNARHunion.rankingChartSituation.title')}
         info={t('specific.CNARHunion.rankingChartSituation.info')}

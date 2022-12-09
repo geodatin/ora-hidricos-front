@@ -10,7 +10,6 @@ import { useContextSelector } from 'use-context-selector';
 
 import ChartExportMenu from '../../../../../components/ChartContainer/ChartExportMenu';
 import DataDough from '../../../../../components/Charts/DataDough';
-import RankingCustom from '../../../../../components/Charts/RankingCustom';
 import CustomTooltip from '../../../../../components/CustomTooltip';
 import Typography from '../../../../../components/Typography';
 import FilteringContext from '../../../../../contexts/filtering';
@@ -51,15 +50,8 @@ export default function Population({
 
   const { t } = useTranslation();
 
-  const [rankingParams, setRankingParams] = useState({
-    order: true,
-    page: 1,
-    totalPages: 1,
-  });
-
   const handle = useFullScreenHandle();
   const [totalData, setTotalData] = useState();
-  const [rankingCities, setRankingData] = useState();
 
   useEffect(() => {
     let isSubscribed = true;
@@ -72,88 +64,6 @@ export default function Population({
       .then(({ data }) => {
         if (isSubscribed) {
           setTotalData(data);
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [code, t]);
-
-  const pageAtual = rankingParams.page;
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`population/ranking`, {
-        params: {
-          countryCode: code,
-          page: pageAtual,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setRankingData({
-            labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
-            ),
-            datasets: [
-              {
-                data: data.series[0].data.map((number) => Math.trunc(number)),
-                backgroundColor: [
-                  '#011f4b',
-                  '#03396c',
-                  '#005b96',
-                  '#6497b1',
-                  '#b3cde0',
-                ],
-                borderRadius: 5,
-                barThickness: 15,
-              },
-            ],
-          });
-        }
-      });
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [pageAtual, t]);
-
-  useEffect(() => {
-    let isSubscribed = true;
-    api
-      .get(`population/ranking`, {
-        params: {
-          countryCode: code,
-          page: pageAtual,
-        },
-      })
-      .then(({ data }) => {
-        if (isSubscribed) {
-          setRankingData({
-            labels: data.x.map(
-              (label, index) => `${data.position[index]}°  ${label}`
-            ),
-            datasets: [
-              {
-                data: data.series[0].data.map((number) => Math.trunc(number)),
-                backgroundColor: [
-                  '#011f4b',
-                  '#03396c',
-                  '#005b96',
-                  '#6497b1',
-                  '#b3cde0',
-                ],
-                borderRadius: 5,
-                barThickness: 15,
-              },
-            ],
-          });
-          setRankingParams({
-            page: 1,
-            totalPages: data.pages,
-          });
         }
       });
 
@@ -218,20 +128,6 @@ export default function Population({
           />
         </div>
       </div>
-
-      <RankingCustom
-        title={t('specific.Population.rankingChart.title')}
-        info={t('specific.Population.rankingChart.info')}
-        data={rankingCities}
-        stylePagination={classes.pagination}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-        params={rankingParams}
-        setParams={setRankingParams}
-      />
     </ul>
   );
 }

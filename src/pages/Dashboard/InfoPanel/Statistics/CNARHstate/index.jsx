@@ -393,6 +393,19 @@ export default function CNARHstate({
       </div>
 
       <RankingChart
+        title={t('specific.CNARHstate.rankingChartGoal.title')}
+        info={t('specific.CNARHstate.rankingChartGoal.info')}
+        data={rankingGoal}
+        customFormatter={{
+          formatter(value) {
+            return t('general.number', { value });
+          },
+        }}
+        params={rankingParamsGoal}
+        setParams={setRankingParamsGoal}
+      />
+
+      <RankingChart
         title={t('specific.CNARHstate.rankingChartInterference.title')}
         info={t('specific.CNARHstate.rankingChartInterference.info')}
         data={rankingInterference}
@@ -413,18 +426,6 @@ export default function CNARHstate({
         }}
         params={rankingParamsCities}
         setParams={setRankingParamsCities}
-      />
-      <RankingChart
-        title={t('specific.CNARHstate.rankingChartGoal.title')}
-        info={t('specific.CNARHstate.rankingChartGoal.info')}
-        data={rankingGoal}
-        customFormatter={{
-          formatter(value) {
-            return t('general.number', { value });
-          },
-        }}
-        params={rankingParamsGoal}
-        setParams={setRankingParamsGoal}
       />
 
       <RankingChart
