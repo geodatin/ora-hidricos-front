@@ -273,10 +273,8 @@
 
   "Hydrogeochemistry": {
     "pieChart": {
-      "title": "Número total de ocorrências Hidrogeoquímicas",
-      "info": "Este gráfico apresenta o número ttotal de ocorrências Hidrogeoquímicas",
-      "plural": "Ocorrências",
-      "singular": "Ocorrência"
+      "title": "Extensão total em km", 
+      "info": "Este gráfico apresenta a extensão total em km"
     },
     "rankingChartDomain": {
       "title": "Ranking por domínios",

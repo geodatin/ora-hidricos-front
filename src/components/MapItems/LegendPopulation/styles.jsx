@@ -12,7 +12,7 @@ const useStyles = createUseStyles((theme) => ({
     left: 380,
     zIndex: 99999,
     padding: '0.5rem',
-    width: '18rem',
+    width: '16rem',
     '@media (max-width: 600px)': {
       width: '12rem',
       bottom: 120,
@@ -52,6 +52,16 @@ const useStyles = createUseStyles((theme) => ({
     width: '12px',
     marginRight: '0.5rem',
     marginLeft: '0.5rem',
+  },
+  box: {
+    zIndex: 99999,
+    height: '1.5rem',
+    width: '2.5rem',
+    marginRight: '0.5rem',
+    '@media (max-width: 600px)': {
+      height: '0.5rem',
+      width: '1rem',
+    },
   },
 }));
 

@@ -46,6 +46,7 @@ import LegendHydroeletric from '../../../components/MapItems/LegendHydroeletric'
 import LegendMercuryFish from '../../../components/MapItems/LegendMercuryFish';
 import LegendMercuryHuman from '../../../components/MapItems/LegendMercuryHuman';
 import LegendOil from '../../../components/MapItems/LegendOil';
+import LegendPopulation from '../../../components/MapItems/LegendPopulation';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
 import LegendWaterBalance from '../../../components/MapItems/LegendWaterBalance';
 import Markers from '../../../components/MapItems/Markers';
@@ -690,6 +691,7 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={populationUrl?.url} zIndex={2} />
           <GetPopupPopulation />
+          <LegendPopulation />
         </>
       )}
 

@@ -208,11 +208,7 @@ export default function Hydrogeochemistry({
         <div ref={childrenref}>
           <DataDough
             value={totalData?.count}
-            sufix={
-              totalData?.count > 1
-                ? t('specific.Hydrogeochemistry.pieChart.plural')
-                : t('specific.Hydrogeochemistry.pieChart.singular')
-            }
+            sufix="km"
             color={theme.orange.main}
             scale={1.2}
           />

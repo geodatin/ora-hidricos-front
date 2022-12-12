@@ -1,0 +1,119 @@
+/* eslint-disable react/prop-types */
+import React from 'react';
+
+import useStyles from './styles';
+
+const LegendPopulation = () => {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.container}>
+      <h2 className={classes.title}>População na Bacia Amazônica</h2>
+      <p className={classes.subtitle}>Faixa de População Absoluta</p>
+      <p className={classes.subtitle}>(Número de Habitantes)</p>
+
+      <div className={classes.separator} />
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#f6f6c8',
+          }}
+        />
+        <span>Até 10.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#fad393',
+          }}
+        />
+        <span>10.001 - 25.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#fad393',
+          }}
+        />
+        <span>25.001 - 50.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#f4bb78',
+          }}
+        />
+        <span>50.001 - 75.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#ef9f5b',
+          }}
+        />
+        <span>75.001 - 100.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#e98942',
+          }}
+        />
+        <span>100.001 - 250.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#e77939',
+          }}
+        />
+        <span>250.001 - 500.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#e3672e',
+          }}
+        />
+        <span>500.001 - 1.000.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#d0572c',
+          }}
+        />
+        <span>1.000.001 - 2.500.000</span>
+      </div>
+
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#b2482c',
+          }}
+        />
+        <span>2.500.001 - 5.000.000</span>
+      </div>
+      <div className={classes.content}>
+        <div
+          className={classes.box}
+          style={{
+            backgroundColor: '#953828',
+          }}
+        />
+        <span>Acima de 5.000.000</span>
+      </div>
+    </div>
+  );
+};
+export default LegendPopulation;

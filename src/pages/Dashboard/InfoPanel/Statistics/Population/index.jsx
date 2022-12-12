@@ -123,7 +123,7 @@ export default function Population({
                 ? t('specific.Population.pieChart.plural')
                 : t('specific.Population.pieChart.singular')
             }
-            color="blue"
+            color="#fad393"
             scale={1.2}
           />
         </div>

@@ -8,7 +8,7 @@ const useStyles = createUseStyles((theme) => ({
     backgroundColor: theme.background.main,
     flexDirection: 'column',
     position: 'absolute',
-    bottom: 160,
+    bottom: 60,
     right: 20,
     zIndex: 99999,
     padding: '1em',
