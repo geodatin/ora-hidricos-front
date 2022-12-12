@@ -41,8 +41,10 @@ import GetPopupPopulation from '../../../components/MapItems/GetPopupPopulation'
 import GetPopupWatershed from '../../../components/MapItems/GetPopupWatershed';
 import GetPopupWaterway from '../../../components/MapItems/GetPopupWaterway';
 import GetPopupWetlands from '../../../components/MapItems/GetPopupWetlands';
+import LegendAgricultural from '../../../components/MapItems/LegendAgricultural';
 import LegendEvapotranspiration from '../../../components/MapItems/LegendEvapotranspiration';
 import LegendHydroeletric from '../../../components/MapItems/LegendHydroeletric';
+import LegendIPPO from '../../../components/MapItems/LegendIPPO';
 import LegendMercuryFish from '../../../components/MapItems/LegendMercuryFish';
 import LegendMercuryHuman from '../../../components/MapItems/LegendMercuryHuman';
 import LegendOil from '../../../components/MapItems/LegendOil';
@@ -684,6 +686,7 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={pollutionUrl?.url} zIndex={2} />
           <GetPopupIPPO />
+          <LegendIPPO />
         </>
       )}
 
@@ -714,6 +717,7 @@ export default function MonitoringMap() {
             zIndex={2}
           />
           <GetPopupAgricultural />
+          <LegendAgricultural />
         </>
       )}
 
