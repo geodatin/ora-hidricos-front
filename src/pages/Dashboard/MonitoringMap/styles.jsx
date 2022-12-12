@@ -22,6 +22,27 @@ const useStyles = createUseStyles((theme) => ({
     justifyContent: 'center',
     width: '30px',
   },
+  slideLine: {
+    width: '200px',
+    height: '8px',
+    backgroundImage:
+      'linear-gradient(90deg, rgba(0,255,255,1) 0%, rgba(0,142,255,1) 40%, rgba(0,55,255,1) 70%, rgba(0,0,163,1) 100%)',
+    border: 'none',
+  },
+  legendContainerSlide: {
+    display: 'flex',
+    flexDirection: 'column',
+    paddingTop: '4px',
+  },
+  itemsSlide: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  legendContentSlide: {
+    padding: 2,
+    height: '40px',
+  },
   markerClusterSmall: {
     backgroundColor: '#6fcc39c5',
     border: '4px solid #b5e28c81',

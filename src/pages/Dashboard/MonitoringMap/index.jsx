@@ -34,6 +34,7 @@ import InverseShape from '../../../assets/shapes/inverseShape.json';
 import StateJson from '../../../assets/shapes/StateJson.json';
 import WatershedGeojson from '../../../assets/shapes/subwatersheds.json';
 import 'leaflet/dist/leaflet.css';
+import CustomTooltip from '../../../components/CustomTooltip';
 import GetPopupAgricultural from '../../../components/MapItems/GetPopupAgricultural';
 import GetPopupIPPO from '../../../components/MapItems/GetPopupIPPO';
 import GetPopupMiningMine from '../../../components/MapItems/GetPopupMiningMine';
@@ -58,6 +59,7 @@ import TopoJSONHydrogeochemistry from '../../../components/MapItems/TopoJSONHydr
 import TopoJSONPrecipitation from '../../../components/MapItems/TopoJSONPrecipitation';
 import TopoJSONWaterBalance from '../../../components/MapItems/TopoJSONWaterBalance';
 import MapWrapper from '../../../components/MapWrapper';
+import Legend from '../../../components/MapWrapper/Legend';
 import MapItem from '../../../components/MapWrapper/Mapitem';
 import ShareDialog from '../../../components/ShareDialog';
 import Typography from '../../../components/Typography';
@@ -552,6 +554,65 @@ export default function MonitoringMap() {
             </span>
           </span>
         </MapItem>
+      }
+      itemLegendChildren={
+        indicatorSelection === indicators.waterResources.waterSurface.value && (
+          <Legend
+            popupContent={
+              <CustomTooltip
+                placement="bottom"
+                title="legenda em superfície agua"
+                className={classes.legendContentSlide}
+              >
+                <div className={classes.legendContainerSlide}>
+                  <div className={classes.slideLine} />
+                  <div className={classes.itemsSlide}>
+                    <span>0%</span>
+                    <span>50%</span>
+                    <span>100%</span>
+                  </div>
+                </div>
+              </CustomTooltip>
+            }
+          >
+            <span
+              className={classes.legendBall}
+              style={{
+                backgroundColor: '#00ffff',
+                height: 24,
+                width: 24,
+                transform: 'rotate(25deg)',
+              }}
+            >
+              <span
+                className={classes.legendBall}
+                style={{
+                  backgroundColor: '#008eff',
+                  height: 20,
+                  width: 20,
+                }}
+              >
+                <span
+                  className={classes.legendBall}
+                  style={{
+                    backgroundColor: '#0037ff',
+                    height: 16,
+                    width: 16,
+                  }}
+                >
+                  <span
+                    className={classes.legendBall}
+                    style={{
+                      backgroundColor: '#0000a3',
+                      height: 12,
+                      width: 12,
+                    }}
+                  />
+                </span>
+              </span>
+            </span>
+          </Legend>
+        )
       }
     >
       <GeoJSON
