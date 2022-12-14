@@ -55,8 +55,8 @@ const useStyles = createUseStyles((theme) => ({
   },
   box: {
     zIndex: 99999,
-    height: '1.5rem',
-    width: '2.5rem',
+    height: '1rem',
+    width: '2rem',
     marginRight: '0.5rem',
     '@media (max-width: 600px)': {
       height: '0.5rem',

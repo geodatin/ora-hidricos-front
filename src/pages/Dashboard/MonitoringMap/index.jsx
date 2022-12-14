@@ -52,6 +52,7 @@ import LegendOil from '../../../components/MapItems/LegendOil';
 import LegendPopulation from '../../../components/MapItems/LegendPopulation';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
 import LegendWaterBalance from '../../../components/MapItems/LegendWaterBalance';
+import LegendWetlands from '../../../components/MapItems/LegendWetlands';
 import Markers from '../../../components/MapItems/Markers';
 import SuperCluster from '../../../components/MapItems/SuperCluster';
 import TopoJSONEvapotranspiration from '../../../components/MapItems/TopoJSONEvapotranspiration';
@@ -740,6 +741,7 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={wetlandsUrl?.url} zIndex={2} />
           <GetPopupWetlands />
+          <LegendWetlands />
         </>
       )}
 
