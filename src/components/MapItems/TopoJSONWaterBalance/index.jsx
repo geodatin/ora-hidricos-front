@@ -4,6 +4,7 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import React, { useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GeoJSON } from 'react-leaflet';
 import * as topojson from 'topojson-client';
 
@@ -13,6 +14,7 @@ export default function TopoJSONWaterBalance(props) {
   const layerRef = useRef(null);
   const { data, ...otherProps } = props;
   const classes = useStyles();
+  const { t } = useTranslation();
 
   function addData(layer, jsonData) {
     if (jsonData?.type === 'Topology') {
@@ -54,14 +56,20 @@ export default function TopoJSONWaterBalance(props) {
     layer.bindPopup(
       `
       <div>
-          <p class=${classes.popupItem}>Range
-            </br><span class=${classes.popupItemTitle}>${feature.properties.range}</span>
+          <p class=${classes.popupItem}>${t('map.points.waterBalance.range')}
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.range
+      }</span>
           </p>
-          <p class=${classes.popupItem}>Min 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.min}</span>
+          <p class=${classes.popupItem}>${t('map.points.waterBalance.min')} 
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.min
+      }</span>
           </p> 
-          <p class=${classes.popupItem}>Max
-            </br><span class=${classes.popupItemTitle}>${feature.properties.max}</span>
+          <p class=${classes.popupItem}>${t('map.points.waterBalance.max')}
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.max
+      }</span>
           </p> 
           
           </div>
@@ -73,7 +81,7 @@ export default function TopoJSONWaterBalance(props) {
   useEffect(() => {
     const layer = layerRef.current;
     addData(layer, props.data);
-  }, [props.data]);
+  }, [props.data, t]);
 
   return (
     <GeoJSON ref={layerRef} {...otherProps} onEachFeature={onEachFeature} />

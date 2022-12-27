@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import PropTypes from 'prop-types';
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 import dataSourcesImg from '../../assets/images/data-sources.png';
@@ -18,6 +19,7 @@ import TranslationMenu from './TranslationMenu';
  */
 export default function Header({ items, projectName }) {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <header className={classes.container}>
@@ -42,7 +44,9 @@ export default function Header({ items, projectName }) {
               <Button className={classes.button}>API</Button>
             </a>
             <a href={dataSourcesImg} target="_blank" rel="noreferrer">
-              <Button className={classes.button}>Fontes de dados</Button>
+              <Button className={classes.button}>
+                {t('dataSources.title')}
+              </Button>
             </a>
           </div>
         </div>

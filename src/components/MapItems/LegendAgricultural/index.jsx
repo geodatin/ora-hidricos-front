@@ -1,15 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 
 const LegendAgricultural = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Agropecuária na Bacia Amazônica</h2>
-      <p className={classes.subtitle}>Atividades Agropecuárias</p>
+      <h2 className={classes.title}>{t('map.legend.agricultural.title')}</h2>
+      <p className={classes.subtitle}>
+        {t('map.legend.agricultural.subtitle')}
+      </p>
 
       <div className={classes.separator} />
       <div className={classes.content}>
@@ -19,7 +23,7 @@ const LegendAgricultural = () => {
             backgroundColor: '#964627',
           }}
         />
-        <span>Agricultural</span>
+        <span>{t('map.legend.agricultural.agricultural')}</span>
       </div>
       <div className={classes.content}>
         <div
@@ -28,7 +32,7 @@ const LegendAgricultural = () => {
             backgroundColor: '#b2a637',
           }}
         />
-        <span>Pecuária</span>
+        <span>{t('map.legend.agricultural.livestock')}</span>
       </div>
     </div>
   );

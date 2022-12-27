@@ -57,15 +57,15 @@ function Routes() {
         items={[
           { title: 'Dashboard', to: `/${process.env.REACT_APP_URL_BASE}` },
           {
-            title: 'Legislação',
+            title: t('legislation.titleHead'),
             to: `/${process.env.REACT_APP_URL_BASE}/legislation`,
           },
           {
-            title: 'Autoridades',
+            title: t('authorities.title'),
             to: `/${process.env.REACT_APP_URL_BASE}/authorities`,
           },
           {
-            title: 'Documentos',
+            title: t('documents.title'),
             to: `/${process.env.REACT_APP_URL_BASE}/documents`,
           },
         ]}

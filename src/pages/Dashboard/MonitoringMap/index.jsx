@@ -48,6 +48,7 @@ import LegendHydroeletric from '../../../components/MapItems/LegendHydroeletric'
 import LegendIPPO from '../../../components/MapItems/LegendIPPO';
 import LegendMercuryFish from '../../../components/MapItems/LegendMercuryFish';
 import LegendMercuryHuman from '../../../components/MapItems/LegendMercuryHuman';
+import LegendMiningMine from '../../../components/MapItems/LegendMiningMine';
 import LegendOil from '../../../components/MapItems/LegendOil';
 import LegendPopulation from '../../../components/MapItems/LegendPopulation';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
@@ -562,7 +563,7 @@ export default function MonitoringMap() {
             popupContent={
               <CustomTooltip
                 placement="bottom"
-                title="legenda em superfície agua"
+                title={t('map.legend.watersurface.title')}
                 className={classes.legendContentSlide}
               >
                 <div className={classes.legendContainerSlide}>
@@ -631,7 +632,7 @@ export default function MonitoringMap() {
           style={() => ({
             fillColor: 'transparent',
             // alterar
-            weight: 0.5,
+            weight: 2,
             dashArray: 8,
             lineCap: 'round',
             lineJoin: 'round ',
@@ -646,7 +647,7 @@ export default function MonitoringMap() {
           style={() => ({
             fillColor: 'transparent',
             // alterar
-            weight: 0.5,
+            weight: 2,
             dashArray: 8,
             lineCap: 'round',
             lineJoin: 'round ',
@@ -734,6 +735,7 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={mineUrl?.url} zIndex={2} />
           <GetPopupMiningMine />
+          <LegendMiningMine />
         </>
       )}
 
@@ -838,7 +840,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Publication year
+                      {t('map.points.mercuryHuman.publicationYear')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.publicationYear === null
@@ -851,7 +853,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Study
+                      {t('map.points.mercuryHuman.study')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.study === null
@@ -865,7 +867,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      hgMin
+                      {t('map.points.mercuryHuman.hgMin')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.hgMin === null
@@ -879,7 +881,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      hgMax
+                      {t('map.points.mercuryHuman.hgMax')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.hgMax === null
@@ -893,7 +895,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      hgMean
+                      {t('map.points.mercuryHuman.hgMean')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.hgMean === null
@@ -907,7 +909,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Author
+                      {t('map.points.mercuryHuman.author')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.author === null
@@ -920,7 +922,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Title
+                      {t('map.points.mercuryHuman.title')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.title === null
@@ -933,7 +935,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Age group
+                      {t('map.points.mercuryHuman.ageGroup')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.ageGroup === null
@@ -946,7 +948,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Collection year
+                      {t('map.points.mercuryHuman.collectionYear')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.collectionYear === '-' ||
@@ -960,7 +962,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Community
+                      {t('map.points.mercuryHuman.community')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.community === null
@@ -974,7 +976,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Measurement unit
+                      {t('map.points.mercuryHuman.measurementUnit')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.measurementUnit === null
@@ -1031,7 +1033,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Publication year
+                      {t('map.points.mercuryFish.publicationYear')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.publicationYear === null
@@ -1044,7 +1046,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Study
+                      {t('map.points.mercuryFish.study')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.study === null
@@ -1058,7 +1060,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      hgMin
+                      {t('map.points.mercuryFish.hgMin')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.hgMin === null
@@ -1072,7 +1074,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      hgMax
+                      {t('map.points.mercuryFish.hgMax')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.hgMax === null
@@ -1086,7 +1088,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      hgMean
+                      {t('map.points.mercuryFish.hgMean')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.hgMean === null
@@ -1100,7 +1102,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Author
+                      {t('map.points.mercuryFish.author')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.author === null
@@ -1114,7 +1116,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Title
+                      {t('map.points.mercuryFish.title')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.title === null
@@ -1127,7 +1129,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Collection year
+                      {t('map.points.mercuryFish.collectionYear')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.collectionYear === '-' ||
@@ -1141,7 +1143,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Community
+                      {t('map.points.mercuryFish.community')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.community === null
@@ -1154,7 +1156,7 @@ export default function MonitoringMap() {
                       variant="caption"
                       className={classes.popupItemTitle}
                     >
-                      Measurement unit
+                      {t('map.points.mercuryFish.measurementUnit')}
                     </Typography>
                     <Typography variant="caption">
                       {cord.properties.measurementUnit === null

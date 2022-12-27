@@ -1,0 +1,632 @@
+[
+  {
+    "country": "Bolivia",
+    "law": "Law nº 300 of 2012",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.1.2 Other Legislation",
+    "goal": "Establish the vision and fundamentals of comprehensive development in harmony and balance with nature for a good quality of life",
+    "link": "http://gacetaoficialdebolivia.gob.bo/normas /fetch/300"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Political Constitution of the Plurinational State of Bolivia (CPE)",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.1.1. Constitution",
+    "goal": "Establish the rights, values and behaviors considering the different ethnic groups that make up the State",
+    "link": "https://www.oas.org/dil/esp/ constitucion_bolivia.pdf"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Law No. 071 of 2010",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.1.2 . Other Legislation",
+    "goal": "Recognise the rights of Mother Earth, as well as the obligations and duties of the Plurinational State and society to guarantee respect for these rights",
+    "link": "http://www.planificacion .gob.bo/uploads/marco-legal/Ley%20N%C2%B0%20071%20DERECHOS%20DE%20LA%20MADRE%20TIERRA.pdf"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Law No. 031 of 2010",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.1.2 . Other Legislation",
+    "goal": "Regulate the system of autonomies by mandate of article 271 of the Political Constitution of the State and the bases of the territorial organization of the State established in its Third Part in articles 269 to 305",
+    "link": " http://www.planificacion.gob.bo/uploads/marco-legal/Ley%20N%C2%B0%20031%20DE%20AUTONOMIAS%20Y%20DESCENTRALIZACION.pdf"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Law Nº 2.066 of 2000",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.1.2 . Other Legislation",
+    "goal": "Establish the rules for the provision and use of drinking water and sanitary sewage services",
+    "link": "http://gacetaoficialdebolivia.gob.bo/normas/buscar/Ley%202066"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Supreme Decree No. 08.465",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.2.2. National Meteorology and Hydrology Service",
+    "goal": "Creation of the National Meteorology and Hydrology Service",
+    "link": "https://www.lexivox.org/norms/BO-DS-8465.html"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Law Nº 1.333 of 1992",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.3 . Water Quality Information System",
+    "goal": "Protection and conservation of the environment and natural resources, regulate human actions in relation to nature and promote sustainable development",
+    "link": "http:/ /gacetaoficialdebolivia.gob.bo/normas/buscar/Ley%201333"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Ley Decree Nº 15.629 of 1978",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1. 1.2. Other Legislation",
+    "goal": "Health Code",
+    "link": "http://gacetaoficialdebolivia.gob.bo/normas/verGratis_gob/20594"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Supreme Decree Nº 29.894",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.1.2. Other Legislation",
+    "goal": "Defines the organizational structure of the executive body of the Plurinational State of Bolivia",
+    "link": "http://gacetaoficialdebolivia.gob.bo/normas/buscar/29894"
+  },
+  {
+    "country": "Bolivia",
+    "law": "NB 512 Regulation",
+    "responsible": "Bolivian Institute of Normalization and Quality",
+    "product": "P-02",
+    "theme": "2.1.1.2 . Other Legislation",
+    "goal": "Drinking water requirements",
+    "link": "http://www.anesapa.org/data/files/NB512-AP_Requisitos.pdf"
+  },
+  {
+    "country": "Bolivia",
+    "law": "NB 495 Regulation",
+    "responsible": "Bolivian Institute of Normalization and Quality",
+    "product": "P-02",
+    "theme": "2.1.1.2 . Other Legislation",
+    "goal": "Definitions and terminology of drinking water",
+    "link": "http://www.anesapa.org/data/files/NB495AP_DefsTermin.pdf"
+  },
+  {
+    "country": "Bolivia",
+    "law": "NB 496 Regulation",
+    "responsible": "Bolivian Institute of Normalization and Quality",
+    "product": "P-02",
+    "theme": "2.1.1.2 . Other Legislation",
+    "goal": "Establishes the conditions and frequencies necessary to carry out a representative sampling of drinking water to be submitted to tests and determine its quality",
+    "link": "http://www.anesapa.org/ data/files/NB496AP_TomaMuestras.pdf"
+  },
+  {
+    "country": "Bolivia",
+    "law": "Supreme Decree No. 24.176",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.3. Water Quality Information Systems",
+    "goal": "Approves the regulations for environmental management, prevention and environmental control and water contamination",
+    "link": "http://gacetaoficialdebolivia.gob.bo/normas/buscar/24176 "
+  },
+  {
+    "country": "Bolivia",
+    "law": "Law No. 1604 of 1994",
+    "responsible": "Plurinational State of Bolivia",
+    "product": "P-02",
+    "theme": "2.1.3 . Water Quality Information Systems",
+    "goal": "Regulates the activities of the Electricity Industry",
+    "link": "http://gacetaoficialdebolivia.gob.bo/normas/buscar/1604"
+  },
+  {
+    "country": "Brasil",
+    "law": "Federal Constitution of 1988",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-02",
+    "theme": "2.2.1.1. Constitution",
+    "goal": "Establish the social and individual rights of the population",
+    "link": "http://www.planalto.gov.br/ccivil_03/constituicao/constituicao.htm"
+  },
+  {
+    "country": "Brasil",
+    "law": "Law Nº 9.433 of 1997",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-02",
+    "theme": "2.2.1.2 . Water Law",
+    "goal": "Establishes the National Water Resources Policy, creates the National Water Resources Management System and regulates item XIX of article 21 of the Federal Constitution",
+    "link": "http:/ /www.planalto.gov.br/ccivil_03/leis/l9433.htm#:~:text=L9433&text=LEI%20N%C2%BA%209.433%2C%20DE%208%20DE%20JANEIRO%20DE%201997.&text= Institutes%20a%20Pol%C3%ADtica%20Nacional%20de,Federal%2C%20e%20amends%20o%20art."
+  },
+  {
+    "country": "Brazil",
+    "law": "Law Nº 6.938 of 1981",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-02",
+    "theme": "2.2.1.2 . Water Law",
+    "goal": "Deals with the National Environmental Policy, its purposes and mechanisms for formulating and applying it",
+    "link": "http://www.planalto.gov.br/ccivil_03/Leis /L6938.htm#:~:text=LEI%20N%C2%BA%206.938%2C%20DE%2031%20DE%20AGOSTO%20DE%201981&text=Disp%C3%B5e%20sobre%20a%20Pol%C3%ADtica% 20National, Law%2C%20with%20foundation%20in%20art."
+  },
+  {
+    "country": "Brasil",
+    "law": "Law Nº 9.985 of 2000",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-02",
+    "theme": "2.2.1.2 . Water Law",
+    "goal": "Establishes the National System of Nature Conservation Units",
+    "link": "http://www.planalto.gov.br/ccivil_03/leis/l9985.htm"
+  },
+  {
+    "country": "Brazil",
+    "law": "Law Nº 12.651 of 2012",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-02",
+    "theme": "2.2.1.2 . Lei das Águas",
+    "goal": "Provides for the protection of native vegetation",
+    "link": "http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12651.htm #:~:text=This%20Law%20establishes%20general%20norms,n%C2%BA%20571%2C%20of%202012)."
+  },
+  {
+    "country": "Brasil",
+    "law": "CONAMA Resolution No. 357 of 2005",
+    "responsible": "National Council for the Environment",
+    "product": "P-02",
+    "theme": "2.2 .1.2. Lei das Águas",
+    "goal": "Provides for the classification of water bodies and environmental guidelines for their classification, as well as establishes the conditions and standards for the release of effluents",
+    "link": "http:/ /pnqa.ana.gov.br/Publicacao/RESOLUCAO_CONAMA_n_357.pdf"
+  },
+  {
+    "country": "Brasil",
+    "law": "CONAMA Resolution No. 397 of 2008",
+    "responsible": "National Council for the Environment",
+    "product": "P-02",
+    "theme": "2.2 .1.2. Lei das Águas",
+    "goal": "Amends item II of § 4 and Table X of § 5, both of article 34 of the Resolution of the National Council for the Environment no\n 357, of 2005",
+    " link": "http://pnqa.ana.gov.br/Publicacao/Resolu%C3%A7%C3%A3o%20CONAMA%20n%C2%BA%20397%20Altera%20o%20artigo%2034%20da%20Resol% 20CONAMA%20357.pdf"
+  },
+  {
+    "country": "Brasil",
+    "law": "CNRH Resolution nº 91/2008",
+    "responsible": "National Water Resources Council",
+    "product": "P-02",
+    "theme": "2.2 .1.2. Lei das Águas",
+    "goal": "Provides for general procedures for classifying surface and underground water bodies",
+    "link": "https://www.ceivap.org.br/ligislacao/Resolucoes- CNRH/Resolution-CNRH%2091.pdf"
+  },
+  {
+    "country": "Brasil",
+    "law": "CONAMA Resolution nº 396/2008",
+    "responsible": "National Council for the Environment",
+    "product": "P-02",
+    "theme": "2.2 .1.2. Water Law",
+    "goal": "Deals with the classification and environmental guidelines for the classification of groundwater",
+    "link": "http://portalpnqa.ana.gov.br/Publicacao/RESOLU%C3 %87%C3%83O%20CONAMA%20n%C2%BA%20396.pdf"
+  },
+  {
+    "country": "Brasil",
+    "law": "CONAMA Resolution nº 430/2011",
+    "responsible": "National Council for the Environment",
+    "product": "P-02",
+    "theme": "2.2 .1.2. Water Law",
+    "goal": "Deals with the conditions and standards for the release of effluents",
+    "link": "https://conexaoagua.mpf.mp.br/arquivos/legislacao/resolucoes/resolucao- conama-430-2011.pdf"
+  },
+  {
+    "country": "Brazil",
+    "law": "Law Nº 9.984 of 2000",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-02",
+    "theme": "2.2.1.2 . Water Law",
+    "goal": "Provides for the creation of the National Water and Basic Sanitation Agency",
+    "link": "http://www.planalto.gov.br/ccivil_03/leis/l9984.htm"
+  },
+  {
+    "country": "Brasil",
+    "law": "ANA Resolution No. 903 of 2013",
+    "responsible": "National Water and Basic Sanitation Agency",
+    "product": "P-02",
+    "theme": "2.2.2.2. National Agency for Water and Basic Sanitation",
+    "goal": "Creates the National Network for Monitoring the Quality of Surface Water",
+    "link": "https://arquivos.ana.gov.br/resolucoes /2013/903-2013.pdf"
+  },
+  {
+    "country": "Brasil",
+    "law": "Law No. 455 of 1999",
+    "responsible": "Estado do Amapá",
+    "product": "P-03",
+    "theme": "4.5.3. Baixo Amazonas",
+    "goal": "Provides for the delimitation and protection of ressaca areas located in the State of Amapá and other measures",
+    "link": "http://www.al.ap.gov.br/ver_texto_consolidado. php?iddocumento=287#:~:text=Disp%C3%B5e%20sobre%20delimita%C3%A7%C3%A3o%20e%20overturning,Amap%C3%A1%20e%20d%C3%A1%20other%20provided %C3%AAncias."
+  },
+  {
+    "country": "Brasil",
+    "law": "Law Nº 12.678 of 2012",
+    "responsible": "Federal Government of Brazil",
+    "product": "P-03",
+    "theme": "4.5.5 . Tapajós",
+    "goal": "Provides for changes in the limits of the National Parks of the Amazon, Campos Amazônicos and Mapinguari, of the National Forests of Itaituba I, Itaituba II and Crepori and of the Environmental Protection Area of Tapajós",
+    "link ": "http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12678.htm"
+  },
+  {
+    "country": "Colombia",
+    "law": "Political Constitution of the Republic of Colombia",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": " 2.3.1.1. Constitution",
+    "goal": "Establish the social and individual rights of the population",
+    "link": "https://siteal.iiep.unesco.org/sites/default/files/sit_accion_files/siteal_colombia_2000.pdf "
+  },
+  {
+    "country": "Colombia",
+    "law": "Law No. 1,151 of 2007",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "National Development Plan",
+    "link": "https://cpisp.org.br/decreto-n-o-1-772-de-22-de-maio-de- 2007/"
+  },
+  {
+    "country": "Colombia",
+    "law": "Law No. 373 of 1997",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "Program for the efficient use and economy of water",
+    "link": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1659018"
+  },
+  {
+    "country": "Colombia",
+    "law": "Law No. 99 of 1993",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "Creates the Ministry of the Environment and organizes the National Environmental System",
+    "link": "https://www.oas.org/dsd/fida/laws/legislation/colombia/ colombia_99-93.pdf"
+  },
+  {
+    "country": "Colombia",
+    "law": "Law No. 23 of 1973",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "Natural Resources and Environmental Protection Code",
+    "link": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=9018 "
+  },
+  {
+    "country": "Colombia",
+    "law": "Decree No. 1,323 of 2007",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "Creates the Water Resource Information System",
+    "link": "https://www.suin-juriscol.gov.co/viewDocument.asp?id=1862277"
+  },
+  {
+    "country": "Colombia",
+    "law": "Decree Law Nº 2.811 of 1974",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3 .1.2. Other Legislation",
+    "goal": "National Code of Renewable Natural Resources and Environmental Protection",
+    "link": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php? i=1551"
+  },
+  {
+    "country": "Colombia",
+    "law": "Decree No. 1076 of 2015",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "Environment and Sustainable Development Sector",
+    "link": "https://www.funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=78153"
+  },
+  {
+    "country": "Colombia",
+    "law": "Decree No. 50 of 2018",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 1.2. Other Legislation",
+    "goal": "Single Regulatory Decree of the Environment and Sustainable Development Sector in Relation to the Regional Environment Councils of the Macrobasins",
+    "link": "https://www.funcionpublica.gov.co /eva/managementnormative/norm_pdf.php?i=85084"
+  },
+  {
+    "country": "Colombia",
+    "law": "Decree Nº 1.640/2012",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-02",
+    "theme": "2.3. 2.1. Ministerio de Ambiente y Desarrollo Sostenible",
+    "goal": "Establishes that cross-border watersheds will be subject to special treatment by Miniambiente in conjunction with the Ministry of Foreign Affairs of Colombia",
+    "link": "https://www. funcionpublica.gov.co/eva/gestornormativo/norma_pdf.php?i=49987"
+  },
+  {
+    "country": "Colombia",
+    "law": "Decree No. 1594 of 1984",
+    "responsible": "Government of the Republic of Colombia",
+    "product": "P-03",
+    "theme": "2.3. Legal standards of water quality in ACTO Member Countries",
+    "goal": "Main classification legislation of legal standards in each country",
+    "link": "https://www.funcionpublica.gov.co/eva/gestornormativo /norm_pdf.php?i=18617"
+  },
+  {
+    "country": "Ecuador",
+    "law": "Political Constitution of the Republic of Ecuador",
+    "responsible": "Government of the Republic of Ecuador",
+    "product": "P-02",
+    "theme": " 2.4.1.1. Constitution",
+    "goal": "Establish the social and individual rights of the population",
+    "link": "https://pdba.georgetown.edu/Parties/Ecuador/Leyes/constitucion.pdf"
+  },
+  {
+    "country": "Ecuador",
+    "law": "Law No. 305 of 2014",
+    "responsible": "Government of the Republic of Ecuador",
+    "product": "P-02",
+    "theme": "2.4. 1.2. Water Law",
+    "goal": "Guarantee the human right to water and regulate and control the authorization, management, preservation, conservation and restoration of water resources",
+    "link": "http://www.regulacionagua. gob.ec/wp-content/uploads/downloads/2016/03/Ley-Org%C3%A1nica-de-Recursos-H%C3%ADdricos-Usos-y-Aprovechamiento-del-Agua.pdf"
+  },
+  {
+    "country": "Ecuador",
+    "law": "Executive Decree No. 3,516 of 2003",
+    "responsible": "Government of the Republic of Ecuador",
+    "product": "P-03",
+    "theme": "2.3 . Legal water quality standards of ACTO Member Countries",
+    "goal": "Establishes basic environmental policies",
+    "link": "https://www.gob.ec/sites/default/files/regulations/2018- 09/DECREE%20EJECUTIVO%203516%20-%20TULSMA.pdf"
+  },
+  {
+    "country": "Guiana",
+    "law": "Constitution Of the Co-Operative Republic of Guyana",
+    "responsible": "Governo da República de Guyana",
+    "product": "P-02",
+    "theme": "2.5.1.1. Constitution",
+    "goal": "Establish the social and individual rights of the population",
+    "link": "https://wipolex.wipo.int/es/text/584018"
+  },
+  {
+    "country": "Guiana",
+    "law": "Water and Sewerage Act",
+    "responsible": "Government of the Republic of Guyana",
+    "product": "P-02",
+    "theme": "2.5.1.2 . Other Legislation",
+    "goal": "Parameters for the development of the national water policy, creates institutions focused on water management and establishes licensing requirements",
+    "link": "http://www.oas.org/dsd /environmentlaw/waterlaw/documents/Guyana-Water_and_Sewage_Act_(2002).pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Law No. 26,821 of 1997",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6. 1. Legal Aspects",
+    "goal": "Promote and regulate the sustainable use of natural, renewable and non-renewable resources",
+    "link": "https://leyes.congreso.gob.pe/documentos/Leyes/26821. pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Law Nº 28.611 of 2008",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6. 1. Legal Aspects",
+    "goal": "General Environmental Law",
+    "link": "https://www.minam.gob.pe/wp-content/uploads/2017/04/Ley-N%C2% B0-28611.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Law No. 28,870 of 2006",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6. 1. Legal Aspects",
+    "goal": "Optimize the management of entities providing sanitation services",
+    "link": "http://extwprlegs1.fao.org/docs/pdf/per66031.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Law No. 28,245 of 2006",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6. 1. Legal Aspects",
+    "goal": "Ensure compliance with environmental objectives by public entities",
+    "link": "https://www.minam.gob.pe/wp-content/uploads/2013/10/ley -SNGA-28245.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Law Nº 29.338 of 2009",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6. 1.2. Water Law",
+    "goal": "Regulate the management of water resources",
+    "link": "https://www.minam.gob.pe/wp-content/uploads/2017/04/Ley-N %C2%B0-29338.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Legislative Decree Nº 997",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1 . Legal Aspects",
+    "goal": "Approves the Law on the Organization and Functions of the Ministry of Agriculture",
+    "link": "https://cdn.www.gob.pe/uploads/document/file/2338899/Decreto% 20Legislativo%20N%C2%B0%20997.pdf.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Legislative Decree Nº 1.013",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1 . Legal Aspects",
+    "goal": "Law on the creation, organization and functions of the Ministry of the Environment",
+    "link": "https://www.minam.gob.pe/wp-content/uploads/2013/08/ Creaci%C3%B3n-MINAM-D.Legislativo.1013.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 028-DE-MGP",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Regulation of the Law for the Control and Surveillance of Maritime, River and Lake Activities",
+    "link": "http://extwprlegs1.fao.org/docs/pdf/per91322 .pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 023-2005-VIVIENDA",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves the single ordained text of the Regulation of the General Law on Sanitation Services",
+    "link": "https://cdn.www.gob.pe/uploads/document /file/1782201/Microsoft%20Word%20-%20Document2789.pdf.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 039-2008-AG",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Regulation of organization and functions of the Autoridad Nacional Del Agua (ANA)",
+    "link": "https://www.ana.gob.pe/sites/default/ files/publication/files/DS%20039-2008-AG.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 002-2008-MINAM",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1.2. Lei das Águas",
+    "goal": "Approves national environmental quality standards",
+    "link": "https://www.minam.gob.pe/wp-content/uploads/2013/09/ ds_002-2008-minam.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 021-2009-VIVIENDA",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves maximum admissible values (AMV) of discharges of non-domestic sewage into the Sanitary Sewage System",
+    "link": "http://extwprlegs1.fao.org/docs /pdf/per111619.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 023-2009-MINAM",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves provisions for the implementation of national environmental quality standards (ECA) for water",
+    "link": "https://www.minam.gob.pe/wp -content/uploads/2013/09/decreto_supremo_023_2009_minam.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 003-2010-MINAM",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves maximum limits allowed for effluents from Domestic or Municipal Wastewater Treatment Plants",
+    "link": "https://www.minam.gob.pe/wp -content/uploads/2013/09/ds_003-2010-minam.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 001-2010-AG",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves the regulation of Law No. 29.338 (Water Resources Law)",
+    "link": "https://www.midagri.gob.pe/portal/download/ pdf/marcolegal/normaslegales/decretossupremos/2010/ds01-2010-ag.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 013-2015-MINAGRI",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1.2. Water Law",
+    "goal": "Approves the National Water Resources Plan",
+    "link": "https://www.midagri.gob.pe/portal/decreto-supremo/ds-2015 /13248-supremo-decree-n-013-2015-minagri"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 006-2015-MINAGRI",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves the National Water Resources Policy and Strategy",
+    "link": "https://www.midagri.gob.pe/portal/decreto-supremo/ds- 2015/12601-supreme-decree-n-006-2015-minagri"
+  },
+  {
+    "country": "Peru",
+    "law": "Supreme Decree Nº 004-2017-MINAM",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1. Legal Aspects",
+    "goal": "Approves the environmental quality standards",
+    "link": "https://www.minam.gob.pe/wp-content/uploads/2017/06/DS -004-2017-MINAM.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Resolution No. 202 of 2011",
+    "responsible": "Autoridad Nacional del Agua",
+    "product": "P-02",
+    "theme": "2.6.1 . Legal Aspects",
+    "goal": "Classification of surface water bodies",
+    "link": "https://www.ana.gob.pe/sites/default/files/normatividad/files/40-ra-0202 -2011-03.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Resolution Nº 182 of 2011",
+    "responsible": "Autoridad Nacional del Agua",
+    "product": "P-02",
+    "theme": "2.6.1 . Legal Aspects",
+    "goal": "National Protocol for Monitoring the Quality of Natural Bodies of Surface Water",
+    "link": "http://www.ana.gob.pe/sites/default/files/normatividad/files /r.j.no_182_2011_ana_0_1.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Resolução Nº 084 de 2020",
+    "responsible": "Autoridad Nacional del Agua",
+    "product": "P-02",
+    "theme": "2.6.1 . Legal Aspects",
+    "goal": "Approve the methodology \"Environmental Quality Index of Superficial Water Resources\" (ICARHS)",
+    "link": "https://cdn.www.gob.pe/uploads/ document/file/752819/rj-20084-2020-ana20200601-27004-k6sqh7.pdf"
+  },
+  {
+    "country": "Peru",
+    "law": "Political Constitution of Peru",
+    "responsible": "Government of the Republic of Peru",
+    "product": "P-02",
+    "theme": "2.6.1.1 . Constitution",
+    "goal": "Establish the social and individual rights of the population",
+    "link": "https://www.congreso.gob.pe/Docs/constitucion/constitucion/index.html"
+  },
+  {
+    "country": "Venezuela",
+    "law": "Constitution of the Bilivarian Republic of Venezuela",
+    "responsible": "Federal Government of Venezuela",
+    "product": "P-02",
+    "theme": "2.8 .1.1. Constitution",
+    "goal": "Establish the social and individual rights of the population",
+    "link": "https://venezuela.justia.com/federales/constitucion-de-la-republica-bolivariana-de- Venezuela/"
+  },
+  {
+    "country": "Venezuela",
+    "law": "Law No. 38,595 of 2007",
+    "responsible": "Federal Government of Venezuela",
+    "product": "P-02",
+    "theme": "2.8.1.2 . Lei das Águas",
+    "goal": "Establish provisions that cover water as an essential element for life, human well-being and the sustainable development of the country, being of nature and of strategic interest of the State",
+    "link": "http://www.minec.gob.ve/wp-content/uploads/2021/07/LEY%20DE%20AGUAS.pdf"
+  },
+  {
+    "country": "Venezuela",
+    "law": "Decree No. 883 of 1995",
+    "responsible": "Federal Government of Venezuela",
+    "product": "P-02",
+    "theme": "2.8.1.2 . Water Law",
+    "goal": "Classification of water bodies",
+    "link": "http://extwprlegs1.fao.org/docs/pdf/ven174040.pdf"
+  },
+  {
+    "country": "Venezuela",
+    "law": "Decree Nº 41.377 of 2018",
+    "responsible": "Federal Government of Venezuela",
+    "product": "P-02",
+    "theme": "2.8.1.2 . Water Law",
+    "goal": "Regulates the water law",
+    "link": "http://extwprlegs1.fao.org/docs/pdf/ven182736.pdf"
+  }
+]

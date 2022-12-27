@@ -13,7 +13,7 @@ import FilteringContext from '../../contexts/filtering';
 import { useLayoutConfig } from '../../hooks/useLayoutConfig';
 import { useMobile } from '../../hooks/useMobile';
 import { useQuery } from '../../hooks/useQuery';
-import Filters2 from './Filters2';
+import Filters from './Filters';
 import InfoPanel from './InfoPanel';
 import Statistics from './InfoPanel/Statistics';
 import MonitoringMap from './MonitoringMap';
@@ -274,7 +274,7 @@ function Dashboard() {
           icon: <ManageSearchRoundedIcon />,
           navContainer: {
             className: classes.filtersMobileWrapper,
-            children: <Filters2 />,
+            children: <Filters />,
           },
         },
         {
@@ -313,7 +313,7 @@ function Dashboard() {
             }}
             mainContainer={{
               className: classes.filtersWrapper,
-              children: <Filters2 />,
+              children: <Filters />,
             }}
           />
         ),

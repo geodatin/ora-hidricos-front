@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import CustomTooltip from '../../CustomTooltip';
 import useStyles from './styles';
@@ -12,6 +13,7 @@ import useStyles from './styles';
 export default function MapItem({ children, popupContent, onClick }) {
   const classes = useStyles();
   const [open, setOpen] = useState(true);
+  const { t } = useTranslation();
 
   const containerRef = useRef();
 
@@ -33,7 +35,11 @@ export default function MapItem({ children, popupContent, onClick }) {
           onClick();
         }}
         className={classes.button}
-        title={open ? 'Minimizar legenda.' : 'Abrir legenda.'}
+        title={
+          open
+            ? t('map.legend.watersurface.open')
+            : t('map.legend.watersurface.close')
+        }
         placement={open ? 'bottom' : 'right'}
       >
         {children}

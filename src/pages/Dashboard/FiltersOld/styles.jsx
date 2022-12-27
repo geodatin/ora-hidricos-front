@@ -1,13 +1,12 @@
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles((theme) => ({
-  firstTitle: {
-    padding: '10px 0 0 0',
+  separator: {
+    margin: '20px 0px',
+    height: 1,
+    width: '100%',
+    backgroundColor: theme.stroke.dark,
   },
-  title: {
-    padding: '20px 0 0 0',
-  },
-
   noSelectionText: {
     color: theme.neutral.gray.main,
   },

@@ -1,16 +1,20 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 
 const LegendPopulation = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>População na Bacia Amazônica</h2>
-      <p className={classes.subtitle}>Faixa de População Absoluta</p>
-      <p className={classes.subtitle}>(Número de Habitantes)</p>
+      <h2 className={classes.title}>{t('map.legend.population.title')}</h2>
+      <p className={classes.subtitle}>{t('map.legend.population.subtitle')}</p>
+      <p className={classes.subtitle}>
+        {t('map.legend.population.Population')}
+      </p>
 
       <div className={classes.separator} />
       <div className={classes.content}>
@@ -20,7 +24,7 @@ const LegendPopulation = () => {
             backgroundColor: '#f6f6c8',
           }}
         />
-        <span>Até 10.000</span>
+        <span>{t('map.legend.population.until')} 10.000</span>
       </div>
       <div className={classes.content}>
         <div
@@ -111,7 +115,7 @@ const LegendPopulation = () => {
             backgroundColor: '#953828',
           }}
         />
-        <span>Acima de 5.000.000</span>
+        <span>{t('map.legend.population.above')} 5.000.000</span>
       </div>
     </div>
   );

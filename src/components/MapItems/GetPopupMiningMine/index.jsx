@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
@@ -10,6 +11,7 @@ import useStyles from '../styles';
 export default function GetPopupMiningMine() {
   const classes = useStyles();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const [popup, setPopup] = useState();
   const [tilesCoordMine, setTilesCoordMine] = useState();
@@ -46,35 +48,35 @@ export default function GetPopupMiningMine() {
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Code
+          {t('map.points.MiningMine.code')}
         </Typography>
         <Typography variant="caption">{tilesCoordMine?.code}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Institution
+          {t('map.points.MiningMine.institution')}
         </Typography>
         <Typography variant="caption">{tilesCoordMine?.institution}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Name
+          {t('map.points.MiningMine.name')}
         </Typography>
         <Typography variant="caption">{tilesCoordMine?.name}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Situation
+          {t('map.points.MiningMine.situation')}
         </Typography>
         <Typography variant="caption">{tilesCoordMine?.situation}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Source
+          {t('map.points.MiningMine.source')}
         </Typography>
         <Typography variant="caption">{tilesCoordMine?.source}</Typography>
       </div>

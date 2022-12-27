@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
@@ -10,6 +11,7 @@ import useStyles from '../styles';
 export default function GetPopupWatershed() {
   const classes = useStyles();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const [popup, setPopup] = useState();
   const [tilesCoord, setTilesCoord] = useState();
@@ -48,28 +50,28 @@ export default function GetPopupWatershed() {
         <>
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Área (km?)
+              {t('map.points.watershed.area')}
             </Typography>
             <Typography variant="caption">630.947,44</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              População (nº habitantes)
+              {t('map.points.watershed.population')}
             </Typography>
             <Typography variant="caption">3.744.488</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Países abrangidos
+              {t('map.points.watershed.countries')}
             </Typography>
             <Typography variant="caption">Brasi, Guiana</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais cidades
+              {t('map.points.watershed.cities')}
             </Typography>
             <Typography variant="caption">
               Manaus, Óbidos, Santarém, Macapá
@@ -78,7 +80,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Rios principais
+              {t('map.points.watershed.rivers')}
             </Typography>
             <Typography variant="caption">
               Amazonas, Jatapu, Trombetas, Paru, Maicuru, Jari
@@ -87,7 +89,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais pressões identificadas
+              {t('map.points.watershed.main')}
             </Typography>
             <Typography variant="caption">
               Agropecuária, urbanização e mineração
@@ -96,7 +98,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Total de estações de monitoramento de Qualidade da Água
+              {t('map.points.watershed.total')}
             </Typography>
             <Typography variant="caption">30</Typography>
           </div>
@@ -106,28 +108,28 @@ export default function GetPopupWatershed() {
         <>
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Área (km?)
+              {t('map.points.watershed.area')}
             </Typography>
             <Typography variant="caption">509.486,81</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              População (nº habitantes)
+              {t('map.points.watershed.population')}
             </Typography>
             <Typography variant="caption">3.244.488</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Países abrangidos
+              {t('map.points.watershed.countries')}
             </Typography>
             <Typography variant="caption">Brasi</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais cidades
+              {t('map.points.watershed.cities')}
             </Typography>
             <Typography variant="caption">
               São Fi Jo Xingu, Altamira, Porto de Moz, Tucumã e Ourilândia do
@@ -137,7 +139,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Rios principais
+              {t('map.points.watershed.rivers')}
             </Typography>
             <Typography variant="caption">
               Xingu, Irir, Iriri Novo, Fresco
@@ -146,7 +148,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais pressões identificadas
+              {t('map.points.watershed.main')}
             </Typography>
             <Typography variant="caption">
               Desmatamento, agropecuária, urbanização, mineração e
@@ -156,7 +158,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Total de estações de monitoramento de Qualidade da Água
+              {t('map.points.watershed.total')}
             </Typography>
             <Typography variant="caption">30</Typography>
           </div>
@@ -166,28 +168,28 @@ export default function GetPopupWatershed() {
         <>
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Área (km?)
+              {t('map.points.watershed.area')}
             </Typography>
             <Typography variant="caption">493.142,49</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              População (nº habitantes)
+              {t('map.points.watershed.population')}
             </Typography>
             <Typography variant="caption">1.597.186</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Países abrangidos
+              {t('map.points.watershed.countries')}
             </Typography>
             <Typography variant="caption">Brasi</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais cidades
+              {t('map.points.watershed.cities')}
             </Typography>
             <Typography variant="caption">
               Alta Floresta, Nova Bandeirantes, Primavera, Sinop
@@ -196,7 +198,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Rios principais
+              {t('map.points.watershed.rivers')}
             </Typography>
             <Typography variant="caption">
               Juruena, Ponta de Pedro, do Sangue, São Manuel
@@ -205,7 +207,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais pressões identificadas
+              {t('map.points.watershed.main')}
             </Typography>
             <Typography variant="caption">
               Agropecuária, desmatamento, urbanização e mineração
@@ -214,7 +216,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Total de estações de monitoramento de Qualidade da Água
+              {t('map.points.watershed.total')}
             </Typography>
             <Typography variant="caption">59</Typography>
           </div>
@@ -224,28 +226,28 @@ export default function GetPopupWatershed() {
         <>
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Área (km?)
+              {t('map.points.watershed.area')}
             </Typography>
             <Typography variant="caption">1.369.060,84</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              População (nº habitantes)
+              {t('map.points.watershed.population')}
             </Typography>
             <Typography variant="caption">10.364.999</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Países abrangidos
+              {t('map.points.watershed.countries')}
             </Typography>
             <Typography variant="caption">Bolívia, Brasil, Peru</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais cidades
+              {t('map.points.watershed.cities')}
             </Typography>
             <Typography variant="caption">
               La Paz, Trinidad, Puerto Maldonado, Porto Velho, Sta Cruz de La
@@ -255,7 +257,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Rios principais
+              {t('map.points.watershed.rivers')}
             </Typography>
             <Typography variant="caption">
               Madre de Dios, Mamoré, Madeira, Itonomas, Guaporé, Aripuanã
@@ -264,7 +266,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais pressões identificadas
+              {t('map.points.watershed.main')}
             </Typography>
             <Typography variant="caption">
               Queimadas, desmatamento, agropecuária, mineração legal e ilegal, e
@@ -274,7 +276,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Total de estações de monitoramento de Qualidade da Água
+              {t('map.points.watershed.total')}
             </Typography>
             <Typography variant="caption">180</Typography>
           </div>
@@ -284,21 +286,21 @@ export default function GetPopupWatershed() {
         <>
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Área (km?)
+              {t('map.points.watershed.area')}
             </Typography>
             <Typography variant="caption">701.252,25</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              População (nº habitantes)
+              {t('map.points.watershed.population')}
             </Typography>
             <Typography variant="caption">2.576.342</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Países abrangidos
+              {t('map.points.watershed.countries')}
             </Typography>
             <Typography variant="caption">
               Brasil, Colômbia, Guiana, Venezuela
@@ -307,7 +309,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais cidades
+              {t('map.points.watershed.cities')}
             </Typography>
             <Typography variant="caption">
               La Paz, Trinidad, Puerto Maldonado, Porto Velho, Sta Cruz de La
@@ -317,7 +319,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Rios principais
+              {t('map.points.watershed.rivers')}
             </Typography>
             <Typography variant="caption">
               Boa Vista, San Carlos de Río Negro, La Guadalupe, Mitú
@@ -326,7 +328,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais pressões identificadas
+              {t('map.points.watershed.main')}
             </Typography>
             <Typography variant="caption">
               Desmatamento, urbanização, agropecuária e mineração
@@ -335,7 +337,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Total de estações de monitoramento de Qualidade da Água
+              {t('map.points.watershed.total')}
             </Typography>
             <Typography variant="caption">68</Typography>
           </div>
@@ -345,21 +347,21 @@ export default function GetPopupWatershed() {
         <>
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Área (km?)
+              {t('map.points.watershed.area')}
             </Typography>
             <Typography variant="caption">2.208.708,69</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              População (nº habitantes)
+              {t('map.points.watershed.population')}
             </Typography>
             <Typography variant="caption">14.451.905</Typography>
           </div>
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Países abrangidos
+              {t('map.points.watershed.countries')}
             </Typography>
             <Typography variant="caption">
               Bolívia, Brasil, Colômbia, Equador, Peru
@@ -368,7 +370,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais cidades
+              {t('map.points.watershed.cities')}
             </Typography>
             <Typography variant="caption">
               Caquetá, Putumayo, Rio Branco, Huancayo, Cusco
@@ -377,7 +379,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Rios principais
+              {t('map.points.watershed.rivers')}
             </Typography>
             <Typography variant="caption">
               Purus, Juruá, Marañon, Solimões, Caquetá, Japurá
@@ -386,7 +388,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Principais pressões identificadas
+              {t('map.points.watershed.main')}
             </Typography>
             <Typography variant="caption">
               Desmatamento, agropecuária e mineração, legal e ilegal
@@ -395,7 +397,7 @@ export default function GetPopupWatershed() {
 
           <div className={classes.popupItem}>
             <Typography variant="caption" className={classes.popupItemTitle}>
-              Total de estações de monitoramento de Qualidade da Água
+              {t('map.points.watershed.total')}
             </Typography>
             <Typography variant="caption">305</Typography>
           </div>

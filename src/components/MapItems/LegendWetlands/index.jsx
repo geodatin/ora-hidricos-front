@@ -1,14 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import useStyles from './styles';
 
 const LegendWetlands = () => {
   const classes = useStyles();
-
+  const { t } = useTranslation();
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Zonas Inundáveis na Bacia Amazônica</h2>
+      <h2 className={classes.title}>{t('map.legend.weltlands.title')}</h2>
 
       <div className={classes.separator} />
       <div className={classes.content}>
@@ -18,7 +19,7 @@ const LegendWetlands = () => {
             backgroundColor: '#02607e',
           }}
         />
-        <span>Zonas Inundáveis</span>
+        <span>{t('map.legend.weltlands.lands')}</span>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import circleBuildingIcon from '../../../assets/icons/map/circle-map-building.svg';
 import circleOperationIcon from '../../../assets/icons/map/circle-map-operation.svg';
@@ -10,18 +11,17 @@ import useStyles from './styles';
 
 const LegendHydroeletric = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>
-        Usinas Hidrelétricas e Pequenas Centrais Hidrelétricas na BHA
-      </h2>
+      <h2 className={classes.title}>{t('map.legend.hydroelectric.title')}</h2>
 
       <div className={classes.separator} />
       <h2 className={classes.title}>UHE</h2>
       <div className={classes.content}>
         <img className={classes.image} src={plannedIcon} alt="Icon Planejada" />
-        <span>Planejada</span>
+        <span>{t('map.legend.hydroelectric.planned')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -29,7 +29,7 @@ const LegendHydroeletric = () => {
           src={operationIcon}
           alt="Icon Em operação"
         />
-        <span>Em operação</span>
+        <span>{t('map.legend.hydroelectric.operation')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -37,7 +37,7 @@ const LegendHydroeletric = () => {
           src={buildingIcon}
           alt="Icon Em construção"
         />
-        <span>Em construção</span>
+        <span>{t('map.legend.hydroelectric.construction')}</span>
       </div>
 
       <h2 className={classes.title} style={{ marginTop: 15 }}>
@@ -49,7 +49,7 @@ const LegendHydroeletric = () => {
           src={circlePlannedIcon}
           alt="Icon Planejada"
         />
-        <span>Planejada</span>
+        <span>{t('map.legend.hydroelectric.planned')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -57,7 +57,7 @@ const LegendHydroeletric = () => {
           src={circleOperationIcon}
           alt="Icon Em operação"
         />
-        <span>Em operação</span>
+        <span>{t('map.legend.hydroelectric.operation')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -65,7 +65,7 @@ const LegendHydroeletric = () => {
           src={circleBuildingIcon}
           alt="Icon Em construção"
         />
-        <span>Em construção</span>
+        <span>{t('map.legend.hydroelectric.construction')}</span>
       </div>
     </div>
   );

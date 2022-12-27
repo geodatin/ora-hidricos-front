@@ -5,9 +5,851 @@
     "language": "Espanõl"
   },
   "header": {
-    "changeTheme": "Cambiar Tema"
+    "changeTheme": "Cambiar Tema",
+    "filters": "Filtros"
   },
   "posts": {
-    "download": "Descargar Archivo"
+    "file": {
+      "download": "Descargar Archivo"
+    },
+    "api": {
+      "url": "URL",
+      "urlParams": "Parámetros en la URL",
+      "bodyParams": "parámetros corporales",
+      "requisitionExample": "Ejemplo de requisición",
+      "answer": "Responder",
+      "key": "Llave",
+      "type": "Escribe",
+      "description": "Descripción",
+      "none": "Ninguno"
+    }
+  },
+  "legislation": {
+    "titleHead": "Legislación",
+    "title": "Legislaciones",
+    "info": "Legislación de aguas del país",
+    "country": "País",
+    "law": "Ley",
+    "responsible": "Responsabilidad",
+    "product": "Productos",
+    "theme": "Temática",
+    "goal": "objetivo",
+    "link": "Enlace"
+  },
+  "authorities": {
+    "title": "Autoridades"
+  },
+  "documents": {
+    "title": "Documentos",
+    "info": "Documentos...",
+    "name": "Nombre del proyecto o iniciativa",
+    "category": "Categoria",
+    "sub-basin": "Sub-bacia",
+    "description": "Descripción",
+    "results": "Resultados archivados",
+    "contributions": "Contribuciones a la Calidad del Agua"
+  },
+  "dataSources": {
+    "title": "fuentes de datos"
+  },
+  "share": {
+    "headerTitle": "compartir pagina",
+    "page1Text1": "Comparte el mapa en las redes sociales mediante los siguientes botones:",
+    "page1Text2": "O a través del siguiente enlace:",
+    "copyButton": "Copiar",
+    "copiedButton": "Copiado",
+    "embedButton": "Incrustar el tablero en otra página",
+    "linkShareButton": "Volver a compartir enlaces",
+    "page2Text1": "Configurar incrustación:",
+    "page2Text2": "Código:",
+    "embedTitle": "Incrustar página"
+  },
+  "components": {
+    "advancedFilter": {
+      "placeholder": "Añadir filtro"
+    }
+  },
+  "map": {
+    "points": {
+      "hydrogeochemistry": {
+        "code": "Código",
+        "domain": "Dominio",
+        "name": "nombre del río",
+        "aspect": "Aspecto"
+      },
+      "waterUsers": {
+        "title": "Estado de interferencia",
+        "bestowalType": "Tipo de concesión",
+        "interferenceType": "Tipo de interferencia",
+        "orgName": "Nombre del organismo administrador",
+        "bestowalSituation": "Estado de la subvención",
+        "interferenceSubtype": "Subtipo de interferencia",
+        "waterBodyName": "Nombre del Cuerpo de Agua",
+        "goal": "Meta",
+        "validDate": "Fecha de vencimiento",
+        "avgFlow": "Flujo Promedio",
+        "maxFlow": "Flujo máximo",
+        "volume": "Volumen"
+      },
+      "agricultural": {
+        "title": "Agricultura",
+        "name": "Nombre",
+        "code": "Código",
+        "area": "Zona"
+      },
+      "IPPO": {
+        "title": "Contaminación",
+        "subWatershed": "Subcuenca",
+        "condition": "Condición",
+        "code": "Código"
+      },
+      "MiningMine": {
+        "code": "Código",
+        "name": "Nombre",
+        "institution": "Institución",
+        "situation": "Situación",
+        "source": "Fuente"
+      },
+      "oil": {
+        "name": "Nombre",
+        "company": "Empresa",
+        "situation": "Situación",
+        "source": "Fuente",
+        "institution": "Institución"
+      },
+      "illegalMining": {
+        "description": "Descripción",
+        "explorationMethod": "Método de explotación",
+        "substance": "Sustancia",
+        "contamination": "Contaminación",
+        "situationEnd": "Final de la situación",
+        "informationSource": "Fuente de información",
+        "Institution": "Instituição"
+      },
+      "hydroelectric": {
+        "code": "Código",
+        "type": "Escribe",
+        "author": "Autor",
+        "source": "Fuente",
+        "Potency": "Potencia",
+        "sub": "Sub",
+        "institution": "Instituição",
+        "company": "Empresa",
+        "name": "Nombre",
+        "status": "Estado"
+      },
+      "mercuryFish": {
+        "publicationYear": "Año de publicación",
+        "Study": "Estudio",
+        "hgMin": "hgMin",
+        "hgMax": "hgMax",
+        "hgMean": "hgMean",
+        "author": "Author",
+        "title": "Title",
+        "collectionYear": "Año de la colección",
+        "Community": "Comunidad",
+        "measurementUnit": "Unidad de medida"
+      },
+      "mercuryHuman": {
+        "publicationYear": "Año de publicación",
+        "Study": "Estudio",
+        "hgMin": "hgMin",
+        "hgMax": "hgMax",
+        "hgMean": "hgMean",
+        "author": "Author",
+        "title": "Title",
+        "ageGroup": "Grupo de edad",
+        "collectionYear": "Año de la colección",
+        "Community": "Comunidad",
+        "measurementUnit": "Unidad de medida"
+      },
+      "waterway": {
+        "name": "Nombre",
+        "code": "Código"
+      },
+      "weltlands": {
+        "title": "Zonas de inundación",
+        "name": "Nombre",
+        "code": "Código",
+        "area": "Área"
+      },
+      "watershed": {
+        "area": "Área (km?)",
+        "population": "Población (nº habitantes)",
+        "countries": "Países cubiertos",
+        "cities": "Principales ciudades",
+        "rivers": "Principales ríos",
+        "main": "Principales presiones identificadas",
+        "total": "Estaciones de monitoreo de calidad de agua total"
+      },
+      "population": {
+        "title": "Población",
+        "total": "Total",
+        "code": "Código",
+        "nunivotto": "Nunivotto"
+      },
+      "evapotranspiration": {
+        "range": "Rango",
+        "min": "Mínimo",
+        "max": "Máximo"
+      },
+      "precipitation": {
+        "range": "Rango",
+        "min": "Mínimo",
+        "max": "Máximo"
+      },
+      "waterBalance": {
+        "range": "Rango",
+        "min": "Mínimo",
+        "max": "Máximo"
+      }
+    },
+    "legend": {
+      "agricultural": {
+        "title": "Agricultura en la cuenca del Amazonas",
+        "subtitle": "Actividades agrícolas",
+        "agricultural": "Agrícola",
+        "livestock": "Ganado"
+      },
+      "IPPO": {
+        "title": "IPPO en la cuenca del Amazonas",
+        "subtitle": "Situación",
+        "bad": "Malo",
+        "terrible": "Terrible"
+      },
+      "oil": {
+        "title": "Lotes de aceite",
+        "exploration": "En exploración",
+        "exploitation": "En explotación",
+        "potential": "Potencial",
+        "solicitation": "Solicitación",
+        "others": "Otros"
+      },
+      "hydroelectric": {
+        "title": "Centrales Hidroeléctricas y Pequeñas Centrales Hidroeléctricas en BHA",
+        "planned": "Planificado",
+        "operation": "En la operación",
+        "construction": "En construcción"
+      },
+      "MiningMine": {
+        "title": "Minas mineras en la cuenca del Amazonas",
+        "subtitle": "Situación de la minería",
+        "concession": "Sin concesión de actividad",
+        "exploration": "En exploración",
+        "exploração/explotação": "En exploración/En explotación",
+        "exploitation": "en explotación",
+        "solicitation": "Solicitación",
+        "potential": "Potencial"
+      },
+      "mercuryFish": {
+        "title": "Contaminación por mercurio en el pescado",
+        "low": "bajo",
+        "acceptable": "aceptable",
+        "high": "alta",
+        "veryHigh": "muy alto"
+      },
+      "mercuryHuman": {
+        "title": "Contaminación humana por mercurio",
+        "low": "bajo",
+        "acceptable": "aceptable",
+        "high": "alta",
+        "veryHigh": "muy alto"
+      },
+      "population": {
+        "title": "Población en la cuenca del Amazonas",
+        "subtitle": "Rango de población absoluta",
+        "Population": "(Número de Habitantes)",
+        "until": "Comió",
+        "above": "Arriba"
+      },
+      "weltlands": {
+        "title": "Zonas de inundación en la cuenca del Amazonas",
+        "lands": "Zonas de inundación"
+      },
+      "watersurface": {
+        "title": "subtítulo en la superficie del agua",
+        "open": "Minimizar subtítulos.",
+        "close": "Abrir subtítulo."
+      },
+      "evapotranspiration": {
+        "title": "Evapotranspiración real",
+        "subtitle": "Milímetros (mm)"
+      },
+      "precipitation": {
+        "title": "Precipitación anual",
+        "subtitle": "Milímetros (mm)"
+      },
+      "waterBalance": {
+        "title": "Balance hídrico",
+        "subtitle": "Milímetros (mm)"
+      }
+    }
+  },
+  "specific": {
+    "filters": {
+      "title": "Filtros",
+      "clearButton": "Limpio",
+      "apply": "Aplicar"
+    },
+    "legend": {
+      "territoryLine": "Límites de la cuenca del Amazonas",
+      "riverLine": "Líneas de drenaje"
+    },
+
+    "oil": {
+      "treemapChart": {
+        "title": "Situación del campo petrolero",
+        "info": "Este gráfico presenta la situación del campo petrolero",
+        "station": {
+          "singular": "Situación",
+          "plural": "situaciones"
+        },
+        "situation": {
+          "en explotaciÃ³n": "En la operación",
+          "Ãrea Reservada a favor de YPFB": "Área Reservada a favor de YPFB",
+          "AREA EN EXPLORACION": "Área de exploración",
+          "Ãreas de promociÃ³n semiexplorada": "Áreas de promoción semi-exploradas",
+          "en exploraciÃ³n": "En exploración",
+          "AREA DISPONIBLE": "Superficie disponible",
+          "AREA EN PRODUCCION": "Área de producción",
+          "ExploraÃ§Ã£o": "Exploración",
+          "Solicitud": "Solicitud",
+          "Ãreas de promociÃ³n frontera": "Áreas de promoción fronteriza",
+          "ExplotaciÃ³n": "Exploración",
+          "ProduÃ§Ã£o": "Producción",
+          "AREA RESERVADA": "Área reservada",
+          "ExploraciÃ³n": "Exploración",
+          "Convenio de evaluaciÃ³n tÃ©cnica contrato": "Contrato de acuerdo de evaluación técnica",
+          "Ãrea con CSP en NegociaciÃ³n": "Área con CSP en Negociación",
+          "NegociaciÃ³n": "Negociación",
+          "Desenvolvimento": "Desarrollo",
+          "TEA": "TEA",
+          "Em DevoluÃ§Ã£o": "Atrás",
+          "Proceso simplificado": "Aroceso simplificado",
+          "Ãrea Libre": "Área Livre",
+          "Ãrea con CSP en etapa de ProtocolizaciÃ³n": "Área con CSP en fase de Protocolización",
+          "Convenio de evaluaciÃ³n tÃ©cnica": "Contrato de evaluación técnica"
+        }
+      },
+      "rankingChart": {
+        "title": "Ranking de empresas",
+        "info": "Este gráfico presenta la clasificación de las empresas de campos petroleros"
+      },
+      "pieChart": {
+        "title": "Número total de lotes",
+        "info": "Este gráfico muestra el número total de lotes",
+        "plural": "Lotes",
+        "singular": "Lote"
+      }
+    },
+    "Agricultural": {
+      "rankingChart": {
+        "title": "Ranking para el área agrícola",
+        "info": "Este gráfico muestra la clasificación del área Agrícola"
+      },
+      "pieChart": {
+        "title": "Área agrícola total",
+        "info": "Este gráfico muestra la superficie agrícola total",
+        "area": "km2"
+      }
+    },
+    "watershedArea": {
+      "rankingChart": {
+        "title": "Clasificación del área de la cuenca hidrográfica por país",
+        "info": "Este cuadro presenta la clasificación del área de la cuenca por país"
+      },
+      "pieChart": {
+        "title": "Superficie total del territorio de la cuenca",
+        "info": "Este gráfico muestra el área total del territorio de la cuenca",
+        "plural": "km2",
+        "singular": "km2"
+      },
+      "itemChart": {
+        "title": "Porcentaje del país ocupado por la cuenca del Amazonas",
+        "info": "Este gráfico muestra el porcentaje del país ocupado por la cuenca del Amazonas",
+        "plural": "%",
+        "singular": "%"
+      }
+    },
+    "wetlands": {
+      "rankingChart": {
+        "title": "Clasificación del área de zonas inundables",
+        "info": "Este gráfico muestra la clasificación para el área de las zonas de inundación"
+      },
+      "pieChart": {
+        "title": "Área total de zonas de inundación",
+        "info": "Este gráfico muestra el área total de las zonas de inundación",
+        "area": "km2"
+      }
+    },
+    "IPPO": {
+      "treemapChart": {
+        "title": "Situación de contaminación",
+        "info": "Este gráfico muestra la situación de la contaminación",
+        "station": {
+          "plural": "Ocurrencias",
+          "singular": "Ocurrencia"
+        },
+        "situation": {
+          "Atende ao padrão mais restritivo": "Cumple con el estándar más restrictivo",
+          "Atende ao padrão mais permissível": "Cumple con el estándar más permisible",
+          "Acima do limite mais permissível": "Por encima del límite más permisible"
+        }
+      },
+      "pieChart": {
+        "title": "Número total de incidentes de contaminación",
+        "info": "Este gráfico muestra el número total de casos de contaminación",
+        "plural": "Ocurrencias",
+        "singular": "Ocurrencia"
+      }
+    },
+    "MiningMine": {
+      "treemapChart": {
+        "title": "Situación de los campos mineros",
+        "info": "Este gráfico presenta la situación de los campos mineros",
+        "station": {
+          "plural": "Minería",
+          "singular": "Minería"
+        },
+        "situation": {
+          "REQUERIMENTO DE LAVRA GARIMPEIRA": "Requisito minero minero",
+          "ConcesiÃ³n sin actividad": "Arrendamiento sin actividad",
+          "REQUERIMENTO DE PESQUISA": "Requisito de búsqueda",
+          "AUTORIZAÃ‡ÃƒO DE PESQUISA": "Autorización de investigación",
+          "en explotaciÃ³n": "En la operación",
+          "TrÃ¡mite": "Procedimiento",
+          "sin dato": "Sin datos",
+          "LAVRA GARIMPEIRA": "Minero prospector",
+          "Bloqueado": "Obstruido",
+          "LICENCIAMENTO": "Licencia",
+          "en exploraciÃ³n/en explotaciÃ³n": "En funcionamiento / en funcionamiento",
+          "Otros": "Otros",
+          "REQUERIMENTO DE LICENCIAMENTO": "Requisito de licencia",
+          "DISPONIBILIDADE": "Disponibilidad",
+          "en exploraciÃ³n": "En exploración",
+          "REQUERIMENTO DE LAVRA": "Requerimiento minero",
+          "solicitud": "Solicitud",
+          "CONCESSÃƒO DE LAVRA": "Concesión minera",
+          "Extinguido": "Extinto",
+          "DIREITO DE REQUERER A LAVRA": "Derecho a solicitar una minería",
+          "REQUERIMENTO DE REGISTRO DE EXTRAÃ‡ÃƒO": "Requisito de registro de extraño",
+          "REGISTRO DE EXTRAÃ‡ÃƒO": "Registro extraño"
+        }
+      },
+      "itemChart": {
+        "title": "Número de minas por país",
+        "info": "Este gráfico muestra el número de minas por país",
+        "plural": "Minas",
+        "singular": "Mío"
+      },
+      "rankingData": {
+        "title": "Ranking de empresas mineras",
+        "info": "Este cuadro muestra la clasificación de las empresas mineras"
+      },
+      "pieChart": {
+        "title": "Número total de ocurrencias",
+        "info": "Este gráfico muestra el número total de ocurrencias",
+        "plural": "Ocurrencias",
+        "singular": "Ocurrencia"
+      }
+    },
+
+    "CNARHunion": {
+      "pieChart": {
+        "title": "Número total de ocurrencias",
+        "info": "Este gráfico muestra el número total de ocurrencias",
+        "plural": "Ocurrencias",
+        "singular": "Ocurrencia"
+      },
+      "rankingChartType": {
+        "title": "Clasificación de la subvención por tipo",
+        "info": "Este cuadro presenta la clasificación de la subvención por tipo"
+      },
+      "rankingChartSituation": {
+        "title": "Clasificación de la subvención por situación",
+        "info": "Este cuadro presenta la clasificación de la subvención por situación"
+      },
+      "rankingChartInterference": {
+        "title": "Subtipo de interferencia",
+        "info": "Este gráfico muestra la clasificación para el tipo de interferencia."
+      },
+      "rankingChartCities": {
+        "title": "Ranking de ciudades del territorio",
+        "info": "Este gráfico apresenta a classificação das cidades do território"
+      },
+      "rankingChartGoal": {
+        "title": "clasificación por objetivo",
+        "info": "Este gráfico muestra la clasificación para el objetivo."
+      }
+    },
+
+    "hydroelectric": {
+      "pieChart": {
+        "title": "Número total de centrales hidroeléctricas",
+        "info": "Este gráfico muestra el número total de centrales hidroeléctricas",
+        "plural": "plantas hidroeléctricas",
+        "singular": "hidroeléctrico"
+      },
+      "rankingChartCountry": {
+        "title": "Ranking de países de todas las centrales hidroeléctricas",
+        "info": "Este cuadro presenta la clasificación de las represas hidroeléctricas por países"
+      },
+      "rankingChartPotency": {
+        "title": "Ranking de potencia de todas las centrales hidroeléctricas",
+        "info": "Este gráfico presenta la potencia nominal de todas las centrales hidroeléctricas"
+      },
+      "table": {
+        "title": "Tabla",
+        "info": "Centrales hidroeléctricas y pequeñas centrales hidroeléctricas en la BHA",
+        "type": "Escribe",
+        "operation": "Operación",
+        "construction": "Construcción",
+        "planned": "Planificado"
+      }
+    },
+
+    "Hydrogeochemistry": {
+      "pieChart": {
+        "title": "Longitud total en km",
+        "info": "Este gráfico muestra la longitud total en km"
+      },
+      "rankingChartDomain": {
+        "title": "Clasificación por dominios",
+        "info": "Este cuadro presenta la clasificación por dominio"
+      },
+      "rankingChartAspects": {
+        "title": "Clasificación por aspectos",
+        "info": "Este cuadro presenta la clasificación por aspectos"
+      }
+    },
+    "CNARHstate": {
+      "pieChart": {
+        "title": "Número total de ocurrencias",
+        "info": "Este gráfico muestra el número total de ocurrencias",
+        "plural": "Ocurrencias",
+        "singular": "Ocurrencia"
+      },
+      "rankingChartType": {
+        "title": "Clasificación de la subvención por tipo",
+        "info": "Este cuadro presenta la clasificación de la subvención por tipo"
+      },
+      "rankingChartSituation": {
+        "title": "Clasificación de la subvención por situación",
+        "info": "Este cuadro presenta la clasificación de la subvención por situación"
+      },
+      "rankingChartInterference": {
+        "title": "Subtipo de interferencia",
+        "info": "Este gráfico muestra la clasificación para el tipo de interferencia"
+      },
+      "rankingChartCities": {
+        "title": "Ranking de ciudades del territorio",
+        "info": "Este gráfico muestra el ranking de ciudades en el territorio"
+      },
+      "rankingChartGoal": {
+        "title": "Clasificación por objetivo",
+        "info": "Este gráfico muestra la clasificación para el objetivo."
+      }
+    },
+    "Waterway": {
+      "pieChart": {
+        "title": "Número total de cursos de agua",
+        "info": "Este gráfico muestra el número total de cursos de agua",
+        "plural": "Canales",
+        "singular": "Camino acuático"
+      },
+      "rankingChart": {
+        "title": "Clasificación por países",
+        "info": "Este gráfico muestra la clasificación de los países en el territorio"
+      }
+    },
+    "Population": {
+      "pieChart": {
+        "title": "Número total de población en la cuenca",
+        "info": "Este gráfico muestra el número total de población en la cuenca",
+        "plural": "población",
+        "singular": "Población"
+      },
+      "rankingChart": {
+        "title": "Ranking de sustancias",
+        "info": "Este gráfico muestra la clasificación de las sustancias."
+      }
+    },
+    "mercuryFish": {
+      "pieChart": {
+        "title": "Número total de publicaciones",
+        "info": "Este gráfico muestra el número total de publicaciones.",
+        "plural": "Ṕublicaciones",
+        "singular": "Publicación"
+      },
+      "itemChart": {
+        "title": "Publicaciones por país",
+        "info": "Este gráfico muestra las publicaciones por país",
+        "plural": "Ṕublicaciones",
+        "singular": "Publicación"
+      },
+      "lineChart": {
+        "title": "Publicaciones sobre contaminación por mercurio",
+        "info": "Este gráfico muestra publicaciones sobre la contaminación por mercurio.",
+        "label": "Publicaciones de contaminación"
+      }
+    },
+    "mercuryHuman": {
+      "pieChart": {
+        "title": "Número total de publicações",
+        "info": "Este gráfico apresenta o número total de publicações",
+        "plural": "Ṕublicaciones",
+        "singular": "Publicación"
+      },
+      "itemChart": {
+        "title": "Publicaciones por país",
+        "info": "Este gráfico muestra las publicaciones por país",
+        "plural": "Ṕublicaciones",
+        "singular": "Publicación"
+      },
+      "lineChart": {
+        "title": "Publicaciones sobre contaminación por mercurio",
+        "info": "Este gráfico muestra publicaciones sobre la contaminación por mercurio.",
+        "label": "Publicaciones de contaminación"
+      }
+    },
+    "illegalMining": {
+      "pieChart": {
+        "title": "Número total de ocurrencias",
+        "info": "Este gráfico muestra el número total de ocurrencias",
+        "plural": "Ocurrencias",
+        "singular": "Ocurrencia"
+      },
+      "itemChart": {
+        "title": "Número de minas por país",
+        "info": "Este gráfico muestra el número de minas por país",
+        "plural": "Minas",
+        "singular": "Mío"
+      },
+      "rankingChart": {
+        "title": "Ranking de sustancias",
+        "info": "Este gráfico muestra la clasificación de las sustancias"
+      }
+    },
+    "WaterSurface": {
+      "dataDough": {
+        "title": "Datos generales",
+        "info": "Este gráfico presenta los datos generales",
+        "label1": "Superficie del agua en 2021",
+        "label2": "Pérdida/ganancia de superficie de agua",
+        "label3": "Porcentaje de pérdida/ganancia"
+      },
+      "lineWaterSurface": {
+        "title": "Historia de la superficie del agua",
+        "info": "Este gráfico muestra la historia de la superficie del agua.",
+        "label": "Datos generales"
+      },
+      "rankingWaterSurfaceData": {
+        "title": "Clasificación de la superficie del agua",
+        "info": "Este gráfico presenta una clasificación de la superficie del agua"
+      },
+      "rankingWaterLossAndGainData": {
+        "title": "clasificación de victorias y derrotas",
+        "info": "Este gráfico presenta una clasificación de victorias y derrotas"
+      }
+    },
+    "WQI": {
+      "LegendDoughnutChart": {
+        "title": "Estaciones por estado de calidad",
+        "info": "Este gráfico apresenta ..."
+      },
+      "lineChart": {
+        "title": "Evolución del IQA a lo largo de los años",
+        "info": "Este gráfico presenta..."
+      },
+      "rankingWQIState": {
+        "title": "Clasificación promedio de IQA por estado",
+        "info": "Este gráfico presenta una clasificación de ..."
+      },
+      "rankingWQIStations": {
+        "title": "Ranking IQA por temporadas",
+        "info": "Este gráfico presenta una clasificación de ..."
+      }
+    },
+    "infoPanel": {
+      "WaterSurface": {
+        "title": "Área de la superficie del agua",
+        "font": "Fuente de datos: GlobalSurfaceWater"
+      },
+      "wetlands": {
+        "title": "Zonas de inundación",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "annualPrecipitation": {
+        "title": "Precipitación anual",
+        "font": "Fuente de datos: mapa 8 del atlas de vulnerabilidad de la OTCA"
+      },
+      "actualEvapotranspiration": {
+        "title": "Evapotranspiración real",
+        "font": "Fuente de datos: mapa 9 del atlas de vulnerabilidad de la OTCA"
+      },
+      "waterBalance": {
+        "title": "Balanço hídrico",
+        "font": "Fuente de datos: mapa 10 del atlas de vulnerabilidad de la OTCA"
+      },
+      "mercuryHuman": {
+        "title": "Mercurio en humanos",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "mercuryFish": {
+        "title": "Mercurio en pescado",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "IPPO": {
+        "title": "Indicador de Contaminación Orgánica Potencial (IPPO)",
+        "font": "Fuente de datos: Cobrape"
+      },
+
+      "oil": {
+        "title": "Lotes de aceite",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "illegalMining": {
+        "title": "Minería ilegal",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "minesMining": {
+        "title": "Minas mineras",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "deforesting": {
+        "title": "Inicio sesión",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "agricultural": {
+        "title": "Agricultura",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "hydroelectric": {
+        "title": "Plantas hidroeléctricas",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "Waterways": {
+        "title": "Canales",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "Population": {
+        "title": "Población en la cuenca",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "CNARHunion": {
+        "title": "Datos del registro nacional de recursos hídricos de Brasil (CNARH)",
+        "font": "Fuente de datos: ANA https://dadosabertos.ana.gov.br/search?q=cadastro"
+      },
+      "CNARHstate": {
+        "title": "Datos del registro nacional de recursos hídricos de Brasil (CNARH)",
+        "font": "Fuente de datos:ANA https://dadosabertos.ana.gov.br/search?q=cadastro"
+      },
+      "watershedArea": {
+        "title": "Caracteristicas de la cuenca",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "areaPercentage": {
+        "title": "Porcentaje del área de la cuenca sobre el territorio nacional",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "surfaceHydrologicalUnits": {
+        "title": "Unidades hidrológicas de superficie (división Otto Pfafstetter)",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "undergroundHydrologicalUnits": {
+        "title": "Unidades hidrológicas subterráneas",
+        "font": "Fuente de datos: http://siagasweb.cprm.gov.br/layout/visualizar_mapa.php"
+      },
+      "hydrogeochemicalCharacteristics": {
+        "title": "Características hidrogeoquímicas del agua",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "droughtEvents": {
+        "title": "Recurrencia de eventos de sequía extrema",
+        "font": "Fuente de datos: mapa 33 del atlas de vulnerabilidad de la OTCA"
+      },
+      "floodEvents": {
+        "title": "Recurrencia de eventos de inundación",
+        "font": "Fuente de datos: mapa 34 del atlas de vulnerabilidad de la OTCA"
+      },
+      "droughtVulnerability": {
+        "title": "Vulnerabilidad a la sequía",
+        "font": "Fuente de datos: mapa 57 del atlas de vulnerabilidad de la OTCA"
+      },
+      "floodVulnerability": {
+        "title": "vulnerabilidad a inundaciones",
+        "font": "Fuente de datos: mapa 58 del atlas de vulnerabilidad de la OTCA"
+      },
+      "authorities": {
+        "title": "Las autoridades nacionales del agua y sus funciones",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "legislation": {
+        "title": "Leyes de agua de los países",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "publications": {
+        "title": "Publicaciones y documentos científicos sobre recursos hídricos",
+        "font": "Fuente de datos: Cobrape"
+      },
+      "countryReports": {
+        "title": "Informes de países sobre recursos hídricos",
+        "font": "Fuente de datos: Cobrape"
+      }
+    },
+    "indicators": {
+      "type": {
+        "waterResources": "Suministro de agua",
+        "waterSurface": "Área de la superficie del agua",
+        "wetlands": "Zonas de inundación",
+        "annualPrecipitation": "Precipitación anual",
+        "actualEvapotranspiration": "Evapotranspiración real",
+        "waterBalance": "Equilibrio hídrico",
+
+        "waterDemand": "Demanda de agua",
+        "hydroelectric": "Plantas hidroeléctricas",
+        "Waterways": "Canales",
+        "Population": "Población en la cuenca",
+        "CNARHunion": "Usuarios del agua - União",
+        "CNARHstate": "Usuarios de agua - Estado",
+
+        "mercury": "Calidad del agua - indicadores de contaminación",
+        "mercuryHuman": "Mercurio en humanos",
+        "mercuryFish": "Mercurio en pescado",
+        "IPPO": "IPPO",
+
+        "ground": "Calidad del agua - fuentes de contaminación",
+        "oil": "Lotes de aceite",
+        "illegalMining": "Minería ilegal",
+        "agricultural": "Agricultura",
+        "deforesting": "Inicio sesión",
+        "minesMining": "Minas mineras",
+
+        "generalFeatures": "Características generales",
+        "watershedArea": "Caracteristicas de la cuenca",
+        "areaPercentage": "Porcentaje del área de la cuenca sobre el territorio nacional",
+        "surfaceHydrologicalUnits": "Unidades hidrológicas de superficie (división Otto Pfafstetter)",
+        "undergroundHydrologicalUnits": "Unidades hidrológicas subterráneas",
+        "hydrogeochemicalCharacteristics": "Características hidrogeoquímicas del agua",
+
+        "hydroclimaticVulnerability": "Vulnerabilidade hidroclimática",
+        "droughtEvents": "Recurrencia de eventos de sequía extrema ",
+        "floodEvents": "Recurrencia de eventos de inundación",
+        "droughtVulnerability": "Vulnerabilidad a la sequía",
+        "floodVulnerability": "Vulnerabilidad a inundaciones",
+
+        "waterGovernance": "Gobernanza del Agua",
+        "authorities": "Las autoridades nacionales del agua y sus funciones",
+        "legislation": "Leyes de agua de los países",
+        "publications": "Publicaciones y documentos científicos sobre recursos hídricos",
+        "countryReports": "Informes de países sobre recursos hídricos"
+      }
+    },
+    "autocompletesearch": {
+      "placeholder": "Seleccionar territorio",
+      "noOptionsText": "No se encontró ninguna opción",
+      "emptyText": "Escribe para buscar",
+      "loadingText": "Buscando..."
+    }
   }
 }

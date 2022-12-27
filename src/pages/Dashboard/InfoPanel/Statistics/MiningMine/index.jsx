@@ -141,7 +141,7 @@ export default function MiningMine({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'green',
+                backgroundColor: '#344a8a',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -173,7 +173,7 @@ export default function MiningMine({
             datasets: [
               {
                 data: data.series[0].data.map((number) => number),
-                backgroundColor: 'green',
+                backgroundColor: '#344a8a',
                 borderRadius: 5,
                 barThickness: 15,
               },
@@ -237,7 +237,7 @@ export default function MiningMine({
                 captions: {
                   display: false,
                 },
-                backgroundColor: 'green',
+                backgroundColor: '#344a8a',
               },
             ],
           });
@@ -300,7 +300,7 @@ export default function MiningMine({
                 ? t('specific.MiningMine.pieChart.plural')
                 : t('specific.MiningMine.pieChart.singular')
             }
-            color="green"
+            color="#344a8a"
             scale={1.2}
           />
         </div>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
@@ -10,6 +11,7 @@ import useStyles from '../styles';
 export default function GetPopupIPPO() {
   const classes = useStyles();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const [popup, setPopup] = useState();
   const [tilesCoord, setTilesCoord] = useState();
@@ -40,12 +42,12 @@ export default function GetPopupIPPO() {
       position={[popup?.lat, popup?.lng]}
     >
       <Typography variant="caption" format="bold">
-        Pollution
+        {t('map.legend.IPPO.title')}
       </Typography>
       <div className={classes.separator} />
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Sub watershed
+          {t('map.legend.IPPO.subWatershed')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.subWatershed}</Typography>
       </div>
@@ -53,13 +55,14 @@ export default function GetPopupIPPO() {
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
           Condition
+          {t('map.legend.IPPO.condition')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.condition}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Code
+          {t('map.legend.IPPO.code')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.code}</Typography>
       </div>

@@ -4,6 +4,7 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import React, { useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { GeoJSON } from 'react-leaflet';
 import * as topojson from 'topojson-client';
 
@@ -13,6 +14,7 @@ export default function TopoJSONHydrogeochemistry(props) {
   const layerRef = useRef(null);
   const { data, ...otherProps } = props;
   const classes = useStyles();
+  const { t } = useTranslation();
 
   function addData(layer, jsonData) {
     if (jsonData?.type === 'Topology') {
@@ -48,17 +50,33 @@ export default function TopoJSONHydrogeochemistry(props) {
     layer.bindPopup(
       `
       <div>
-          <p class=${classes.popupItem}>Code
-            </br><span class=${classes.popupItemTitle}>${feature.properties.code}</span>
+          <p class=${classes.popupItem}>${t(
+        'map.points.hydrogeochemistry.code'
+      )}
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.code
+      }</span>
           </p>
-          <p class=${classes.popupItem}>Domain 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.domain}</span>
+          <p class=${classes.popupItem}>${t(
+        'map.points.hydrogeochemistry.domain'
+      )} 
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.domain
+      }</span>
           </p> 
-          <p class=${classes.popupItem}>River name 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.riverName}</span>
+          <p class=${classes.popupItem}>${t(
+        'map.points.hydrogeochemistry.name'
+      )}
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.riverName
+      }</span>
           </p> 
-          <p class=${classes.popupItem}>Aspect 
-            </br><span class=${classes.popupItemTitle}>${feature.properties.aspect}</span>
+          <p class=${classes.popupItem}>${t(
+        'map.points.hydrogeochemistry.aspect'
+      )} 
+            </br><span class=${classes.popupItemTitle}>${
+        feature.properties.aspect
+      }</span>
           </p> 
           </div>
         `,
@@ -69,7 +87,7 @@ export default function TopoJSONHydrogeochemistry(props) {
   useEffect(() => {
     const layer = layerRef.current;
     addData(layer, props.data);
-  }, [props.data]);
+  }, [props.data, t]);
 
   return (
     <GeoJSON ref={layerRef} {...otherProps} onEachFeature={onEachFeature} />

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
@@ -10,6 +11,7 @@ import useStyles from '../styles';
 export default function GetPopupWaterway() {
   const classes = useStyles();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const [popup, setPopup] = useState();
   const [tilesCoord, setTilesCoord] = useState();
@@ -45,14 +47,14 @@ export default function GetPopupWaterway() {
       <div className={classes.separator} />
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Name
+          {t('map.points.waterway.name')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.name}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Code
+          {t('map.points.waterway.code')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.code}</Typography>
       </div>

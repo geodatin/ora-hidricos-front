@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import api from '../../../services/api';
 import useStyles from './styles';
@@ -7,6 +8,7 @@ import useStyles from './styles';
 const LegendEvapotranspiration = () => {
   const [coordsPrecipitation, setCoordsPrecipitation] = useState();
   const classes = useStyles();
+  const { t } = useTranslation();
 
   useEffect(() => {
     api.get('vulnerability/shape/evapotranspiration').then(({ data }) => {
@@ -16,8 +18,12 @@ const LegendEvapotranspiration = () => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Evapotranspiração real</h2>
-      <p className={classes.subtitle}>Milímetros (mm)</p>
+      <h2 className={classes.title}>
+        {t('map.legend.evapotranspiration.title')}
+      </h2>
+      <p className={classes.subtitle}>
+        {t('map.legend.evapotranspiration.subtitle')}
+      </p>
 
       <div className={classes.separator} />
       <div className={classes.content}>

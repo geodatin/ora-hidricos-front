@@ -13,9 +13,12 @@ import {
 import PropTypes from 'prop-types';
 import React, { useRef, useState, useMemo } from 'react';
 import { useFullScreenHandle } from 'react-full-screen';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
 import documentsTable from '../../assets/shapes/otherDocuments.json';
+import documentsTableEn from '../../assets/shapes/otherDocumentsEn.json';
+import documentsTableEs from '../../assets/shapes/otherDocumentsEs.json';
 import ChartExportMenu from '../../components/ChartContainer/ChartExportMenu';
 import CustomTooltip from '../../components/CustomTooltip';
 import Typography from '../../components/Typography';
@@ -46,9 +49,29 @@ export default function DocumentsTable({
   const classes = useStyles();
   const childrentableref = useRef(null);
   const refContainer = useRef();
+  const { i18n, t } = useTranslation();
 
   const filterData = useMemo(() => {
     const lowerSearch = search.toLowerCase();
+
+    if (i18n.language === 'en') {
+      return documentsTableEn.filter(
+        (documents) =>
+          documents['Nome do projeto ou iniciativa']
+            ?.toLowerCase()
+            .includes(lowerSearch) ||
+          documents.Categoria.toLowerCase().includes(lowerSearch)
+      );
+    }
+    if (i18n.language === 'es') {
+      return documentsTableEs.filter(
+        (documents) =>
+          documents['Nome do projeto ou iniciativa']
+            ?.toLowerCase()
+            .includes(lowerSearch) ||
+          documents.Categoria.toLowerCase().includes(lowerSearch)
+      );
+    }
 
     return documentsTable.filter(
       (documents) =>
@@ -57,7 +80,7 @@ export default function DocumentsTable({
           .includes(lowerSearch) ||
         documents.Categoria.toLowerCase().includes(lowerSearch)
     );
-  }, [search]);
+  }, [search, i18n.language]);
 
   const clearSearch = () => {
     setSearch('');
@@ -85,9 +108,9 @@ export default function DocumentsTable({
       <div className={classes.header}>
         <div className={classes.headerTitle}>
           <Typography variant="body" format="bold">
-            Documentos
+            {t('documents.title')}
           </Typography>
-          <CustomTooltip title="Documentos" placement="bottom">
+          <CustomTooltip title={t('documents.info')} placement="bottom">
             <div className={classes.tooltipInner}>
               <InfoOutlined
                 style={{
@@ -131,16 +154,25 @@ export default function DocumentsTable({
           <TableHead>
             <TableRow>
               <TableCell style={{ minWidth: '200px' }}>
-                Nome do projeto ou iniciativa
+                {t('documents.name')}
               </TableCell>
-              <TableCell style={{ minWidth: '120px' }}>Categoria</TableCell>
-              <TableCell style={{ minWidth: '100px' }}>Sub-bacia</TableCell>
-              <TableCell style={{ minWidth: '100px' }}>Descrição</TableCell>
-              <TableCell style={{ minWidth: '200px' }}>
-                Resultados Alcançados
+              <TableCell style={{ minWidth: '120px' }}>
+                {' '}
+                {t('documents.category')}
+              </TableCell>
+              <TableCell style={{ minWidth: '100px' }}>
+                {' '}
+                {t('documents.sub-basin')}
+              </TableCell>
+              <TableCell style={{ minWidth: '100px' }}>
+                {' '}
+                {t('documents.description')}
               </TableCell>
               <TableCell style={{ minWidth: '200px' }}>
-                Contribuições para Qualidade da Água
+                {t('documents.results')}
+              </TableCell>
+              <TableCell style={{ minWidth: '200px' }}>
+                {t('documents.contributions')}
               </TableCell>
             </TableRow>
           </TableHead>

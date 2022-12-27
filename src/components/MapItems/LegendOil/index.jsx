@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import circleExploitation from '../../../assets/icons/map/circle-map-exploitation.svg';
 import circleExploration from '../../../assets/icons/map/circle-map-exploration.svg';
@@ -9,10 +10,11 @@ import useStyles from './styles';
 
 const LegendOil = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Lotes petrolíferos</h2>
+      <h2 className={classes.title}>{t('map.legend.oil.title')}</h2>
 
       <div className={classes.separator} />
 
@@ -22,7 +24,7 @@ const LegendOil = () => {
           src={circleExploration}
           alt="Icon em exploração"
         />
-        <span>Em exploração</span>
+        <span>{t('map.legend.oil.exploration')}</span>
       </div>
 
       <div className={classes.content}>
@@ -31,7 +33,7 @@ const LegendOil = () => {
           src={circleExploitation}
           alt="Icon Em explotação"
         />
-        <span>Em explotação</span>
+        <span>{t('map.legend.oil.exploitation')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -39,7 +41,7 @@ const LegendOil = () => {
           src={circlePotential}
           alt="Icon potencial"
         />
-        <span>Potencial</span>
+        <span>{t('map.legend.oil.potential')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -47,11 +49,11 @@ const LegendOil = () => {
           src={circleRequest}
           alt="Icon solicitação"
         />
-        <span>Solicitação</span>
+        <span>{t('map.legend.oil.solicitation')}</span>
       </div>
       <div className={classes.content}>
         <img className={classes.image} src={circleOthers} alt="Icon outros" />
-        <span>Outros</span>
+        <span>{t('map.legend.oil.others')}</span>
       </div>
     </div>
   );

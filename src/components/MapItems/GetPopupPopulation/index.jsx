@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Popup, useMapEvents } from 'react-leaflet';
 
@@ -10,6 +11,7 @@ import useStyles from '../styles';
 export default function GetPopupPopulation() {
   const classes = useStyles();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const [popup, setPopup] = useState();
   const [tilesCoord, setTilesCoord] = useState();
@@ -40,26 +42,26 @@ export default function GetPopupPopulation() {
       position={[popup?.lat, popup?.lng]}
     >
       <Typography variant="caption" format="bold">
-        Population
+        {t('map.points.population.title')}
       </Typography>
       <div className={classes.separator} />
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Total
+          {t('map.points.population.total')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.total}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          code
+          {t('map.points.population.code')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.code}</Typography>
       </div>
 
       <div className={classes.popupItem}>
         <Typography variant="caption" className={classes.popupItemTitle}>
-          Nunivotto
+          {t('map.points.population.nunivotto')}
         </Typography>
         <Typography variant="caption">{tilesCoord?.nunivotto}</Typography>
       </div>

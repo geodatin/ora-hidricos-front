@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import markerHuman1Icon from '../../../assets/icons/map/human1.png';
 import markerHuman2Icon from '../../../assets/icons/map/human2.png';
@@ -8,10 +9,11 @@ import useStyles from './styles';
 
 const LegendMercuryHuman = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Contaminação por Mercúrio em Humanos</h2>
+      <h2 className={classes.title}>{t('map.legend.mercuryHuman.title')}</h2>
 
       <div className={classes.separator} />
 
@@ -21,7 +23,7 @@ const LegendMercuryHuman = () => {
           src={markerHuman1Icon}
           alt="Icon humman"
         />
-        <span>{'< 2 ppm - baixo'}</span>
+        <span>{`< 2 ppm - ${t('map.legend.mercuryHuman.low')}`}</span>
       </div>
 
       <div className={classes.content}>
@@ -30,7 +32,7 @@ const LegendMercuryHuman = () => {
           src={markerHuman2Icon}
           alt="Icon humman"
         />
-        <span>2 - 6 ppm - aceitável</span>
+        <span>2 - 6 ppm - {t('map.legend.mercuryHuman.acceptable')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -38,7 +40,7 @@ const LegendMercuryHuman = () => {
           src={markerHuman3Icon}
           alt="Icon humman"
         />
-        <span>6 - 10 ppm - alto</span>
+        <span>6 - 10 ppm - {t('map.legend.mercuryHuman.high')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -46,7 +48,7 @@ const LegendMercuryHuman = () => {
           src={markerHuman4Icon}
           alt="Icon humman"
         />
-        <span>{'> 10 ppm - muito alto'}</span>
+        <span>{`> 10 ppm - ${t('map.legend.mercuryHuman.veryHigh')}`}</span>
       </div>
     </div>
   );

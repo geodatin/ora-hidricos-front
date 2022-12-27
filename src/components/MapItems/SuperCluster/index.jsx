@@ -2,6 +2,7 @@
 /* eslint-disable react/prop-types */
 import L from 'leaflet';
 import React, { useCallback, useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Marker, Popup, useMap } from 'react-leaflet';
 import useSupercluster from 'use-supercluster';
@@ -21,6 +22,7 @@ const blueIcon = new L.Icon({
 function SuperCluster({ data }) {
   const classes = useStyles();
   const theme = useTheme();
+  const { t } = useTranslation();
 
   const maxZoom = 22;
   const [bounds, setBounds] = useState(null);
@@ -146,7 +148,7 @@ function SuperCluster({ data }) {
               key={theme === darkScheme ? `dark` : `light`}
             >
               <Typography variant="caption" format="bold">
-                Status da Interferência
+                {t('map.points.waterUsers.title')}
               </Typography>
               <div className={classes.separator} />
               <div className={classes.popupItem}>
@@ -154,7 +156,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Tipo de Outorga
+                  {t('map.points.waterUsers.bestowalType')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.bestowalType}
@@ -165,7 +167,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Tipo da Interferência
+                  {t('map.points.waterUsers.interferenceType')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.interferenceType}
@@ -177,7 +179,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Nome do Orgão gestor
+                  {t('map.points.waterUsers.orgName')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.orgName}
@@ -189,7 +191,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Situação da Outorga
+                  {t('map.points.waterUsers.bestowalSituation')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.bestowalSituation}
@@ -200,7 +202,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Interference subtype
+                  {t('map.points.waterUsers.interferenceSubtype')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.interferenceSubtype}
@@ -211,7 +213,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Nome do Corpo Hídrico
+                  {t('map.points.waterUsers.waterBodyName')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.waterBodyName}
@@ -222,7 +224,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Finalidade
+                  {t('map.points.waterUsers.Finalidade')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.goal}
@@ -233,7 +235,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Data de Vencimento
+                  {t('map.points.waterUsers.validDate')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.validDate}
@@ -244,7 +246,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Vazão Média
+                  {t('map.points.waterUsers.avgFlow')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.avgFlow}
@@ -255,7 +257,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Vazão Máxima
+                  {t('map.points.waterUsers.maxFlow')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.maxFlow}
@@ -266,7 +268,7 @@ function SuperCluster({ data }) {
                   variant="caption"
                   className={classes.popupItemTitle}
                 >
-                  Volume
+                  {t('map.points.waterUsers.volume')}
                 </Typography>
                 <Typography variant="caption">
                   {cluster.properties.volume}

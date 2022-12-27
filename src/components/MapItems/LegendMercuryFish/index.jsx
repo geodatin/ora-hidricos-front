@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import markerFish1Icon from '../../../assets/icons/map/fish1.png';
 import markerFish2Icon from '../../../assets/icons/map/fish2.png';
@@ -8,10 +9,11 @@ import useStyles from './styles';
 
 const LegendMercuryFish = () => {
   const classes = useStyles();
+  const { t } = useTranslation();
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>Contaminação por Mercúrio em peixes</h2>
+      <h2 className={classes.title}>{t('map.legend.mercuryFish.title')}</h2>
 
       <div className={classes.separator} />
 
@@ -21,7 +23,7 @@ const LegendMercuryFish = () => {
           src={markerFish1Icon}
           alt="Icon humman"
         />
-        <span>{'< 0,1 ppm - baixo'}</span>
+        <span>{`< 0,1 ppm - ${t('map.legend.mercuryFish.low')}`}</span>
       </div>
 
       <div className={classes.content}>
@@ -30,7 +32,7 @@ const LegendMercuryFish = () => {
           src={markerFish2Icon}
           alt="Icon humman"
         />
-        <span>0,1 - 0,5 ppm - aceitável</span>
+        <span>0,1 - 0,5 ppm - {t('map.legend.mercuryFish.acceptable')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -38,7 +40,7 @@ const LegendMercuryFish = () => {
           src={markerFish3Icon}
           alt="Icon humman"
         />
-        <span>0,5 - 1,0 ppm - alto</span>
+        <span>0,5 - 1,0 ppm - {t('map.legend.mercuryFish.high')}</span>
       </div>
       <div className={classes.content}>
         <img
@@ -46,7 +48,7 @@ const LegendMercuryFish = () => {
           src={markerFish4Icon}
           alt="Icon humman"
         />
-        <span>{'> 1,0 ppm - muito alto'}</span>
+        <span>{`> 1,0 ppm - ${t('map.legend.mercuryFish.veryHigh')}`}</span>
       </div>
     </div>
   );

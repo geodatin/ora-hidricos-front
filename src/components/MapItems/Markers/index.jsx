@@ -1,5 +1,6 @@
 import L from 'leaflet';
 import React, { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 import { Marker, Popup, useMap, GeoJSON } from 'react-leaflet';
 import { useContextSelector } from 'use-context-selector';
@@ -27,6 +28,8 @@ export default function Markers({ data }) {
   const map = useMap();
   const theme = useTheme();
   const geoJsonRef = useRef();
+  const { t } = useTranslation();
+
   const [coordsOilCode, setCoordsOilCode] = useState();
   const [coordsIllegalMiningCode, setCoordsIllegalMiningCode] = useState();
 
@@ -269,13 +272,13 @@ export default function Markers({ data }) {
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Name
+                {t('map.points.oil.name')}
               </Typography>
               <Typography variant="caption">{cord.properties.name}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Company
+                {t('map.points.oil.company')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.company}
@@ -283,7 +286,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Situation
+                {t('map.points.oil.situation')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.situation}
@@ -291,7 +294,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Source
+                {t('map.points.oil.source')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.source}
@@ -299,7 +302,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Institution
+                {t('map.points.oil.institution')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.institution}
@@ -352,7 +355,7 @@ export default function Markers({ data }) {
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Description
+                {t('map.points.illegalMining.description')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.description}
@@ -360,7 +363,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Exploration method
+                {t('map.points.illegalMining.explorationMethod')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.explorationMethod}
@@ -368,7 +371,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Substance
+                {t('map.points.illegalMining.substance')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.substance}
@@ -376,7 +379,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Contamination
+                {t('map.points.illegalMining.contamination')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.contamination}
@@ -384,7 +387,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Situation end
+                {t('map.points.illegalMining.situationEnd')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.situationEnd}
@@ -392,7 +395,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Information source
+                {t('map.points.illegalMining.informationSource')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.informationSource}
@@ -401,7 +404,7 @@ export default function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Institution
+                {t('map.points.illegalMining.institution')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.institution}
@@ -425,12 +428,12 @@ export default function Markers({ data }) {
             key={theme === darkScheme ? `dark` : `light`}
           >
             <Typography variant="caption" format="bold">
-              Status da Interferência
+              {t('map.points.waterUsers.title')}
             </Typography>
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Tipo de Outorga
+                {t('map.points.waterUsers.bestowalType')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.bestowalType}
@@ -438,7 +441,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Tipo da Interferência
+                {t('map.points.waterUsers.interferenceType')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.interferenceType}
@@ -447,7 +450,7 @@ export default function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Nome do Orgão gestor
+                {t('map.points.waterUsers.orgName')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.orgName}
@@ -456,7 +459,7 @@ export default function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Situação da Outorga
+                {t('map.points.waterUsers.bestowalSituation')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.bestowalSituation}
@@ -464,7 +467,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Interference subtype
+                {t('map.points.waterUsers.interferenceSubtype')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.interferenceSubtype}
@@ -472,7 +475,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Nome do Corpo Hídrico
+                {t('map.points.waterUsers.waterBodyName')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.waterBodyName}
@@ -480,13 +483,13 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Finalidade
+                {t('map.points.waterUsers.Finalidade')}
               </Typography>
               <Typography variant="caption">{cord.properties.goal}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Data de Vencimento
+                {t('map.points.waterUsers.validDate')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.validDate}
@@ -494,7 +497,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Vazão Média
+                {t('map.points.waterUsers.avgFlow')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.avgFlow}
@@ -502,7 +505,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Vazão Máxima
+                {t('map.points.waterUsers.maxFlow')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.maxFlow}
@@ -513,7 +516,7 @@ export default function Markers({ data }) {
                 Volume
               </Typography>
               <Typography variant="caption">
-                {cord.properties.volume}
+                {t('map.points.waterUsers.volume')}
               </Typography>
             </div>
           </Popup>
@@ -556,19 +559,19 @@ export default function Markers({ data }) {
             <div className={classes.separator} />
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Code
+                {t('map.points.hydroelectric.code')}
               </Typography>
               <Typography variant="caption">{cord.properties.code}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Type
+                {t('map.points.hydroelectric.type')}
               </Typography>
               <Typography variant="caption">{cord.properties.type}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Author
+                {t('map.points.hydroelectric.author')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.author}
@@ -576,7 +579,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Source
+                {t('map.points.hydroelectric.source')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.source}
@@ -584,7 +587,7 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Potency
+                {t('map.points.hydroelectric.potency')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.potency}
@@ -592,13 +595,13 @@ export default function Markers({ data }) {
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Sub
+                {t('map.points.hydroelectric.sub')}
               </Typography>
               <Typography variant="caption">{cord.properties.sub}</Typography>
             </div>
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Institution
+                {t('map.points.hydroelectric.institution')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.institution}
@@ -607,7 +610,7 @@ export default function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Company
+                {t('map.points.hydroelectric.company')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.company}
@@ -616,14 +619,14 @@ export default function Markers({ data }) {
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Name
+                {t('map.points.hydroelectric.name')}
               </Typography>
               <Typography variant="caption">{cord.properties.name}</Typography>
             </div>
 
             <div className={classes.popupItem}>
               <Typography variant="caption" className={classes.popupItemTitle}>
-                Status
+                {t('map.points.hydroelectric.status')}
               </Typography>
               <Typography variant="caption">
                 {cord.properties.status}

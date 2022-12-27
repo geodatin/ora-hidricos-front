@@ -14,9 +14,12 @@ import {
 import PropTypes from 'prop-types';
 import React, { useRef, useState, useMemo } from 'react';
 import { useFullScreenHandle } from 'react-full-screen';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
 
 import legislationDate from '../../assets/shapes/legislation.json';
+import legislationDateEn from '../../assets/shapes/legislationEn.json';
+import legislationDateEs from '../../assets/shapes/legislationEs.json';
 import ChartExportMenu from '../../components/ChartContainer/ChartExportMenu';
 import CustomTooltip from '../../components/CustomTooltip';
 import Typography from '../../components/Typography';
@@ -43,21 +46,38 @@ export default function LegislationTable({
     fullScreenEnabled: false,
   };
   const [search, setSearch] = useState('');
+
   const handle = useFullScreenHandle();
   const theme = useTheme();
   const classes = useStyles();
   const childrentableref = useRef(null);
   const refContainer = useRef();
+  const { i18n, t } = useTranslation();
 
   const filterData = useMemo(() => {
     const lowerSearch = search.toLowerCase();
+    if (i18n.language === 'en') {
+      return legislationDateEn.filter(
+        (legislation) =>
+          legislation.country?.toLowerCase().includes(lowerSearch) ||
+          legislation.goal?.toLowerCase().includes(lowerSearch)
+      );
+    }
+
+    if (i18n.language === 'es') {
+      return legislationDateEs.filter(
+        (legislation) =>
+          legislation.country?.toLowerCase().includes(lowerSearch) ||
+          legislation.goal?.toLowerCase().includes(lowerSearch)
+      );
+    }
 
     return legislationDate.filter(
       (legislation) =>
         legislation.country.toLowerCase().includes(lowerSearch) ||
         legislation.goal.toLowerCase().includes(lowerSearch)
     );
-  }, [search]);
+  }, [search, i18n.language]);
 
   const clearSearch = () => {
     setSearch('');
@@ -85,12 +105,9 @@ export default function LegislationTable({
       <div className={classes.header}>
         <div className={classes.headerTitle}>
           <Typography variant="body" format="bold">
-            Legislações
+            {t('legislation.title')}
           </Typography>
-          <CustomTooltip
-            title="Legislações de águas dos países"
-            placement="bottom"
-          >
+          <CustomTooltip title={t('legislation.info')} placement="bottom">
             <div className={classes.tooltipInner}>
               <InfoOutlined
                 style={{
@@ -133,15 +150,27 @@ export default function LegislationTable({
         >
           <TableHead>
             <TableRow>
-              <TableCell style={{ minWidth: '100px' }}>País</TableCell>
-              <TableCell style={{ minWidth: '450px' }}>Objetivo</TableCell>
-              <TableCell style={{ minWidth: '180px' }}>Lei</TableCell>
-              <TableCell style={{ minWidth: '100px' }}>Link</TableCell>
-              <TableCell style={{ minWidth: '100px' }}>Produtos</TableCell>
-              <TableCell style={{ minWidth: '150px' }}>
-                Responsabilidade
+              <TableCell style={{ minWidth: '100px' }}>
+                {t('legislation.country')}
               </TableCell>
-              <TableCell style={{ minWidth: '150px' }}>Tema</TableCell>
+              <TableCell style={{ minWidth: '450px' }}>
+                {t('legislation.goal')}
+              </TableCell>
+              <TableCell style={{ minWidth: '180px' }}>
+                {t('legislation.law')}
+              </TableCell>
+              <TableCell style={{ minWidth: '100px' }}>
+                {t('legislation.link')}
+              </TableCell>
+              <TableCell style={{ minWidth: '100px' }}>
+                {t('legislation.product')}
+              </TableCell>
+              <TableCell style={{ minWidth: '150px' }}>
+                {t('legislation.responsible')}
+              </TableCell>
+              <TableCell style={{ minWidth: '150px' }}>
+                {t('legislation.theme')}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
