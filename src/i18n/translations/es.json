@@ -24,6 +24,18 @@
       "none": "Ninguno"
     }
   },
+  "disclaimer": {
+    "about": "Acerca de ORA Agua",
+    "close": "Cerrar",
+    "paragraphOneTitle": "Descargo de responsabilidad:",
+    "paragraphOne": "Los nombres y la información utilizados en esta publicación técnica de la OTCA, y la forma en que se representan los datos, mapas, imágenes y gráficos que contienen información geográfica de los Países Miembros, no constituyen un juicio sobre ningún otro Tratado o Actos Internacionales vigentes entre las Partes, ni sobre discrepancias sobre límites o derechos territoriales que existan entre las Partes, ni podrá interpretarse o invocarse el presente documento para pretender aceptación o renuncia, afirmación o modificación, directa o indirecta, expresa o tácita, y las posiciones e interpretaciones que en estas materias sostenga cada Parte.",
+    "paragraphTwoTitle": "Nota general:",
+    "paragraphTwo": "Este estudio fue elaborado considerando el límite hidrológico de la cuenca del Amazonas y por esta razón, Surinam, que no tiene un área de aporte de agua en la cuenca del Amazonas, no fue considerado en los análisis del estudio en pregunta, a pesar de que es un País Miembro de la OTCA. De acuerdo con el Tratado de Cooperación Amazónica (TCA), los resultados generados por este estudio serán beneficiosos para los 8 Países Miembros, incluso Surinam no es parte de la cuenca.",
+    "paragraphThreeTitle": "Nota de Venezuela:",
+    "paragraphThree": "En el caso de la República Bolivariana de Venezuela, se consideraron los datos referentes a Brazo Casiquiare y Río Negro, que corresponden a la Amazonía venezolana.",
+    "paragraphFourTitle": "Obtener datos:",
+    "paragraphFour": "A partir de la definición del contenido, metodología y supuestos del estudio, se estableció contacto con cada uno de los Países Miembros. De dicho contacto se obtuvo datos de monitoreo de calidad de agua para el período 2000 a 2019, los cuales fueron compilados y estandarizado."
+  },
   "legislation": {
     "titleHead": "Legislación",
     "title": "Legislaciones",

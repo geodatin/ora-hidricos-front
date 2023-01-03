@@ -32,6 +32,18 @@
       "none": "Nenhum"
     }
   },
+  "disclaimer": {
+    "about": "Sobre o ORA Hídricos",
+    "close": "Fechar",
+    "paragraphOneTitle": "Isenção de responsabilidade:",
+    "paragraphOne": "As denominações e informações utilizadas nesta publicação técnica da OTCA, e a forma como são representados os dados, mapas, imagens e cartas contendo informações geográficas dos Países Membros, não constituem juízo sobre quaisquer outros Tratados ou Atos Internacionais vigentes entre as Partes, nem sobre quaisquer divergências sobre limites ou direitos territoriais que existam entre as Partes, nem este documento pode ser interpretado ou invocado para alegar aceitação ou renúncia, afirmação ou modificação, direta ou indireta, expressa ou tácita, e as posições e interpretações que em estas questões detidas por cada Parte.",
+    "paragraphTwoTitle": "Nota Geral:",
+    "paragraphTwo": "Este estudo foi elaborado considerando o limite hidrológico da Bacia Amazônica e por este motivo, o Suriname, que não possui área de contribuição hídrica na Bacia Amazônica, não foi considerado nas análises do estudo em tela, mesmo sendo País Membro da OTCA. De acordo com o Tratado de Cooperação Amazônica (TCA), os resultados gerados por este estudo serão benéficos para todos os 8 Países Membros, mesmo o Suriname não fazendo parte da bacia.",
+    "paragraphThreeTitle": "Nota da Venezuela:",
+    "paragraphThree": "No caso da República Bolivariana da Venezuela, foram considerados os dados referentes ao Brazo Casiquiare e Rio Negro que correspondem à Amazônia venezuelana.",
+    "paragraphFourTitle": "Obtenção de dados:",
+    "paragraphFour": "A partir da definição do conteúdo, metodologia e premissas para o estudo, foi estabelecido contato com cada um dos Países Membros. Desse contato foram obtidos os dados de monitoramento de qualidade da água do período de 2000 a 2019, os quais foram compilados e padronizados."
+  },
   "legislation": {
     "titleHead": "Legislação",
     "title": "Legislações",
