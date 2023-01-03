@@ -122,6 +122,7 @@ export default function MapWrapper({
         className={
           layoutConfig === 2 ||
           layoutConfig === 3 ||
+          indicatorSelection === indicators.waterDemand.Population.value ||
           indicatorSelection ===
             indicators.waterResources.annualPrecipitation.value ||
           indicatorSelection ===

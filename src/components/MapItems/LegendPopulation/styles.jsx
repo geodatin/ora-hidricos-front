@@ -9,7 +9,7 @@ const useStyles = createUseStyles((theme) => ({
     flexDirection: 'column',
     position: 'absolute',
     bottom: 60,
-    left: 380,
+    right: 20,
     zIndex: 99999,
     padding: '0.5rem',
     width: '16rem',

@@ -1,19 +1,52 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useContextSelector } from 'use-context-selector';
 
+import FilteringContext from '../../../contexts/filtering';
+import api from '../../../services/api';
 import useStyles from './styles';
 
 const LegendPopulation = () => {
   const classes = useStyles();
   const { t } = useTranslation();
+  const [totalData, setTotalData] = useState();
+
+  const territorySelection = useContextSelector(
+    FilteringContext,
+    (filtering) => filtering.values.territorySelection
+  );
+  const code = territorySelection?.code;
+
+  useEffect(() => {
+    let isSubscribed = true;
+    api
+      .get(`population/total`, {
+        params: {
+          countryCode: code,
+        },
+      })
+      .then(({ data }) => {
+        if (isSubscribed) {
+          setTotalData(data);
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
+  }, [code, t]);
 
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>{t('map.legend.population.title')}</h2>
       <p className={classes.subtitle}>{t('map.legend.population.subtitle')}</p>
+
       <p className={classes.subtitle}>
         {t('map.legend.population.Population')}
+      </p>
+      <p className={classes.subtitle}>
+        Total: {t('general.number', { value: Math.trunc(totalData?.count) })}
       </p>
 
       <div className={classes.separator} />
