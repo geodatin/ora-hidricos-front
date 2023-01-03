@@ -44,199 +44,114 @@ function Dashboard() {
 
   const infoPanel =
     (indicatorSelection === indicators.waterResources.waterSurface.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.WaterSurface.title')}
-        fonte={t('specific.infoPanel.WaterSurface.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.WaterSurface.title')} />
     )) ||
     (indicatorSelection === indicators.waterResources.wetlands.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.wetlands.title')}
-        fonte={t('specific.infoPanel.wetlands.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.wetlands.title')} />
     )) ||
     (indicatorSelection ===
       indicators.waterResources.annualPrecipitation.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.annualPrecipitation.title')}
-        fonte={t('specific.infoPanel.annualPrecipitation.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.annualPrecipitation.title')} />
     )) ||
     (indicatorSelection ===
       indicators.waterResources.actualEvapotranspiration.value && (
       <InfoPanel
         title={t('specific.infoPanel.actualEvapotranspiration.title')}
-        fonte={t('specific.infoPanel.actualEvapotranspiration.font')}
       />
     )) ||
     (indicatorSelection === indicators.waterResources.waterBalance.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.waterBalance.title')}
-        fonte={t('specific.infoPanel.waterBalance.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.waterBalance.title')} />
     )) ||
     (indicatorSelection === indicators.mercury.mercuryHuman.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.mercuryHuman.title')}
-        fonte={t('specific.infoPanel.mercuryHuman.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.mercuryHuman.title')} />
     )) ||
     (indicatorSelection === indicators.mercury.mercuryFish.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.mercuryFish.title')}
-        fonte={t('specific.infoPanel.mercuryFish.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.mercuryFish.title')} />
     )) ||
     (indicatorSelection === indicators.mercury.IPPO.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.IPPO.title')}
-        fonte={t('specific.infoPanel.IPPO.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.IPPO.title')} />
     )) ||
     (indicatorSelection === indicators.ground.oil.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.oil.title')}
-        fonte={t('specific.infoPanel.oil.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.oil.title')} />
     )) ||
     (indicatorSelection === indicators.ground.illegalMining.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.illegalMining.title')}
-        fonte={t('specific.infoPanel.illegalMining.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.illegalMining.title')} />
     )) ||
     (indicatorSelection === indicators.ground.minesMining.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.minesMining.title')}
-        fonte={t('specific.infoPanel.minesMining.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.minesMining.title')} />
     )) ||
     (indicatorSelection === indicators.ground.agricultural.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.agricultural.title')}
-        fonte={t('specific.infoPanel.agricultural.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.agricultural.title')} />
     )) ||
     (indicatorSelection === indicators.ground.deforesting.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.deforesting.title')}
-        fonte={t('specific.infoPanel.deforesting.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.deforesting.title')} />
     )) ||
     (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.hydroelectric.title')}
-        fonte={t('specific.infoPanel.hydroelectric.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.hydroelectric.title')} />
     )) ||
     (indicatorSelection === indicators.waterDemand.Waterways.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.Waterways.title')}
-        fonte={t('specific.infoPanel.Waterways.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.Waterways.title')} />
     )) ||
     (indicatorSelection === indicators.waterDemand.Population.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.Population.title')}
-        fonte={t('specific.infoPanel.Population.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.Population.title')} />
     )) ||
     (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.CNARHunion.title')}
-        fonte={t('specific.infoPanel.CNARHunion.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.CNARHunion.title')} />
     )) ||
     (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.CNARHstate.title')}
-        fonte={t('specific.infoPanel.CNARHstate.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.CNARHstate.title')} />
     )) ||
     (indicatorSelection === indicators.generalFeatures.watershedArea.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.watershedArea.title')}
-        fonte={t('specific.infoPanel.watershedArea.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.watershedArea.title')} />
     )) ||
     (indicatorSelection === indicators.generalFeatures.areaPercentage.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.areaPercentage.title')}
-        fonte={t('specific.infoPanel.areaPercentage.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.areaPercentage.title')} />
     )) ||
     (indicatorSelection ===
       indicators.generalFeatures.surfaceHydrologicalUnits.value && (
       <InfoPanel
         title={t('specific.infoPanel.surfaceHydrologicalUnits.title')}
-        fonte={t('specific.infoPanel.surfaceHydrologicalUnits.font')}
       />
     )) ||
     (indicatorSelection ===
       indicators.generalFeatures.undergroundHydrologicalUnits.value && (
       <InfoPanel
         title={t('specific.infoPanel.undergroundHydrologicalUnits.title')}
-        fonte={t('specific.infoPanel.undergroundHydrologicalUnits.font')}
       />
     )) ||
     (indicatorSelection ===
       indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
       <InfoPanel
         title={t('specific.infoPanel.hydrogeochemicalCharacteristics.title')}
-        fonte={t('specific.infoPanel.hydrogeochemicalCharacteristics.font')}
       />
     )) ||
     (indicatorSelection ===
       indicators.hydroclimaticVulnerability.droughtEvents.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.droughtEvents.title')}
-        fonte={t('specific.infoPanel.droughtEvents.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.droughtEvents.title')} />
     )) ||
     (indicatorSelection ===
       indicators.hydroclimaticVulnerability.floodEvents.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.floodEvents.title')}
-        fonte={t('specific.infoPanel.floodEvents.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.floodEvents.title')} />
     )) ||
     (indicatorSelection ===
       indicators.hydroclimaticVulnerability.droughtVulnerability.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.droughtVulnerability.title')}
-        fonte={t('specific.infoPanel.droughtVulnerability.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.droughtVulnerability.title')} />
     )) ||
     (indicatorSelection ===
       indicators.hydroclimaticVulnerability.floodVulnerability.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.floodVulnerability.title')}
-        fonte={t('specific.infoPanel.floodVulnerability.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.floodVulnerability.title')} />
     )) ||
     (indicatorSelection === indicators.waterGovernance.authorities.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.authorities.title')}
-        fonte={t('specific.infoPanel.authorities.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.authorities.title')} />
     )) ||
     (indicatorSelection === indicators.waterGovernance.legislation.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.legislation.title')}
-        fonte={t('specific.infoPanel.legislation.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.legislation.title')} />
     )) ||
     (indicatorSelection === indicators.waterGovernance.publications.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.publications.title')}
-        fonte={t('specific.infoPanel.publications.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.publications.title')} />
     )) ||
     (indicatorSelection === indicators.waterGovernance.countryReports.value && (
-      <InfoPanel
-        title={t('specific.infoPanel.countryReports.title')}
-        fonte={t('specific.infoPanel.countryReports.font')}
-      />
+      <InfoPanel title={t('specific.infoPanel.countryReports.title')} />
     ));
 
   useEffect(() => {
@@ -320,6 +235,7 @@ function Dashboard() {
       }}
       rightColumn={{
         isHidden:
+          indicatorSelection === indicators.waterDemand.Population.value ||
           indicatorSelection ===
             indicators.waterResources.annualPrecipitation.value ||
           indicatorSelection ===
