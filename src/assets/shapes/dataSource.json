@@ -1,0 +1,95 @@
+[
+  {
+    "Item": "1",
+    "Tema": "Áreas Naturais Protegidas",
+    "Fontes": [
+      "Servicio Nacional de Áreas Protegidas (SERNAP), 2015; \n",
+      "ISA, 2020, a partir de los documentos oficiales; ",
+      "Mapa Digital Parques Nacionales Naturales según la categoría. Escala 1:100.000.República de Colombia. Parques Nacionales Naturales de Colombia 2019; ",
+      "Ministerio de Ambiente y Agua del Ecuador (MAAE, 2020); ",
+      "DCW; ",
+      "DEAL, 2007; ",
+      "Ministerio del Ambiente (MINAM)-Servicio Nacional de Áreas Naturales Protegidas por el Estado (SERNANP), 2019; ",
+      "World Database Protected Areas (WDPA), 2006; ",
+      "Provita, 2020, a partir de gacetas oficiales."
+    ]
+  },
+  {
+    "Item": "2",
+    "Tema": "Terras Indígenas",
+    "Fontes": [
+      " Instituto Nacional de Reforma Agraria (INRA), 2018; ",
+      "ISA, 2020, a partir de los documentos oficiales; ",
+      "Mapa Digital de Resguardos Indígenas. República de Colombia. Agencia Nacional de Tierras 2019; ",
+      "Capa de EcoCiencia, 2019; ",
+      "Indigenous Affair/Gobierno de la Guyana, 2009; ",
+      "DEAL, 2007; ",
+      "Comunidades nativas: IBC-SICNA 2019; ",
+      "Comunidades campesinas: SICCAM-IBC/CEPES, 2019; ",
+      "Reservas indígenas (creadas y propuestas): Ministerio de Cultura, 2019; ",
+      "Freire, G., Tillet, A. 2007. Salud Indígena en Venezuela. Mapa general. Ediciones de la Dirección de Salud Indígena, Caracas, Venezuela. - MPP Ambiente y MPP ",
+      "Pueblos Indígenas 2014. Mapa Tierras Indígenas. Dir. Gen. POT / Sec. Tec. Com. Nac. Demarcación del Hábitat y Tierra de los Pueblos y Comunidades Indígenas. ",
+      "Caracas, Venezuela. - Wataniba 2019 (en trabajo conjunto con organizaciones indígenas Oipus, HOY, Kuyunu, Kuyukani, Kuyujani originario, Kubawy). "
+    ]
+  },
+  {
+    "Item": "3",
+    "Tema": "Desmatamento",
+    "Fontes": "Coleção de mapas anuais de desmatamento gerados pela RAISG, 2020, com base nos mapas MapBiomas Amazonia Land Cover and Use (2001-2018), uma iniciativa liderada pela RAISG. "
+  },
+  {
+    "Item": "4",
+    "Tema": "Mineração",
+    "Fontes": [
+      "Servicio Nacional de Geología y Técnico de Minas (SERGETECMIN), 2013; ",
+      "DNPM, 2020; ",
+      "Catastro minero digital de la república de Colombia. Agencia Nacional de Minería, 2019; ",
+      "Agencia de Regulación y Control Minero, (ARCOM, 2019); ",
+      "Instituto Geológico, Minero y Metalúrgico - INGEMMET, 2019; ",
+      "Ministerio de Energía y Minas, 2017."
+    ]
+  },
+  {
+    "Item": "5",
+    "Tema": "Mineração Ilegal",
+    "Fontes": [
+      " Servicio Nacional de Geología y Técnico de Minas (SERGETECMIN), 2013; ",
+      "DNPM, 2020; ",
+      "Catastro minero digital de la república de Colombia. Agencia Nacional de Minería, 2019; ",
+      "Agencia de Regulación y Control Minero, (ARCOM, 2019); ",
+      "Instituto Geológico, Minero y Metalúrgico - INGEMMET, 2019; ",
+      "Ministerio de Energía y Minas, 2017."
+    ]
+  },
+  {
+    "Item": "6",
+    "Tema": "Agropecuária",
+    "Fontes": [
+      "Extraído dos mapas anuais (2001 e 2018) de Cobertura e Uso do Solo da Coleção 2 gerados no âmbito da iniciativa ",
+      "MapBiomas Amazonia, liderado pela RAISG; dados disponíveis para download em https://amazonía.mapbiomas.org/"
+    ]
+  },
+  {
+    "Item": "7",
+    "Tema": "Usinas hidrelétricas e Pequenas Centrais Hidrelétricas",
+    "Fontes": [
+      "Empresa Nacional de Electricidad (ENDE), 2018; ",
+      "ANEEL, set/2019; ",
+      "Ministerio de Energías y Recursos no Renovables del Ecuador, 2019; ",
+      "Organismo Supervisor de la Inversión em Energía y Minería - OSINERGMIN, 2018; ",
+      "Camacho Gabriel y Carrillo Augusto, 2000. EDELCA, 2004. Herrera Karina, 2007. Ministerio del Poder Popular para la Energía Eléctrica, 2013. Grupo Orinoco Energía y Ambiente, 2015."
+    ]
+  },
+  {
+    "Item": "8",
+    "Tema": "Lotes Petrolíferos",
+    "Fontes": [
+      "Viceministerio de Exploración y Explotación de Hidrocarburos (VMEEH), 2017; ",
+      "ANP - Banco de Dados de Exploração e Produção BDEP, 2019; ",
+      "Mapa digital de Áreas. Agencia Nacional de Hidrocarburos, 2019; ",
+      "Ministerio de Energías y Recursos no Renovables del Ecuador, 2019; ",
+      "PerúPetro/ Ministerio de Energía y Minas - MINEM, 2019; ",
+      "Ministerio de Energía y Petróleo, 2017."
+    ]
+  }
+]

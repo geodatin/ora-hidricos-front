@@ -17,6 +17,7 @@ import { MappingProvider } from './contexts/mapping';
 import { NavigationProvider } from './contexts/navigation';
 import Authorities from './pages/Authorities';
 import Dashboard from './pages/Dashboard';
+import DataSourceTable from './pages/DataSourceTable';
 import DocumentsTable from './pages/DocumentsTable';
 import LegislationTable from './pages/LegislationTable';
 
@@ -68,6 +69,10 @@ function Routes() {
             title: t('documents.title'),
             to: `/${process.env.REACT_APP_URL_BASE}/documents`,
           },
+          {
+            title: t('dataSources.title'),
+            to: `/${process.env.REACT_APP_URL_BASE}/dataSource`,
+          },
         ]}
       />
       <BaseRoutes>
@@ -90,6 +95,11 @@ function Routes() {
           exact
           path={`/${process.env.REACT_APP_URL_BASE}/documents`}
           element={<DocumentsTable />}
+        />
+        <Route
+          exact
+          path={`/${process.env.REACT_APP_URL_BASE}/dataSource`}
+          element={<DataSourceTable />}
         />
         <Route
           exact
