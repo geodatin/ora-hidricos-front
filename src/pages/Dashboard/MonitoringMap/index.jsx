@@ -86,8 +86,6 @@ import 'react-leaflet-markercluster/dist/styles.min.css';
 export default function MonitoringMap() {
   const [coordsHuman, setCoordsHuman] = useState();
   const [coordsFish, setCoordsFish] = useState();
-  const [coordsOil, setCoordsOil] = useState();
-  const [coordsMining, setCoordsMining] = useState();
   const [coordsUnion, setCoordsUnion] = useState();
   const [waterUrl, setWaterUrl] = useState();
   const [mineUrl, setMineUrl] = useState();
@@ -96,12 +94,15 @@ export default function MonitoringMap() {
   const [coordsHydroelectric, setCoordsHydroelectric] = useState();
   const [pollutionUrl, setPollutionUrl] = useState();
   const [populationUrl, setPopulationUrl] = useState();
+  const [oilUrl, setOilUrl] = useState();
   const [coordsHydrogeochemistry, setCoordsHydrogeochemistry] = useState();
   const [coordsPrecipitation, setCoordsPrecipitation] = useState();
   const [coordsEvapotranspiration, setCoordsEvapotranspiration] = useState();
   const [coordsWaterBalance, setCoordsWaterBalance] = useState();
   const [watershedUrl, setWatershedUrl] = useState();
   const [agriculturalUrl, setAgriculturalUrl] = useState();
+  const [illegalMiningUrl, setIllegalMiningUrl] = useState();
+
   const [openShare, setOpenShare] = useState(false);
   const [coordsLoad, setCoordsLoad] = useState();
 
@@ -229,30 +230,6 @@ export default function MonitoringMap() {
   }, [code]);
 
   useEffect(() => {
-    api
-      .get('oil/field/points', {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        setCoordsOil(data);
-      });
-  }, [code]);
-
-  useEffect(() => {
-    api
-      .get('mining/illegal/points', {
-        params: {
-          countryCode: code,
-        },
-      })
-      .then(({ data }) => {
-        setCoordsMining(data);
-      });
-  }, [code]);
-
-  useEffect(() => {
     api.get('waterUsers/union/points').then(({ data }) => {
       setCoordsUnion(data);
     });
@@ -291,6 +268,18 @@ export default function MonitoringMap() {
   useEffect(() => {
     api.get('pollution/tiles').then(({ data }) => {
       setPollutionUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('oil/field/tiles').then(({ data }) => {
+      setOilUrl(data);
+    });
+  }, [code]);
+
+  useEffect(() => {
+    api.get('mining/illegal/tiles').then(({ data }) => {
+      setIllegalMiningUrl(data);
     });
   }, [code]);
 
@@ -724,11 +713,16 @@ export default function MonitoringMap() {
           zIndex={2}
         />
       )}
+
       {indicatorSelection === indicators.waterDemand.Waterways.value && (
         <>
           <TileLayer url={waterUrl?.url} zIndex={2} />
           <GetPopupWaterway />
         </>
+      )}
+
+      {indicatorSelection === indicators.ground.illegalMining.value && (
+        <TileLayer url={illegalMiningUrl?.url} zIndex={2} />
       )}
 
       {indicatorSelection === indicators.ground.minesMining.value && (
@@ -766,9 +760,13 @@ export default function MonitoringMap() {
       {indicatorSelection ===
         indicators.generalFeatures.watershedArea.value && (
         <>
-          <TileLayer url={watershedUrl.url} zIndex={2} />
+          <TileLayer url={watershedUrl?.url} zIndex={2} />
           <GetPopupWatershed />
         </>
+      )}
+
+      {indicatorSelection === indicators.ground.oil.value && (
+        <TileLayer url={oilUrl?.url} zIndex={2} />
       )}
 
       {indicatorSelection === indicators.ground.agricultural.value && (
@@ -1187,15 +1185,7 @@ export default function MonitoringMap() {
           />
         ))}
 
-      {(indicatorSelection === indicators.ground.oil.value && (
-        <>
-          <Markers data={coordsOil?.features} />
-          <LegendOil />
-        </>
-      )) ||
-        (indicatorSelection === indicators.ground.illegalMining.value && (
-          <Markers data={coordsMining?.features} />
-        )) ||
+      {(indicatorSelection === indicators.ground.oil.value && <LegendOil />) ||
         (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
           <>
             <Markers data={coordsHydroelectric?.features} />
