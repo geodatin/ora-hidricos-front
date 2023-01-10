@@ -145,10 +145,13 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
-  }, [indicatorSelection]);
-  useEffect(() => {
     if (value === 'illegalMining') {
       if (indicatorSelection === indicators.ground.illegalMining.value) {
+        setValue('country');
+      }
+    }
+    if (value === 'oil') {
+      if (indicatorSelection === indicators.ground.oil.value) {
         setValue('country');
       }
     }
@@ -519,6 +522,27 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
+                        {indicatorSelection !== indicators.ground.oil.value && (
+                          <FormControlLabel
+                            value="oil"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(indicators.ground.oil.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -712,6 +736,8 @@ export default function MonitoringMap() {
       {value === 'illegalMining' && (
         <TileLayer url={illegalMiningUrl?.url} zIndex={999} />
       )}
+
+      {value === 'oil' && <TileLayer url={oilUrl?.url} zIndex={999} />}
 
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
