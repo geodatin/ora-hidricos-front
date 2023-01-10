@@ -165,6 +165,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'mercuryFish') {
+      if (indicatorSelection === indicators.mercury.mercuryFish.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -576,7 +581,6 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
-
                         {indicatorSelection !==
                           indicators.mercury.mercuryHuman.value && (
                           <FormControlLabel
@@ -590,6 +594,28 @@ export default function MonitoringMap() {
                                 }}
                               >
                                 {t(indicators.mercury.mercuryHuman.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.mercury.mercuryFish.value && (
+                          <FormControlLabel
+                            value="mercuryFish"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(indicators.mercury.mercuryFish.translation)}
                               </Typography>
                             }
                             sx={{
@@ -983,6 +1009,184 @@ export default function MonitoringMap() {
                   className={classes.popupItemTitle}
                 >
                   {t('map.points.mercuryHuman.measurementUnit')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.measurementUnit === null
+                    ? '--'
+                    : cord.properties.measurementUnit}
+                </Typography>
+              </div>
+            </Popup>
+          </Marker>
+        ))}
+
+      {value === 'mercuryFish' &&
+        coordsFish?.features?.map((cord) => (
+          <Marker
+            key={cord.properties.code}
+            position={[
+              cord.geometry.coordinates[1],
+              cord.geometry.coordinates[0],
+            ]}
+            icon={(() => {
+              if (cord.properties.hgMean < 0.1) {
+                return fish1Icon;
+              }
+              if (
+                cord.properties.hgMean >= 0.1 &&
+                cord.properties.hgMean < 0.5
+              ) {
+                return fish2Icon;
+              }
+              if (
+                cord.properties.hgMean >= 0.5 &&
+                cord.properties.hgMean <= 1.0
+              ) {
+                return fish3Icon;
+              }
+              if (cord.properties.hgMean > 1.0) {
+                return fish4con;
+              }
+              return null;
+            })()}
+          >
+            <Popup
+              className={classes.popup}
+              key={theme === darkScheme ? `dark` : `light`}
+            >
+              <Typography variant="caption" format="bold">
+                {cord.properties.state}
+              </Typography>
+              <div className={classes.separator} />
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.publicationYear')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.publicationYear === null
+                    ? '--'
+                    : cord.properties.publicationYear}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.study')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.study === null
+                    ? '--'
+                    : cord.properties.study}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.hgMin')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.hgMin === null
+                    ? '--'
+                    : cord.properties.hgMin}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.hgMax')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.hgMax === null
+                    ? '--'
+                    : cord.properties.hgMax}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.hgMean')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.hgMean === null
+                    ? '--'
+                    : cord.properties.hgMean}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.author')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.author === null
+                    ? '--'
+                    : cord.properties.author}
+                </Typography>
+              </div>
+
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.title')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.title === null
+                    ? '--'
+                    : cord.properties.title}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.collectionYear')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.collectionYear === '-' ||
+                  cord.properties.collectionYear === null
+                    ? '--'
+                    : cord.properties.collectionYear}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.community')}
+                </Typography>
+                <Typography variant="caption">
+                  {cord.properties.community === null
+                    ? '--'
+                    : cord.properties.community}
+                </Typography>
+              </div>
+              <div className={classes.popupItem}>
+                <Typography
+                  variant="caption"
+                  className={classes.popupItemTitle}
+                >
+                  {t('map.points.mercuryFish.measurementUnit')}
                 </Typography>
                 <Typography variant="caption">
                   {cord.properties.measurementUnit === null
