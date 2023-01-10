@@ -188,6 +188,14 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'annualPrecipitation') {
+      if (
+        indicatorSelection ===
+        indicators.waterResources.annualPrecipitation.value
+      ) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -700,6 +708,32 @@ export default function MonitoringMap() {
                                 {t(
                                   indicators.waterResources
                                     .actualEvapotranspiration.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterResources.annualPrecipitation
+                            .value && (
+                          <FormControlLabel
+                            value="annualPrecipitation"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterResources.annualPrecipitation
+                                    .translation
                                 )}
                               </Typography>
                             }
@@ -1302,6 +1336,17 @@ export default function MonitoringMap() {
               ? ''
               : coordsEvapotranspiration
           }
+          style={() => ({
+            fillOpacity: 0.8,
+            weight: 0,
+          })}
+        />
+      )}
+
+      {value === 'annualPrecipitation' && (
+        <TopoJSONPrecipitation
+          key={theme === darkScheme ? `dark` : `light`}
+          data={coordsPrecipitation === undefined ? '' : coordsPrecipitation}
           style={() => ({
             fillOpacity: 0.8,
             weight: 0,
