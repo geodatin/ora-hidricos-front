@@ -175,6 +175,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'waterBalance') {
+      if (indicatorSelection === indicators.waterResources.waterBalance.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -643,6 +648,31 @@ export default function MonitoringMap() {
                                 }}
                               >
                                 {t(indicators.mercury.IPPO.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterResources.waterBalance.value && (
+                          <FormControlLabel
+                            value="waterBalance"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterResources.waterBalance
+                                    .translation
+                                )}
                               </Typography>
                             }
                             sx={{
@@ -1230,6 +1260,17 @@ export default function MonitoringMap() {
           <TileLayer url={pollutionUrl?.url} zIndex={999} />
           <GetPopupIPPO />
         </>
+      )}
+
+      {value === 'waterBalance' && (
+        <TopoJSONWaterBalance
+          key={theme === darkScheme ? `dark` : `light`}
+          data={coordsWaterBalance === undefined ? '' : coordsWaterBalance}
+          style={() => ({
+            fillOpacity: 0.8,
+            weight: 0,
+          })}
+        />
       )}
 
       {indicatorSelection ===
