@@ -460,6 +460,28 @@ export default function MonitoringMap() {
                             },
                           }}
                         />
+                        {indicatorSelection !==
+                          indicators.ground.minesMining.value && (
+                          <FormControlLabel
+                            value="miningMine"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(indicators.ground.minesMining.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -620,7 +642,6 @@ export default function MonitoringMap() {
           data={BorderGeojson}
           style={() => ({
             fillColor: 'transparent',
-            // alterar
             weight: 2,
             dashArray: 8,
             lineCap: 'round',
@@ -635,7 +656,6 @@ export default function MonitoringMap() {
           data={WatershedGeojson}
           style={() => ({
             fillColor: 'transparent',
-            // alterar
             weight: 2,
             dashArray: 8,
             lineCap: 'round',
@@ -643,6 +663,13 @@ export default function MonitoringMap() {
             color: theme === darkScheme ? '#38a00f' : '#508740',
           })}
         />
+      )}
+
+      {value === 'miningMine' && (
+        <>
+          <TileLayer url={mineUrl?.url} zIndex={999} />
+          <GetPopupMiningMine />
+        </>
       )}
 
       {indicatorSelection ===
