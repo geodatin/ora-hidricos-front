@@ -35,6 +35,7 @@ import StateJson from '../../../assets/shapes/StateJson.json';
 import WatershedGeojson from '../../../assets/shapes/subwatersheds.json';
 import 'leaflet/dist/leaflet.css';
 import CustomTooltip from '../../../components/CustomTooltip';
+import AgriculturalLayer from '../../../components/MapItems/AgriculturalLayer';
 import GetPopupAgricultural from '../../../components/MapItems/GetPopupAgricultural';
 import GetPopupIPPO from '../../../components/MapItems/GetPopupIPPO';
 import GetPopupMiningMine from '../../../components/MapItems/GetPopupMiningMine';
@@ -100,7 +101,6 @@ export default function MonitoringMap() {
   const [coordsEvapotranspiration, setCoordsEvapotranspiration] = useState();
   const [coordsWaterBalance, setCoordsWaterBalance] = useState();
   const [watershedUrl, setWatershedUrl] = useState();
-  const [agriculturalUrl, setAgriculturalUrl] = useState();
   const [illegalMiningUrl, setIllegalMiningUrl] = useState();
 
   const [openShare, setOpenShare] = useState(false);
@@ -177,6 +177,14 @@ export default function MonitoringMap() {
     }
     if (value === 'waterBalance') {
       if (indicatorSelection === indicators.waterResources.waterBalance.value) {
+        setValue('country');
+      }
+    }
+    if (value === 'actualEvapotranspiration') {
+      if (
+        indicatorSelection ===
+        indicators.waterResources.actualEvapotranspiration.value
+      ) {
         setValue('country');
       }
     }
@@ -365,12 +373,6 @@ export default function MonitoringMap() {
   useLayoutEffect(() => {
     api.get('territory/watershed/tiles').then(({ data }) => {
       setWatershedUrl(data);
-    });
-  }, [code]);
-
-  useEffect(() => {
-    api.get('agricultural/tiles').then(({ data }) => {
-      setAgriculturalUrl(data);
     });
   }, [code]);
 
@@ -682,6 +684,32 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
+                        {indicatorSelection !==
+                          indicators.waterResources.actualEvapotranspiration
+                            .value && (
+                          <FormControlLabel
+                            value="actualEvapotranspiration"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterResources
+                                    .actualEvapotranspiration.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -880,14 +908,7 @@ export default function MonitoringMap() {
 
       {value === 'agricultural' && (
         <>
-          <TileLayer
-            url={
-              agriculturalUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/d9372586a137116b3c6711ef768d3696-a08bd8d62ee47286e773f6f8a211ccce/tiles/{z}/{x}/{y}'
-                : agriculturalUrl?.url
-            }
-            zIndex={999}
-          />
+          <AgriculturalLayer />
           <GetPopupAgricultural />
         </>
       )}
@@ -1273,6 +1294,21 @@ export default function MonitoringMap() {
         />
       )}
 
+      {value === 'actualEvapotranspiration' && (
+        <TopoJSONEvapotranspiration
+          key={theme === darkScheme ? `dark` : `light`}
+          data={
+            coordsEvapotranspiration === undefined
+              ? ''
+              : coordsEvapotranspiration
+          }
+          style={() => ({
+            fillOpacity: 0.8,
+            weight: 0,
+          })}
+        />
+      )}
+
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
         <TopoJSONHydrogeochemistry
@@ -1399,14 +1435,7 @@ export default function MonitoringMap() {
 
       {indicatorSelection === indicators.ground.agricultural.value && (
         <>
-          <TileLayer
-            url={
-              agriculturalUrl?.url === undefined
-                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/d9372586a137116b3c6711ef768d3696-a08bd8d62ee47286e773f6f8a211ccce/tiles/{z}/{x}/{y}'
-                : agriculturalUrl?.url
-            }
-            zIndex={2}
-          />
+          <AgriculturalLayer />
           <GetPopupAgricultural />
           <LegendAgricultural />
         </>
