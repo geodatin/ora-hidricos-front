@@ -170,6 +170,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'IPPO') {
+      if (indicatorSelection === indicators.mercury.IPPO.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -616,6 +621,28 @@ export default function MonitoringMap() {
                                 }}
                               >
                                 {t(indicators.mercury.mercuryFish.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.mercury.IPPO.value && (
+                          <FormControlLabel
+                            value="IPPO"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(indicators.mercury.IPPO.translation)}
                               </Typography>
                             }
                             sx={{
@@ -1197,6 +1224,13 @@ export default function MonitoringMap() {
             </Popup>
           </Marker>
         ))}
+
+      {value === 'IPPO' && (
+        <>
+          <TileLayer url={pollutionUrl?.url} zIndex={999} />
+          <GetPopupIPPO />
+        </>
+      )}
 
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
