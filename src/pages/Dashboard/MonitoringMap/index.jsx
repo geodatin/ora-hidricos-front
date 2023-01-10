@@ -139,6 +139,21 @@ export default function MonitoringMap() {
     setValue(event.target.value);
   };
 
+  useEffect(() => {
+    if (value === 'miningMine') {
+      if (indicatorSelection === indicators.ground.minesMining.value) {
+        setValue('country');
+      }
+    }
+  }, [indicatorSelection]);
+  useEffect(() => {
+    if (value === 'illegalMining') {
+      if (indicatorSelection === indicators.ground.illegalMining.value) {
+        setValue('country');
+      }
+    }
+  }, [indicatorSelection]);
+
   const fish1Icon = new L.Icon({
     iconUrl: markerFish1Icon,
     iconSize: [24, 24],
@@ -482,6 +497,28 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
+                        {indicatorSelection !==
+                          indicators.ground.illegalMining.value && (
+                          <FormControlLabel
+                            value="illegalMining"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(indicators.ground.illegalMining.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -670,6 +707,10 @@ export default function MonitoringMap() {
           <TileLayer url={mineUrl?.url} zIndex={999} />
           <GetPopupMiningMine />
         </>
+      )}
+
+      {value === 'illegalMining' && (
+        <TileLayer url={illegalMiningUrl?.url} zIndex={999} />
       )}
 
       {indicatorSelection ===
