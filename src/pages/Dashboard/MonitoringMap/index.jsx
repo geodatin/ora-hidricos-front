@@ -155,6 +155,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'agricultural') {
+      if (indicatorSelection === indicators.ground.agricultural.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -543,6 +548,29 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
+
+                        {indicatorSelection !==
+                          indicators.ground.agricultural.value && (
+                          <FormControlLabel
+                            value="agricultural"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(indicators.ground.agricultural.translation)}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -738,6 +766,20 @@ export default function MonitoringMap() {
       )}
 
       {value === 'oil' && <TileLayer url={oilUrl?.url} zIndex={999} />}
+
+      {value === 'agricultural' && (
+        <>
+          <TileLayer
+            url={
+              agriculturalUrl?.url === undefined
+                ? 'https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/d9372586a137116b3c6711ef768d3696-a08bd8d62ee47286e773f6f8a211ccce/tiles/{z}/{x}/{y}'
+                : agriculturalUrl?.url
+            }
+            zIndex={999}
+          />
+          <GetPopupAgricultural />
+        </>
+      )}
 
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
