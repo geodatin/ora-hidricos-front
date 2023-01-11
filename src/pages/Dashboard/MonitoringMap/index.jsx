@@ -201,6 +201,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'waterSurface') {
+      if (indicatorSelection === indicators.waterResources.waterSurface.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -763,6 +768,31 @@ export default function MonitoringMap() {
                               >
                                 {t(
                                   indicators.waterResources.wetlands.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterResources.waterSurface.value && (
+                          <FormControlLabel
+                            value="waterSurface"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterResources.waterSurface
+                                    .translation
                                 )}
                               </Typography>
                             }
@@ -1388,6 +1418,13 @@ export default function MonitoringMap() {
           <TileLayer url={wetlandsUrl?.url} zIndex={999} />
           <GetPopupWetlands />
         </>
+      )}
+
+      {value === 'waterSurface' && (
+        <TileLayer
+          url="https://storage.googleapis.com/ora-otca/water/2020/{z}/{x}/{y}.png"
+          zIndex={2}
+        />
       )}
 
       {indicatorSelection ===
