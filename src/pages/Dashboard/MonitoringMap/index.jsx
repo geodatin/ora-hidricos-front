@@ -211,6 +211,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'Waterways') {
+      if (indicatorSelection === indicators.waterDemand.Waterways.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -832,6 +837,30 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
+                        {indicatorSelection !==
+                          indicators.waterDemand.Waterways.value && (
+                          <FormControlLabel
+                            value="Waterways"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterDemand.Waterways.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -1017,16 +1046,16 @@ export default function MonitoringMap() {
 
       {value === 'miningMine' && (
         <>
-          <TileLayer url={mineUrl?.url} zIndex={999} />
+          <TileLayer url={mineUrl?.url} zIndex={5} />
           <GetPopupMiningMine />
         </>
       )}
 
       {value === 'illegalMining' && (
-        <TileLayer url={illegalMiningUrl?.url} zIndex={999} />
+        <TileLayer url={illegalMiningUrl?.url} zIndex={5} />
       )}
 
-      {value === 'oil' && <TileLayer url={oilUrl?.url} zIndex={999} />}
+      {value === 'oil' && <TileLayer url={oilUrl?.url} zIndex={5} />}
 
       {value === 'agricultural' && (
         <>
@@ -1400,7 +1429,7 @@ export default function MonitoringMap() {
 
       {value === 'IPPO' && (
         <>
-          <TileLayer url={pollutionUrl?.url} zIndex={999} />
+          <TileLayer url={pollutionUrl?.url} zIndex={5} />
           <GetPopupIPPO />
         </>
       )}
@@ -1444,7 +1473,7 @@ export default function MonitoringMap() {
 
       {value === 'wetlands' && (
         <>
-          <TileLayer url={wetlandsUrl?.url} zIndex={999} />
+          <TileLayer url={wetlandsUrl?.url} zIndex={5} />
           <GetPopupWetlands />
         </>
       )}
@@ -1458,8 +1487,15 @@ export default function MonitoringMap() {
 
       {value === 'Population' && (
         <>
-          <TileLayer url={populationUrl?.url} zIndex={999} />
+          <TileLayer url={populationUrl?.url} zIndex={5} />
           <GetPopupPopulation />
+        </>
+      )}
+
+      {value === 'Waterways' && (
+        <>
+          <TileLayer url={waterUrl?.url} zIndex={5} />
+          <GetPopupWaterway />
         </>
       )}
 
