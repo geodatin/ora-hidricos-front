@@ -196,6 +196,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'wetlands') {
+      if (indicatorSelection === indicators.waterResources.wetlands.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -734,6 +739,30 @@ export default function MonitoringMap() {
                                 {t(
                                   indicators.waterResources.annualPrecipitation
                                     .translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterResources.wetlands.value && (
+                          <FormControlLabel
+                            value="wetlands"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterResources.wetlands.translation
                                 )}
                               </Typography>
                             }
@@ -1352,6 +1381,13 @@ export default function MonitoringMap() {
             weight: 0,
           })}
         />
+      )}
+
+      {value === 'wetlands' && (
+        <>
+          <TileLayer url={wetlandsUrl?.url} zIndex={999} />
+          <GetPopupWetlands />
+        </>
       )}
 
       {indicatorSelection ===
