@@ -101,10 +101,10 @@ export default function Hydrogeochemistry({
               {
                 data: data.series[0].data.map((number) => number),
                 backgroundColor: [
-                  pageAtual === 1 ? '#00a94d' : '#ba6ea3',
-                  '#f68f30',
-                  '#010101',
+                  pageAtual === 1 ? '#f68f30' : '#ba6ea3',
+                  '#00a94d',
                   '#ee3c37',
+                  '#010101',
                   '#3a5298',
                 ],
                 borderRadius: 5,
@@ -139,10 +139,10 @@ export default function Hydrogeochemistry({
               {
                 data: data.series[0].data.map((number) => number),
                 backgroundColor: [
-                  pageAtual === 1 ? '#00a94d' : '#ba6ea3',
-                  '#f68f30',
-                  '#010101',
+                  pageAtual === 1 ? '#f68f30' : '#ba6ea3',
+                  '#00a94d',
                   '#ee3c37',
+                  '#010101',
                   '#3a5298',
                 ],
                 borderRadius: 5,

@@ -35,5 +35,5 @@ export default function AgriculturalLayer() {
       </div>
     );
 
-  return <TileLayer url={agriculturalUrl?.url} zIndex={5} />;
+  return <TileLayer url={agriculturalUrl?.url} />;
 }

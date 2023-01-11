@@ -16,7 +16,7 @@ import L from 'leaflet';
 import React, { useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useTheme } from 'react-jss';
-import { TileLayer, GeoJSON, Marker, Popup } from 'react-leaflet';
+import { TileLayer, GeoJSON, Marker, Popup, Pane } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import { useQuery } from 'react-query';
 import { useContextSelector } from 'use-context-selector';
@@ -1200,23 +1200,29 @@ export default function MonitoringMap() {
       )}
 
       {value === 'miningMine' && (
-        <>
-          <TileLayer url={mineUrl?.url} zIndex={5} />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TileLayer url={mineUrl?.url} />
           <GetPopupMiningMine />
-        </>
+        </Pane>
       )}
 
       {value === 'illegalMining' && (
-        <TileLayer url={illegalMiningUrl?.url} zIndex={5} />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TileLayer url={illegalMiningUrl?.url} />
+        </Pane>
       )}
 
-      {value === 'oil' && <TileLayer url={oilUrl?.url} zIndex={5} />}
+      {value === 'oil' && (
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TileLayer url={oilUrl?.url} />
+        </Pane>
+      )}
 
       {value === 'agricultural' && (
-        <>
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
           <AgriculturalLayer />
           <GetPopupAgricultural />
-        </>
+        </Pane>
       )}
 
       {value === 'mercuryHuman' &&
@@ -1583,121 +1589,145 @@ export default function MonitoringMap() {
         ))}
 
       {value === 'IPPO' && (
-        <>
-          <TileLayer url={pollutionUrl?.url} zIndex={5} />
-          <GetPopupIPPO />
-        </>
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <>
+            <TileLayer url={pollutionUrl?.url} />
+            <GetPopupIPPO />
+          </>
+        </Pane>
       )}
 
       {value === 'waterBalance' && (
-        <TopoJSONWaterBalance
-          key={theme === darkScheme ? `dark` : `light`}
-          data={coordsWaterBalance === undefined ? '' : coordsWaterBalance}
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 0,
-          })}
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TopoJSONWaterBalance
+            key={theme === darkScheme ? `dark` : `light`}
+            data={coordsWaterBalance === undefined ? '' : coordsWaterBalance}
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 0,
+            })}
+          />
+        </Pane>
       )}
 
       {value === 'actualEvapotranspiration' && (
-        <TopoJSONEvapotranspiration
-          key={theme === darkScheme ? `dark` : `light`}
-          data={
-            coordsEvapotranspiration === undefined
-              ? ''
-              : coordsEvapotranspiration
-          }
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 0,
-          })}
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TopoJSONEvapotranspiration
+            key={theme === darkScheme ? `dark` : `light`}
+            data={
+              coordsEvapotranspiration === undefined
+                ? ''
+                : coordsEvapotranspiration
+            }
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 0,
+            })}
+          />
+        </Pane>
       )}
 
       {value === 'annualPrecipitation' && (
-        <TopoJSONPrecipitation
-          key={theme === darkScheme ? `dark` : `light`}
-          data={coordsPrecipitation === undefined ? '' : coordsPrecipitation}
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 0,
-          })}
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TopoJSONPrecipitation
+            key={theme === darkScheme ? `dark` : `light`}
+            data={coordsPrecipitation === undefined ? '' : coordsPrecipitation}
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 0,
+            })}
+          />
+        </Pane>
       )}
 
       {value === 'wetlands' && (
-        <>
-          <TileLayer url={wetlandsUrl?.url} zIndex={5} />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TileLayer url={wetlandsUrl?.url} />
           <GetPopupWetlands />
-        </>
+        </Pane>
       )}
 
       {value === 'waterSurface' && (
-        <TileLayer
-          url="https://storage.googleapis.com/ora-otca/water/2020/{z}/{x}/{y}.png"
-          zIndex={2}
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TileLayer url="https://storage.googleapis.com/ora-otca/water/2020/{z}/{x}/{y}.png" />
+        </Pane>
       )}
 
       {value === 'Population' && (
-        <>
-          <TileLayer url={populationUrl?.url} zIndex={5} />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TileLayer url={populationUrl?.url} />
           <GetPopupPopulation />
-        </>
+        </Pane>
       )}
 
       {value === 'Waterways' && (
-        <>
-          <TileLayer url={waterUrl?.url} zIndex={5} />
-          <GetPopupWaterway />
-        </>
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <>
+            <TileLayer url={waterUrl?.url} />
+            <GetPopupWaterway />
+          </>
+        </Pane>
       )}
 
       {value === 'hydroelectric' && (
-        <MarkersHydroelectric
-          data={coordsHydroelectric?.features}
-          value="hydroelectric"
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <MarkersHydroelectric
+            data={coordsHydroelectric?.features}
+            value="hydroelectric"
+          />
+        </Pane>
       )}
 
       {value === 'CNARHunion' && (
-        <MarkerClusterGroup
-          iconCreateFunction={createClusterCustomIcon}
-          showCoverageOnHover={false}
-        >
-          <MarkersCNARHunion data={coordsUnion?.features} value="CNARHunion" />
-        </MarkerClusterGroup>
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <MarkerClusterGroup
+            iconCreateFunction={createClusterCustomIcon}
+            showCoverageOnHover={false}
+          >
+            <MarkersCNARHunion
+              data={coordsUnion?.features}
+              value="CNARHunion"
+            />
+          </MarkerClusterGroup>
+        </Pane>
       )}
 
       {value === 'CNARHstate' && (
-        <SuperCluster
-          data={
-            coords?.features === undefined
-              ? StateJson?.features
-              : coords?.features
-          }
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <SuperCluster
+            data={
+              coords?.features === undefined
+                ? StateJson?.features
+                : coords?.features
+            }
+          />
+        </Pane>
       )}
 
       {value === 'watershedArea' && (
-        <>
-          <TileLayer url={watershedUrl?.url} zIndex={5} />
-          <GetPopupWatershed />
-        </>
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <>
+            <TileLayer url={watershedUrl?.url} />
+            <GetPopupWatershed />
+          </>
+        </Pane>
       )}
 
       {value === 'hydrogeochemicalCharacteristics' && (
-        <TopoJSONHydrogeochemistry
-          key={theme === darkScheme ? `dark` : `light`}
-          data={
-            coordsHydrogeochemistry === undefined ? '' : coordsHydrogeochemistry
-          }
-          style={() => ({
-            fillOpacity: 0.8,
-            weight: 2,
-          })}
-        />
+        <Pane name="mapnik" style={{ zIndex: 499 }}>
+          <TopoJSONHydrogeochemistry
+            key={theme === darkScheme ? `dark` : `light`}
+            data={
+              coordsHydrogeochemistry === undefined
+                ? ''
+                : coordsHydrogeochemistry
+            }
+            style={() => ({
+              fillOpacity: 0.8,
+              weight: 2,
+            })}
+          />
+        </Pane>
       )}
 
       {indicatorSelection ===
@@ -1773,6 +1803,8 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={waterUrl?.url} zIndex={2} />
           <GetPopupWaterway />
+          {value === 'country' && <GetPopupWaterway />}
+          {value === 'watershed' && <GetPopupWaterway />}
         </>
       )}
 
@@ -1784,6 +1816,8 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={mineUrl?.url} zIndex={2} />
           <GetPopupMiningMine />
+          {value === 'country' && <GetPopupMiningMine />}
+          {value === 'watershed' && <GetPopupMiningMine />}
           <LegendMiningMine />
         </>
       )}
@@ -1792,6 +1826,8 @@ export default function MonitoringMap() {
         <>
           <TileLayer url={wetlandsUrl?.url} zIndex={2} />
           <GetPopupWetlands />
+          {value === 'country' && <GetPopupWetlands />}
+          {value === 'watershed' && <GetPopupWetlands />}
           <LegendWetlands />
         </>
       )}
@@ -1799,7 +1835,9 @@ export default function MonitoringMap() {
       {indicatorSelection === indicators.mercury.IPPO.value && (
         <>
           <TileLayer url={pollutionUrl?.url} zIndex={2} />
-          <GetPopupIPPO />
+
+          {value === 'country' && <GetPopupIPPO />}
+          {value === 'watershed' && <GetPopupIPPO />}
           <LegendIPPO />
         </>
       )}
@@ -1807,7 +1845,8 @@ export default function MonitoringMap() {
       {indicatorSelection === indicators.waterDemand.Population.value && (
         <>
           <TileLayer url={populationUrl?.url} zIndex={2} />
-          <GetPopupPopulation />
+          {value === 'country' && <GetPopupPopulation />}
+          {value === 'watershed' && <GetPopupPopulation />}
           <LegendPopulation />
         </>
       )}
@@ -1816,7 +1855,8 @@ export default function MonitoringMap() {
         indicators.generalFeatures.watershedArea.value && (
         <>
           <TileLayer url={watershedUrl?.url} zIndex={2} />
-          <GetPopupWatershed />
+          {value === 'country' && <GetPopupWatershed />}
+          {value === 'watershed' && <GetPopupWatershed />}
         </>
       )}
 
@@ -1827,7 +1867,8 @@ export default function MonitoringMap() {
       {indicatorSelection === indicators.ground.agricultural.value && (
         <>
           <AgriculturalLayer />
-          <GetPopupAgricultural />
+          {value === 'country' && <GetPopupAgricultural />}
+          {value === 'watershed' && <GetPopupAgricultural />}
           <LegendAgricultural />
         </>
       )}

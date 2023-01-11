@@ -54,6 +54,7 @@ const useStyles = createUseStyles((theme) => ({
     font: '12px',
   },
   popup: {
+    zIndex: 999,
     '& .leaflet-popup-content-wrapper': {
       backgroundColor: theme.background.main,
       borderRadius: 5,
