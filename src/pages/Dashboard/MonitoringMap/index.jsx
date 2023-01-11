@@ -206,6 +206,11 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'Population') {
+      if (indicatorSelection === indicators.waterDemand.Population.value) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -793,6 +798,30 @@ export default function MonitoringMap() {
                                 {t(
                                   indicators.waterResources.waterSurface
                                     .translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterDemand.Population.value && (
+                          <FormControlLabel
+                            value="Population"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterDemand.Population.translation
                                 )}
                               </Typography>
                             }
@@ -1425,6 +1454,13 @@ export default function MonitoringMap() {
           url="https://storage.googleapis.com/ora-otca/water/2020/{z}/{x}/{y}.png"
           zIndex={2}
         />
+      )}
+
+      {value === 'Population' && (
+        <>
+          <TileLayer url={populationUrl?.url} zIndex={999} />
+          <GetPopupPopulation />
+        </>
       )}
 
       {indicatorSelection ===
