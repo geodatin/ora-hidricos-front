@@ -55,7 +55,8 @@ import LegendPopulation from '../../../components/MapItems/LegendPopulation';
 import LegendPrecipitation from '../../../components/MapItems/LegendPrecipitation';
 import LegendWaterBalance from '../../../components/MapItems/LegendWaterBalance';
 import LegendWetlands from '../../../components/MapItems/LegendWetlands';
-import Markers from '../../../components/MapItems/Markers';
+import MarkersCNARHunion from '../../../components/MapItems/MarkersCNARHunion';
+import MarkersHydroelectric from '../../../components/MapItems/MarkersHydroelectric';
 import SuperCluster from '../../../components/MapItems/SuperCluster';
 import TopoJSONEvapotranspiration from '../../../components/MapItems/TopoJSONEvapotranspiration';
 import TopoJSONHydrogeochemistry from '../../../components/MapItems/TopoJSONHydrogeochemistry';
@@ -213,6 +214,21 @@ export default function MonitoringMap() {
     }
     if (value === 'Waterways') {
       if (indicatorSelection === indicators.waterDemand.Waterways.value) {
+        setValue('country');
+      }
+    }
+    if (value === 'hydroelectric') {
+      if (indicatorSelection === indicators.waterDemand.hydroelectric.value) {
+        setValue('country');
+      }
+    }
+    if (value === 'CNARHunion') {
+      if (indicatorSelection === indicators.waterDemand.CNARHunion.value) {
+        setValue('country');
+      }
+    }
+    if (value === 'CNARHstate') {
+      if (indicatorSelection === indicators.waterDemand.CNARHstate.value) {
         setValue('country');
       }
     }
@@ -481,8 +497,8 @@ export default function MonitoringMap() {
       itemLayers={
         <MapItem
           popupContent={
-            <div style={{ paddingLeft: 10 }}>
-              <div className={classes.legendItem}>
+            <div className={classes.radioContainer}>
+              <div>
                 <FormGroup>
                   <FormControlLabel
                     control={
@@ -851,6 +867,79 @@ export default function MonitoringMap() {
                               >
                                 {t(
                                   indicators.waterDemand.Waterways.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterDemand.hydroelectric.value && (
+                          <FormControlLabel
+                            value="hydroelectric"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterDemand.hydroelectric
+                                    .translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterDemand.CNARHunion.value && (
+                          <FormControlLabel
+                            value="CNARHunion"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterDemand.CNARHunion.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.waterDemand.CNARHstate.value && (
+                          <FormControlLabel
+                            value="CNARHstate"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.waterDemand.CNARHstate.translation
                                 )}
                               </Typography>
                             }
@@ -1499,6 +1588,32 @@ export default function MonitoringMap() {
         </>
       )}
 
+      {value === 'hydroelectric' && (
+        <MarkersHydroelectric
+          data={coordsHydroelectric?.features}
+          value="hydroelectric"
+        />
+      )}
+
+      {value === 'CNARHunion' && (
+        <MarkerClusterGroup
+          iconCreateFunction={createClusterCustomIcon}
+          showCoverageOnHover={false}
+        >
+          <MarkersCNARHunion data={coordsUnion?.features} value="CNARHunion" />
+        </MarkerClusterGroup>
+      )}
+
+      {value === 'CNARHstate' && (
+        <SuperCluster
+          data={
+            coords?.features === undefined
+              ? StateJson?.features
+              : coords?.features
+          }
+        />
+      )}
+
       {indicatorSelection ===
         indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
         <TopoJSONHydrogeochemistry
@@ -2019,7 +2134,7 @@ export default function MonitoringMap() {
             iconCreateFunction={createClusterCustomIcon}
             showCoverageOnHover={false}
           >
-            <Markers data={coordsUnion?.features} />
+            <MarkersCNARHunion data={coordsUnion?.features} />
           </MarkerClusterGroup>
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHstate.value && (
@@ -2035,7 +2150,7 @@ export default function MonitoringMap() {
       {(indicatorSelection === indicators.ground.oil.value && <LegendOil />) ||
         (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
           <>
-            <Markers data={coordsHydroelectric?.features} />
+            <MarkersHydroelectric data={coordsHydroelectric?.features} />
             <LegendHydroeletric />
           </>
         ))}

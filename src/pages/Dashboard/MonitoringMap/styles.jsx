@@ -136,6 +136,17 @@ const useStyles = createUseStyles((theme) => ({
     width: 17,
     marginRight: 5,
   },
+  radioContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    paddingLeft: 10,
+    paddingTop: 300,
+    height: '400px',
+    overflow: 'auto',
+    zIndex: 999,
+  },
   dashedLine: {
     width: 17,
     height: 1,
