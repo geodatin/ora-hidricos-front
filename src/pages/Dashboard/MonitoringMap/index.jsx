@@ -232,6 +232,21 @@ export default function MonitoringMap() {
         setValue('country');
       }
     }
+    if (value === 'watershedArea') {
+      if (
+        indicatorSelection === indicators.generalFeatures.watershedArea.value
+      ) {
+        setValue('country');
+      }
+    }
+    if (value === 'hydrogeochemicalCharacteristics') {
+      if (
+        indicatorSelection ===
+        indicators.generalFeatures.hydrogeochemicalCharacteristics.value
+      ) {
+        setValue('country');
+      }
+    }
   }, [indicatorSelection]);
 
   const fish1Icon = new L.Icon({
@@ -950,6 +965,57 @@ export default function MonitoringMap() {
                             }}
                           />
                         )}
+                        {indicatorSelection !==
+                          indicators.generalFeatures.watershedArea.value && (
+                          <FormControlLabel
+                            value="watershedArea"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.generalFeatures.watershedArea
+                                    .translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
+                        {indicatorSelection !==
+                          indicators.generalFeatures
+                            .hydrogeochemicalCharacteristics.value && (
+                          <FormControlLabel
+                            value="hydrogeochemicalCharacteristics"
+                            control={<Radio />}
+                            label={
+                              <Typography
+                                variant="caption"
+                                style={{
+                                  whiteSpace: 'nowrap',
+                                }}
+                              >
+                                {t(
+                                  indicators.generalFeatures
+                                    .hydrogeochemicalCharacteristics.translation
+                                )}
+                              </Typography>
+                            }
+                            sx={{
+                              '& .MuiSvgIcon-root': {
+                                fontSize: 18,
+                              },
+                            }}
+                          />
+                        )}
                       </RadioGroup>
                     }
                     label={<div />}
@@ -1611,6 +1677,26 @@ export default function MonitoringMap() {
               ? StateJson?.features
               : coords?.features
           }
+        />
+      )}
+
+      {value === 'watershedArea' && (
+        <>
+          <TileLayer url={watershedUrl?.url} zIndex={5} />
+          <GetPopupWatershed />
+        </>
+      )}
+
+      {value === 'hydrogeochemicalCharacteristics' && (
+        <TopoJSONHydrogeochemistry
+          key={theme === darkScheme ? `dark` : `light`}
+          data={
+            coordsHydrogeochemistry === undefined ? '' : coordsHydrogeochemistry
+          }
+          style={() => ({
+            fillOpacity: 0.8,
+            weight: 2,
+          })}
         />
       )}
 
