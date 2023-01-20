@@ -536,7 +536,7 @@ export default function MonitoringMap() {
                                 whiteSpace: 'nowrap',
                               }}
                             >
-                              Country
+                              {t('specific.indicators.type.country')}
                             </Typography>
                           }
                           sx={{
@@ -555,7 +555,7 @@ export default function MonitoringMap() {
                                 whiteSpace: 'nowrap',
                               }}
                             >
-                              Watershed
+                              {t('specific.indicators.type.watershed')}
                             </Typography>
                           }
                           sx={{

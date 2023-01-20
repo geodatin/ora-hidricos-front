@@ -812,6 +812,8 @@
     },
     "indicators": {
       "type": {
+        "watershed": "Watershed",
+        "country": "Countries",
         "waterResources": "Water supply",
         "waterSurface": "Water surface area",
         "wetlands": "Flooding zones",

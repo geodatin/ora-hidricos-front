@@ -819,6 +819,8 @@
     },
     "indicators": {
       "type": {
+        "watershed": "Bacia",
+        "country": "Países",
         "waterResources": "Oferta hídrica",
         "waterSurface": "Área de Superfície de água",
         "wetlands": "Zonas Inundáveis",

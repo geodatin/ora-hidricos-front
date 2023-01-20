@@ -811,6 +811,8 @@
     },
     "indicators": {
       "type": {
+        "watershed": "Cuenca",
+        "country": "Países",
         "waterResources": "Suministro de agua",
         "waterSurface": "Área de la superficie del agua",
         "wetlands": "Zonas de inundación",
