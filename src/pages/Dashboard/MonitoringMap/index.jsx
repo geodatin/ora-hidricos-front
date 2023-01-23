@@ -1168,6 +1168,7 @@ export default function MonitoringMap() {
           stroke: false,
           fillColor: theme === darkScheme ? 'black' : lightScheme.stroke.light,
           fillOpacity: theme === darkScheme ? 0.5 : 0.7,
+          interactive: false,
         })}
       />
 
@@ -1181,6 +1182,7 @@ export default function MonitoringMap() {
             lineCap: 'round',
             lineJoin: 'round ',
             color: theme === darkScheme ? '#accc0c' : '#728740',
+            interactive: false,
           })}
         />
       )}
@@ -1195,6 +1197,7 @@ export default function MonitoringMap() {
             lineCap: 'round',
             lineJoin: 'round ',
             color: theme === darkScheme ? '#38a00f' : '#508740',
+            interactive: false,
           })}
         />
       )}
@@ -1834,7 +1837,11 @@ export default function MonitoringMap() {
 
       {indicatorSelection === indicators.mercury.IPPO.value && (
         <>
-          <TileLayer url={pollutionUrl?.url} zIndex={2} />
+          <TileLayer
+            url={pollutionUrl?.url}
+            zIndex={2}
+            style={{ cursor: 'pointer' }}
+          />
 
           {value === 'country' && <GetPopupIPPO />}
           {value === 'watershed' && <GetPopupIPPO />}
@@ -1844,7 +1851,7 @@ export default function MonitoringMap() {
 
       {indicatorSelection === indicators.waterDemand.Population.value && (
         <>
-          <TileLayer url={populationUrl?.url} zIndex={2} />
+          <TileLayer url={populationUrl?.url} />
           {value === 'country' && <GetPopupPopulation />}
           {value === 'watershed' && <GetPopupPopulation />}
           <LegendPopulation />

@@ -16,9 +16,7 @@ import MiningMine from './MiningMine';
 import Oil from './Oil';
 import WatershedArea from './WatershedArea';
 import WaterSurface from './WaterSurface';
-import Waterway from './Waterway';
 import Wetlands from './Wetlands';
-import WQI from './WQI';
 
 /**
  * This function provides a statistics list
@@ -40,13 +38,13 @@ export default function Statistics() {
           <Wetlands />
         )) ||
         (indicatorSelection ===
-          indicators.waterResources.annualPrecipitation.value && <WQI />) ||
+          indicators.waterResources.annualPrecipitation.value && <div />) ||
         (indicatorSelection ===
           indicators.waterResources.actualEvapotranspiration.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection ===
-          indicators.waterResources.waterBalance.value && <WQI />) ||
+          indicators.waterResources.waterBalance.value && <div />) ||
         (indicatorSelection === indicators.mercury.mercuryHuman.value && (
           <MercuryHuman />
         )) ||
@@ -65,16 +63,16 @@ export default function Statistics() {
           <Agricultural />
         )) ||
         (indicatorSelection === indicators.ground.deforesting.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection === indicators.waterDemand.hydroelectric.value && (
           <Hydroelectric />
         )) ||
         (indicatorSelection === indicators.waterDemand.Waterways.value && (
-          <Waterway />
+          <div />
         )) ||
         (indicatorSelection === indicators.waterDemand.Population.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection === indicators.waterDemand.CNARHunion.value && (
           <CNARHunion />
@@ -87,14 +85,14 @@ export default function Statistics() {
           <WatershedArea />
         )) ||
         (indicatorSelection ===
-          indicators.generalFeatures.areaPercentage.value && <WQI />) ||
+          indicators.generalFeatures.areaPercentage.value && <div />) ||
         (indicatorSelection ===
           indicators.generalFeatures.surfaceHydrologicalUnits.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection ===
           indicators.generalFeatures.undergroundHydrologicalUnits.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection ===
           indicators.generalFeatures.hydrogeochemicalCharacteristics.value && (
@@ -102,26 +100,26 @@ export default function Statistics() {
         )) ||
         (indicatorSelection ===
           indicators.hydroclimaticVulnerability.droughtEvents.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection ===
-          indicators.hydroclimaticVulnerability.floodEvents.value && <WQI />) ||
+          indicators.hydroclimaticVulnerability.floodEvents.value && <div />) ||
         (indicatorSelection ===
           indicators.hydroclimaticVulnerability.droughtVulnerability.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection ===
           indicators.hydroclimaticVulnerability.floodVulnerability.value && (
-          <WQI />
+          <div />
         )) ||
         (indicatorSelection ===
-          indicators.waterGovernance.authorities.value && <WQI />) ||
+          indicators.waterGovernance.authorities.value && <div />) ||
         (indicatorSelection ===
-          indicators.waterGovernance.legislation.value && <WQI />) ||
+          indicators.waterGovernance.legislation.value && <div />) ||
         (indicatorSelection ===
-          indicators.waterGovernance.publications.value && <WQI />) ||
+          indicators.waterGovernance.publications.value && <div />) ||
         (indicatorSelection ===
-          indicators.waterGovernance.countryReports.value && <WQI />)}
+          indicators.waterGovernance.countryReports.value && <div />)}
     </div>
   );
 }

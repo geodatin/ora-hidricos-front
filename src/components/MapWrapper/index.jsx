@@ -81,7 +81,6 @@ export default function MapWrapper({
     <MapContainer
       whenCreated={setMap}
       className={classes.mapContainer}
-      preferCanvas={false}
       center={position}
       zoom={5}
       zoomControl={false}
@@ -122,6 +121,7 @@ export default function MapWrapper({
         className={
           layoutConfig === 2 ||
           layoutConfig === 3 ||
+          indicatorSelection === indicators.waterDemand.Waterways.value ||
           indicatorSelection === indicators.waterDemand.Population.value ||
           indicatorSelection ===
             indicators.waterResources.annualPrecipitation.value ||

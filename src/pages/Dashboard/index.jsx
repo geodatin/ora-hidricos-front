@@ -235,6 +235,7 @@ function Dashboard() {
       }}
       rightColumn={{
         isHidden:
+          indicatorSelection === indicators.waterDemand.Waterways.value ||
           indicatorSelection === indicators.waterDemand.Population.value ||
           indicatorSelection ===
             indicators.waterResources.annualPrecipitation.value ||
